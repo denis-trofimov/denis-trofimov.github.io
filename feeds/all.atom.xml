@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Iris Recognition problem hacking developer blog</title><link href="http://denis-trofimov.github.io/" rel="alternate"></link><link href="http://denis-trofimov.github.io/feeds/all.atom.xml" rel="self"></link><id>http://denis-trofimov.github.io/</id><updated>2018-07-12T00:48:00+03:00</updated><entry><title>10 Iris Recognition Open Source Projects List</title><link href="http://denis-trofimov.github.io/10-iris-recognition-open-source-projects-list.html" rel="alternate"></link><published>2018-07-12T00:48:00+03:00</published><updated>2018-07-12T00:48:00+03:00</updated><author><name>denistrofimov</name></author><id>tag:denis-trofimov.github.io,2018-07-12:/10-iris-recognition-open-source-projects-list.html</id><summary type="html">&lt;h1&gt;10 Iris Recognition Open Source Projects List&lt;/h1&gt;
+&lt;p&gt;[Greetings, my fellow reader!]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[I am Denis Trofimov, a team leader developer working on iris
+recognition project for the company Vsor Systems LLC,
+Moscow.]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;I have recently &lt;a href="http://irisrecognitionlab.com/10-known-open-source-projects-in-iris-recognition-2018"&gt;published this
+post&lt;/a&gt; with
+a full-sized table of all Iris …&lt;/p&gt;</summary><content type="html">&lt;h1&gt;10 Iris Recognition Open Source Projects List&lt;/h1&gt;
+&lt;p&gt;[Greetings, my fellow reader!]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[I am Denis Trofimov, a team leader developer working on iris
+recognition project for the company Vsor Systems LLC,
+Moscow.]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;I have recently &lt;a href="http://irisrecognitionlab.com/10-known-open-source-projects-in-iris-recognition-2018"&gt;published this
+post&lt;/a&gt; with
+a full-sized table of all Iris Recognition Open Source Projects.&lt;/p&gt;
+&lt;p&gt;I have decided to reorganize information as a list to use as fast
+reference. I have checked all the links to be working on the publish
+date.&lt;/p&gt;
+&lt;h2&gt;Iris Recognition Open Source Projects List:&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href="https://www.nist.gov/services-resources/software/video-based-automatic-system-iris-recognition-vasir"&gt;Video-based Automatic System for Iris
+    Recognition&lt;/a&gt;
+    (VASIR) (Beta Version 2.2) 2013, C++. Requires Qt Framework
+    4.8.2, OpenCV Library 2.3.1.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/5455945/Iris_Osiris"&gt;[5455945/Iris_Osiris]{style="font-weight: 400;"}&lt;/a&gt; the
+    OSIRIS 4.1 fork, 2017, C++.Requires OpenCV 3.0+, OpenCV 2.4.13.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/vonclites/syris"&gt;[Python interface to OSIRIS Iris Segmentation and Recognition
+    software]{style="font-weight: 400;"}&lt;/a&gt;[(the
+    OSIRIS 4.1 fork) 2017, Python.]{style="font-weight: 400;"}&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.wavelab.at/sources/USIT/"&gt;(USIT) - University of Salzburg Iris Toolkit
+    v2&lt;/a&gt;  2016, C++. Requires OpenCV
+    version 2.4.9, Python 3, scipy.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://ideacenter.nd.edu/commercialization-engine/for-industry/available-technologies/software-available-for-license/iris-recognition-based-on-human-intrepretable-features/"&gt;(UND) IRIS RECOGNITION BASED ON HUMAN-INTREPRETABLE
+    FEATURES&lt;/a&gt; [2016, Matlab.]{style="font-weight: 400;"}&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.peterkovesi.com/studentprojects/libor/"&gt;[Libor Masek`s ]{style="font-weight: 400;"}Dissertation Iris
+    Recognition&lt;/a&gt;
+    2003, MATLAB.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/denis-trofimov/vasir"&gt;My VASIR fork&lt;/a&gt; to use
+    OpenCV 3.4 and later, 2018, C++.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/cdac-cvml/IrisSeg"&gt;[IrisSeg]{style="font-weight: 400;"}&lt;/a&gt;[[ A
+    Fast and Robust Iris Segmentation Framework for Non-Ideal Iris
+    Images, ]{style="font-weight: 400;"}]{style="font-weight: 400;"}2017,
+    Matlab.&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www4.comp.polyu.edu.hk/~csajaykr/tvmiris.htm"&gt;IAADseg&lt;/a&gt; An
+    Accurate Iris Segmentation Framework under Relaxed Imaging
+    Constraints using Total Variation
+    Model, [2015, Matlab.]{style="font-weight: 400;"}&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/sbanerj1/IrisSeg"&gt;IrisSeg&lt;/a&gt; [Iris Segmentation
+    using Geodesic Active Contours and
+    GrabCut, 2015, Python.]{style="font-weight: 400;"}&lt;/li&gt;
+&lt;/ol&gt;</content><category term="c++"></category><category term="code"></category><category term="fork"></category><category term="iris recognition"></category><category term="iris segmentation"></category><category term="matlab"></category><category term="open source"></category><category term="OpenCV"></category><category term="project"></category><category term="python"></category></entry><entry><title>What easy questions on Javascript I can ask?</title><link href="http://denis-trofimov.github.io/what-easy-questions-on-javascript-i-can-ask.html" rel="alternate"></link><published>2018-06-26T02:29:00+03:00</published><updated>2018-06-26T02:29:00+03:00</updated><author><name>denistrofimov</name></author><id>tag:denis-trofimov.github.io,2018-06-26:/what-easy-questions-on-javascript-i-can-ask.html</id><summary type="html">&lt;p&gt;In this post I speak about some basic Javascript quesions and answers,
+which I have made passing throught course &lt;a href="https://simpleprogrammer.com/store/products/javascript-launchpad/?c=jslp70&amp;amp;utm_source=drip&amp;amp;utm_medium=email&amp;amp;utm_campaign=js-launchpad-sale&amp;amp;utm_content=js-launchpad-sale-email-2&amp;amp;__s=25hdpkywdqsodfst7mgj&amp;amp;utm_source=drip&amp;amp;utm_medium=email&amp;amp;utm_campaign=JavaScript+LaunchPad+Introduction&amp;amp;utm_content=Q%26A+about+JavaScript+LaunchPad"&gt;&lt;strong&gt;JavaScript
+LaunchPad&lt;/strong&gt;&lt;/a&gt;
+&lt;strong&gt;by&lt;/strong&gt; &lt;strong&gt;&lt;a href="https://simpleprogrammer.com/"&gt;Simple Programmer.com.&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;I have interviewed 3 persons in the year 2017 for developer position to
+the company I work for, Vzor Systems LLC.&lt;/p&gt;
+&lt;p&gt;It turned out that …&lt;/p&gt;</summary><content type="html">&lt;p&gt;In this post I speak about some basic Javascript quesions and answers,
+which I have made passing throught course &lt;a href="https://simpleprogrammer.com/store/products/javascript-launchpad/?c=jslp70&amp;amp;utm_source=drip&amp;amp;utm_medium=email&amp;amp;utm_campaign=js-launchpad-sale&amp;amp;utm_content=js-launchpad-sale-email-2&amp;amp;__s=25hdpkywdqsodfst7mgj&amp;amp;utm_source=drip&amp;amp;utm_medium=email&amp;amp;utm_campaign=JavaScript+LaunchPad+Introduction&amp;amp;utm_content=Q%26A+about+JavaScript+LaunchPad"&gt;&lt;strong&gt;JavaScript
+LaunchPad&lt;/strong&gt;&lt;/a&gt;
+&lt;strong&gt;by&lt;/strong&gt; &lt;strong&gt;&lt;a href="https://simpleprogrammer.com/"&gt;Simple Programmer.com.&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;I have interviewed 3 persons in the year 2017 for developer position to
+the company I work for, Vzor Systems LLC.&lt;/p&gt;
+&lt;p&gt;It turned out that to prepare for interview from the interviewer side
+one should do some effort. If the company is not a big but a small
+startup, it is my job as interviewer to think of questions and written
+tests to check a candidate`s skills and knowledge. One time I was
+looking for typical questions on interview for C++ developer position.&lt;/p&gt;
+&lt;p&gt;Having an interviewer field of view in mind, I created this questions
+list when I have finished first &lt;strong&gt;&lt;a href="https://simpleprogrammer.com/store/products/javascript-launchpad/?c=jslp70&amp;amp;utm_source=drip&amp;amp;utm_medium=email&amp;amp;utm_campaign=js-launchpad-sale&amp;amp;utm_content=js-launchpad-sale-email-2&amp;amp;__s=25hdpkywdqsodfst7mgj&amp;amp;utm_source=drip&amp;amp;utm_medium=email&amp;amp;utm_campaign=JavaScript+LaunchPad+Introduction&amp;amp;utm_content=Q%26A+about+JavaScript+LaunchPad"&gt;JavaScript
+LaunchPad&lt;/a&gt; &lt;/strong&gt;chapter
+"&lt;strong&gt;Execution Contexts and Lexical Environments".&lt;/strong&gt;&lt;/p&gt;
+&lt;h2&gt;[The Execution Context - Creation &amp;amp; Hoisting]{style="font-weight: 400;"}&lt;/h2&gt;
+&lt;h3&gt;Question: What this code give to the console?&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;b(); console.log(a); var a = 'Hello World!'; function b() { console.log('Called b!'); }&lt;/code&gt;&lt;/p&gt;
+&lt;h3&gt;Answer:&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;Called b! Hello World!&lt;/code&gt;&lt;/p&gt;
+&lt;h2&gt;[Functions, Context, and Variable Environments]{style="font-weight: 400;"}&lt;/h2&gt;
+&lt;h3&gt;Question: What this code give to the console?&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;function b() { var myVar; console.log(myVar); } function a() { var myVar = 2; console.log(myVar); b(); } var myVar = 1; console.log(myVar); a(); console.log(myVar);&lt;/code&gt;&lt;/p&gt;
+&lt;h3&gt;Answer:&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;1 2 1 1&lt;/code&gt;&lt;/p&gt;
+&lt;h2&gt;[The Scope Chain]{style="font-weight: 400;"}&lt;/h2&gt;
+&lt;h3&gt;Question: What this code give to the console?&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;function a() { function b() { console.log(myVar); } b(); } var myVar = 1; a(); b();&lt;/code&gt;&lt;/p&gt;
+&lt;h3&gt;Answer:&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;1 Uncaught ReferenceError: b is not defined&lt;/code&gt;&lt;/p&gt;
+&lt;h2&gt;[What About Asynchronous Callbacks]{style="font-weight: 400;"}&lt;/h2&gt;
+&lt;h3&gt;Question: What this code give to the console?&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;// long running function function waitThreeSeconds() { var ms = 3000 + new Date().getTime(); while (new Date() &amp;lt; ms){} console.log('finished function'); } function clickHandler() { console.log('click event!'); } // listen for the click event document.addEventListener('click', clickHandler); waitThreeSeconds(); console.log('finished execution');&lt;/code&gt;&lt;/p&gt;
+&lt;h3&gt;Answer:&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;finished function finished execution click event!&lt;/code&gt;&lt;/p&gt;</content><category term="course"></category><category term="interview"></category><category term="javascript"></category><category term="learning"></category><category term="questions"></category></entry><entry><title>10 Known Open Source Projects in Iris Recognition 2018</title><link href="http://denis-trofimov.github.io/10-known-open-source-projects-in-iris-recognition-2018.html" rel="alternate"></link><published>2018-06-06T23:33:00+03:00</published><updated>2018-06-06T23:33:00+03:00</updated><author><name>denistrofimov</name></author><id>tag:denis-trofimov.github.io,2018-06-06:/10-known-open-source-projects-in-iris-recognition-2018.html</id><summary type="html">&lt;p&gt;&lt;img alt="" src="http://wallington09.wikis.birmingham.k12.mi.us/file/view/Iris_scan.jpg/98890417/Iris_scan.jpg"&gt;{.alignnone
+width="1224" height="782"}&lt;/p&gt;
+&lt;p&gt;[I found this pretty good list of]{style="font-weight: 400;"}&lt;a href="https://kiennguyenstuff.wordpress.com/2016/07/14/iris-recognition-open-source-codes/"&gt;[Iris
+Recognition open-source
+codes]{style="font-weight: 400;"}&lt;/a&gt;[.
+I am really appreciate work of the first
+author,]{style="font-weight: 400;"}&lt;a href="https://kiennguyenstuff.wordpress.com/author/thanhkien84/"&gt;[thanhkien84]{style="font-weight: 400;"}&lt;/a&gt;[.
+I asked myself, how it can be improved? I have decided to …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="" src="http://wallington09.wikis.birmingham.k12.mi.us/file/view/Iris_scan.jpg/98890417/Iris_scan.jpg"&gt;{.alignnone
+width="1224" height="782"}&lt;/p&gt;
+&lt;p&gt;[I found this pretty good list of]{style="font-weight: 400;"}&lt;a href="https://kiennguyenstuff.wordpress.com/2016/07/14/iris-recognition-open-source-codes/"&gt;[Iris
+Recognition open-source
+codes]{style="font-weight: 400;"}&lt;/a&gt;[.
+I am really appreciate work of the first
+author,]{style="font-weight: 400;"}&lt;a href="https://kiennguyenstuff.wordpress.com/author/thanhkien84/"&gt;[thanhkien84]{style="font-weight: 400;"}&lt;/a&gt;[.
+I asked myself, how it can be improved? I have decided to add my own
+value.]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[I have checked all links and found replacements for stale links to
+projects OSIRIS, UND.]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[In the year 2003 there was only one iris recognition open source code
+from Libor Masek. His source code, written in Matlab, has been the
+baseline for generations of iris recognition coders. Recently there are
+a number of new open source codes come up. They are more mature and
+achieve close to state-of-the-art accuracy. I summarise them in a list
+here for your reference.]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;h2&gt;&lt;strong&gt;I&lt;/strong&gt;[ris recognition projects]{style="font-weight: 400;"}&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Year/ Language&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Approach&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Performance (EER)&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;ICE 2005&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;MBGC portal&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;CASIA&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;[Libor Masek
+[]{style="font-weight: 400;"}&lt;a href="http://www.peterkovesi.com/studentprojects/libor/"&gt;[project]{style="font-weight: 400;"}&lt;/a&gt;[]]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[2003,]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[Matlab]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[Hough Circle + 1D Log-Gabor]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[OSIRIS 4.1 []{style="font-weight: 400;"}&lt;a href="http://svnext.it-sudparis.eu/svnview2-eph/ref_syst/Iris_Osiris_v4.1/"&gt;[project dead
+link]{style="font-weight: 400;"}&lt;/a&gt;[]]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[2013,]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[C++]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[Least square, Circle + 2D Gabor]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[1.09%]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[5455945/]{style="font-weight: 400;"}&lt;a href="https://github.com/5455945/Iris_Osiris"&gt;[Iris_Osiris]{style="font-weight: 400;"}&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;[(OSIRIS 4.1 fork) Support
+OpenCV3.0+,OpenCV2.4.13]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[2017, C++]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[Same as OSIRIS 4.1]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://github.com/vonclites/syris"&gt;[Python interface to OSIRIS Iris Segmentation and Recognition
+software]{style="font-weight: 400;"}&lt;/a&gt;[(OSIRIS
+4.1 fork)]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[2017, Python]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[Same as OSIRIS 4.1]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[VASIR 2.2
+[]{style="font-weight: 400;"}&lt;a href="http://www.nist.gov/itl/iad/ig/vasir.cfm"&gt;[project]{style="font-weight: 400;"}&lt;/a&gt;[]]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[2013,]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[C++]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[Circle + 2D Gabor]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[3.5%]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[13.9% best quality frame]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[30.6% all frames]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[NonidealIRIS [project]]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[2006,]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[Matlab]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[Ellipse +  2D, Gabor]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[USIT]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[[]{style="font-weight: 400;"}&lt;a href="http://www.wavelab.at/sources/USIT/"&gt;[project]{style="font-weight: 400;"}&lt;/a&gt;[]]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[2016,]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[C++]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[Circle/Ellipse+]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[1D Log Gabor/]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[2D Gabor/]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[DCT/ SIFT/]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[SURF/LBP]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[0.82%]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[UND]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[[]{style="font-weight: 400;"}&lt;a href="https://ideacenter.nd.edu/commercialization-engine/for-industry/available-technologies/software-available-for-license/iris-recognition-based-on-human-intrepretable-features/"&gt;[project]{style="font-weight: 400;"}&lt;/a&gt;[]]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[2016,]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[Matlab]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[Circle,]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[Crypts features]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[3.58%]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[1.39%]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;h2&gt;[Iris segmentation only]{style="font-weight: 400;"}&lt;/h2&gt;
+&lt;p&gt;[IrisSeg
+[]{style="font-weight: 400;"}&lt;a href="https://github.com/cdac-cvml/IrisSeg"&gt;[project]{style="font-weight: 400;"}&lt;/a&gt;[]]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[2017,]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[Matlab]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[ICB 2016]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[IrisSeg: A Fast and Robust Iris Segmentation Framework for Non-Ideal
+Iris Images]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[IAADseg]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[[]{style="font-weight: 400;"}&lt;a href="http://www4.comp.polyu.edu.hk/~csajaykr/tvmiris.htm"&gt;[project]{style="font-weight: 400;"}&lt;/a&gt;[]]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[2015,]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[Matlab]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[Total-variation]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[ICCV 2015]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[An Accurate Iris Segmentation Framework under Relaxed Imaging
+Constraints using Total Variation Model]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[IrisSeg]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[[]{style="font-weight: 400;"}&lt;a href="https://github.com/sbanerj1/IrisSeg"&gt;[project]{style="font-weight: 400;"}&lt;/a&gt;[]]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[2015,]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[Python]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[Geodesic Active Contours and GrabCut]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[PSIVT 2015]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[Iris Segmentation using Geodesic Active Contours and
+GrabCut]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[Iris datasets to consider:]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Dataset&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Subset&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Number of&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;subjects&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Number of&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;images&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Spectrum&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Note&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;[CASIA]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[CASIA-Iris-Thousand]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[10,000]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[20,000]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[NIR]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[CASIA-Iris-Interval]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[Time lapse]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[CASIA-Iris-Lamp]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[CASIA-Iris-Twins]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[100]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[Twin]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[CASIA-Iris-Distance]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[At a distance]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[CASIA-Iris-Syn]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[1000]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[10,000]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[Synthesis]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[ND]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[ND-IRIS-0405]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[356]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[64,980]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[NIR]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[ND-GFI]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[Gender]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[NDCLD15]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[750 males]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[750 females]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[3000]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[NIR]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[Contact Lens]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[ND-CrossSensor-Iris-2013]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[676]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[29,986 from LG4000 and 116,564 from LG2200]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[NIR]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[Cross Sensor]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[ND-TimeLapseIris-2012]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[23]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[6797]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[Time lapse 2004 to 2008]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[ND-Iris-Template-Aging-2008-2010]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[11,776]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[Time lapse 2008 to 2010]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[MBGC]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[NIR &amp;amp; NIR videos]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[One the move]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[UBIRIS]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[261]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[11,102]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[Visible]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[On the move]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[At a distance]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;p&gt;[My sources:]{style="font-weight: 400;"}&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href="https://kiennguyenstuff.wordpress.com/2016/07/14/iris-recognition-open-source-codes/"&gt;[Iris Recognition open-source
+    codes]{style="font-weight: 400;"}&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.quora.com/What-are-some-of-the-best-open-source-iris-recognition-libraries-available"&gt;[What are some of the best open source iris recognition libraries
+    available?]{style="font-weight: 400;"}&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;</content><category term="c++"></category><category term="code"></category><category term="dataset"></category><category term="iris recognition"></category><category term="iris segmentation"></category><category term="matlab"></category><category term="open source"></category><category term="python"></category></entry><entry><title>A foreword from the author.</title><link href="http://denis-trofimov.github.io/foreword-from-author.html" rel="alternate"></link><published>2018-05-06T21:49:00+03:00</published><updated>2018-05-06T21:49:00+03:00</updated><author><name>denistrofimov</name></author><id>tag:denis-trofimov.github.io,2018-05-06:/foreword-from-author.html</id><summary type="html">&lt;p&gt;First of all I would like to thank one person for reasoning me to start
+a developer blog. This person is John Sonmez, the author of the email
+course on creating a blog that boosts your career &lt;a href="https://simpleprogrammer.com/store/products/how-to-create-a-blog/"&gt;"How to Create a Blog
+That BOOSTS Your
+Career"&lt;/a&gt;
+and the founder of …&lt;/p&gt;</summary><content type="html">&lt;p&gt;First of all I would like to thank one person for reasoning me to start
+a developer blog. This person is John Sonmez, the author of the email
+course on creating a blog that boosts your career &lt;a href="https://simpleprogrammer.com/store/products/how-to-create-a-blog/"&gt;"How to Create a Blog
+That BOOSTS Your
+Career"&lt;/a&gt;
+and the founder of the &lt;a href="https://simpleprogrammer.com"&gt;Simple
+Programmer.&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;In this blog I plan to teach my reader step by step how to tackle tasks
+of the machine learnig in the computer vision using Python tools. I
+would like to show how a reader can start using former buzzwords like
+machine learnig, neural networks, computer vision, as a corresponding
+tools, Caffe package, TensorFlow, OpenCV. I know it is challeging to
+describe a complex notions ia a simple words, but I will try my best.&lt;/p&gt;
+&lt;p&gt;Q:  Why do I belive that my expertise can be valuable?&lt;br&gt;
+A:  In the company I am working since 2017 our team is solving problems
+like a face image segmentation, an eye image segmentation, an eye iris
+feature detection and encoding.&lt;/p&gt;</content><category term="blog"></category><category term="computer vision"></category><category term="developer"></category><category term="plan"></category><category term="python"></category></entry></feed>
