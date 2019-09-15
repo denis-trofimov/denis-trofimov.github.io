@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>developer on Python courses mentor blog &lt;relaunch&gt;.</title>
+    <link>https://denis-trofimov.github.io/tags/developer/</link>
+    <description>Recent content in developer on Python courses mentor blog &lt;relaunch&gt;.</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>All rights reserved - 2019</copyright>
+    <lastBuildDate>Mon, 12 Nov 2018 19:31:30 +0000</lastBuildDate>
+    
+	<atom:link href="https://denis-trofimov.github.io/tags/developer/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Moscow Python Conf&#43;&#43; 2018 video report.</title>
+      <link>https://denis-trofimov.github.io/moscow-python-conf-2018-video/</link>
+      <pubDate>Mon, 12 Nov 2018 19:31:30 +0000</pubDate>
+      
+      <guid>https://denis-trofimov.github.io/moscow-python-conf-2018-video/</guid>
+      <description>Yes, the Moscow Python Conf++ 2018 conference was awesome. Started so many acquaintances with the pythonists who make impact in the software world! I got into picture at the stand of Moscow.Python on 1:50.
+I will come to the next one too!
+Mixed russian and english content, you are welcome to watch!
+  </description>
+    </item>
+    
+    <item>
+      <title>Review of Kevlin Henney`s talk Seven Ineffective Coding Habits of Many Programmers</title>
+      <link>https://denis-trofimov.github.io/review-of-kevlin-henneys-talk-seven-ineffective-coding-habits-of-many-programmers/</link>
+      <pubDate>Sun, 09 Sep 2018 20:03:20 +0000</pubDate>
+      
+      <guid>https://denis-trofimov.github.io/review-of-kevlin-henneys-talk-seven-ineffective-coding-habits-of-many-programmers/</guid>
+      <description>&lt;h1 id=&#34;review-of-kevlin-henney-s-talk-seven-ineffective-coding-habits-of-many-programmers&#34;&gt;Review of Kevlin Henney`s talk Seven Ineffective Coding Habits of Many Programmers&lt;/h1&gt;
+
+&lt;p&gt;&lt;em&gt;I watched this video from the start till the end.&lt;/em&gt;
+&lt;em&gt;I see this coding habits very often.&lt;/em&gt;
+&lt;em&gt;I fought unsustainable spacing the wrong way in the past.&lt;/em&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>A foreword from the author.</title>
+      <link>https://denis-trofimov.github.io/foreword-from-author/</link>
+      <pubDate>Sun, 06 May 2018 21:49:06 +0000</pubDate>
+      
+      <guid>https://denis-trofimov.github.io/foreword-from-author/</guid>
+      <description>First of all I would like to thank one person for reasoning me to start a developer blog. This person is John Sonmez, the author of the email course on creating a blog that boosts your career &amp;#8220;How to Create a Blog That BOOSTS Your Career&amp;#8221; and the founder of the Simple Programmer.
+In this blog I plan to teach my reader step by step how to tackle tasks of the machine learnig in the computer vision using Python tools.</description>
+    </item>
+    
+  </channel>
+</rss>

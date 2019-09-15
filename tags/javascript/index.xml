@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>javascript on Python courses mentor blog &lt;relaunch&gt;.</title>
+    <link>https://denis-trofimov.github.io/tags/javascript/</link>
+    <description>Recent content in javascript on Python courses mentor blog &lt;relaunch&gt;.</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>All rights reserved - 2019</copyright>
+    <lastBuildDate>Mon, 25 Jun 2018 23:29:33 +0000</lastBuildDate>
+    
+	<atom:link href="https://denis-trofimov.github.io/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>What easy questions on Javascript I can ask?</title>
+      <link>https://denis-trofimov.github.io/what-easy-questions-on-javascript-i-can-ask/</link>
+      <pubDate>Mon, 25 Jun 2018 23:29:33 +0000</pubDate>
+      
+      <guid>https://denis-trofimov.github.io/what-easy-questions-on-javascript-i-can-ask/</guid>
+      <description>&lt;p&gt;In this post I speak about some basic Javascript quesions and answers, which I have made passing throught course &lt;a href=&#34;https://simpleprogrammer.com/store/products/javascript-launchpad/?c=jslp70&amp;amp;utm_source=drip&amp;amp;utm_medium=email&amp;amp;utm_campaign=js-launchpad-sale&amp;amp;utm_content=js-launchpad-sale-email-2&amp;amp;__s=25hdpkywdqsodfst7mgj&amp;amp;utm_source=drip&amp;amp;utm_medium=email&amp;amp;utm_campaign=JavaScript+LaunchPad+Introduction&amp;amp;utm_content=Q%26A+about+JavaScript+LaunchPad&#34;&gt;&lt;strong&gt;JavaScript LaunchPad&lt;/strong&gt;&lt;/a&gt; &lt;strong&gt;by&lt;/strong&gt; &lt;strong&gt;&lt;a href=&#34;https://simpleprogrammer.com/&#34;&gt;Simple Programmer.com.&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;I have interviewed 3 persons in the year 2017 for developer position to the company I work for, Vzor Systems LLC.&lt;/p&gt;
+
+&lt;p&gt;It turned out that to prepare for interview from the interviewer side one should do some effort. If the company is not a big but a small startup, it is my job as interviewer to think of questions and written tests to check a candidate`s skills and knowledge. One time I was looking for typical questions on interview for C++ developer position.&lt;/p&gt;
+
+&lt;p&gt;Having an interviewer field of view in mind, I created this questions list when I have finished first &lt;strong&gt;&lt;a href=&#34;https://simpleprogrammer.com/store/products/javascript-launchpad/?c=jslp70&amp;amp;utm_source=drip&amp;amp;utm_medium=email&amp;amp;utm_campaign=js-launchpad-sale&amp;amp;utm_content=js-launchpad-sale-email-2&amp;amp;__s=25hdpkywdqsodfst7mgj&amp;amp;utm_source=drip&amp;amp;utm_medium=email&amp;amp;utm_campaign=JavaScript+LaunchPad+Introduction&amp;amp;utm_content=Q%26A+about+JavaScript+LaunchPad&#34;&gt;JavaScript LaunchPad&lt;/a&gt; &lt;/strong&gt;chapter &amp;#8220;&lt;strong&gt;Execution Contexts and Lexical Environments&amp;#8221;.&lt;/strong&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>matlab on Python courses mentor blog &lt;relaunch&gt;.</title>
+    <link>https://denis-trofimov.github.io/tags/matlab/</link>
+    <description>Recent content in matlab on Python courses mentor blog &lt;relaunch&gt;.</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>All rights reserved - 2019</copyright>
+    <lastBuildDate>Wed, 06 Jun 2018 20:33:50 +0000</lastBuildDate>
+    
+	<atom:link href="https://denis-trofimov.github.io/tags/matlab/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>10 Known Open Source Projects in Iris Recognition 2018</title>
+      <link>https://denis-trofimov.github.io/10-known-open-source-projects-in-iris-recognition-2018/</link>
+      <pubDate>Wed, 06 Jun 2018 20:33:50 +0000</pubDate>
+      
+      <guid>https://denis-trofimov.github.io/10-known-open-source-projects-in-iris-recognition-2018/</guid>
+      <description>&lt;p&gt;&lt;span style=&#34;font-weight: 400;&#34;&gt;I found this pretty good list of &lt;/span&gt;&lt;a href=&#34;https://kiennguyenstuff.wordpress.com/2016/07/14/iris-recognition-open-source-codes/&#34;&gt;&lt;span style=&#34;font-weight: 400;&#34;&gt;Iris Recognition open-source codes&lt;/span&gt;&lt;/a&gt;&lt;span style=&#34;font-weight: 400;&#34;&gt;. I am really appreciate work of the first author, &lt;/span&gt;&lt;a href=&#34;https://kiennguyenstuff.wordpress.com/author/thanhkien84/&#34;&gt;&lt;span style=&#34;font-weight: 400;&#34;&gt;thanhkien84&lt;/span&gt;&lt;/a&gt;&lt;span style=&#34;font-weight: 400;&#34;&gt;. I asked myself, how to improve it? I have decided to add my value.&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;span style=&#34;font-weight: 400;&#34;&gt;I have checked all links and found replacements for stale links to projects &lt;/span&gt;&lt;span style=&#34;font-weight: 400;&#34;&gt;OSIRIS, UND.&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;span style=&#34;font-weight: 400;&#34;&gt;In the year 2003 there was only one iris recognition open source code from Libor Masek. His source code, written in Matlab, has been the baseline for generations of iris recognition coders. Recently there are a number of new open source codes come up. They are more mature and meet state-of-the-art accuracy. I summarise them in a list here for your reference.&lt;/span&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
