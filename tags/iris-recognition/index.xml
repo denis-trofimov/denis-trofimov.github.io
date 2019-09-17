@@ -1,0 +1,722 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>iris recognition | Python Courses Mentor Blog Relaunch</title>
+    <link>https://denis-trofimov.github.io/tags/iris-recognition/</link>
+      <atom:link href="https://denis-trofimov.github.io/tags/iris-recognition/index.xml" rel="self" type="application/rss+xml" />
+    <description>iris recognition</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© All rights reserved - 2019</copyright><lastBuildDate>Wed, 06 Jun 2018 20:33:50 +0000</lastBuildDate>
+    <image>
+      <url>https://denis-trofimov.github.io/img/icon-192.png</url>
+      <title>iris recognition</title>
+      <link>https://denis-trofimov.github.io/tags/iris-recognition/</link>
+    </image>
+    
+    <item>
+      <title>10 Known Open Source Projects in Iris Recognition 2018</title>
+      <link>https://denis-trofimov.github.io/10-known-open-source-projects-in-iris-recognition-2018/</link>
+      <pubDate>Wed, 06 Jun 2018 20:33:50 +0000</pubDate>
+      <guid>https://denis-trofimov.github.io/10-known-open-source-projects-in-iris-recognition-2018/</guid>
+      <description>&lt;p&gt;&lt;span style=&#34;font-weight: 400;&#34;&gt;I found this pretty good list of &lt;/span&gt;&lt;a href=&#34;https://kiennguyenstuff.wordpress.com/2016/07/14/iris-recognition-open-source-codes/&#34; target=&#34;_blank&#34;&gt;&lt;span style=&#34;font-weight: 400;&#34;&gt;Iris Recognition open-source codes&lt;/span&gt;&lt;/a&gt;&lt;span style=&#34;font-weight: 400;&#34;&gt;. I am really appreciate work of the first author, &lt;/span&gt;&lt;a href=&#34;https://kiennguyenstuff.wordpress.com/author/thanhkien84/&#34; target=&#34;_blank&#34;&gt;&lt;span style=&#34;font-weight: 400;&#34;&gt;thanhkien84&lt;/span&gt;&lt;/a&gt;&lt;span style=&#34;font-weight: 400;&#34;&gt;. I asked myself, how to improve it? I have decided to add my value.&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;span style=&#34;font-weight: 400;&#34;&gt;I have checked all links and found replacements for stale links to projects &lt;/span&gt;&lt;span style=&#34;font-weight: 400;&#34;&gt;OSIRIS, UND.&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;span style=&#34;font-weight: 400;&#34;&gt;In the year 2003 there was only one iris recognition open source code from Libor Masek. His source code, written in Matlab, has been the baseline for generations of iris recognition coders. Recently there are a number of new open source codes come up. They are more mature and meet state-of-the-art accuracy. I summarise them in a list here for your reference.&lt;/span&gt;&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;tr&gt;
+    &lt;td rowspan=&#34;2&#34;&gt;
+      &lt;h2&gt;
+        &lt;b&gt;I&lt;/b&gt;&lt;span style=&#34;font-weight: 400;&#34;&gt;ris recognition projects&lt;/span&gt;
+      &lt;/h2&gt;
+    &lt;/td&gt;
+    
+    &lt;td rowspan=&#34;2&#34;&gt;
+      &lt;b&gt;Year/ Language&lt;/b&gt;
+    &lt;/td&gt;
+    
+    &lt;td rowspan=&#34;2&#34;&gt;
+      &lt;b&gt;Approach&lt;/b&gt;
+    &lt;/td&gt;
+    
+    &lt;td colspan=&#34;3&#34;&gt;
+      &lt;b&gt;Performance (EER)&lt;/b&gt;
+    &lt;/td&gt;
+  &lt;/tr&gt;
+  
+  &lt;tr&gt;
+    &lt;td&gt;
+      &lt;b&gt;ICE 2005&lt;/b&gt;
+    &lt;/td&gt;
+    
+    &lt;td&gt;
+      &lt;b&gt;MBGC portal&lt;/b&gt;
+    &lt;/td&gt;
+    
+    &lt;td&gt;
+      &lt;b&gt;CASIA&lt;/b&gt;
+    &lt;/td&gt;
+  &lt;/tr&gt;
+  
+  &lt;tr&gt;
+    &lt;td&gt;
+      &lt;span style=&#34;font-weight: 400;&#34;&gt;Libor Masek [&lt;/span&gt;&lt;a href=&#34;http://www.peterkovesi.com/studentprojects/libor/&#34;&gt;&lt;span style=&#34;font-weight: 400;&#34;&gt;project&lt;/span&gt;&lt;/a&gt;&lt;span style=&#34;font-weight: 400;&#34;&gt;]&lt;/span&gt;
+    &lt;/td&gt;
+    
+    &lt;td&gt;
+      &lt;span style=&#34;font-weight: 400;&#34;&gt;2003,&lt;/span&gt;&lt;/p&gt; 
+      
+      &lt;p&gt;
+        &lt;span style=&#34;font-weight: 400;&#34;&gt;Matlab&lt;/span&gt;&lt;/td&gt; 
+        
+        &lt;td&gt;
+          &lt;span style=&#34;font-weight: 400;&#34;&gt;Hough Circle + 1D Log-Gabor&lt;/span&gt;
+        &lt;/td&gt;
+        
+        &lt;td&gt;
+        &lt;/td&gt;
+        
+        &lt;td&gt;
+        &lt;/td&gt;
+        
+        &lt;td&gt;
+        &lt;/td&gt;&lt;/tr&gt; 
+        
+        &lt;tr&gt;
+          &lt;td&gt;
+            &lt;span style=&#34;font-weight: 400;&#34;&gt;OSIRIS 4.1 [&lt;/span&gt;&lt;a href=&#34;http://svnext.it-sudparis.eu/svnview2-eph/ref_syst/Iris_Osiris_v4.1/&#34;&gt;&lt;span style=&#34;font-weight: 400;&#34;&gt;project dead link&lt;/span&gt;&lt;/a&gt;&lt;span style=&#34;font-weight: 400;&#34;&gt;]&lt;/span&gt;
+          &lt;/td&gt;
+          
+          &lt;td&gt;
+            &lt;span style=&#34;font-weight: 400;&#34;&gt;2013,&lt;/span&gt;&lt;/p&gt; 
+            
+            &lt;p&gt;
+              &lt;span style=&#34;font-weight: 400;&#34;&gt;C++&lt;/span&gt;&lt;/td&gt; 
+              
+              &lt;td&gt;
+                &lt;span style=&#34;font-weight: 400;&#34;&gt;Least square, Circle + 2D Gabor&lt;/span&gt;
+              &lt;/td&gt;
+              
+              &lt;td&gt;
+                &lt;span style=&#34;font-weight: 400;&#34;&gt;1.09%&lt;/span&gt;
+              &lt;/td&gt;
+              
+              &lt;td&gt;
+              &lt;/td&gt;
+              
+              &lt;td&gt;
+              &lt;/td&gt;&lt;/tr&gt; 
+              
+              &lt;tr&gt;
+                &lt;td&gt;
+                  &lt;span style=&#34;font-weight: 400;&#34;&gt;5455945&lt;/span&gt;&lt;span style=&#34;font-weight: 400;&#34;&gt;/&lt;/span&gt;&lt;a href=&#34;https://github.com/5455945/Iris_Osiris&#34;&gt;&lt;span style=&#34;font-weight: 400;&#34;&gt;Iris_Osiris&lt;/span&gt;&lt;/a&gt;&lt;/p&gt; 
+                  
+                  &lt;p&gt;
+                    &lt;span style=&#34;font-weight: 400;&#34;&gt;(OSIRIS 4.1 fork) &lt;/span&gt;&lt;span style=&#34;font-weight: 400;&#34;&gt;Support OpenCV3.0+,OpenCV2.4.13&lt;/span&gt;&lt;/td&gt; 
+                    
+                    &lt;td&gt;
+                      &lt;span style=&#34;font-weight: 400;&#34;&gt;2017, C++&lt;/span&gt;
+                    &lt;/td&gt;
+                    
+                    &lt;td&gt;
+                      &lt;span style=&#34;font-weight: 400;&#34;&gt;Same as OSIRIS 4.1&lt;/span&gt;
+                    &lt;/td&gt;
+                    
+                    &lt;td&gt;
+                    &lt;/td&gt;
+                    
+                    &lt;td&gt;
+                    &lt;/td&gt;
+                    
+                    &lt;td&gt;
+                    &lt;/td&gt;&lt;/tr&gt; 
+                    
+                    &lt;tr&gt;
+                      &lt;td&gt;
+                        &lt;a href=&#34;https://github.com/vonclites/syris&#34;&gt;&lt;span style=&#34;font-weight: 400;&#34;&gt;Python interface to OSIRIS Iris Segmentation and Recognition software &lt;/span&gt;&lt;/a&gt;&lt;span style=&#34;font-weight: 400;&#34;&gt;(OSIRIS 4.1 fork)&lt;/span&gt;
+                      &lt;/td&gt;
+                      
+                      &lt;td&gt;
+                        &lt;span style=&#34;font-weight: 400;&#34;&gt;2017, Python&lt;/span&gt;
+                      &lt;/td&gt;
+                      
+                      &lt;td&gt;
+                        &lt;span style=&#34;font-weight: 400;&#34;&gt;Same as OSIRIS 4.1&lt;/span&gt;
+                      &lt;/td&gt;
+                      
+                      &lt;td&gt;
+                      &lt;/td&gt;
+                      
+                      &lt;td&gt;
+                      &lt;/td&gt;
+                      
+                      &lt;td&gt;
+                      &lt;/td&gt;
+                    &lt;/tr&gt;
+                    
+                    &lt;tr&gt;
+                      &lt;td&gt;
+                        &lt;span style=&#34;font-weight: 400;&#34;&gt;VASIR 2.2 [&lt;/span&gt;&lt;a href=&#34;http://www.nist.gov/itl/iad/ig/vasir.cfm&#34;&gt;&lt;span style=&#34;font-weight: 400;&#34;&gt;project&lt;/span&gt;&lt;/a&gt;&lt;span style=&#34;font-weight: 400;&#34;&gt;]&lt;/span&gt;
+                      &lt;/td&gt;
+                      
+                      &lt;td&gt;
+                        &lt;span style=&#34;font-weight: 400;&#34;&gt;2013,&lt;/span&gt;&lt;/p&gt; 
+                        
+                        &lt;p&gt;
+                          &lt;span style=&#34;font-weight: 400;&#34;&gt;C++&lt;/span&gt;&lt;/td&gt; 
+                          
+                          &lt;td&gt;
+                            &lt;span style=&#34;font-weight: 400;&#34;&gt;Circle + 2D Gabor&lt;/span&gt;
+                          &lt;/td&gt;
+                          
+                          &lt;td&gt;
+                            &lt;span style=&#34;font-weight: 400;&#34;&gt;3.5%&lt;/span&gt;
+                          &lt;/td&gt;
+                          
+                          &lt;td&gt;
+                            &lt;span style=&#34;font-weight: 400;&#34;&gt;13.9% best quality frame&lt;/span&gt;&lt;/p&gt; 
+                            
+                            &lt;p&gt;
+                              &lt;span style=&#34;font-weight: 400;&#34;&gt;30.6% all frames&lt;/span&gt;&lt;/td&gt; 
+                              
+                              &lt;td&gt;
+                              &lt;/td&gt;&lt;/tr&gt; 
+                              
+                              &lt;tr&gt;
+                                &lt;td&gt;
+                                  &lt;span style=&#34;font-weight: 400;&#34;&gt;NonidealIRIS [project]&lt;/span&gt;
+                                &lt;/td&gt;
+                                
+                                &lt;td&gt;
+                                  &lt;span style=&#34;font-weight: 400;&#34;&gt;2006,&lt;/span&gt;&lt;/p&gt; 
+                                  
+                                  &lt;p&gt;
+                                    &lt;span style=&#34;font-weight: 400;&#34;&gt;Matlab&lt;/span&gt;&lt;/td&gt; 
+                                    
+                                    &lt;td&gt;
+                                      &lt;span style=&#34;font-weight: 400;&#34;&gt;Ellipse +  2D, Gabor&lt;/span&gt;
+                                    &lt;/td&gt;
+                                    
+                                    &lt;td&gt;
+                                    &lt;/td&gt;
+                                    
+                                    &lt;td&gt;
+                                    &lt;/td&gt;
+                                    
+                                    &lt;td&gt;
+                                    &lt;/td&gt;&lt;/tr&gt; 
+                                    
+                                    &lt;tr&gt;
+                                      &lt;td&gt;
+                                        &lt;span style=&#34;font-weight: 400;&#34;&gt;USIT&lt;/span&gt;&lt;/p&gt; 
+                                        
+                                        &lt;p&gt;
+                                          &lt;span style=&#34;font-weight: 400;&#34;&gt;[&lt;/span&gt;&lt;a href=&#34;http://www.wavelab.at/sources/USIT/&#34;&gt;&lt;span style=&#34;font-weight: 400;&#34;&gt;project&lt;/span&gt;&lt;/a&gt;&lt;span style=&#34;font-weight: 400;&#34;&gt;]&lt;/span&gt;&lt;/td&gt; 
+                                          
+                                          &lt;td&gt;
+                                            &lt;span style=&#34;font-weight: 400;&#34;&gt;2016,&lt;/span&gt;&lt;/p&gt; 
+                                            
+                                            &lt;p&gt;
+                                              &lt;span style=&#34;font-weight: 400;&#34;&gt;C++&lt;/span&gt;&lt;/td&gt; 
+                                              
+                                              &lt;td&gt;
+                                                &lt;span style=&#34;font-weight: 400;&#34;&gt;Circle/Ellipse+&lt;/span&gt;&lt;/p&gt; 
+                                                
+                                                &lt;p&gt;
+                                                  &lt;span style=&#34;font-weight: 400;&#34;&gt;1D Log Gabor/&lt;/span&gt;
+                                                &lt;/p&gt;
+                                                
+                                                &lt;p&gt;
+                                                  &lt;span style=&#34;font-weight: 400;&#34;&gt;2D Gabor/&lt;/span&gt;
+                                                &lt;/p&gt;
+                                                
+                                                &lt;p&gt;
+                                                  &lt;span style=&#34;font-weight: 400;&#34;&gt;DCT/ SIFT/&lt;/span&gt;
+                                                &lt;/p&gt;
+                                                
+                                                &lt;p&gt;
+                                                  &lt;span style=&#34;font-weight: 400;&#34;&gt;SURF/LBP&lt;/span&gt;&lt;/td&gt; 
+                                                  
+                                                  &lt;td&gt;
+                                                  &lt;/td&gt;
+                                                  
+                                                  &lt;td&gt;
+                                                  &lt;/td&gt;
+                                                  
+                                                  &lt;td&gt;
+                                                    &lt;span style=&#34;font-weight: 400;&#34;&gt;0.82%&lt;/span&gt;
+                                                  &lt;/td&gt;&lt;/tr&gt; 
+                                                  
+                                                  &lt;tr&gt;
+                                                    &lt;td&gt;
+                                                      &lt;span style=&#34;font-weight: 400;&#34;&gt;UND&lt;/span&gt;&lt;/p&gt; 
+                                                      
+                                                      &lt;p&gt;
+                                                        &lt;span style=&#34;font-weight: 400;&#34;&gt;[&lt;/span&gt;&lt;a href=&#34;https://ideacenter.nd.edu/commercialization-engine/for-industry/available-technologies/software-available-for-license/iris-recognition-based-on-human-intrepretable-features/&#34;&gt;&lt;span style=&#34;font-weight: 400;&#34;&gt;project&lt;/span&gt;&lt;/a&gt;&lt;span style=&#34;font-weight: 400;&#34;&gt;]&lt;/span&gt;&lt;/td&gt; 
+                                                        
+                                                        &lt;td&gt;
+                                                          &lt;span style=&#34;font-weight: 400;&#34;&gt;2016,&lt;/span&gt;&lt;/p&gt; 
+                                                          
+                                                          &lt;p&gt;
+                                                            &lt;span style=&#34;font-weight: 400;&#34;&gt;Matlab&lt;/span&gt;&lt;/td&gt; 
+                                                            
+                                                            &lt;td&gt;
+                                                              &lt;span style=&#34;font-weight: 400;&#34;&gt;Circle,&lt;/span&gt;&lt;/p&gt; 
+                                                              
+                                                              &lt;p&gt;
+                                                                &lt;span style=&#34;font-weight: 400;&#34;&gt;Crypts features&lt;/span&gt;&lt;/td&gt; 
+                                                                
+                                                                &lt;td&gt;
+                                                                  &lt;span style=&#34;font-weight: 400;&#34;&gt;3.58%&lt;/span&gt;
+                                                                &lt;/td&gt;
+                                                                
+                                                                &lt;td&gt;
+                                                                &lt;/td&gt;
+                                                                
+                                                                &lt;td&gt;
+                                                                  &lt;span style=&#34;font-weight: 400;&#34;&gt;1.39%&lt;/span&gt;
+                                                                &lt;/td&gt;&lt;/tr&gt; 
+                                                                
+                                                                &lt;tr&gt;
+                                                                  &lt;td colspan=&#34;6&#34;&gt;
+                                                                    &lt;h2&gt;
+                                                                      &lt;span style=&#34;font-weight: 400;&#34;&gt;Iris segmentation only&lt;/span&gt;
+                                                                    &lt;/h2&gt;
+                                                                  &lt;/td&gt;
+                                                                &lt;/tr&gt;
+                                                                
+                                                                &lt;tr&gt;
+                                                                  &lt;td&gt;
+                                                                    &lt;span style=&#34;font-weight: 400;&#34;&gt;IrisSeg [&lt;/span&gt;&lt;a href=&#34;https://github.com/cdac-cvml/IrisSeg&#34;&gt;&lt;span style=&#34;font-weight: 400;&#34;&gt;project&lt;/span&gt;&lt;/a&gt;&lt;span style=&#34;font-weight: 400;&#34;&gt;]&lt;/span&gt;
+                                                                  &lt;/td&gt;
+                                                                  
+                                                                  &lt;td&gt;
+                                                                    &lt;span style=&#34;font-weight: 400;&#34;&gt;2017,&lt;/span&gt;&lt;/p&gt; 
+                                                                    
+                                                                    &lt;p&gt;
+                                                                      &lt;span style=&#34;font-weight: 400;&#34;&gt;Matlab&lt;/span&gt;&lt;/td&gt; 
+                                                                      
+                                                                      &lt;td&gt;
+                                                                      &lt;/td&gt;
+                                                                      
+                                                                      &lt;td&gt;
+                                                                        &lt;span style=&#34;font-weight: 400;&#34;&gt;ICB 2016&lt;/span&gt;
+                                                                      &lt;/td&gt;
+                                                                      
+                                                                      &lt;td colspan=&#34;2&#34;&gt;
+                                                                        &lt;span style=&#34;font-weight: 400;&#34;&gt;IrisSeg: A Fast and Robust Iris Segmentation Framework for Non-Ideal Iris Images&lt;/span&gt;
+                                                                      &lt;/td&gt;&lt;/tr&gt; 
+                                                                      
+                                                                      &lt;tr&gt;
+                                                                        &lt;td&gt;
+                                                                          &lt;span style=&#34;font-weight: 400;&#34;&gt;IAADseg&lt;/span&gt;&lt;/p&gt; 
+                                                                          
+                                                                          &lt;p&gt;
+                                                                            &lt;span style=&#34;font-weight: 400;&#34;&gt;[&lt;/span&gt;&lt;a href=&#34;http://www4.comp.polyu.edu.hk/~csajaykr/tvmiris.htm&#34;&gt;&lt;span style=&#34;font-weight: 400;&#34;&gt;project&lt;/span&gt;&lt;/a&gt;&lt;span style=&#34;font-weight: 400;&#34;&gt;]&lt;/span&gt;&lt;/td&gt; 
+                                                                            
+                                                                            &lt;td&gt;
+                                                                              &lt;span style=&#34;font-weight: 400;&#34;&gt;2015,&lt;/span&gt;&lt;/p&gt; 
+                                                                              
+                                                                              &lt;p&gt;
+                                                                                &lt;span style=&#34;font-weight: 400;&#34;&gt;Matlab&lt;/span&gt;&lt;/td&gt; 
+                                                                                
+                                                                                &lt;td&gt;
+                                                                                  &lt;span style=&#34;font-weight: 400;&#34;&gt;Total-variation&lt;/span&gt;
+                                                                                &lt;/td&gt;
+                                                                                
+                                                                                &lt;td&gt;
+                                                                                  &lt;span style=&#34;font-weight: 400;&#34;&gt;ICCV 2015&lt;/span&gt;
+                                                                                &lt;/td&gt;
+                                                                                
+                                                                                &lt;td colspan=&#34;2&#34;&gt;
+                                                                                  &lt;span style=&#34;font-weight: 400;&#34;&gt;An Accurate Iris Segmentation Framework under Relaxed Imaging Constraints using Total Variation Model&lt;/span&gt;
+                                                                                &lt;/td&gt;&lt;/tr&gt; 
+                                                                                
+                                                                                &lt;tr&gt;
+                                                                                  &lt;td&gt;
+                                                                                    &lt;span style=&#34;font-weight: 400;&#34;&gt;IrisSeg&lt;/span&gt;&lt;/p&gt; 
+                                                                                    
+                                                                                    &lt;p&gt;
+                                                                                      &lt;span style=&#34;font-weight: 400;&#34;&gt;[&lt;/span&gt;&lt;a href=&#34;https://github.com/sbanerj1/IrisSeg&#34;&gt;&lt;span style=&#34;font-weight: 400;&#34;&gt;project&lt;/span&gt;&lt;/a&gt;&lt;span style=&#34;font-weight: 400;&#34;&gt;]&lt;/span&gt;&lt;/td&gt; 
+                                                                                      
+                                                                                      &lt;td&gt;
+                                                                                        &lt;span style=&#34;font-weight: 400;&#34;&gt;2015,&lt;/span&gt;&lt;/p&gt; 
+                                                                                        
+                                                                                        &lt;p&gt;
+                                                                                          &lt;span style=&#34;font-weight: 400;&#34;&gt;Python&lt;/span&gt;&lt;/td&gt; 
+                                                                                          
+                                                                                          &lt;td&gt;
+                                                                                            &lt;span style=&#34;font-weight: 400;&#34;&gt;Geodesic Active Contours and GrabCut&lt;/span&gt;
+                                                                                          &lt;/td&gt;
+                                                                                          
+                                                                                          &lt;td&gt;
+                                                                                            &lt;span style=&#34;font-weight: 400;&#34;&gt;PSIVT 2015&lt;/span&gt;
+                                                                                          &lt;/td&gt;
+                                                                                          
+                                                                                          &lt;td colspan=&#34;2&#34;&gt;
+                                                                                            &lt;span style=&#34;font-weight: 400;&#34;&gt;Iris Segmentation using Geodesic Active Contours and GrabCut&lt;/span&gt;
+                                                                                          &lt;/td&gt;&lt;/tr&gt; &lt;/tbody&gt; &lt;/table&gt; 
+                                                                                          
+
+&lt;pre&gt;&lt;code&gt;                                                                                      &amp;lt;p&amp;gt;
+                                                                                        &amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;Iris datasets to consider:&amp;lt;/span&amp;gt;
+                                                                                      &amp;lt;/p&amp;gt;
+
+                                                                                      &amp;lt;table&amp;gt;
+                                                                                        &amp;lt;tr&amp;gt;
+                                                                                          &amp;lt;td&amp;gt;
+                                                                                            &amp;lt;b&amp;gt;Dataset&amp;lt;/b&amp;gt;
+                                                                                          &amp;lt;/td&amp;gt;
+
+                                                                                          &amp;lt;td&amp;gt;
+                                                                                            &amp;lt;b&amp;gt; Subset&amp;lt;/b&amp;gt;
+                                                                                          &amp;lt;/td&amp;gt;
+
+                                                                                          &amp;lt;td&amp;gt;
+                                                                                            &amp;lt;b&amp;gt;Number of&amp;lt;/b&amp;gt;&amp;lt;/p&amp;gt; 
+
+                                                                                            &amp;lt;p&amp;gt;
+                                                                                              &amp;lt;b&amp;gt;subjects&amp;lt;/b&amp;gt;&amp;lt;/td&amp;gt; 
+
+                                                                                              &amp;lt;td&amp;gt;
+                                                                                                &amp;lt;b&amp;gt;Number of&amp;lt;/b&amp;gt;&amp;lt;/p&amp;gt; 
+
+                                                                                                &amp;lt;p&amp;gt;
+                                                                                                  &amp;lt;b&amp;gt;images&amp;lt;/b&amp;gt;&amp;lt;/td&amp;gt; 
+
+                                                                                                  &amp;lt;td&amp;gt;
+                                                                                                    &amp;lt;b&amp;gt;Spectrum&amp;lt;/b&amp;gt;
+                                                                                                  &amp;lt;/td&amp;gt;
+
+                                                                                                  &amp;lt;td&amp;gt;
+                                                                                                    &amp;lt;b&amp;gt;Note&amp;lt;/b&amp;gt;
+                                                                                                  &amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt; 
+
+                                                                                                  &amp;lt;tr&amp;gt;
+                                                                                                    &amp;lt;td rowspan=&amp;quot;6&amp;quot;&amp;gt;
+                                                                                                      &amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;CASIA&amp;lt;/span&amp;gt;
+                                                                                                    &amp;lt;/td&amp;gt;
+
+                                                                                                    &amp;lt;td&amp;gt;
+                                                                                                      &amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;CASIA-Iris-Thousand&amp;lt;/span&amp;gt;
+                                                                                                    &amp;lt;/td&amp;gt;
+
+                                                                                                    &amp;lt;td&amp;gt;
+                                                                                                      &amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;10,000&amp;lt;/span&amp;gt;
+                                                                                                    &amp;lt;/td&amp;gt;
+
+                                                                                                    &amp;lt;td&amp;gt;
+                                                                                                      &amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;20,000&amp;lt;/span&amp;gt;
+                                                                                                    &amp;lt;/td&amp;gt;
+
+                                                                                                    &amp;lt;td&amp;gt;
+                                                                                                      &amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;NIR&amp;lt;/span&amp;gt;
+                                                                                                    &amp;lt;/td&amp;gt;
+
+                                                                                                    &amp;lt;td&amp;gt;
+                                                                                                    &amp;lt;/td&amp;gt;
+                                                                                                  &amp;lt;/tr&amp;gt;
+
+                                                                                                  &amp;lt;tr&amp;gt;
+                                                                                                    &amp;lt;td&amp;gt;
+                                                                                                      &amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;CASIA-Iris-Interval&amp;lt;/span&amp;gt;
+                                                                                                    &amp;lt;/td&amp;gt;
+
+                                                                                                    &amp;lt;td&amp;gt;
+                                                                                                    &amp;lt;/td&amp;gt;
+
+                                                                                                    &amp;lt;td&amp;gt;
+                                                                                                    &amp;lt;/td&amp;gt;
+
+                                                                                                    &amp;lt;td&amp;gt;
+                                                                                                    &amp;lt;/td&amp;gt;
+
+                                                                                                    &amp;lt;td&amp;gt;
+                                                                                                      &amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;Time lapse&amp;lt;/span&amp;gt;
+                                                                                                    &amp;lt;/td&amp;gt;
+                                                                                                  &amp;lt;/tr&amp;gt;
+
+                                                                                                  &amp;lt;tr&amp;gt;
+                                                                                                    &amp;lt;td&amp;gt;
+                                                                                                      &amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;CASIA-Iris-Lamp&amp;lt;/span&amp;gt;
+                                                                                                    &amp;lt;/td&amp;gt;
+
+                                                                                                    &amp;lt;td&amp;gt;
+                                                                                                    &amp;lt;/td&amp;gt;
+
+                                                                                                    &amp;lt;td&amp;gt;
+                                                                                                    &amp;lt;/td&amp;gt;
+
+                                                                                                    &amp;lt;td&amp;gt;
+                                                                                                    &amp;lt;/td&amp;gt;
+
+                                                                                                    &amp;lt;td&amp;gt;
+                                                                                                    &amp;lt;/td&amp;gt;
+                                                                                                  &amp;lt;/tr&amp;gt;
+
+                                                                                                  &amp;lt;tr&amp;gt;
+                                                                                                    &amp;lt;td&amp;gt;
+                                                                                                      &amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;CASIA-Iris-Twins&amp;lt;/span&amp;gt;
+                                                                                                    &amp;lt;/td&amp;gt;
+
+                                                                                                    &amp;lt;td&amp;gt;
+                                                                                                      &amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;100&amp;lt;/span&amp;gt;
+                                                                                                    &amp;lt;/td&amp;gt;
+
+                                                                                                    &amp;lt;td&amp;gt;
+                                                                                                    &amp;lt;/td&amp;gt;
+
+                                                                                                    &amp;lt;td&amp;gt;
+                                                                                                    &amp;lt;/td&amp;gt;
+
+                                                                                                    &amp;lt;td&amp;gt;
+                                                                                                      &amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;Twin&amp;lt;/span&amp;gt;
+                                                                                                    &amp;lt;/td&amp;gt;
+                                                                                                  &amp;lt;/tr&amp;gt;
+
+                                                                                                  &amp;lt;tr&amp;gt;
+                                                                                                    &amp;lt;td&amp;gt;
+                                                                                                      &amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;CASIA-Iris-Distance&amp;lt;/span&amp;gt;
+                                                                                                    &amp;lt;/td&amp;gt;
+
+                                                                                                    &amp;lt;td&amp;gt;
+                                                                                                    &amp;lt;/td&amp;gt;
+
+                                                                                                    &amp;lt;td&amp;gt;
+                                                                                                    &amp;lt;/td&amp;gt;
+
+                                                                                                    &amp;lt;td&amp;gt;
+                                                                                                    &amp;lt;/td&amp;gt;
+
+                                                                                                    &amp;lt;td&amp;gt;
+                                                                                                      &amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;At a distance&amp;lt;/span&amp;gt;
+                                                                                                    &amp;lt;/td&amp;gt;
+                                                                                                  &amp;lt;/tr&amp;gt;
+
+                                                                                                  &amp;lt;tr&amp;gt;
+                                                                                                    &amp;lt;td&amp;gt;
+                                                                                                      &amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;CASIA-Iris-Syn&amp;lt;/span&amp;gt;
+                                                                                                    &amp;lt;/td&amp;gt;
+
+                                                                                                    &amp;lt;td&amp;gt;
+                                                                                                      &amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;1000&amp;lt;/span&amp;gt;
+                                                                                                    &amp;lt;/td&amp;gt;
+
+                                                                                                    &amp;lt;td&amp;gt;
+                                                                                                      &amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;10,000&amp;lt;/span&amp;gt;
+                                                                                                    &amp;lt;/td&amp;gt;
+
+                                                                                                    &amp;lt;td&amp;gt;
+                                                                                                    &amp;lt;/td&amp;gt;
+
+                                                                                                    &amp;lt;td&amp;gt;
+                                                                                                      &amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;Synthesis&amp;lt;/span&amp;gt;
+                                                                                                    &amp;lt;/td&amp;gt;
+                                                                                                  &amp;lt;/tr&amp;gt;
+
+                                                                                                  &amp;lt;tr&amp;gt;
+                                                                                                    &amp;lt;td rowspan=&amp;quot;6&amp;quot;&amp;gt;
+                                                                                                      &amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;ND&amp;lt;/span&amp;gt;
+                                                                                                    &amp;lt;/td&amp;gt;
+
+                                                                                                    &amp;lt;td&amp;gt;
+                                                                                                      &amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;ND-IRIS-0405&amp;lt;/span&amp;gt;
+                                                                                                    &amp;lt;/td&amp;gt;
+
+                                                                                                    &amp;lt;td&amp;gt;
+                                                                                                      &amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;356&amp;lt;/span&amp;gt;
+                                                                                                    &amp;lt;/td&amp;gt;
+
+                                                                                                    &amp;lt;td&amp;gt;
+                                                                                                      &amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;64,980&amp;lt;/span&amp;gt;
+                                                                                                    &amp;lt;/td&amp;gt;
+
+                                                                                                    &amp;lt;td&amp;gt;
+                                                                                                      &amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;NIR&amp;lt;/span&amp;gt;
+                                                                                                    &amp;lt;/td&amp;gt;
+
+                                                                                                    &amp;lt;td&amp;gt;
+                                                                                                    &amp;lt;/td&amp;gt;
+                                                                                                  &amp;lt;/tr&amp;gt;
+
+                                                                                                  &amp;lt;tr&amp;gt;
+                                                                                                    &amp;lt;td&amp;gt;
+                                                                                                      &amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;ND-GFI&amp;lt;/span&amp;gt;
+                                                                                                    &amp;lt;/td&amp;gt;
+
+                                                                                                    &amp;lt;td&amp;gt;
+                                                                                                    &amp;lt;/td&amp;gt;
+
+                                                                                                    &amp;lt;td&amp;gt;
+                                                                                                    &amp;lt;/td&amp;gt;
+
+                                                                                                    &amp;lt;td&amp;gt;
+                                                                                                    &amp;lt;/td&amp;gt;
+
+                                                                                                    &amp;lt;td&amp;gt;
+                                                                                                      &amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;Gender&amp;lt;/span&amp;gt;
+                                                                                                    &amp;lt;/td&amp;gt;
+                                                                                                  &amp;lt;/tr&amp;gt;
+
+                                                                                                  &amp;lt;tr&amp;gt;
+                                                                                                    &amp;lt;td&amp;gt;
+                                                                                                      &amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;NDCLD15&amp;lt;/span&amp;gt;
+                                                                                                    &amp;lt;/td&amp;gt;
+
+                                                                                                    &amp;lt;td&amp;gt;
+                                                                                                      &amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;750 males&amp;lt;/span&amp;gt;&amp;lt;/p&amp;gt; 
+
+                                                                                                      &amp;lt;p&amp;gt;
+                                                                                                        &amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;750 females&amp;lt;/span&amp;gt;&amp;lt;/td&amp;gt; 
+
+                                                                                                        &amp;lt;td&amp;gt;
+                                                                                                          &amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;3000&amp;lt;/span&amp;gt;
+                                                                                                        &amp;lt;/td&amp;gt;
+
+                                                                                                        &amp;lt;td&amp;gt;
+                                                                                                          &amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;NIR&amp;lt;/span&amp;gt;
+                                                                                                        &amp;lt;/td&amp;gt;
+
+                                                                                                        &amp;lt;td&amp;gt;
+                                                                                                          &amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;Contact Lens&amp;lt;/span&amp;gt;
+                                                                                                        &amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt; 
+
+                                                                                                        &amp;lt;tr&amp;gt;
+                                                                                                          &amp;lt;td&amp;gt;
+                                                                                                            &amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;ND-CrossSensor-Iris-2013&amp;lt;/span&amp;gt;
+                                                                                                          &amp;lt;/td&amp;gt;
+
+                                                                                                          &amp;lt;td&amp;gt;
+                                                                                                            &amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;676&amp;lt;/span&amp;gt;
+                                                                                                          &amp;lt;/td&amp;gt;
+
+                                                                                                          &amp;lt;td&amp;gt;
+                                                                                                            &amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;29,986 from LG4000 and 116,564 from LG2200&amp;lt;/span&amp;gt;
+                                                                                                          &amp;lt;/td&amp;gt;
+
+                                                                                                          &amp;lt;td&amp;gt;
+                                                                                                            &amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;NIR&amp;lt;/span&amp;gt;
+                                                                                                          &amp;lt;/td&amp;gt;
+
+                                                                                                          &amp;lt;td&amp;gt;
+                                                                                                            &amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;Cross Sensor&amp;lt;/span&amp;gt;
+                                                                                                          &amp;lt;/td&amp;gt;
+                                                                                                        &amp;lt;/tr&amp;gt;
+
+                                                                                                        &amp;lt;tr&amp;gt;
+                                                                                                          &amp;lt;td&amp;gt;
+                                                                                                            &amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;ND-TimeLapseIris-2012&amp;lt;/span&amp;gt;
+                                                                                                          &amp;lt;/td&amp;gt;
+
+                                                                                                          &amp;lt;td&amp;gt;
+                                                                                                            &amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;23&amp;lt;/span&amp;gt;
+                                                                                                          &amp;lt;/td&amp;gt;
+
+                                                                                                          &amp;lt;td&amp;gt;
+                                                                                                            &amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;6797&amp;lt;/span&amp;gt;
+                                                                                                          &amp;lt;/td&amp;gt;
+
+                                                                                                          &amp;lt;td&amp;gt;
+                                                                                                          &amp;lt;/td&amp;gt;
+
+                                                                                                          &amp;lt;td&amp;gt;
+                                                                                                            &amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;Time lapse 2004 to 2008&amp;lt;/span&amp;gt;
+                                                                                                          &amp;lt;/td&amp;gt;
+                                                                                                        &amp;lt;/tr&amp;gt;
+
+                                                                                                        &amp;lt;tr&amp;gt;
+                                                                                                          &amp;lt;td&amp;gt;
+                                                                                                            &amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;ND-Iris-Template-Aging-2008-2010&amp;lt;/span&amp;gt;
+                                                                                                          &amp;lt;/td&amp;gt;
+
+                                                                                                          &amp;lt;td&amp;gt;
+                                                                                                          &amp;lt;/td&amp;gt;
+
+                                                                                                          &amp;lt;td&amp;gt;
+                                                                                                            &amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;11,776&amp;lt;/span&amp;gt;
+                                                                                                          &amp;lt;/td&amp;gt;
+
+                                                                                                          &amp;lt;td&amp;gt;
+                                                                                                          &amp;lt;/td&amp;gt;
+
+                                                                                                          &amp;lt;td&amp;gt;
+                                                                                                            &amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;Time lapse 2008 to 2010&amp;lt;/span&amp;gt;
+                                                                                                          &amp;lt;/td&amp;gt;
+                                                                                                        &amp;lt;/tr&amp;gt;
+
+                                                                                                        &amp;lt;tr&amp;gt;
+                                                                                                          &amp;lt;td&amp;gt;
+                                                                                                            &amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;MBGC&amp;lt;/span&amp;gt;
+                                                                                                          &amp;lt;/td&amp;gt;
+
+                                                                                                          &amp;lt;td&amp;gt;
+                                                                                                          &amp;lt;/td&amp;gt;
+
+                                                                                                          &amp;lt;td&amp;gt;
+                                                                                                          &amp;lt;/td&amp;gt;
+
+                                                                                                          &amp;lt;td&amp;gt;
+                                                                                                          &amp;lt;/td&amp;gt;
+
+                                                                                                          &amp;lt;td&amp;gt;
+                                                                                                            &amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;NIR &amp;amp; NIR videos&amp;lt;/span&amp;gt;
+                                                                                                          &amp;lt;/td&amp;gt;
+
+                                                                                                          &amp;lt;td&amp;gt;
+                                                                                                            &amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;One the move&amp;lt;/span&amp;gt;
+                                                                                                          &amp;lt;/td&amp;gt;
+                                                                                                        &amp;lt;/tr&amp;gt;
+
+                                                                                                        &amp;lt;tr&amp;gt;
+                                                                                                          &amp;lt;td&amp;gt;
+                                                                                                            &amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;UBIRIS&amp;lt;/span&amp;gt;
+                                                                                                          &amp;lt;/td&amp;gt;
+
+                                                                                                          &amp;lt;td&amp;gt;
+                                                                                                          &amp;lt;/td&amp;gt;
+
+                                                                                                          &amp;lt;td&amp;gt;
+                                                                                                            &amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;261&amp;lt;/span&amp;gt;
+                                                                                                          &amp;lt;/td&amp;gt;
+
+                                                                                                          &amp;lt;td&amp;gt;
+                                                                                                            &amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;11,102&amp;lt;/span&amp;gt;
+                                                                                                          &amp;lt;/td&amp;gt;
+
+                                                                                                          &amp;lt;td&amp;gt;
+                                                                                                            &amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;Visible&amp;lt;/span&amp;gt;
+                                                                                                          &amp;lt;/td&amp;gt;
+
+                                                                                                          &amp;lt;td&amp;gt;
+                                                                                                            &amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;On the move&amp;lt;/span&amp;gt;&amp;lt;/p&amp;gt; 
+
+                                                                                                            &amp;lt;p&amp;gt;
+                                                                                                              &amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;At a distance&amp;lt;/span&amp;gt;&amp;lt;/td&amp;gt; &amp;lt;/tr&amp;gt; &amp;lt;/tbody&amp;gt; &amp;lt;/table&amp;gt; 
+
+                                                                                                              &amp;lt;p&amp;gt;
+                                                                                                                &amp;amp;nbsp;
+                                                                                                              &amp;lt;/p&amp;gt;
+
+                                                                                                              &amp;lt;p&amp;gt;
+                                                                                                                &amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;My sources:&amp;lt;/span&amp;gt;
+                                                                                                              &amp;lt;/p&amp;gt;
+
+                                                                                                              &amp;lt;ol&amp;gt;
+                                                                                                                &amp;lt;li style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;
+                                                                                                                  &amp;lt;a href=&amp;quot;https://kiennguyenstuff.wordpress.com/2016/07/14/iris-recognition-open-source-codes/&amp;quot;&amp;gt;&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;Iris Recognition open-source codes&amp;lt;/span&amp;gt;&amp;lt;/a&amp;gt;
+                                                                                                                &amp;lt;/li&amp;gt;
+                                                                                                                &amp;lt;li style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;
+                                                                                                                  &amp;lt;a href=&amp;quot;https://www.quora.com/What-are-some-of-the-best-open-source-iris-recognition-libraries-available&amp;quot;&amp;gt;&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;What are some of the best open source iris recognition libraries available?&amp;lt;/span&amp;gt;&amp;lt;/a&amp;gt;
+                                                                                                                &amp;lt;/li&amp;gt;
+                                                                                                              &amp;lt;/ol&amp;gt;
+
+                                                                                                              &amp;lt;ul&amp;gt;
+                                                                                                                &amp;lt;li&amp;gt;
+                                                                                                                  &amp;lt;em&amp;gt;Eye Photo by Tom Tolkien &amp;lt;a href=&amp;quot;http://thomastolkien.wordpress.com/&amp;quot;&amp;gt;http://thomastolkien.wordpress.com/&amp;lt;/a&amp;gt;&amp;lt;/em&amp;gt;
+                                                                                                                &amp;lt;/li&amp;gt;
+                                                                                                              &amp;lt;/ul&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

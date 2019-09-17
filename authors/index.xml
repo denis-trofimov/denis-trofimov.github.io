@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Authors | Python Courses Mentor Blog Relaunch</title>
+    <link>https://denis-trofimov.github.io/authors/</link>
+      <atom:link href="https://denis-trofimov.github.io/authors/index.xml" rel="self" type="application/rss+xml" />
+    <description>Authors</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© All rights reserved - 2019</copyright>
+    <image>
+      <url>https://denis-trofimov.github.io/img/icon-192.png</url>
+      <title>Authors</title>
+      <link>https://denis-trofimov.github.io/authors/</link>
+    </image>
+    
+    <item>
+      <title></title>
+      <link>https://denis-trofimov.github.io/authors/admin/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://denis-trofimov.github.io/authors/admin/</guid>
+      <description>&lt;p&gt;I am C++/C/Python developer with the employment history of 9 years in a software development.
+I am making my living developing applications, working for the company Vsor Systems LLC in Moscow, Russia.
+I am leading our small developing department that consists of 3 developers.
+I am working on the software project for the our company&amp;rsquo;s product, an eye iris identification system. This software uses machine learning convolutional neural networks for camera image analysis (computer vision) and runs on a GPU or CPU.&lt;/p&gt;
+
+&lt;p&gt;In my past I have designed and developed standalone and client - server applications  C++/Python, with databases like Oracle DB, PosgreSQL, MySQL, SQLite.
+Created applications serving CRM, web automated order processing, simulation of technological operation of railroad rolling stock.&lt;/p&gt;
+
+&lt;p&gt;I am near 40. I have spent quite a time in the software industry, not as long as &amp;ldquo;Uncle&amp;rdquo; Bob Martin of cause, but have also seen some technologies come and go. Words like this was in favor once: Delphi, Java, HTML, JavaScript, PHP&amp;hellip; Plus my beard is making me look like wise one 🙂&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

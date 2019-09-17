@@ -1,0 +1,1518 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts | Python Courses Mentor Blog Relaunch</title>
+    <link>https://denis-trofimov.github.io/post/</link>
+      <atom:link href="https://denis-trofimov.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <description>Posts</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© All rights reserved - 2019</copyright><lastBuildDate>Mon, 12 Nov 2018 19:31:30 +0000</lastBuildDate>
+    <image>
+      <url>https://denis-trofimov.github.io/img/icon-192.png</url>
+      <title>Posts</title>
+      <link>https://denis-trofimov.github.io/post/</link>
+    </image>
+    
+    <item>
+      <title>Moscow Python Conf&#43;&#43; 2018 video report.</title>
+      <link>https://denis-trofimov.github.io/moscow-python-conf-2018-video/</link>
+      <pubDate>Mon, 12 Nov 2018 19:31:30 +0000</pubDate>
+      <guid>https://denis-trofimov.github.io/moscow-python-conf-2018-video/</guid>
+      <description>&lt;p&gt;Yes, the Moscow Python Conf++ 2018 conference was awesome.
+Started so many acquaintances with the pythonists who make impact in the software world!
+I got into picture at the stand of Moscow.Python on 1:50.&lt;/p&gt;
+
+&lt;p&gt;I will come to the next one too!&lt;/p&gt;
+
+&lt;p&gt;Mixed russian and english content, you are welcome to watch!&lt;/p&gt;
+
+
+&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+  &lt;iframe src=&#34;https://www.youtube.com/embed/ap0dsL_JeLE&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; allowfullscreen title=&#34;YouTube Video&#34;&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
+</description>
+    </item>
+    
+    <item>
+      <title>How dictionaries are implemented in the Python language</title>
+      <link>https://denis-trofimov.github.io/how-dictionaries-are-implemented-in-the-python-language/</link>
+      <pubDate>Fri, 28 Sep 2018 19:12:58 +0000</pubDate>
+      <guid>https://denis-trofimov.github.io/how-dictionaries-are-implemented-in-the-python-language/</guid>
+      <description>&lt;div class=&#34;story-content&#34;&gt;
+  &lt;p&gt;
+    This post describes how dictionaries are implemented in the Python language.
+  &lt;/p&gt;
+  
+  &lt;p&gt;
+    This article is actually a repost of originally posted at &lt;a href=&#34;https://www.laurentluce.com/posts/python-dictionary-implementation/&#34;&gt;Laurent Luce&amp;#8217;s Blog&lt;/a&gt; August 29, 2011 by Laurent Luce. I mentor several students of russian &lt;a href=&#34;https://learn.python.ru/&#34;&gt;Learn Python&lt;/a&gt; courses. They have questions about structures in Python and how to use them. I found this post a good help to me and possibly to my students.
+  &lt;/p&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Dictionaries are indexed by keys and they can be seen as associative arrays. Let’s add 3 key/value pairs to a dictionary:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-py&#34;&gt;&amp;gt;&amp;gt;&amp;gt; d = {&#39;a&#39;: 1, &#39;b&#39;: 2}
+&amp;gt;&amp;gt;&amp;gt; d[&#39;c&#39;] = 3
+&amp;gt;&amp;gt;&amp;gt; d
+{&#39;a&#39;: 1, &#39;b&#39;: 2, &#39;c&#39;: 3}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The values can be accessed this way:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-py&#34;&gt;&amp;gt;&amp;gt;&amp;gt; d[&#39;a&#39;]
+1
+&amp;gt;&amp;gt;&amp;gt; d[&#39;b&#39;]
+2
+&amp;gt;&amp;gt;&amp;gt; d[&#39;c&#39;]
+3
+&amp;gt;&amp;gt;&amp;gt; d[&#39;d&#39;]
+Traceback (most recent call last):
+  File &amp;quot;&amp;lt;stdin&amp;gt;&amp;quot;, line 1, in &amp;lt;module&amp;gt;
+KeyError: &#39;d&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The key ‘d’ does not exist so a KeyError exception is raised.&lt;/p&gt;
+
+&lt;h2 id=&#34;hash-tables&#34;&gt;Hash tables&lt;/h2&gt;
+
+&lt;p&gt;Python dictionaries are implemented using hash tables. It is an array whose indexes are obtained using a hash function on the keys. The goal of a hash function is to distribute the keys evenly in the array. A good hash function minimizes the number of collisions e.g. different keys having the same hash. Python does not have this kind of hash function. Its most important hash functions (for strings and ints) are very regular in common cases:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-py&#34;&gt;&amp;gt;&amp;gt;&amp;gt; map(hash, (0, 1, 2, 3))
+[0, 1, 2, 3]
+&amp;gt;&amp;gt;&amp;gt; map(hash, (&amp;quot;namea&amp;quot;, &amp;quot;nameb&amp;quot;, &amp;quot;namec&amp;quot;, &amp;quot;named&amp;quot;))
+[-1658398457, -1658398460, -1658398459, -1658398462]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;We are going to assume that we are using strings as keys for the rest of this post. The hash function for strings in Python is defined as:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-py&#34;&gt;arguments: string object
+returns: hash
+function string_hash:
+    if hash cached:
+        return it
+    set len to string&#39;s length
+    initialize var p pointing to 1st char of string object
+    set x to value pointed by p left shifted by 7 bits
+    while len &amp;gt;= 0:
+        set var x to (1000003 * x) xor value pointed by p
+        increment pointer p
+    set x to x xor length of string object
+    cache x as the hash so we don&#39;t need to calculate it again
+    return x as the hash
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;If you run hash(‘a’) in Python, it will execute string_hash() and return 12416037344. Here we assume we are using a 64-bit machine.&lt;/p&gt;
+
+&lt;p&gt;If an array of size x is used to store the key/value pairs then we use a mask equal to x-1 to calculate the slot index of the pair in the array. This makes the computation of the slot index fast. The probability to find an empty slot is high due to the resizing mechanism described below. This means that having a simple computation makes sense in most of the cases. If the size of the array is 8, the index for ‘a’ will be: hash(‘a’) &amp;amp; 7 = 0. The index for ‘b’ is 3, the index for ‘c’ is 2, the index for ‘z’ is 3 which is the same as ‘b’, here we have a collision.&lt;/p&gt;
+
+&lt;p&gt;&lt;p&gt;
+    &lt;img class=&#34;alignnone&#34; src=&#34;https://www.laurentluce.com/images/blog/dict/hash.png&#34; alt=&#34;The hash function for strings in Python for a table size of 8&#34; width=&#34;375&#34; height=&#34;311&#34; /&gt;
+  &lt;/p&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;p&gt;
+    We can see that the Python hash function does a good job when the keys are consecutive which is good because it is quite common to have this type of data to work with. However, once we add the key ‘z’, there is a collision because it is not consecutive enough.
+  &lt;/p&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;p&gt;
+    We could use a linked list to store the pairs having the same hash but it would increase the lookup time e.g. not O(1) average anymore. The next section describes the collision resolution method used in the case of Python dictionaries.
+  &lt;/p&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;h2&gt;
+    Open addressing
+  &lt;/h2&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;p&gt;
+    Open addressing is a method of collision resolution where probing is used. In case of ‘z’, the slot index 3 is already used in the array so we need to probe for a different index to find one which is not already used. Adding a key/value pair will average O(1) and the lookup operation too.
+  &lt;/p&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;p&gt;
+    A quadratic probing sequence is used to find a free slot. The code is the following:
+  &lt;/p&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;j = (5*j) + 1 + perturb;
+perturb &amp;gt;&amp;gt;= PERTURB_SHIFT;
+use j % 2**i as the next table index;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;p&gt;
+    Recurring on 5*j+1 quickly magnifies small differences in the bits that didn’t affect the initial index. The variable “perturb” gets the other bits of the hash code into play.
+  &lt;/p&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;p&gt;
+    Just out of curiosity, let’s look at the probing sequence when the table size is 32 and j = 3.&lt;br /&gt; 3 -&amp;gt; 11 -&amp;gt; 19 -&amp;gt; 29 -&amp;gt; 5 -&amp;gt; 6 -&amp;gt; 16 -&amp;gt; 31 -&amp;gt; 28 -&amp;gt; 13 -&amp;gt; 2…
+  &lt;/p&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;p&gt;
+    You can read more about this probing sequence by looking at the source code of &lt;a href=&#34;http://svn.python.org/projects/python/trunk/Objects/dictobject.c&#34;&gt;dictobject.c&lt;/a&gt;. A detailed explanation of the probing mechanism can be found at the top of the file.
+  &lt;/p&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;p&gt;
+    &lt;img src=&#34;https://www.laurentluce.com/images/blog/dict/probing.png&#34; alt=&#34;open addressing&#34; /&gt;
+  &lt;/p&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;p&gt;
+    Now, let’s look at the Python internal code along with an example.
+  &lt;/p&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;h2&gt;
+    Dictionary C structures
+  &lt;/h2&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;p&gt;
+    The following C structure is used to store a dictionary entry: key/value pair. The hash, key and value are stored. PyObject is the base class of the Python objects.
+  &lt;/p&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;typedef struct {
+  Py_ssize_t me_hash;
+  PyObject *me_key;
+  PyObject *me_value;
+} PyDictEntry;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;p&gt;
+    The following structure represents a dictionary. ma_fill is the number of used slots + dummy slots. A slot is marked dummy when a key pair is removed. ma_used is the number of used slots (active). ma_mask is equal to the array’s size minus 1 and is used to calculate the slot index. ma_table is the array and ma_smalltable is the initial array of size 8.
+  &lt;/p&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;typedef struct _dictobject PyDictObject;
+struct _dictobject {
+    PyObject_HEAD
+    Py_ssize_t ma_fill;
+    Py_ssize_t ma_used;
+    Py_ssize_t ma_mask;
+    PyDictEntry *ma_table;
+    PyDictEntry *(*ma_lookup)(PyDictObject *mp, PyObject *key, long hash);
+    PyDictEntry ma_smalltable[PyDict_MINSIZE];
+};
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;dictionary-initialization&#34;&gt;Dictionary initialization&lt;/h2&gt;
+
+&lt;p&gt;&lt;p&gt;
+    When you first create a dictionary, the function PyDict_New() is called. I removed some of the lines and converted the C code to pseudocode to concentrate on the key concepts.
+  &lt;/p&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;returns new dictionary object
+function PyDict_New:
+    allocate new dictionary object
+    clear dictionary&#39;s table
+    set dictionary&#39;s number of used slots + dummy slots (ma_fill) to 0
+    set dictionary&#39;s number of active slots (ma_used) to 0
+    set dictionary&#39;s mask (ma_value) to dictionary size - 1 = 7
+    set dictionary&#39;s lookup function to lookdict_string
+    return allocated dictionary object
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;h2&gt;
+    Adding items
+  &lt;/h2&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;p&gt;
+    When a new key/value pair is added, PyDict_SetItem() is called. This function takes a pointer to the dictionary object and the key/value pair. It checks if the key is a string and calculates the hash or reuses the one cached if it exists. insertdict() is called to add the new key/value pair and the dictionary is resized if the number of used slots + dummy slots is greater than &lt;sup&gt;2&lt;/sup&gt;&amp;frasl;&lt;sub&gt;3&lt;/sub&gt; of the array’s size.&lt;br /&gt; Why &lt;sup&gt;2&lt;/sup&gt;&amp;frasl;&lt;sub&gt;3&lt;/sub&gt;? It is to make sure the probing sequence can find a free slot fast enough. We will look at the resizing function later.
+  &lt;/p&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-py&#34;&gt;arguments: dictionary, key, value
+returns: 0 if OK or -1
+function PyDict_SetItem:
+    if key&#39;s hash cached:
+        use hash
+    else:
+        calculate hash
+    call insertdict with dictionary object, key, hash and value
+    if key/value pair added successfully and capacity over 2/3:
+        call dictresize to resize dictionary&#39;s table
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;p&gt;
+    inserdict() uses the lookup function lookdict_string() to find a free slot. This is the same function used to find a key. lookdict_string() calculates the slot index using the hash and the mask values. If it cannot find the key in the slot index = hash &amp;amp; mask, it starts probing using the loop described above, until it finds a free slot. At the first probing try, if the key is null, it returns the dummy slot if found during the first lookup. This gives priority to re-use the previously deleted slots.
+  &lt;/p&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;p&gt;
+    We want to add the following key/value pairs: {‘a’: 1, ‘b’: 2′, ‘z’: 26, ‘y’: 25, ‘c’: 5, ‘x’: 24}. This is what happens:
+  &lt;/p&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;p&gt;
+    A dictionary structure is allocated with internal table size of 8.
+  &lt;/p&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;PyDict_SetItem: key = &amp;#8216;a&amp;#8217;, value = 1&lt;/li&gt;
+&lt;ul&gt;
+&lt;li&gt;hash = hash(&amp;#8216;a&amp;#8217;) = 12416037344&lt;/li&gt;
+&lt;li&gt;insertdict&lt;/li&gt;
+&lt;ul&gt;
+&lt;li&gt;lookdict_string&lt;/li&gt;
+&lt;ul&gt;
+&lt;li&gt;slot index = hash &amp;#038; mask = 12416037344 &amp;#038; 7 = 0&lt;/li&gt;
+&lt;li&gt;slot 0 is not used so return it&lt;/li&gt;
+&lt;/ul&gt;
+&lt;li&gt;init entry at index 0 with key, value and hash&lt;/li&gt;
+&lt;li&gt;ma_used = 1, ma_fill = 1&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/ul&gt;
+&lt;li&gt;PyDict_SetItem: key = &amp;#8216;b&amp;#8217;, value = 2&lt;/li&gt;
+&lt;ul&gt;
+&lt;li&gt;hash = hash(&amp;#8216;b&amp;#8217;) = 12544037731&lt;/li&gt;
+&lt;li&gt;insertdict&lt;/li&gt;
+&lt;ul&gt;
+&lt;li&gt;lookdict_string&lt;/li&gt;
+&lt;ul&gt;
+&lt;li&gt;slot index = hash &amp;#038; mask = 12544037731 &amp;#038; 7 = 3&lt;/li&gt;
+&lt;li&gt;slot 3 is not used so return it&lt;/li&gt;
+&lt;/ul&gt;
+&lt;li&gt;init entry at index 3 with key, value and hash&lt;/li&gt;
+&lt;li&gt;ma_used = 2, ma_fill = 2&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/ul&gt;
+&lt;li&gt;PyDict_SetItem: key = &amp;#8216;z&amp;#8217;, value = 26&lt;/li&gt;
+&lt;ul&gt;
+&lt;li&gt;hash = hash(&amp;#8216;z&amp;#8217;) = 15616046971&lt;/li&gt;
+&lt;li&gt;insertdict&lt;/li&gt;
+&lt;ul&gt;
+&lt;li&gt;lookdict_string&lt;/li&gt;
+&lt;ul&gt;
+&lt;li&gt;slot index = hash &amp;#038; mask = 15616046971 &amp;#038; 7 = 3&lt;/li&gt;
+&lt;li&gt;slot 3 is used so probe for a different slot: 5 is free&lt;/li&gt;
+&lt;/ul&gt;
+&lt;li&gt;init entry at index 5 with key, value and hash&lt;/li&gt;
+&lt;li&gt;ma_used = 3, ma_fill = 3&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/ul&gt;
+&lt;li&gt;PyDict_SetItem: key = &amp;#8216;y&amp;#8217;, value = 25&lt;/li&gt;
+&lt;ul&gt;
+&lt;li&gt;hash = hash(&amp;#8216;y&amp;#8217;) = 15488046584&lt;/li&gt;
+&lt;li&gt;insertdict&lt;/li&gt;
+&lt;ul&gt;
+&lt;li&gt;lookdict_string&lt;/li&gt;
+&lt;ul&gt;
+&lt;li&gt;slot index = hash &amp;#038; mask = 15488046584 &amp;#038; 7 = 0&lt;/li&gt;
+&lt;li&gt;slot 0 is used so probe for a different slot: 1 is free&lt;/li&gt;
+&lt;/ul&gt;
+&lt;li&gt;init entry at index 1 with key, value and hash&lt;/li&gt;
+&lt;li&gt;ma_used = 4, ma_fill = 4&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/ul&gt;
+&lt;li&gt;PyDict_SetItem: key = &amp;#8216;c&amp;#8217;, value = 3&lt;/li&gt;
+&lt;ul&gt;
+&lt;li&gt;hash = hash(&amp;#8216;c&amp;#8217;) = 12672038114&lt;/li&gt;
+&lt;li&gt;insertdict&lt;/li&gt;
+&lt;ul&gt;
+&lt;li&gt;lookdict_string&lt;/li&gt;
+&lt;ul&gt;
+&lt;li&gt;slot index = hash &amp;#038; mask = 12672038114 &amp;#038; 7 = 2&lt;/li&gt;
+&lt;li&gt;slot 2 is free so return it&lt;/li&gt;
+&lt;/ul&gt;
+&lt;li&gt;init entry at index 2 with key, value and hash&lt;/li&gt;
+&lt;li&gt;ma_used = 5, ma_fill = 5&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/ul&gt;
+&lt;li&gt;PyDict_SetItem: key = &amp;#8216;x&amp;#8217;, value = 24&lt;/li&gt;
+&lt;ul&gt;
+&lt;li&gt;hash = hash(&amp;#8216;x&amp;#8217;) = 15360046201&lt;/li&gt;
+&lt;li&gt;insertdict&lt;/li&gt;
+&lt;ul&gt;
+&lt;li&gt;lookdict_string&lt;/li&gt;
+&lt;ul&gt;
+&lt;li&gt;slot index = hash &amp;#038; mask = 15360046201 &amp;#038; 7 = 1&lt;/li&gt;
+&lt;li&gt;slot 1 is used so probe for a different slot: 7 is free&lt;/li&gt;
+&lt;/ul&gt;
+&lt;li&gt;init entry at index 7 with key, value and hash&lt;/li&gt;
+&lt;li&gt;ma_used = 6, ma_fill = 6&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/ul&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;p&gt;
+    This is what we have so far:
+  &lt;/p&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;p&gt;
+    &lt;img src=&#34;https://www.laurentluce.com/images/blog/dict/insert.png&#34; alt=&#34;python dictionary insert&#34; /&gt;
+  &lt;/p&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;p&gt;
+    6 slots on 8 are used now so we are over &lt;sup&gt;2&lt;/sup&gt;&amp;frasl;&lt;sub&gt;3&lt;/sub&gt; of the array’s capacity. dictresize() is called to allocate a larger array. This function also takes care of copying the old table entries to the new table.
+  &lt;/p&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;p&gt;
+    dictresize() is called with minused = 24 in our case which is 4 * ma_used. 2 * ma_used is used when the number of used slots is very large (greater than 50000). Why 4 times the number of used slots? It reduces the number of resize steps and it increases sparseness.
+  &lt;/p&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;p&gt;
+    The new table size needs to be greater than 24 and it is calculated by shifting the current size 1 bit left until it is greater than 24. It ends up being 32 e.g. 8 -&amp;gt; 16 -&amp;gt; 32.
+  &lt;/p&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;p&gt;
+    This is what happens with our table during resizing: a new table of size 32 is allocated. Old table entries are inserted into the new table using the new mask value which is 31. We end up with the following:
+  &lt;/p&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;p&gt;
+    &lt;img src=&#34;https://www.laurentluce.com/images/blog/dict/resizing.png&#34; alt=&#34;python dictionary table resizing&#34; /&gt;
+  &lt;/p&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;h2&gt;
+    Removing items
+  &lt;/h2&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;p&gt;
+    PyDict_DelItem() is called to remove an entry. The hash for this key is calculated and the lookup function is called to return the entry. The slot is now a dummy slot.
+  &lt;/p&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;p&gt;
+    We want to remove the key ‘c’ from our dictionary. We end up with the following array:
+  &lt;/p&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;p&gt;
+    &lt;img src=&#34;https://www.laurentluce.com/images/blog/dict/delete.png&#34; alt=&#34;Python dictionary delete key&#34; /&gt;
+  &lt;/p&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;p&gt;
+    Note that the delete item operation doesn’t trigger an array resize if the number of used slots is much less that the total number of slots. However, when a key/value pair is added, the need for resize is based on the number of used slots + dummy slots so it can shrink the array too.
+  &lt;/p&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;p&gt;
+    That’s it for now. I hope you enjoyed the article. Please write a comment if you have any feedback.
+  &lt;/p&gt;
+&lt;/div&gt;&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;!--more--&gt;
+
+&lt;div class=&#34;metawrap&#34;&gt;
+  &lt;p&gt;
+    &amp;nbsp;
+  &lt;/p&gt;
+  
+  &lt;p&gt;
+    &lt;em&gt;Originally posted at &lt;a href=&#34;https://www.laurentluce.com/posts/python-dictionary-implementation/&#34;&gt;Laurent Luce&amp;#8217;s Blog&lt;/a&gt; August 29, 2011 by Laurent Luce.&lt;/em&gt;
+  &lt;/p&gt;
+&lt;/div&gt;</description>
+    </item>
+    
+    <item>
+      <title>Getting Mob Programming Buy-In at Your Organization</title>
+      <link>https://denis-trofimov.github.io/getting-mob-programming-buy-in-at-your-organization/</link>
+      <pubDate>Fri, 14 Sep 2018 22:17:50 +0000</pubDate>
+      <guid>https://denis-trofimov.github.io/getting-mob-programming-buy-in-at-your-organization/</guid>
+      <description>&lt;p&gt;Repost of &lt;a href=&#34;https://simpleprogrammer.com/mob-programming/&#34;&gt;https://simpleprogrammer.com/mob-programming/.&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://spzone-simpleprogrammer.netdna-ssl.com/wp-content/uploads/2018/09/mod-square.png&#34; alt=&#34;This piece was a collaboration written by Nate Wixom and Torrey Powell.&#34; title=&#34;This piece was a collaboration written by Nate Wixom and Torrey Powell.&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Mob programming is the best approach for many development applications. Mob projects result in a more finished project at release, with fewer bugs. By focusing on one project at a time, teams can complete projects more efficiently, and those projects are higher quality, requiring fewer revisions.&lt;/p&gt;
+
+&lt;p&gt;The Project Management Institute’s &lt;a href=&#34;https://www.pmi.org/-/media/pmi/documents/public/pdf/learning/thought-leadership/pulse/pulse-of-the-profession-2017.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;2017 Pulse of the Profession&lt;/a&gt; survey reports that 71 percent of organizations now use &lt;a href=&#34;https://www.cio.com/article/3156998/agile-development/agile-project-management-a-beginners-guide.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;agile methods&lt;/a&gt; to complete projects. Included among agile approaches is mob programming, &lt;a href=&#34;https://www.agilealliance.org/glossary/mob-programming/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;defined by the Agile Alliance&lt;/a&gt; as “a software development approach where the whole team works on the same thing, at the same time, in the same space, and at the same computer.” Picture multiple engineers at one station working collaboratively on one project.&lt;/p&gt;
+
+&lt;p&gt;While many organizations have adopted mob programming as a core part of their development skill set, not all development organizations have bought in.&lt;/p&gt;
+
+&lt;p&gt;Still, to implement mob programming successfully, you need buy-in from two important groups at your organization—the executive team and the programmers themselves.&lt;/p&gt;
+
+&lt;p&gt;By following the strategies below, you can get organization buy-in for mob programming from top to bottom and start using this agile development methodology to provide superior finished products for clients both inside and outside your organization.&lt;/p&gt;
+
+&lt;h2 id=&#34;getting-buy-in-from-leadership&#34;&gt;Getting Buy-in From Leadership&lt;/h2&gt;
+
+&lt;p&gt;As far back as 2000, the benefits of developers teaming up on projects to solve problems have been evaluated against the performance of individuals. An oft-cited &lt;a href=&#34;http://sunnyday.mit.edu/16.355/williams.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;joint study&lt;/a&gt; between the University of North Carolina and the University of Utah showed that paired programmers were 15 percent more successful in solving problems and that their solutions did so with fewer lines of code.&lt;/p&gt;
+
+&lt;p&gt;That may not be an impressive enough statistic for senior leadership, however. Shouldn’t it be at least 100 percent more efficient in order to be cost-effective?&lt;/p&gt;
+
+&lt;p&gt;The truth of the matter is that such small efficiency gains in the short run may not be convincing. It’s a long game, and you’ll need to open leadership’s eyes to the possibilities of multiple projects spanning months, even years.&lt;/p&gt;
+
+&lt;p&gt;If you can get leadership to agree to a six- to 12-month trial for mob programming, here are some of the benefits your organization will see:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Fully inventoried projects:&lt;/strong&gt; With groups working more thoroughly and quickly on fewer projects, projects are less likely to be abandoned or forgotten, and more projects are fully completed. More eyes on every project means projects are more complete when they are released to the world.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Shorter turnaround on projects:&lt;/strong&gt; Projects are completed quicker than when worked on by individual developers. With more eyes on each project, roadblocks are more easily overcome, and solutions to problems can quickly be brainstormed.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Fewer issues in live projects:&lt;/strong&gt; As the projects are fully inventoried with more people reviewing every line of code, fewer bugs make it to the production environment. With individual developers working on projects, it’s often understood that there will be bugs that need to be fixed while a platform is live. You can eliminate a lot of this necessary rework through mob programming.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Quicker onboarding for programmers:&lt;/strong&gt; Onboarding into a mob programming environment is more efficient, as you can drop new developers right into a mob that’s already at work on a project and get them contributing immediately rather than having to divert resources for training and management of new programmers’ early projects with your organization.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Over time, mob programming improves efficiency not only in the completion of successful projects but also in the integration of &lt;a href=&#34;https://simpleprogrammer.com/working-on-a-team/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;new team members&lt;/a&gt;. You may not see the return on investment right away, but over time, it will be evident.&lt;/p&gt;
+
+&lt;p&gt;Better results, faster, with fewer abandoned projects—that’s something any senior leader can get behind.&lt;/p&gt;
+
+&lt;h2 id=&#34;getting-buy-in-from-programmers-developers-and-engineers&#34;&gt;Getting Buy-in From Programmers, Developers, and Engineers&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://spzone-simpleprogrammer.netdna-ssl.com/wp-content/uploads/2018/09/team-work.png&#34; alt=&#34;Getting buy-in from senior leadership is one thing. Getting buy-in from the people who will actually be doing the mob programming is something else entirely.&#34; title=&#34;Getting buy-in from senior leadership is one thing. Getting buy-in from the people who will actually be doing the mob programming is something else entirely.&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Many engineers, developers, and programmers are used to &lt;a href=&#34;https://simpleprogrammer.com/importance-community-cant-alone/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;working alone&lt;/a&gt;—putting on the headphones and sitting down to crank out code, cut off from the outside world, for hours at a time. How do you get people who are used to working alone to be active participants in a group environment where the major reason for increased success is teamwork?&lt;/p&gt;
+
+&lt;p&gt;In our experience, having gone through many iterations of mob programming while integrating it into the organization at Clearlink, not everyone is a good fit for mob programming—but many more than you would expect actually are, once they are involved.&lt;/p&gt;
+
+&lt;p&gt;Why is that? Believe it or not, engineers like socializing with their colleagues, they just haven’t always had the chance to do so. Once they realize the level of engagement and the quality of code that is created while working collaboratively, job satisfaction increases, learning increases, and enhanced team bonding occurs. Mob programming is also a meritocracy where the best idea wins, and everyone in the mob has an equal voice—from the most senior developer on the team down to the newest arrival.&lt;/p&gt;
+
+&lt;p&gt;Each mob contains two roles: _the driver_ and &lt;em&gt;the navigator(s)&lt;/em&gt;. The driver sits at the computer, inputting the code, while the navigators tell the driver what to type. These roles switch in the mob at regular eight to 15-minute intervals, giving everyone an equal chance to drive and to navigate.&lt;/p&gt;
+
+&lt;p&gt;Everyone remains actively involved in the process, with ideas being shared and implemented quickly. Since everyone gets a chance to navigate, junior programmers gain confidence by asserting their ideas.&lt;/p&gt;
+
+&lt;p&gt;We recommend, either at the completion of a project or at the end of each workweek, recognizing mob team members for their contributions to the project(s) they have worked on. Also, allow programmers to share what they learned and what they had trouble with. After a few projects and a few of these recognition and retrospective meetings, your team members will be comfortable working together and fully integrated into the mob programming mindset.&lt;/p&gt;
+
+&lt;h2 id=&#34;making-the-jump&#34;&gt;Making the Jump&lt;/h2&gt;
+
+&lt;p&gt;Changing development work from an individual to a mob programming style can be a big leap—one that can result in a few stumbles along the way. But once you get buy-in from leadership for a trial and can get some programmers on board, you’ll see &lt;a href=&#34;http://agileuprising.libsyn.com/mob-programming-lessons-learned-at-clearlinkcom&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;how it can benefit your organization&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;We’ve given you some navigation—so get ready to drive.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://flic.kr/p/nYis2p&#34; target=&#34;_blank&#34;&gt;Photo&lt;/a&gt; by &lt;a class=&#34;owner-name truncate&#34; title=&#34;Go to Georgia National Guard&#39;s photostream&#34; href=&#34;https://www.flickr.com/photos/ganatlguard/&#34; data-track=&#34;attributionNameClick&#34; data-rapid_p=&#34;86&#34;&gt;Georgia National Guard&lt;/a&gt; CC 2.0&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>Review of Kevlin Henney`s talk Seven Ineffective Coding Habits of Many Programmers</title>
+      <link>https://denis-trofimov.github.io/review-of-kevlin-henneys-talk-seven-ineffective-coding-habits-of-many-programmers/</link>
+      <pubDate>Sun, 09 Sep 2018 20:03:20 +0000</pubDate>
+      <guid>https://denis-trofimov.github.io/review-of-kevlin-henneys-talk-seven-ineffective-coding-habits-of-many-programmers/</guid>
+      <description>&lt;h1 id=&#34;review-of-kevlin-henney-s-talk-seven-ineffective-coding-habits-of-many-programmers&#34;&gt;Review of Kevlin Henney`s talk Seven Ineffective Coding Habits of Many Programmers&lt;/h1&gt;
+
+&lt;p&gt;&lt;em&gt;I watched this video from the start till the end.&lt;/em&gt;
+&lt;em&gt;I see this coding habits very often.&lt;/em&gt;
+&lt;em&gt;I fought unsustainable spacing the wrong way in the past.&lt;/em&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;kevlin-henney-s-talk-video-description&#34;&gt;Kevlin Henney`s talk video description&lt;/h1&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Habits help you manage the code complexity. You apply existing skill and knowledge automatically to the detail while focusing on the bigger picture.&lt;/p&gt;
+
+&lt;p&gt;But because you acquire habits largely by imitation, and rarely question them, how do you know your habits are effective? Many of the habits that programmers have for naming, formatting, commenting and unit testing do not stand up as rational and practical on closer inspection. &lt;a href=&#34;https://en.wikipedia.org/wiki/Kevlin_Henney&#34; target=&#34;_blank&#34;&gt;Kevlin Henney&lt;/a&gt; &lt;a href=&#34;https://twitter.com/kevlinhenney&#34; target=&#34;_blank&#34;&gt;@kevlinhenney&lt;/a&gt; examines seven coding habits that are not as effective as programmers believe, and to suggest alternatives.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+&lt;div class=&#34;gallery&#34;&gt;
+
+  
+  
+  
+  
+    
+    
+    
+    
+    
+  &lt;a data-fancybox=&#34;gallery-habits&#34; href=&#34;https://denis-trofimov.github.io/review-of-kevlin-henneys-talk-seven-ineffective-coding-habits-of-many-programmers/habits/ITT%202016%20-%20Kevlin%20Henney%20-%20Seven%20Ineffective%20Coding%20Habits%20of%20Many%20Programmers%20Code%20alignment%202.png&#34; &gt;
+  &lt;img src=&#34;https://denis-trofimov.github.io/review-of-kevlin-henneys-talk-seven-ineffective-coding-habits-of-many-programmers/habits/_hu280ada8882d6e991cdf6d87ef052cb54_121303_b7c62e70fe43b016e397c56cd735820d.png&#34; alt=&#34;&#34;&gt;
+  &lt;/a&gt;
+  
+    
+    
+    
+    
+    
+  &lt;a data-fancybox=&#34;gallery-habits&#34; href=&#34;https://denis-trofimov.github.io/review-of-kevlin-henneys-talk-seven-ineffective-coding-habits-of-many-programmers/habits/ITT%202016%20-%20Kevlin%20Henney%20-%20Seven%20Ineffective%20Coding%20Habits%20of%20Many%20Programmers%20Code%20alignment%203.png&#34; &gt;
+  &lt;img src=&#34;https://denis-trofimov.github.io/review-of-kevlin-henneys-talk-seven-ineffective-coding-habits-of-many-programmers/habits/_hue80eae6fb2724bcd2df107f3cf38bcb7_145315_7fbdc9a24fe4114b8a104dab4b0105cf.png&#34; alt=&#34;&#34;&gt;
+  &lt;/a&gt;
+  
+
+  
+&lt;/div&gt;
+
+&lt;h1 id=&#34;seven-ineffective-coding-habits-of-many-programmers&#34;&gt;Seven Ineffective Coding Habits of Many Programmers&lt;/h1&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;blockquote&gt;
+&lt;p&gt;noise code&lt;/p&gt;
+&lt;/blockquote&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;blockquote&gt;
+&lt;p&gt;unsustainable spacing&lt;/p&gt;
+&lt;/blockquote&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;blockquote&gt;
+&lt;p&gt;lego naming&lt;/p&gt;
+&lt;/blockquote&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;blockquote&gt;
+&lt;p&gt;underabstraction&lt;/p&gt;
+&lt;/blockquote&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;blockquote&gt;
+&lt;p&gt;unencapsulated state&lt;/p&gt;
+&lt;/blockquote&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;blockquote&gt;
+&lt;p&gt;getters and setters&lt;/p&gt;
+&lt;/blockquote&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;blockquote&gt;
+&lt;p&gt;uncohesive tests&lt;/p&gt;
+&lt;/blockquote&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+
+&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+  &lt;iframe src=&#34;https://www.youtube.com/embed/ZsHMHukIlJY&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; allowfullscreen title=&#34;YouTube Video&#34;&gt;&lt;/iframe&gt;
+&lt;/div&gt;</description>
+    </item>
+    
+    <item>
+      <title>Lessons Learned by Mentoring Programmers repost.</title>
+      <link>https://denis-trofimov.github.io/lessons-learned-by-mentoring-programmers-repost/</link>
+      <pubDate>Wed, 05 Sep 2018 17:28:46 +0000</pubDate>
+      <guid>https://denis-trofimov.github.io/lessons-learned-by-mentoring-programmers-repost/</guid>
+      <description>&lt;p&gt;Hello!&lt;/p&gt;
+
+&lt;p&gt;I got fresh new article from The Simple Programmer blog, &lt;a href=&#34;https://simpleprogrammer.com/lessons-learned-mentoring-programmers/&#34; target=&#34;_blank&#34;&gt;Lessons Learned by Mentoring Programmers&lt;/a&gt; .&lt;/p&gt;
+
+&lt;p&gt;It is a good coincidence, for me it is the right time to get to know about mentoring.&lt;/p&gt;
+
+&lt;p&gt;I will take part the &lt;a href=&#34;https://learn.python.ru/&#34; target=&#34;_blank&#34;&gt;learn.python.ru&lt;/a&gt; course in Moscow as a new curator for a group of 5-6 students. I am totally new to all this field, teaching programming. I am to help students to get well with Python language, answer questions, check they homework, help to plan they project. That course will be 10 weeks long.&lt;/p&gt;
+
+&lt;p&gt;I urge you to read Ryan`s post. It covers the topics:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;blockquote&gt;
+&lt;p&gt;Get well with mentor imposter syndrome.&lt;/p&gt;
+&lt;/blockquote&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;blockquote&gt;
+&lt;p&gt;Encourage your mentee work because they need it.&lt;/p&gt;
+&lt;/blockquote&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;blockquote&gt;
+&lt;p&gt;If the concept is good not nitpick the form.&lt;/p&gt;
+&lt;/blockquote&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;blockquote&gt;
+&lt;p&gt;Your Way Isn’t Always the Only Way.&lt;/p&gt;
+&lt;/blockquote&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;blockquote&gt;
+&lt;p&gt;You Are Not Wasting Their Time.&lt;/p&gt;
+&lt;/blockquote&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;blockquote&gt;
+&lt;p&gt;Use Questions to Collaborate&lt;/p&gt;
+&lt;/blockquote&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Thanks to author &lt;a href=&#34;https://simpleprogrammer.com/author/ryanpalo/&#34; target=&#34;_blank&#34;&gt;Ryan Palo&lt;/a&gt;! Please keep on writing and sharing!&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Pair programming photo CC 2.0 Kang-min Liu &lt;a href=&#34;https://www.flickr.com/photos/gugod/&#34; target=&#34;_blank&#34;&gt;https://www.flickr.com/photos/gugod/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Joining phenomenal machine learning course fast.ai using free Google Colaboratory setup.</title>
+      <link>https://denis-trofimov.github.io/joining-phenomenal-machine-learning-course-fast-ai-using-free-google-colaboratory-setup/</link>
+      <pubDate>Sat, 01 Sep 2018 19:49:22 +0000</pubDate>
+      <guid>https://denis-trofimov.github.io/joining-phenomenal-machine-learning-course-fast-ai-using-free-google-colaboratory-setup/</guid>
+      <description>&lt;h1 id=&#34;joining-phenomenal-deep-learning-course-fast-ai-using-free-google-colaboratory-setup&#34;&gt;Joining phenomenal deep learning course fast.ai using free Google Colaboratory setup.&lt;/h1&gt;
+
+&lt;p&gt;My colleague Ilia Lebedev @melevir at twitter recommended me a cool deep learning course at &lt;a href=&#34;http://course.fast.ai/&#34; target=&#34;_blank&#34;&gt;http://course.fast.ai.&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em class=&#34;markup--em markup--p-em&#34;&gt;Much appreciation to &lt;/em&gt;&lt;a class=&#34;markup--anchor markup--p-anchor&#34; href=&#34;https://twitter.com/jeremyphoward&#34; target=&#34;_blank&#34; rel=&#34;noopener nofollow nofollow noopener nofollow noopener&#34; data-href=&#34;https://twitter.com/jeremyphoward&#34;&gt;&lt;em class=&#34;markup--em markup--p-em&#34;&gt;Jeremy&lt;/em&gt;&lt;/a&gt;&lt;em class=&#34;markup--em markup--p-em&#34;&gt; and &lt;/em&gt;&lt;a class=&#34;markup--anchor markup--p-anchor&#34; href=&#34;https://twitter.com/math_rachel&#34; target=&#34;_blank&#34; rel=&#34;noopener nofollow nofollow noopener nofollow noopener&#34; data-href=&#34;https://twitter.com/math_rachel&#34;&gt;&lt;em class=&#34;markup--em markup--p-em&#34;&gt;Rachel&lt;/em&gt;&lt;/a&gt;&lt;em class=&#34;markup--em markup--p-em&#34;&gt; who gave us this opportunity to learn. &lt;/em&gt;They position themself as a course for software developers, not data scientists. This course is of January 2018, is the second version.&lt;/p&gt;
+
+&lt;p&gt;Listen that the course said for itself.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;h2 id=&#34;you-will-learn-how-to&#34;&gt;YOU WILL LEARN HOW TO:&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;ab-item&#34; href=&#34;http://3.120.115.232/wp-admin/post-new.php&#34; aria-haspopup=&#34;true&#34;&gt;&lt;span class=&#34;ab-label&#34;&gt;New&lt;/span&gt;&lt;/a&gt;&lt;span style=&#34;color: #444444;&#34;&gt;&lt;span style=&#34;font-family: Raleway, Helvetica Neue, Helvetica, Roboto, Arial, sans-serif;&#34;&gt;&lt;span style=&#34;font-size: small;&#34;&gt; Set up your own GPU server in the cloud&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span style=&#34;color: #444444;&#34;&gt;&lt;span style=&#34;font-family: Raleway, Helvetica Neue, Helvetica, Roboto, Arial, sans-serif;&#34;&gt;&lt;span style=&#34;font-size: small;&#34;&gt;Use the fastai and Pytorch libraries in &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;a href=&#34;https://www.python.org/&#34; target=&#34;_blank&#34;&gt;&lt;span style=&#34;color: #dba901;&#34;&gt;&lt;span style=&#34;font-family: Raleway, Helvetica Neue, Helvetica, Roboto, Arial, sans-serif;&#34;&gt;&lt;span style=&#34;font-size: small;&#34;&gt;python&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/a&gt;&lt;span style=&#34;color: #444444;&#34;&gt;&lt;span style=&#34;font-family: Raleway, Helvetica Neue, Helvetica, Roboto, Arial, sans-serif;&#34;&gt;&lt;span style=&#34;font-size: small;&#34;&gt; to train and run deep learning models&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span style=&#34;color: #444444;&#34;&gt;&lt;span style=&#34;font-family: Raleway, Helvetica Neue, Helvetica, Roboto, Arial, sans-serif;&#34;&gt;&lt;span style=&#34;font-size: small;&#34;&gt;Build, debug, and visualize a state of the art convolutional neural network (CNN) for recognizing images&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span style=&#34;color: #444444;&#34;&gt;&lt;span style=&#34;font-family: Raleway, Helvetica Neue, Helvetica, Roboto, Arial, sans-serif;&#34;&gt;&lt;span style=&#34;font-size: small;&#34;&gt;Build state of the art recommendation systems using neural-network based collaborative filtering&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span style=&#34;color: #444444;&#34;&gt;&lt;span style=&#34;font-family: Raleway, Helvetica Neue, Helvetica, Roboto, Arial, sans-serif;&#34;&gt;&lt;span style=&#34;font-size: small;&#34;&gt;Build state of the art time series and structured data models using categorical embeddings&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span style=&#34;color: #444444;&#34;&gt;&lt;span style=&#34;font-family: Raleway, Helvetica Neue, Helvetica, Roboto, Arial, sans-serif;&#34;&gt;&lt;span style=&#34;font-size: small;&#34;&gt;Get great results even from small datasets, by using transfer learning&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span style=&#34;color: #444444;&#34;&gt;&lt;span style=&#34;font-family: Raleway, Helvetica Neue, Helvetica, Roboto, Arial, sans-serif;&#34;&gt;&lt;span style=&#34;font-size: small;&#34;&gt;Understand the components of a neural network, including activation functions, dense and convolutional layers, and optimizers&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span style=&#34;color: #444444;&#34;&gt;&lt;span style=&#34;font-family: Raleway, Helvetica Neue, Helvetica, Roboto, Arial, sans-serif;&#34;&gt;&lt;span style=&#34;font-size: small;&#34;&gt;Build, debug, and visualize a recurrent neural network (RNN) for natural language processing (NLP), including developing a sentiment classifier which beat all previous academic benchmarks.&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span style=&#34;color: #444444;&#34;&gt;&lt;span style=&#34;font-family: Raleway, Helvetica Neue, Helvetica, Roboto, Arial, sans-serif;&#34;&gt;&lt;span style=&#34;font-size: small;&#34;&gt;Recognize and deal with over-fitting, by using data augmentation, dropout, batch normalization, and similar techniques&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;back-to-a-setup-for-fast-ai-course-using-free-google-colaboratory&#34;&gt;Back to a setup for fast.ai course using free Google Colaboratory.&lt;/h2&gt;
+
+&lt;p&gt;In this post, I will show how to use organize setup of &lt;a class=&#34;markup--anchor markup--p-anchor&#34; href=&#34;https://colab.research.google.com/&#34; target=&#34;_blank&#34; rel=&#34;nofollow noopener&#34; data-href=&#34;https://colab.research.google.com/&#34;&gt;Google Colaboratory&lt;/a&gt; for the fast.ai deep learning course. You should repeat this simple steps every time you connect to a new GPU.&lt;/p&gt;
+
+&lt;p&gt;In order to train a neural network, we will most certainly need Graphics Processing Unit (GPU)  &amp;#8211; and not everyone have a fast one. Without a decent GPU a singe step will last for hours instead of minutes. Sign-up to &lt;a class=&#34;markup--anchor markup--p-anchor&#34; href=&#34;https://colab.research.google.com/&#34; target=&#34;_blank&#34; rel=&#34;nofollow noopener&#34; data-href=&#34;https://colab.research.google.com/&#34;&gt;Google Colaboratory&lt;/a&gt; to get a hosted Jupyter notebook environment connected&lt;strong class=&#34;markup--strong markup--p-strong&#34;&gt; &lt;/strong&gt;with a &lt;strong&gt;free&lt;/strong&gt; Tesla K80 GPU.&lt;/p&gt;
+
+&lt;p&gt;You can use GPU as a backend free for 12 hours at a time. That is very good news for us!&lt;figure id=&#34;6aed&#34; class=&#34;graf graf--figure graf-after--p&#34;&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;the-steps-to-repeat-every-time-you-connect-to-a-new-gpu-aspectratioplaceholder-is-locked&#34;&gt;The steps to repeat every time you connect to a new GPU. {.aspectRatioPlaceholder.is-locked}&lt;/h2&gt;
+
+&lt;h3 id=&#34;setup-step-0-select-free-gpu&#34;&gt;Setup step 0: Select Free GPU&lt;/h3&gt;
+
+&lt;p id=&#34;7ecb&#34; class=&#34;graf graf--p graf-after--h3&#34;&gt;
+  It is so simple to alter default hardware &lt;strong class=&#34;markup--strong markup--p-strong&#34;&gt;(CPU to GPU or vice versa)&lt;/strong&gt;; just follow &lt;strong class=&#34;markup--strong markup--p-strong&#34;&gt;Edit &gt; Notebook settings&lt;/strong&gt; or &lt;strong class=&#34;markup--strong markup--p-strong&#34;&gt;Runtime&gt;Change runtime type &lt;/strong&gt;and &lt;strong class=&#34;markup--strong markup--p-strong&#34;&gt;select GPU &lt;/strong&gt;as &lt;strong class=&#34;markup--strong markup--p-strong&#34;&gt;Hardware accelerator&lt;/strong&gt;.
+&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;Open-Jupyter-notebook-settings-of-Google-Colaboratory.png&#34; alt=&#34;Open Jupyter notebook settings of Google Colaboratory&#34; title=&#34;Open Jupyter notebook settings of Google Colaboratory&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;Select-a-free-Tesla-K80-GPU-in-Jupyter-notebook-settings-of-Google-Colaboratory.png&#34; alt=&#34;Select a free Tesla K80 GPU in Jupyter notebook settings of Google Colaboratory&#34; title=&#34;Select a free Tesla K80 GPU in Jupyter notebook settings of Google Colaboratory&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;setup-step-1-install-libraries-for-fast-ai-course&#34;&gt;Setup step 1: install libraries for fast.ai course.&lt;/h3&gt;
+
+&lt;p&gt;Enter this code in a new code block on top of a notebook:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# Install torch compatible with fastai
+from os import path
+from wheel.pep425tags import get_abbr_impl, get_impl_ver, get_abi_tag
+platform = &#39;{}{}-{}&#39;.format(get_abbr_impl(), get_impl_ver(), get_abi_tag())
+accelerator = &#39;cu80&#39; if path.exists(&#39;/opt/bin/nvidia-smi&#39;) else &#39;cpu&#39;
+!pip install -q http://download.pytorch.org/whl/{accelerator}/torch-0.3.1-{platform}-linux_x86_64.whl fastai torchvision
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This will take a while.&lt;/p&gt;
+
+&lt;h3 id=&#34;setup-step-2-model-weights-download&#34;&gt;Setup step 2: model weights download.&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# Model weights for other network architectures (e.g. resnext50):
+!wget -q http://files.fast.ai/models/weights.tgz &amp;amp;&amp;amp; tar -xzf weights.tgz -C /usr/local/lib/python3.6/dist-packages/fastai
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The step 2 will take a while too, need to download and unpack 1.1 Gb.&lt;/p&gt;
+
+&lt;h3 id=&#34;setup-step-3-dataset-download&#34;&gt;Setup step 3: dataset download.&lt;/h3&gt;
+
+&lt;p&gt;For lesson 1, 2, 3 you need dogs $ cats dataset. This code does it. The dataset dogs &amp;amp; cats is available at &lt;a href=&#34;http://files.fast.ai/data/dogscats.zip&#34; target=&#34;_blank&#34;&gt;http://files.fast.ai/data/dogscats.zip&lt;/a&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;!mkdir -p data
+!wget -q http://files.fast.ai/data/dogscats.zip
+!unzip -q dogscats.zip -d data/
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Some lessons as 2nd use Kaggle datasets, but it is a theme for another article.&lt;/p&gt;
+
+&lt;p&gt;Summary of all my setup steps you can copy from my Github Gist &lt;strong class=&#34;gist-header-title css-truncate-target&#34;&gt;&lt;a href=&#34;https://gist.github.com/denis-trofimov/77f8b6418b9ef4b45adca7ed587462d2&#34;&gt;Fast.ai install script.py.&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;I will try to keep it updated as long as I have interest in fast.ai and Google Colaboratory.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>What easy questions on Javascript I can ask?</title>
+      <link>https://denis-trofimov.github.io/what-easy-questions-on-javascript-i-can-ask/</link>
+      <pubDate>Mon, 25 Jun 2018 23:29:33 +0000</pubDate>
+      <guid>https://denis-trofimov.github.io/what-easy-questions-on-javascript-i-can-ask/</guid>
+      <description>&lt;p&gt;In this post I speak about some basic Javascript quesions and answers, which I have made passing throught course &lt;a href=&#34;https://simpleprogrammer.com/store/products/javascript-launchpad/?c=jslp70&amp;amp;utm_source=drip&amp;amp;utm_medium=email&amp;amp;utm_campaign=js-launchpad-sale&amp;amp;utm_content=js-launchpad-sale-email-2&amp;amp;__s=25hdpkywdqsodfst7mgj&amp;amp;utm_source=drip&amp;amp;utm_medium=email&amp;amp;utm_campaign=JavaScript+LaunchPad+Introduction&amp;amp;utm_content=Q%26A+about+JavaScript+LaunchPad&#34; target=&#34;_blank&#34;&gt;&lt;strong&gt;JavaScript LaunchPad&lt;/strong&gt;&lt;/a&gt; &lt;strong&gt;by&lt;/strong&gt; &lt;strong&gt;&lt;a href=&#34;https://simpleprogrammer.com/&#34; target=&#34;_blank&#34;&gt;Simple Programmer.com.&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;I have interviewed 3 persons in the year 2017 for developer position to the company I work for, Vzor Systems LLC.&lt;/p&gt;
+
+&lt;p&gt;It turned out that to prepare for interview from the interviewer side one should do some effort. If the company is not a big but a small startup, it is my job as interviewer to think of questions and written tests to check a candidate`s skills and knowledge. One time I was looking for typical questions on interview for C++ developer position.&lt;/p&gt;
+
+&lt;p&gt;Having an interviewer field of view in mind, I created this questions list when I have finished first &lt;strong&gt;&lt;a href=&#34;https://simpleprogrammer.com/store/products/javascript-launchpad/?c=jslp70&amp;amp;utm_source=drip&amp;amp;utm_medium=email&amp;amp;utm_campaign=js-launchpad-sale&amp;amp;utm_content=js-launchpad-sale-email-2&amp;amp;__s=25hdpkywdqsodfst7mgj&amp;amp;utm_source=drip&amp;amp;utm_medium=email&amp;amp;utm_campaign=JavaScript+LaunchPad+Introduction&amp;amp;utm_content=Q%26A+about+JavaScript+LaunchPad&#34; target=&#34;_blank&#34;&gt;JavaScript LaunchPad&lt;/a&gt; &lt;/strong&gt;chapter &amp;#8220;&lt;strong&gt;Execution Contexts and Lexical Environments&amp;#8221;.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;span-style-font-weight-400-the-execution-context-8211-creation-hoisting-span&#34;&gt;&lt;span style=&#34;font-weight: 400;&#34;&gt;The Execution Context &amp;#8211; Creation &amp;amp; Hoisting&lt;/span&gt;&lt;/h2&gt;
+
+&lt;h3 id=&#34;question-what-this-code-give-to-the-console&#34;&gt;Question: What this code give to the console?&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;b();
+console.log(a);
+var a = &#39;Hello World!&#39;;
+function b() {
+  console.log(&#39;Called b!&#39;);
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;answer&#34;&gt;Answer:&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;Called b!
+Hello World!
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;span-style-font-weight-400-functions-context-and-variable-environments-span&#34;&gt;&lt;span style=&#34;font-weight: 400;&#34;&gt;Functions, Context, and Variable Environments&lt;/span&gt;&lt;/h2&gt;
+
+&lt;h3 id=&#34;question-what-this-code-give-to-the-console-1&#34;&gt;Question: What this code give to the console?&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;function b() {
+  var myVar;
+  console.log(myVar);
+}
+function a() {
+  var myVar = 2;
+  console.log(myVar);
+  b();
+}
+var myVar = 1;
+console.log(myVar);
+a();
+console.log(myVar);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;answer-1&#34;&gt;Answer:&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;1
+2
+1
+1
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;span-style-font-weight-400-the-scope-chain-span&#34;&gt;&lt;span style=&#34;font-weight: 400;&#34;&gt;The Scope Chain&lt;/span&gt;&lt;/h2&gt;
+
+&lt;h3 id=&#34;question-what-this-code-give-to-the-console-2&#34;&gt;Question: What this code give to the console?&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;function a() {
+  function b() {
+    console.log(myVar);
+  }
+  b();
+}
+var myVar = 1;
+a();
+b();
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;answer-2&#34;&gt;Answer:&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;1
+Uncaught ReferenceError: b is not defined
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;span-style-font-weight-400-what-about-asynchronous-callbacks-span&#34;&gt;&lt;span style=&#34;font-weight: 400;&#34;&gt;What About Asynchronous Callbacks&lt;/span&gt;&lt;/h2&gt;
+
+&lt;h3 id=&#34;question-what-this-code-give-to-the-console-3&#34;&gt;Question: What this code give to the console?&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;// long running function
+function waitThreeSeconds() {
+  var ms = 3000 + new Date().getTime();
+  while (new Date() &amp;lt; ms){}
+  console.log(&#39;finished function&#39;);
+}
+function clickHandler() {
+  console.log(&#39;click event!&#39;);
+}
+// listen for the click event
+document.addEventListener(&#39;click&#39;, clickHandler);
+waitThreeSeconds();
+console.log(&#39;finished execution&#39;);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;answer-3&#34;&gt;Answer:&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;finished function
+finished execution
+click event!
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    
+    <item>
+      <title>10 Known Open Source Projects in Iris Recognition 2018</title>
+      <link>https://denis-trofimov.github.io/10-known-open-source-projects-in-iris-recognition-2018/</link>
+      <pubDate>Wed, 06 Jun 2018 20:33:50 +0000</pubDate>
+      <guid>https://denis-trofimov.github.io/10-known-open-source-projects-in-iris-recognition-2018/</guid>
+      <description>&lt;p&gt;&lt;span style=&#34;font-weight: 400;&#34;&gt;I found this pretty good list of &lt;/span&gt;&lt;a href=&#34;https://kiennguyenstuff.wordpress.com/2016/07/14/iris-recognition-open-source-codes/&#34; target=&#34;_blank&#34;&gt;&lt;span style=&#34;font-weight: 400;&#34;&gt;Iris Recognition open-source codes&lt;/span&gt;&lt;/a&gt;&lt;span style=&#34;font-weight: 400;&#34;&gt;. I am really appreciate work of the first author, &lt;/span&gt;&lt;a href=&#34;https://kiennguyenstuff.wordpress.com/author/thanhkien84/&#34; target=&#34;_blank&#34;&gt;&lt;span style=&#34;font-weight: 400;&#34;&gt;thanhkien84&lt;/span&gt;&lt;/a&gt;&lt;span style=&#34;font-weight: 400;&#34;&gt;. I asked myself, how to improve it? I have decided to add my value.&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;span style=&#34;font-weight: 400;&#34;&gt;I have checked all links and found replacements for stale links to projects &lt;/span&gt;&lt;span style=&#34;font-weight: 400;&#34;&gt;OSIRIS, UND.&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;span style=&#34;font-weight: 400;&#34;&gt;In the year 2003 there was only one iris recognition open source code from Libor Masek. His source code, written in Matlab, has been the baseline for generations of iris recognition coders. Recently there are a number of new open source codes come up. They are more mature and meet state-of-the-art accuracy. I summarise them in a list here for your reference.&lt;/span&gt;&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;tr&gt;
+    &lt;td rowspan=&#34;2&#34;&gt;
+      &lt;h2&gt;
+        &lt;b&gt;I&lt;/b&gt;&lt;span style=&#34;font-weight: 400;&#34;&gt;ris recognition projects&lt;/span&gt;
+      &lt;/h2&gt;
+    &lt;/td&gt;
+    
+    &lt;td rowspan=&#34;2&#34;&gt;
+      &lt;b&gt;Year/ Language&lt;/b&gt;
+    &lt;/td&gt;
+    
+    &lt;td rowspan=&#34;2&#34;&gt;
+      &lt;b&gt;Approach&lt;/b&gt;
+    &lt;/td&gt;
+    
+    &lt;td colspan=&#34;3&#34;&gt;
+      &lt;b&gt;Performance (EER)&lt;/b&gt;
+    &lt;/td&gt;
+  &lt;/tr&gt;
+  
+  &lt;tr&gt;
+    &lt;td&gt;
+      &lt;b&gt;ICE 2005&lt;/b&gt;
+    &lt;/td&gt;
+    
+    &lt;td&gt;
+      &lt;b&gt;MBGC portal&lt;/b&gt;
+    &lt;/td&gt;
+    
+    &lt;td&gt;
+      &lt;b&gt;CASIA&lt;/b&gt;
+    &lt;/td&gt;
+  &lt;/tr&gt;
+  
+  &lt;tr&gt;
+    &lt;td&gt;
+      &lt;span style=&#34;font-weight: 400;&#34;&gt;Libor Masek [&lt;/span&gt;&lt;a href=&#34;http://www.peterkovesi.com/studentprojects/libor/&#34;&gt;&lt;span style=&#34;font-weight: 400;&#34;&gt;project&lt;/span&gt;&lt;/a&gt;&lt;span style=&#34;font-weight: 400;&#34;&gt;]&lt;/span&gt;
+    &lt;/td&gt;
+    
+    &lt;td&gt;
+      &lt;span style=&#34;font-weight: 400;&#34;&gt;2003,&lt;/span&gt;&lt;/p&gt; 
+      
+      &lt;p&gt;
+        &lt;span style=&#34;font-weight: 400;&#34;&gt;Matlab&lt;/span&gt;&lt;/td&gt; 
+        
+        &lt;td&gt;
+          &lt;span style=&#34;font-weight: 400;&#34;&gt;Hough Circle + 1D Log-Gabor&lt;/span&gt;
+        &lt;/td&gt;
+        
+        &lt;td&gt;
+        &lt;/td&gt;
+        
+        &lt;td&gt;
+        &lt;/td&gt;
+        
+        &lt;td&gt;
+        &lt;/td&gt;&lt;/tr&gt; 
+        
+        &lt;tr&gt;
+          &lt;td&gt;
+            &lt;span style=&#34;font-weight: 400;&#34;&gt;OSIRIS 4.1 [&lt;/span&gt;&lt;a href=&#34;http://svnext.it-sudparis.eu/svnview2-eph/ref_syst/Iris_Osiris_v4.1/&#34;&gt;&lt;span style=&#34;font-weight: 400;&#34;&gt;project dead link&lt;/span&gt;&lt;/a&gt;&lt;span style=&#34;font-weight: 400;&#34;&gt;]&lt;/span&gt;
+          &lt;/td&gt;
+          
+          &lt;td&gt;
+            &lt;span style=&#34;font-weight: 400;&#34;&gt;2013,&lt;/span&gt;&lt;/p&gt; 
+            
+            &lt;p&gt;
+              &lt;span style=&#34;font-weight: 400;&#34;&gt;C++&lt;/span&gt;&lt;/td&gt; 
+              
+              &lt;td&gt;
+                &lt;span style=&#34;font-weight: 400;&#34;&gt;Least square, Circle + 2D Gabor&lt;/span&gt;
+              &lt;/td&gt;
+              
+              &lt;td&gt;
+                &lt;span style=&#34;font-weight: 400;&#34;&gt;1.09%&lt;/span&gt;
+              &lt;/td&gt;
+              
+              &lt;td&gt;
+              &lt;/td&gt;
+              
+              &lt;td&gt;
+              &lt;/td&gt;&lt;/tr&gt; 
+              
+              &lt;tr&gt;
+                &lt;td&gt;
+                  &lt;span style=&#34;font-weight: 400;&#34;&gt;5455945&lt;/span&gt;&lt;span style=&#34;font-weight: 400;&#34;&gt;/&lt;/span&gt;&lt;a href=&#34;https://github.com/5455945/Iris_Osiris&#34;&gt;&lt;span style=&#34;font-weight: 400;&#34;&gt;Iris_Osiris&lt;/span&gt;&lt;/a&gt;&lt;/p&gt; 
+                  
+                  &lt;p&gt;
+                    &lt;span style=&#34;font-weight: 400;&#34;&gt;(OSIRIS 4.1 fork) &lt;/span&gt;&lt;span style=&#34;font-weight: 400;&#34;&gt;Support OpenCV3.0+,OpenCV2.4.13&lt;/span&gt;&lt;/td&gt; 
+                    
+                    &lt;td&gt;
+                      &lt;span style=&#34;font-weight: 400;&#34;&gt;2017, C++&lt;/span&gt;
+                    &lt;/td&gt;
+                    
+                    &lt;td&gt;
+                      &lt;span style=&#34;font-weight: 400;&#34;&gt;Same as OSIRIS 4.1&lt;/span&gt;
+                    &lt;/td&gt;
+                    
+                    &lt;td&gt;
+                    &lt;/td&gt;
+                    
+                    &lt;td&gt;
+                    &lt;/td&gt;
+                    
+                    &lt;td&gt;
+                    &lt;/td&gt;&lt;/tr&gt; 
+                    
+                    &lt;tr&gt;
+                      &lt;td&gt;
+                        &lt;a href=&#34;https://github.com/vonclites/syris&#34;&gt;&lt;span style=&#34;font-weight: 400;&#34;&gt;Python interface to OSIRIS Iris Segmentation and Recognition software &lt;/span&gt;&lt;/a&gt;&lt;span style=&#34;font-weight: 400;&#34;&gt;(OSIRIS 4.1 fork)&lt;/span&gt;
+                      &lt;/td&gt;
+                      
+                      &lt;td&gt;
+                        &lt;span style=&#34;font-weight: 400;&#34;&gt;2017, Python&lt;/span&gt;
+                      &lt;/td&gt;
+                      
+                      &lt;td&gt;
+                        &lt;span style=&#34;font-weight: 400;&#34;&gt;Same as OSIRIS 4.1&lt;/span&gt;
+                      &lt;/td&gt;
+                      
+                      &lt;td&gt;
+                      &lt;/td&gt;
+                      
+                      &lt;td&gt;
+                      &lt;/td&gt;
+                      
+                      &lt;td&gt;
+                      &lt;/td&gt;
+                    &lt;/tr&gt;
+                    
+                    &lt;tr&gt;
+                      &lt;td&gt;
+                        &lt;span style=&#34;font-weight: 400;&#34;&gt;VASIR 2.2 [&lt;/span&gt;&lt;a href=&#34;http://www.nist.gov/itl/iad/ig/vasir.cfm&#34;&gt;&lt;span style=&#34;font-weight: 400;&#34;&gt;project&lt;/span&gt;&lt;/a&gt;&lt;span style=&#34;font-weight: 400;&#34;&gt;]&lt;/span&gt;
+                      &lt;/td&gt;
+                      
+                      &lt;td&gt;
+                        &lt;span style=&#34;font-weight: 400;&#34;&gt;2013,&lt;/span&gt;&lt;/p&gt; 
+                        
+                        &lt;p&gt;
+                          &lt;span style=&#34;font-weight: 400;&#34;&gt;C++&lt;/span&gt;&lt;/td&gt; 
+                          
+                          &lt;td&gt;
+                            &lt;span style=&#34;font-weight: 400;&#34;&gt;Circle + 2D Gabor&lt;/span&gt;
+                          &lt;/td&gt;
+                          
+                          &lt;td&gt;
+                            &lt;span style=&#34;font-weight: 400;&#34;&gt;3.5%&lt;/span&gt;
+                          &lt;/td&gt;
+                          
+                          &lt;td&gt;
+                            &lt;span style=&#34;font-weight: 400;&#34;&gt;13.9% best quality frame&lt;/span&gt;&lt;/p&gt; 
+                            
+                            &lt;p&gt;
+                              &lt;span style=&#34;font-weight: 400;&#34;&gt;30.6% all frames&lt;/span&gt;&lt;/td&gt; 
+                              
+                              &lt;td&gt;
+                              &lt;/td&gt;&lt;/tr&gt; 
+                              
+                              &lt;tr&gt;
+                                &lt;td&gt;
+                                  &lt;span style=&#34;font-weight: 400;&#34;&gt;NonidealIRIS [project]&lt;/span&gt;
+                                &lt;/td&gt;
+                                
+                                &lt;td&gt;
+                                  &lt;span style=&#34;font-weight: 400;&#34;&gt;2006,&lt;/span&gt;&lt;/p&gt; 
+                                  
+                                  &lt;p&gt;
+                                    &lt;span style=&#34;font-weight: 400;&#34;&gt;Matlab&lt;/span&gt;&lt;/td&gt; 
+                                    
+                                    &lt;td&gt;
+                                      &lt;span style=&#34;font-weight: 400;&#34;&gt;Ellipse +  2D, Gabor&lt;/span&gt;
+                                    &lt;/td&gt;
+                                    
+                                    &lt;td&gt;
+                                    &lt;/td&gt;
+                                    
+                                    &lt;td&gt;
+                                    &lt;/td&gt;
+                                    
+                                    &lt;td&gt;
+                                    &lt;/td&gt;&lt;/tr&gt; 
+                                    
+                                    &lt;tr&gt;
+                                      &lt;td&gt;
+                                        &lt;span style=&#34;font-weight: 400;&#34;&gt;USIT&lt;/span&gt;&lt;/p&gt; 
+                                        
+                                        &lt;p&gt;
+                                          &lt;span style=&#34;font-weight: 400;&#34;&gt;[&lt;/span&gt;&lt;a href=&#34;http://www.wavelab.at/sources/USIT/&#34;&gt;&lt;span style=&#34;font-weight: 400;&#34;&gt;project&lt;/span&gt;&lt;/a&gt;&lt;span style=&#34;font-weight: 400;&#34;&gt;]&lt;/span&gt;&lt;/td&gt; 
+                                          
+                                          &lt;td&gt;
+                                            &lt;span style=&#34;font-weight: 400;&#34;&gt;2016,&lt;/span&gt;&lt;/p&gt; 
+                                            
+                                            &lt;p&gt;
+                                              &lt;span style=&#34;font-weight: 400;&#34;&gt;C++&lt;/span&gt;&lt;/td&gt; 
+                                              
+                                              &lt;td&gt;
+                                                &lt;span style=&#34;font-weight: 400;&#34;&gt;Circle/Ellipse+&lt;/span&gt;&lt;/p&gt; 
+                                                
+                                                &lt;p&gt;
+                                                  &lt;span style=&#34;font-weight: 400;&#34;&gt;1D Log Gabor/&lt;/span&gt;
+                                                &lt;/p&gt;
+                                                
+                                                &lt;p&gt;
+                                                  &lt;span style=&#34;font-weight: 400;&#34;&gt;2D Gabor/&lt;/span&gt;
+                                                &lt;/p&gt;
+                                                
+                                                &lt;p&gt;
+                                                  &lt;span style=&#34;font-weight: 400;&#34;&gt;DCT/ SIFT/&lt;/span&gt;
+                                                &lt;/p&gt;
+                                                
+                                                &lt;p&gt;
+                                                  &lt;span style=&#34;font-weight: 400;&#34;&gt;SURF/LBP&lt;/span&gt;&lt;/td&gt; 
+                                                  
+                                                  &lt;td&gt;
+                                                  &lt;/td&gt;
+                                                  
+                                                  &lt;td&gt;
+                                                  &lt;/td&gt;
+                                                  
+                                                  &lt;td&gt;
+                                                    &lt;span style=&#34;font-weight: 400;&#34;&gt;0.82%&lt;/span&gt;
+                                                  &lt;/td&gt;&lt;/tr&gt; 
+                                                  
+                                                  &lt;tr&gt;
+                                                    &lt;td&gt;
+                                                      &lt;span style=&#34;font-weight: 400;&#34;&gt;UND&lt;/span&gt;&lt;/p&gt; 
+                                                      
+                                                      &lt;p&gt;
+                                                        &lt;span style=&#34;font-weight: 400;&#34;&gt;[&lt;/span&gt;&lt;a href=&#34;https://ideacenter.nd.edu/commercialization-engine/for-industry/available-technologies/software-available-for-license/iris-recognition-based-on-human-intrepretable-features/&#34;&gt;&lt;span style=&#34;font-weight: 400;&#34;&gt;project&lt;/span&gt;&lt;/a&gt;&lt;span style=&#34;font-weight: 400;&#34;&gt;]&lt;/span&gt;&lt;/td&gt; 
+                                                        
+                                                        &lt;td&gt;
+                                                          &lt;span style=&#34;font-weight: 400;&#34;&gt;2016,&lt;/span&gt;&lt;/p&gt; 
+                                                          
+                                                          &lt;p&gt;
+                                                            &lt;span style=&#34;font-weight: 400;&#34;&gt;Matlab&lt;/span&gt;&lt;/td&gt; 
+                                                            
+                                                            &lt;td&gt;
+                                                              &lt;span style=&#34;font-weight: 400;&#34;&gt;Circle,&lt;/span&gt;&lt;/p&gt; 
+                                                              
+                                                              &lt;p&gt;
+                                                                &lt;span style=&#34;font-weight: 400;&#34;&gt;Crypts features&lt;/span&gt;&lt;/td&gt; 
+                                                                
+                                                                &lt;td&gt;
+                                                                  &lt;span style=&#34;font-weight: 400;&#34;&gt;3.58%&lt;/span&gt;
+                                                                &lt;/td&gt;
+                                                                
+                                                                &lt;td&gt;
+                                                                &lt;/td&gt;
+                                                                
+                                                                &lt;td&gt;
+                                                                  &lt;span style=&#34;font-weight: 400;&#34;&gt;1.39%&lt;/span&gt;
+                                                                &lt;/td&gt;&lt;/tr&gt; 
+                                                                
+                                                                &lt;tr&gt;
+                                                                  &lt;td colspan=&#34;6&#34;&gt;
+                                                                    &lt;h2&gt;
+                                                                      &lt;span style=&#34;font-weight: 400;&#34;&gt;Iris segmentation only&lt;/span&gt;
+                                                                    &lt;/h2&gt;
+                                                                  &lt;/td&gt;
+                                                                &lt;/tr&gt;
+                                                                
+                                                                &lt;tr&gt;
+                                                                  &lt;td&gt;
+                                                                    &lt;span style=&#34;font-weight: 400;&#34;&gt;IrisSeg [&lt;/span&gt;&lt;a href=&#34;https://github.com/cdac-cvml/IrisSeg&#34;&gt;&lt;span style=&#34;font-weight: 400;&#34;&gt;project&lt;/span&gt;&lt;/a&gt;&lt;span style=&#34;font-weight: 400;&#34;&gt;]&lt;/span&gt;
+                                                                  &lt;/td&gt;
+                                                                  
+                                                                  &lt;td&gt;
+                                                                    &lt;span style=&#34;font-weight: 400;&#34;&gt;2017,&lt;/span&gt;&lt;/p&gt; 
+                                                                    
+                                                                    &lt;p&gt;
+                                                                      &lt;span style=&#34;font-weight: 400;&#34;&gt;Matlab&lt;/span&gt;&lt;/td&gt; 
+                                                                      
+                                                                      &lt;td&gt;
+                                                                      &lt;/td&gt;
+                                                                      
+                                                                      &lt;td&gt;
+                                                                        &lt;span style=&#34;font-weight: 400;&#34;&gt;ICB 2016&lt;/span&gt;
+                                                                      &lt;/td&gt;
+                                                                      
+                                                                      &lt;td colspan=&#34;2&#34;&gt;
+                                                                        &lt;span style=&#34;font-weight: 400;&#34;&gt;IrisSeg: A Fast and Robust Iris Segmentation Framework for Non-Ideal Iris Images&lt;/span&gt;
+                                                                      &lt;/td&gt;&lt;/tr&gt; 
+                                                                      
+                                                                      &lt;tr&gt;
+                                                                        &lt;td&gt;
+                                                                          &lt;span style=&#34;font-weight: 400;&#34;&gt;IAADseg&lt;/span&gt;&lt;/p&gt; 
+                                                                          
+                                                                          &lt;p&gt;
+                                                                            &lt;span style=&#34;font-weight: 400;&#34;&gt;[&lt;/span&gt;&lt;a href=&#34;http://www4.comp.polyu.edu.hk/~csajaykr/tvmiris.htm&#34;&gt;&lt;span style=&#34;font-weight: 400;&#34;&gt;project&lt;/span&gt;&lt;/a&gt;&lt;span style=&#34;font-weight: 400;&#34;&gt;]&lt;/span&gt;&lt;/td&gt; 
+                                                                            
+                                                                            &lt;td&gt;
+                                                                              &lt;span style=&#34;font-weight: 400;&#34;&gt;2015,&lt;/span&gt;&lt;/p&gt; 
+                                                                              
+                                                                              &lt;p&gt;
+                                                                                &lt;span style=&#34;font-weight: 400;&#34;&gt;Matlab&lt;/span&gt;&lt;/td&gt; 
+                                                                                
+                                                                                &lt;td&gt;
+                                                                                  &lt;span style=&#34;font-weight: 400;&#34;&gt;Total-variation&lt;/span&gt;
+                                                                                &lt;/td&gt;
+                                                                                
+                                                                                &lt;td&gt;
+                                                                                  &lt;span style=&#34;font-weight: 400;&#34;&gt;ICCV 2015&lt;/span&gt;
+                                                                                &lt;/td&gt;
+                                                                                
+                                                                                &lt;td colspan=&#34;2&#34;&gt;
+                                                                                  &lt;span style=&#34;font-weight: 400;&#34;&gt;An Accurate Iris Segmentation Framework under Relaxed Imaging Constraints using Total Variation Model&lt;/span&gt;
+                                                                                &lt;/td&gt;&lt;/tr&gt; 
+                                                                                
+                                                                                &lt;tr&gt;
+                                                                                  &lt;td&gt;
+                                                                                    &lt;span style=&#34;font-weight: 400;&#34;&gt;IrisSeg&lt;/span&gt;&lt;/p&gt; 
+                                                                                    
+                                                                                    &lt;p&gt;
+                                                                                      &lt;span style=&#34;font-weight: 400;&#34;&gt;[&lt;/span&gt;&lt;a href=&#34;https://github.com/sbanerj1/IrisSeg&#34;&gt;&lt;span style=&#34;font-weight: 400;&#34;&gt;project&lt;/span&gt;&lt;/a&gt;&lt;span style=&#34;font-weight: 400;&#34;&gt;]&lt;/span&gt;&lt;/td&gt; 
+                                                                                      
+                                                                                      &lt;td&gt;
+                                                                                        &lt;span style=&#34;font-weight: 400;&#34;&gt;2015,&lt;/span&gt;&lt;/p&gt; 
+                                                                                        
+                                                                                        &lt;p&gt;
+                                                                                          &lt;span style=&#34;font-weight: 400;&#34;&gt;Python&lt;/span&gt;&lt;/td&gt; 
+                                                                                          
+                                                                                          &lt;td&gt;
+                                                                                            &lt;span style=&#34;font-weight: 400;&#34;&gt;Geodesic Active Contours and GrabCut&lt;/span&gt;
+                                                                                          &lt;/td&gt;
+                                                                                          
+                                                                                          &lt;td&gt;
+                                                                                            &lt;span style=&#34;font-weight: 400;&#34;&gt;PSIVT 2015&lt;/span&gt;
+                                                                                          &lt;/td&gt;
+                                                                                          
+                                                                                          &lt;td colspan=&#34;2&#34;&gt;
+                                                                                            &lt;span style=&#34;font-weight: 400;&#34;&gt;Iris Segmentation using Geodesic Active Contours and GrabCut&lt;/span&gt;
+                                                                                          &lt;/td&gt;&lt;/tr&gt; &lt;/tbody&gt; &lt;/table&gt; 
+                                                                                          
+
+&lt;pre&gt;&lt;code&gt;                                                                                      &amp;lt;p&amp;gt;
+                                                                                        &amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;Iris datasets to consider:&amp;lt;/span&amp;gt;
+                                                                                      &amp;lt;/p&amp;gt;
+
+                                                                                      &amp;lt;table&amp;gt;
+                                                                                        &amp;lt;tr&amp;gt;
+                                                                                          &amp;lt;td&amp;gt;
+                                                                                            &amp;lt;b&amp;gt;Dataset&amp;lt;/b&amp;gt;
+                                                                                          &amp;lt;/td&amp;gt;
+
+                                                                                          &amp;lt;td&amp;gt;
+                                                                                            &amp;lt;b&amp;gt; Subset&amp;lt;/b&amp;gt;
+                                                                                          &amp;lt;/td&amp;gt;
+
+                                                                                          &amp;lt;td&amp;gt;
+                                                                                            &amp;lt;b&amp;gt;Number of&amp;lt;/b&amp;gt;&amp;lt;/p&amp;gt; 
+
+                                                                                            &amp;lt;p&amp;gt;
+                                                                                              &amp;lt;b&amp;gt;subjects&amp;lt;/b&amp;gt;&amp;lt;/td&amp;gt; 
+
+                                                                                              &amp;lt;td&amp;gt;
+                                                                                                &amp;lt;b&amp;gt;Number of&amp;lt;/b&amp;gt;&amp;lt;/p&amp;gt; 
+
+                                                                                                &amp;lt;p&amp;gt;
+                                                                                                  &amp;lt;b&amp;gt;images&amp;lt;/b&amp;gt;&amp;lt;/td&amp;gt; 
+
+                                                                                                  &amp;lt;td&amp;gt;
+                                                                                                    &amp;lt;b&amp;gt;Spectrum&amp;lt;/b&amp;gt;
+                                                                                                  &amp;lt;/td&amp;gt;
+
+                                                                                                  &amp;lt;td&amp;gt;
+                                                                                                    &amp;lt;b&amp;gt;Note&amp;lt;/b&amp;gt;
+                                                                                                  &amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt; 
+
+                                                                                                  &amp;lt;tr&amp;gt;
+                                                                                                    &amp;lt;td rowspan=&amp;quot;6&amp;quot;&amp;gt;
+                                                                                                      &amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;CASIA&amp;lt;/span&amp;gt;
+                                                                                                    &amp;lt;/td&amp;gt;
+
+                                                                                                    &amp;lt;td&amp;gt;
+                                                                                                      &amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;CASIA-Iris-Thousand&amp;lt;/span&amp;gt;
+                                                                                                    &amp;lt;/td&amp;gt;
+
+                                                                                                    &amp;lt;td&amp;gt;
+                                                                                                      &amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;10,000&amp;lt;/span&amp;gt;
+                                                                                                    &amp;lt;/td&amp;gt;
+
+                                                                                                    &amp;lt;td&amp;gt;
+                                                                                                      &amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;20,000&amp;lt;/span&amp;gt;
+                                                                                                    &amp;lt;/td&amp;gt;
+
+                                                                                                    &amp;lt;td&amp;gt;
+                                                                                                      &amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;NIR&amp;lt;/span&amp;gt;
+                                                                                                    &amp;lt;/td&amp;gt;
+
+                                                                                                    &amp;lt;td&amp;gt;
+                                                                                                    &amp;lt;/td&amp;gt;
+                                                                                                  &amp;lt;/tr&amp;gt;
+
+                                                                                                  &amp;lt;tr&amp;gt;
+                                                                                                    &amp;lt;td&amp;gt;
+                                                                                                      &amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;CASIA-Iris-Interval&amp;lt;/span&amp;gt;
+                                                                                                    &amp;lt;/td&amp;gt;
+
+                                                                                                    &amp;lt;td&amp;gt;
+                                                                                                    &amp;lt;/td&amp;gt;
+
+                                                                                                    &amp;lt;td&amp;gt;
+                                                                                                    &amp;lt;/td&amp;gt;
+
+                                                                                                    &amp;lt;td&amp;gt;
+                                                                                                    &amp;lt;/td&amp;gt;
+
+                                                                                                    &amp;lt;td&amp;gt;
+                                                                                                      &amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;Time lapse&amp;lt;/span&amp;gt;
+                                                                                                    &amp;lt;/td&amp;gt;
+                                                                                                  &amp;lt;/tr&amp;gt;
+
+                                                                                                  &amp;lt;tr&amp;gt;
+                                                                                                    &amp;lt;td&amp;gt;
+                                                                                                      &amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;CASIA-Iris-Lamp&amp;lt;/span&amp;gt;
+                                                                                                    &amp;lt;/td&amp;gt;
+
+                                                                                                    &amp;lt;td&amp;gt;
+                                                                                                    &amp;lt;/td&amp;gt;
+
+                                                                                                    &amp;lt;td&amp;gt;
+                                                                                                    &amp;lt;/td&amp;gt;
+
+                                                                                                    &amp;lt;td&amp;gt;
+                                                                                                    &amp;lt;/td&amp;gt;
+
+                                                                                                    &amp;lt;td&amp;gt;
+                                                                                                    &amp;lt;/td&amp;gt;
+                                                                                                  &amp;lt;/tr&amp;gt;
+
+                                                                                                  &amp;lt;tr&amp;gt;
+                                                                                                    &amp;lt;td&amp;gt;
+                                                                                                      &amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;CASIA-Iris-Twins&amp;lt;/span&amp;gt;
+                                                                                                    &amp;lt;/td&amp;gt;
+
+                                                                                                    &amp;lt;td&amp;gt;
+                                                                                                      &amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;100&amp;lt;/span&amp;gt;
+                                                                                                    &amp;lt;/td&amp;gt;
+
+                                                                                                    &amp;lt;td&amp;gt;
+                                                                                                    &amp;lt;/td&amp;gt;
+
+                                                                                                    &amp;lt;td&amp;gt;
+                                                                                                    &amp;lt;/td&amp;gt;
+
+                                                                                                    &amp;lt;td&amp;gt;
+                                                                                                      &amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;Twin&amp;lt;/span&amp;gt;
+                                                                                                    &amp;lt;/td&amp;gt;
+                                                                                                  &amp;lt;/tr&amp;gt;
+
+                                                                                                  &amp;lt;tr&amp;gt;
+                                                                                                    &amp;lt;td&amp;gt;
+                                                                                                      &amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;CASIA-Iris-Distance&amp;lt;/span&amp;gt;
+                                                                                                    &amp;lt;/td&amp;gt;
+
+                                                                                                    &amp;lt;td&amp;gt;
+                                                                                                    &amp;lt;/td&amp;gt;
+
+                                                                                                    &amp;lt;td&amp;gt;
+                                                                                                    &amp;lt;/td&amp;gt;
+
+                                                                                                    &amp;lt;td&amp;gt;
+                                                                                                    &amp;lt;/td&amp;gt;
+
+                                                                                                    &amp;lt;td&amp;gt;
+                                                                                                      &amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;At a distance&amp;lt;/span&amp;gt;
+                                                                                                    &amp;lt;/td&amp;gt;
+                                                                                                  &amp;lt;/tr&amp;gt;
+
+                                                                                                  &amp;lt;tr&amp;gt;
+                                                                                                    &amp;lt;td&amp;gt;
+                                                                                                      &amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;CASIA-Iris-Syn&amp;lt;/span&amp;gt;
+                                                                                                    &amp;lt;/td&amp;gt;
+
+                                                                                                    &amp;lt;td&amp;gt;
+                                                                                                      &amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;1000&amp;lt;/span&amp;gt;
+                                                                                                    &amp;lt;/td&amp;gt;
+
+                                                                                                    &amp;lt;td&amp;gt;
+                                                                                                      &amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;10,000&amp;lt;/span&amp;gt;
+                                                                                                    &amp;lt;/td&amp;gt;
+
+                                                                                                    &amp;lt;td&amp;gt;
+                                                                                                    &amp;lt;/td&amp;gt;
+
+                                                                                                    &amp;lt;td&amp;gt;
+                                                                                                      &amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;Synthesis&amp;lt;/span&amp;gt;
+                                                                                                    &amp;lt;/td&amp;gt;
+                                                                                                  &amp;lt;/tr&amp;gt;
+
+                                                                                                  &amp;lt;tr&amp;gt;
+                                                                                                    &amp;lt;td rowspan=&amp;quot;6&amp;quot;&amp;gt;
+                                                                                                      &amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;ND&amp;lt;/span&amp;gt;
+                                                                                                    &amp;lt;/td&amp;gt;
+
+                                                                                                    &amp;lt;td&amp;gt;
+                                                                                                      &amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;ND-IRIS-0405&amp;lt;/span&amp;gt;
+                                                                                                    &amp;lt;/td&amp;gt;
+
+                                                                                                    &amp;lt;td&amp;gt;
+                                                                                                      &amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;356&amp;lt;/span&amp;gt;
+                                                                                                    &amp;lt;/td&amp;gt;
+
+                                                                                                    &amp;lt;td&amp;gt;
+                                                                                                      &amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;64,980&amp;lt;/span&amp;gt;
+                                                                                                    &amp;lt;/td&amp;gt;
+
+                                                                                                    &amp;lt;td&amp;gt;
+                                                                                                      &amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;NIR&amp;lt;/span&amp;gt;
+                                                                                                    &amp;lt;/td&amp;gt;
+
+                                                                                                    &amp;lt;td&amp;gt;
+                                                                                                    &amp;lt;/td&amp;gt;
+                                                                                                  &amp;lt;/tr&amp;gt;
+
+                                                                                                  &amp;lt;tr&amp;gt;
+                                                                                                    &amp;lt;td&amp;gt;
+                                                                                                      &amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;ND-GFI&amp;lt;/span&amp;gt;
+                                                                                                    &amp;lt;/td&amp;gt;
+
+                                                                                                    &amp;lt;td&amp;gt;
+                                                                                                    &amp;lt;/td&amp;gt;
+
+                                                                                                    &amp;lt;td&amp;gt;
+                                                                                                    &amp;lt;/td&amp;gt;
+
+                                                                                                    &amp;lt;td&amp;gt;
+                                                                                                    &amp;lt;/td&amp;gt;
+
+                                                                                                    &amp;lt;td&amp;gt;
+                                                                                                      &amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;Gender&amp;lt;/span&amp;gt;
+                                                                                                    &amp;lt;/td&amp;gt;
+                                                                                                  &amp;lt;/tr&amp;gt;
+
+                                                                                                  &amp;lt;tr&amp;gt;
+                                                                                                    &amp;lt;td&amp;gt;
+                                                                                                      &amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;NDCLD15&amp;lt;/span&amp;gt;
+                                                                                                    &amp;lt;/td&amp;gt;
+
+                                                                                                    &amp;lt;td&amp;gt;
+                                                                                                      &amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;750 males&amp;lt;/span&amp;gt;&amp;lt;/p&amp;gt; 
+
+                                                                                                      &amp;lt;p&amp;gt;
+                                                                                                        &amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;750 females&amp;lt;/span&amp;gt;&amp;lt;/td&amp;gt; 
+
+                                                                                                        &amp;lt;td&amp;gt;
+                                                                                                          &amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;3000&amp;lt;/span&amp;gt;
+                                                                                                        &amp;lt;/td&amp;gt;
+
+                                                                                                        &amp;lt;td&amp;gt;
+                                                                                                          &amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;NIR&amp;lt;/span&amp;gt;
+                                                                                                        &amp;lt;/td&amp;gt;
+
+                                                                                                        &amp;lt;td&amp;gt;
+                                                                                                          &amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;Contact Lens&amp;lt;/span&amp;gt;
+                                                                                                        &amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt; 
+
+                                                                                                        &amp;lt;tr&amp;gt;
+                                                                                                          &amp;lt;td&amp;gt;
+                                                                                                            &amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;ND-CrossSensor-Iris-2013&amp;lt;/span&amp;gt;
+                                                                                                          &amp;lt;/td&amp;gt;
+
+                                                                                                          &amp;lt;td&amp;gt;
+                                                                                                            &amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;676&amp;lt;/span&amp;gt;
+                                                                                                          &amp;lt;/td&amp;gt;
+
+                                                                                                          &amp;lt;td&amp;gt;
+                                                                                                            &amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;29,986 from LG4000 and 116,564 from LG2200&amp;lt;/span&amp;gt;
+                                                                                                          &amp;lt;/td&amp;gt;
+
+                                                                                                          &amp;lt;td&amp;gt;
+                                                                                                            &amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;NIR&amp;lt;/span&amp;gt;
+                                                                                                          &amp;lt;/td&amp;gt;
+
+                                                                                                          &amp;lt;td&amp;gt;
+                                                                                                            &amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;Cross Sensor&amp;lt;/span&amp;gt;
+                                                                                                          &amp;lt;/td&amp;gt;
+                                                                                                        &amp;lt;/tr&amp;gt;
+
+                                                                                                        &amp;lt;tr&amp;gt;
+                                                                                                          &amp;lt;td&amp;gt;
+                                                                                                            &amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;ND-TimeLapseIris-2012&amp;lt;/span&amp;gt;
+                                                                                                          &amp;lt;/td&amp;gt;
+
+                                                                                                          &amp;lt;td&amp;gt;
+                                                                                                            &amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;23&amp;lt;/span&amp;gt;
+                                                                                                          &amp;lt;/td&amp;gt;
+
+                                                                                                          &amp;lt;td&amp;gt;
+                                                                                                            &amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;6797&amp;lt;/span&amp;gt;
+                                                                                                          &amp;lt;/td&amp;gt;
+
+                                                                                                          &amp;lt;td&amp;gt;
+                                                                                                          &amp;lt;/td&amp;gt;
+
+                                                                                                          &amp;lt;td&amp;gt;
+                                                                                                            &amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;Time lapse 2004 to 2008&amp;lt;/span&amp;gt;
+                                                                                                          &amp;lt;/td&amp;gt;
+                                                                                                        &amp;lt;/tr&amp;gt;
+
+                                                                                                        &amp;lt;tr&amp;gt;
+                                                                                                          &amp;lt;td&amp;gt;
+                                                                                                            &amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;ND-Iris-Template-Aging-2008-2010&amp;lt;/span&amp;gt;
+                                                                                                          &amp;lt;/td&amp;gt;
+
+                                                                                                          &amp;lt;td&amp;gt;
+                                                                                                          &amp;lt;/td&amp;gt;
+
+                                                                                                          &amp;lt;td&amp;gt;
+                                                                                                            &amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;11,776&amp;lt;/span&amp;gt;
+                                                                                                          &amp;lt;/td&amp;gt;
+
+                                                                                                          &amp;lt;td&amp;gt;
+                                                                                                          &amp;lt;/td&amp;gt;
+
+                                                                                                          &amp;lt;td&amp;gt;
+                                                                                                            &amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;Time lapse 2008 to 2010&amp;lt;/span&amp;gt;
+                                                                                                          &amp;lt;/td&amp;gt;
+                                                                                                        &amp;lt;/tr&amp;gt;
+
+                                                                                                        &amp;lt;tr&amp;gt;
+                                                                                                          &amp;lt;td&amp;gt;
+                                                                                                            &amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;MBGC&amp;lt;/span&amp;gt;
+                                                                                                          &amp;lt;/td&amp;gt;
+
+                                                                                                          &amp;lt;td&amp;gt;
+                                                                                                          &amp;lt;/td&amp;gt;
+
+                                                                                                          &amp;lt;td&amp;gt;
+                                                                                                          &amp;lt;/td&amp;gt;
+
+                                                                                                          &amp;lt;td&amp;gt;
+                                                                                                          &amp;lt;/td&amp;gt;
+
+                                                                                                          &amp;lt;td&amp;gt;
+                                                                                                            &amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;NIR &amp;amp; NIR videos&amp;lt;/span&amp;gt;
+                                                                                                          &amp;lt;/td&amp;gt;
+
+                                                                                                          &amp;lt;td&amp;gt;
+                                                                                                            &amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;One the move&amp;lt;/span&amp;gt;
+                                                                                                          &amp;lt;/td&amp;gt;
+                                                                                                        &amp;lt;/tr&amp;gt;
+
+                                                                                                        &amp;lt;tr&amp;gt;
+                                                                                                          &amp;lt;td&amp;gt;
+                                                                                                            &amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;UBIRIS&amp;lt;/span&amp;gt;
+                                                                                                          &amp;lt;/td&amp;gt;
+
+                                                                                                          &amp;lt;td&amp;gt;
+                                                                                                          &amp;lt;/td&amp;gt;
+
+                                                                                                          &amp;lt;td&amp;gt;
+                                                                                                            &amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;261&amp;lt;/span&amp;gt;
+                                                                                                          &amp;lt;/td&amp;gt;
+
+                                                                                                          &amp;lt;td&amp;gt;
+                                                                                                            &amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;11,102&amp;lt;/span&amp;gt;
+                                                                                                          &amp;lt;/td&amp;gt;
+
+                                                                                                          &amp;lt;td&amp;gt;
+                                                                                                            &amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;Visible&amp;lt;/span&amp;gt;
+                                                                                                          &amp;lt;/td&amp;gt;
+
+                                                                                                          &amp;lt;td&amp;gt;
+                                                                                                            &amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;On the move&amp;lt;/span&amp;gt;&amp;lt;/p&amp;gt; 
+
+                                                                                                            &amp;lt;p&amp;gt;
+                                                                                                              &amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;At a distance&amp;lt;/span&amp;gt;&amp;lt;/td&amp;gt; &amp;lt;/tr&amp;gt; &amp;lt;/tbody&amp;gt; &amp;lt;/table&amp;gt; 
+
+                                                                                                              &amp;lt;p&amp;gt;
+                                                                                                                &amp;amp;nbsp;
+                                                                                                              &amp;lt;/p&amp;gt;
+
+                                                                                                              &amp;lt;p&amp;gt;
+                                                                                                                &amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;My sources:&amp;lt;/span&amp;gt;
+                                                                                                              &amp;lt;/p&amp;gt;
+
+                                                                                                              &amp;lt;ol&amp;gt;
+                                                                                                                &amp;lt;li style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;
+                                                                                                                  &amp;lt;a href=&amp;quot;https://kiennguyenstuff.wordpress.com/2016/07/14/iris-recognition-open-source-codes/&amp;quot;&amp;gt;&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;Iris Recognition open-source codes&amp;lt;/span&amp;gt;&amp;lt;/a&amp;gt;
+                                                                                                                &amp;lt;/li&amp;gt;
+                                                                                                                &amp;lt;li style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;
+                                                                                                                  &amp;lt;a href=&amp;quot;https://www.quora.com/What-are-some-of-the-best-open-source-iris-recognition-libraries-available&amp;quot;&amp;gt;&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;What are some of the best open source iris recognition libraries available?&amp;lt;/span&amp;gt;&amp;lt;/a&amp;gt;
+                                                                                                                &amp;lt;/li&amp;gt;
+                                                                                                              &amp;lt;/ol&amp;gt;
+
+                                                                                                              &amp;lt;ul&amp;gt;
+                                                                                                                &amp;lt;li&amp;gt;
+                                                                                                                  &amp;lt;em&amp;gt;Eye Photo by Tom Tolkien &amp;lt;a href=&amp;quot;http://thomastolkien.wordpress.com/&amp;quot;&amp;gt;http://thomastolkien.wordpress.com/&amp;lt;/a&amp;gt;&amp;lt;/em&amp;gt;
+                                                                                                                &amp;lt;/li&amp;gt;
+                                                                                                              &amp;lt;/ul&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    
+    <item>
+      <title>A foreword from the author.</title>
+      <link>https://denis-trofimov.github.io/foreword-from-author/</link>
+      <pubDate>Sun, 06 May 2018 21:49:06 +0000</pubDate>
+      <guid>https://denis-trofimov.github.io/foreword-from-author/</guid>
+      <description>&lt;p&gt;First of all I would like to thank one person for reasoning me to start a developer blog. This person is John Sonmez, the author of the email course on creating a blog that boosts your career &lt;a href=&#34;https://simpleprogrammer.com/store/products/how-to-create-a-blog/&#34; target=&#34;_blank&#34;&gt;&amp;#8220;How to Create a Blog That BOOSTS Your Career&amp;#8221;&lt;/a&gt; and the founder of the &lt;a href=&#34;https://simpleprogrammer.com&#34; target=&#34;_blank&#34;&gt;Simple Programmer.&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;In this blog I plan to teach my reader step by step how to tackle tasks of the machine learnig in the computer vision using Python tools. I would like to show how a reader can start using former buzzwords like machine learnig, neural networks, computer vision, as a corresponding tools, Caffe package, TensorFlow, OpenCV. I know it is challeging to describe a complex notions ia a simple words, but I will try my best.&lt;/p&gt;
+
+&lt;p&gt;Q:  Why do I belive that my expertise can be valuable?&lt;br /&gt;
+A:  In the company I am working since 2017 our team is solving problems like a face image segmentation, an eye image segmentation, an eye iris feature detection and encoding.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

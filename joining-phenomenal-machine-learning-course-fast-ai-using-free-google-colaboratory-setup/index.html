@@ -1,0 +1,1149 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.5.0">
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Denis Trofimov">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="Joining phenomenal deep learning course fast.ai using free Google Colaboratory setup.
+
+My colleague Ilia Lebedev @melevir at twitter recommended me a cool deep learning course at http://course.fast.ai.">
+
+  
+  <link rel="alternate" hreflang="en-us" href="https://denis-trofimov.github.io/joining-phenomenal-machine-learning-course-fast-ai-using-free-google-colaboratory-setup/">
+
+  
+
+
+  
+  
+  
+  <meta name="theme-color" content="#2962ff">
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.0/css/all.css" integrity="sha384-aOkxzJ5uQz7WBObEZcHvV5JvRW3TUc2rNPA7pe3AwnsUohiw1Vj2Rgx2KSOkF5+h" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" integrity="sha256-ygkqlh3CYSUri3LhQxzdcm0n1EQvH2Y+U5S2idbLtxs=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/github.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+      
+    
+
+    
+
+    
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CRoboto:400,400italic,700%7CRoboto+Mono&display=swap">
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.min.5ac49d52d669340d29cb50b00bb7867f.css">
+
+  
+
+  
+  
+  
+
+  
+
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icon-32.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+
+  <link rel="canonical" href="https://denis-trofimov.github.io/joining-phenomenal-machine-learning-course-fast-ai-using-free-google-colaboratory-setup/">
+
+  
+  
+  
+  
+    
+  
+  
+  <meta property="twitter:card" content="summary_large_image">
+  
+  <meta property="twitter:site" content="@denisteamlead">
+  <meta property="twitter:creator" content="@denisteamlead">
+  
+  <meta property="og:site_name" content="Python Courses Mentor Blog Relaunch">
+  <meta property="og:url" content="https://denis-trofimov.github.io/joining-phenomenal-machine-learning-course-fast-ai-using-free-google-colaboratory-setup/">
+  <meta property="og:title" content="Joining phenomenal machine learning course fast.ai using free Google Colaboratory setup. | Python Courses Mentor Blog Relaunch">
+  <meta property="og:description" content="Joining phenomenal deep learning course fast.ai using free Google Colaboratory setup.
+
+My colleague Ilia Lebedev @melevir at twitter recommended me a cool deep learning course at http://course.fast.ai."><meta property="og:image" content="https://denis-trofimov.github.io/joining-phenomenal-machine-learning-course-fast-ai-using-free-google-colaboratory-setup/featured.png">
+  <meta property="twitter:image" content="https://denis-trofimov.github.io/joining-phenomenal-machine-learning-course-fast-ai-using-free-google-colaboratory-setup/featured.png"><meta property="og:locale" content="en-us">
+  
+    
+      <meta property="article:published_time" content="2018-09-01T19:49:22&#43;00:00">
+    
+    <meta property="article:modified_time" content="2018-09-01T19:49:22&#43;00:00">
+  
+
+  
+
+
+    
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://denis-trofimov.github.io/joining-phenomenal-machine-learning-course-fast-ai-using-free-google-colaboratory-setup/"
+  },
+  "headline": "Joining phenomenal machine learning course fast.ai using free Google Colaboratory setup.",
+  
+  "image": [
+    "https://denis-trofimov.github.io/joining-phenomenal-machine-learning-course-fast-ai-using-free-google-colaboratory-setup/featured.png"
+  ],
+  
+  "datePublished": "2018-09-01T19:49:22Z",
+  "dateModified": "2018-09-01T19:49:22Z",
+  
+  "author": {
+    "@type": "Person",
+    "name": "Denis Trofimov"
+  },
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "Python Courses Mentor Blog Relaunch",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://denis-trofimov.github.io/img/icon-512.png"
+    }
+  },
+  "description": "\u003ch1 id=\"joining-phenomenal-deep-learning-course-fast-ai-using-free-google-colaboratory-setup\"\u003eJoining phenomenal deep learning course fast.ai using free Google Colaboratory setup.\u003c/h1\u003e\n\n\u003cp\u003eMy colleague Ilia Lebedev @melevir at twitter recommended me a cool deep learning course at \u003ca href=\"http://course.fast.ai/\" target=\"_blank\"\u003ehttp://course.fast.ai.\u003c/a\u003e\u003c/p\u003e"
+}
+</script>
+
+  
+
+  
+
+
+  
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js"></script>
+<script>
+  window.addEventListener("load", function(){
+    window.cookieconsent.initialise({
+      "palette": {
+        "popup": {
+          "background": "#2962ff",
+          "text": "#fff"
+        },
+        "button": {
+          "background": "#fff",
+          "text": "#2962ff"
+        }
+      },
+      "theme": "classic",
+      "content": {
+        "message": "This website uses cookies to ensure you get the best experience on our website.",
+        "dismiss": "Got it!",
+        "link": "Learn more",
+        "href": "https://cookies.insites.com"
+      }
+    })});
+</script>
+
+
+
+  
+
+
+
+
+
+  <title>Joining phenomenal machine learning course fast.ai using free Google Colaboratory setup. | Python Courses Mentor Blog Relaunch</title>
+
+</head>
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" >
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+<nav class="navbar navbar-light fixed-top navbar-expand-lg py-0 compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+
+    
+      <a class="navbar-brand" href="/">Python Courses Mentor Blog Relaunch</a>
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+    
+    <div class="collapse navbar-collapse" id="navbar">
+
+      
+      
+      <ul class="navbar-nav mr-auto">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#posts"><span>Posts</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#tags"><span>Tag Cloud</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#about"><span>Bio</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#contact"><span>Contact</span></a>
+        </li>
+
+        
+        
+
+      
+      </ul>
+      <ul class="navbar-nav ml-auto">
+      
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-dark-toggle" href="#"><i class="fas fa-moon" aria-hidden="true"></i></a>
+        </li>
+        
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+  <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+
+<div class="article-container pt-3">
+  <h1>Joining phenomenal machine learning course fast.ai using free Google Colaboratory setup.</h1>
+
+  
+
+  
+
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Sep 1, 2018
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    3 min read
+  </span>
+  
+
+  
+  
+  
+  <span class="middot-divider"></span>
+  <a href="/joining-phenomenal-machine-learning-course-fast-ai-using-free-google-colaboratory-setup/#disqus_thread"></a>
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="/categories/machine-learning/">machine learning</a></span>
+  
+
+  
+    
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://denis-trofimov.github.io/joining-phenomenal-machine-learning-course-fast-ai-using-free-google-colaboratory-setup/&amp;text=Joining%20phenomenal%20machine%20learning%20course%20fast.ai%20using%20free%20Google%20Colaboratory%20setup." target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://denis-trofimov.github.io/joining-phenomenal-machine-learning-course-fast-ai-using-free-google-colaboratory-setup/&amp;t=Joining%20phenomenal%20machine%20learning%20course%20fast.ai%20using%20free%20Google%20Colaboratory%20setup." target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=Joining%20phenomenal%20machine%20learning%20course%20fast.ai%20using%20free%20Google%20Colaboratory%20setup.&amp;body=https://denis-trofimov.github.io/joining-phenomenal-machine-learning-course-fast-ai-using-free-google-colaboratory-setup/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://denis-trofimov.github.io/joining-phenomenal-machine-learning-course-fast-ai-using-free-google-colaboratory-setup/&amp;title=Joining%20phenomenal%20machine%20learning%20course%20fast.ai%20using%20free%20Google%20Colaboratory%20setup." target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://web.whatsapp.com/send?text=Joining%20phenomenal%20machine%20learning%20course%20fast.ai%20using%20free%20Google%20Colaboratory%20setup.%20https://denis-trofimov.github.io/joining-phenomenal-machine-learning-course-fast-ai-using-free-google-colaboratory-setup/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://denis-trofimov.github.io/joining-phenomenal-machine-learning-course-fast-ai-using-free-google-colaboratory-setup/&amp;title=Joining%20phenomenal%20machine%20learning%20course%20fast.ai%20using%20free%20Google%20Colaboratory%20setup." target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+
+</div>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+<div class="article-header article-container featured-image-wrapper mt-4 mb-4" style="max-width: 720px; max-height: 281px;">
+  <div style="position: relative">
+    <img src="/joining-phenomenal-machine-learning-course-fast-ai-using-free-google-colaboratory-setup/featured_hu37acaa0d403c68eaefa8a67d36e356f6_333612_720x0_resize_lanczos_2.png" alt="" class="featured-image">
+    
+  </div>
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      <h1 id="joining-phenomenal-deep-learning-course-fast-ai-using-free-google-colaboratory-setup">Joining phenomenal deep learning course fast.ai using free Google Colaboratory setup.</h1>
+
+<p>My colleague Ilia Lebedev @melevir at twitter recommended me a cool deep learning course at <a href="http://course.fast.ai/" target="_blank">http://course.fast.ai.</a></p>
+
+<p><em class="markup--em markup--p-em">Much appreciation to </em><a class="markup--anchor markup--p-anchor" href="https://twitter.com/jeremyphoward" target="_blank" rel="noopener nofollow nofollow noopener nofollow noopener" data-href="https://twitter.com/jeremyphoward"><em class="markup--em markup--p-em">Jeremy</em></a><em class="markup--em markup--p-em"> and </em><a class="markup--anchor markup--p-anchor" href="https://twitter.com/math_rachel" target="_blank" rel="noopener nofollow nofollow noopener nofollow noopener" data-href="https://twitter.com/math_rachel"><em class="markup--em markup--p-em">Rachel</em></a><em class="markup--em markup--p-em"> who gave us this opportunity to learn. </em>They position themself as a course for software developers, not data scientists. This course is of January 2018, is the second version.</p>
+
+<p>Listen that the course said for itself.</p>
+
+<blockquote>
+<h2 id="you-will-learn-how-to">YOU WILL LEARN HOW TO:</h2>
+
+<ul>
+<li><a class="ab-item" href="http://3.120.115.232/wp-admin/post-new.php" aria-haspopup="true"><span class="ab-label">New</span></a><span style="color: #444444;"><span style="font-family: Raleway, Helvetica Neue, Helvetica, Roboto, Arial, sans-serif;"><span style="font-size: small;"> Set up your own GPU server in the cloud</span></span></span></li>
+<li><span style="color: #444444;"><span style="font-family: Raleway, Helvetica Neue, Helvetica, Roboto, Arial, sans-serif;"><span style="font-size: small;">Use the fastai and Pytorch libraries in </span></span></span><a href="https://www.python.org/" target="_blank"><span style="color: #dba901;"><span style="font-family: Raleway, Helvetica Neue, Helvetica, Roboto, Arial, sans-serif;"><span style="font-size: small;">python</span></span></span></a><span style="color: #444444;"><span style="font-family: Raleway, Helvetica Neue, Helvetica, Roboto, Arial, sans-serif;"><span style="font-size: small;"> to train and run deep learning models</span></span></span></li>
+<li><span style="color: #444444;"><span style="font-family: Raleway, Helvetica Neue, Helvetica, Roboto, Arial, sans-serif;"><span style="font-size: small;">Build, debug, and visualize a state of the art convolutional neural network (CNN) for recognizing images</span></span></span></li>
+<li><span style="color: #444444;"><span style="font-family: Raleway, Helvetica Neue, Helvetica, Roboto, Arial, sans-serif;"><span style="font-size: small;">Build state of the art recommendation systems using neural-network based collaborative filtering</span></span></span></li>
+<li><span style="color: #444444;"><span style="font-family: Raleway, Helvetica Neue, Helvetica, Roboto, Arial, sans-serif;"><span style="font-size: small;">Build state of the art time series and structured data models using categorical embeddings</span></span></span></li>
+<li><span style="color: #444444;"><span style="font-family: Raleway, Helvetica Neue, Helvetica, Roboto, Arial, sans-serif;"><span style="font-size: small;">Get great results even from small datasets, by using transfer learning</span></span></span></li>
+<li><span style="color: #444444;"><span style="font-family: Raleway, Helvetica Neue, Helvetica, Roboto, Arial, sans-serif;"><span style="font-size: small;">Understand the components of a neural network, including activation functions, dense and convolutional layers, and optimizers</span></span></span></li>
+<li><span style="color: #444444;"><span style="font-family: Raleway, Helvetica Neue, Helvetica, Roboto, Arial, sans-serif;"><span style="font-size: small;">Build, debug, and visualize a recurrent neural network (RNN) for natural language processing (NLP), including developing a sentiment classifier which beat all previous academic benchmarks.</span></span></span></li>
+<li><span style="color: #444444;"><span style="font-family: Raleway, Helvetica Neue, Helvetica, Roboto, Arial, sans-serif;"><span style="font-size: small;">Recognize and deal with over-fitting, by using data augmentation, dropout, batch normalization, and similar techniques</span></span></span></li>
+</ul>
+</blockquote>
+
+<h2 id="back-to-a-setup-for-fast-ai-course-using-free-google-colaboratory">Back to a setup for fast.ai course using free Google Colaboratory.</h2>
+
+<p>In this post, I will show how to use organize setup of <a class="markup--anchor markup--p-anchor" href="https://colab.research.google.com/" target="_blank" rel="nofollow noopener" data-href="https://colab.research.google.com/">Google Colaboratory</a> for the fast.ai deep learning course. You should repeat this simple steps every time you connect to a new GPU.</p>
+
+<p>In order to train a neural network, we will most certainly need Graphics Processing Unit (GPU)  &#8211; and not everyone have a fast one. Without a decent GPU a singe step will last for hours instead of minutes. Sign-up to <a class="markup--anchor markup--p-anchor" href="https://colab.research.google.com/" target="_blank" rel="nofollow noopener" data-href="https://colab.research.google.com/">Google Colaboratory</a> to get a hosted Jupyter notebook environment connected<strong class="markup--strong markup--p-strong"> </strong>with a <strong>free</strong> Tesla K80 GPU.</p>
+
+<p>You can use GPU as a backend free for 12 hours at a time. That is very good news for us!<figure id="6aed" class="graf graf--figure graf-after--p"></p>
+
+<h2 id="the-steps-to-repeat-every-time-you-connect-to-a-new-gpu-aspectratioplaceholder-is-locked">The steps to repeat every time you connect to a new GPU. {.aspectRatioPlaceholder.is-locked}</h2>
+
+<h3 id="setup-step-0-select-free-gpu">Setup step 0: Select Free GPU</h3>
+
+<p id="7ecb" class="graf graf--p graf-after--h3">
+  It is so simple to alter default hardware <strong class="markup--strong markup--p-strong">(CPU to GPU or vice versa)</strong>; just follow <strong class="markup--strong markup--p-strong">Edit > Notebook settings</strong> or <strong class="markup--strong markup--p-strong">Runtime>Change runtime type </strong>and <strong class="markup--strong markup--p-strong">select GPU </strong>as <strong class="markup--strong markup--p-strong">Hardware accelerator</strong>.
+</p>
+
+<p><img src="Open-Jupyter-notebook-settings-of-Google-Colaboratory.png" alt="Open Jupyter notebook settings of Google Colaboratory" title="Open Jupyter notebook settings of Google Colaboratory" /></p>
+
+<p><img src="Select-a-free-Tesla-K80-GPU-in-Jupyter-notebook-settings-of-Google-Colaboratory.png" alt="Select a free Tesla K80 GPU in Jupyter notebook settings of Google Colaboratory" title="Select a free Tesla K80 GPU in Jupyter notebook settings of Google Colaboratory" /></p>
+
+<h3 id="setup-step-1-install-libraries-for-fast-ai-course">Setup step 1: install libraries for fast.ai course.</h3>
+
+<p>Enter this code in a new code block on top of a notebook:</p>
+
+<pre><code class="language-python"># Install torch compatible with fastai
+from os import path
+from wheel.pep425tags import get_abbr_impl, get_impl_ver, get_abi_tag
+platform = '{}{}-{}'.format(get_abbr_impl(), get_impl_ver(), get_abi_tag())
+accelerator = 'cu80' if path.exists('/opt/bin/nvidia-smi') else 'cpu'
+!pip install -q http://download.pytorch.org/whl/{accelerator}/torch-0.3.1-{platform}-linux_x86_64.whl fastai torchvision
+</code></pre>
+
+<p>This will take a while.</p>
+
+<h3 id="setup-step-2-model-weights-download">Setup step 2: model weights download.</h3>
+
+<pre><code class="language-python"># Model weights for other network architectures (e.g. resnext50):
+!wget -q http://files.fast.ai/models/weights.tgz &amp;&amp; tar -xzf weights.tgz -C /usr/local/lib/python3.6/dist-packages/fastai
+</code></pre>
+
+<p>The step 2 will take a while too, need to download and unpack 1.1 Gb.</p>
+
+<h3 id="setup-step-3-dataset-download">Setup step 3: dataset download.</h3>
+
+<p>For lesson 1, 2, 3 you need dogs $ cats dataset. This code does it. The dataset dogs &amp; cats is available at <a href="http://files.fast.ai/data/dogscats.zip" target="_blank">http://files.fast.ai/data/dogscats.zip</a>.</p>
+
+<pre><code class="language-python">!mkdir -p data
+!wget -q http://files.fast.ai/data/dogscats.zip
+!unzip -q dogscats.zip -d data/
+</code></pre>
+
+<p>Some lessons as 2nd use Kaggle datasets, but it is a theme for another article.</p>
+
+<p>Summary of all my setup steps you can copy from my Github Gist <strong class="gist-header-title css-truncate-target"><a href="https://gist.github.com/denis-trofimov/77f8b6418b9ef4b45adca7ed587462d2">Fast.ai install script.py.</a></strong></p>
+
+<p>I will try to keep it updated as long as I have interest in fast.ai and Google Colaboratory.</p>
+    </div>
+
+    
+
+
+    
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tags/colab/">colab</a>
+  
+  <a class="badge badge-light" href="/tags/computer-vision/">computer vision</a>
+  
+  <a class="badge badge-light" href="/tags/course/">course</a>
+  
+  <a class="badge badge-light" href="/tags/deep-learning/">deep learning</a>
+  
+  <a class="badge badge-light" href="/tags/fastai/">fastai</a>
+  
+  <a class="badge badge-light" href="/tags/google/">google</a>
+  
+  <a class="badge badge-light" href="/tags/google-colaboratory/">Google Colaboratory</a>
+  
+  <a class="badge badge-light" href="/tags/gpu/">GPU</a>
+  
+  <a class="badge badge-light" href="/tags/jupyter-notebook/">Jupyter notebook</a>
+  
+  <a class="badge badge-light" href="/tags/kaggle/">Kaggle</a>
+  
+  <a class="badge badge-light" href="/tags/machine-learning/">machine learning</a>
+  
+  <a class="badge badge-light" href="/tags/pytorch/">pytorch</a>
+  
+</div>
+
+
+
+    
+      
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  
+  
+    
+  
+  
+  <div class="media author-card">
+    
+      <img class="portrait mr-3" src="https://s.gravatar.com/avatar/f3e80633c0b836e4ff5edf663522463a?s=200')" alt="Avatar">
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="https://denis-trofimov.github.io/">Denis Trofimov</a></h5>
+      <h6 class="card-subtitle">Senior Software Developer</h6>
+      <p class="card-text">Software Developer with passion to Python, Golang, C++. Python newbie mentor.</p>
+      <ul class="network-icon" aria-hidden="true">
+        
+          
+          
+          
+            
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a href="https://github.com/denis-trofimov" target="_blank" rel="noopener">
+              <i class="fab fa-github"></i>
+            </a>
+          </li>
+        
+          
+          
+          
+            
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a href="https://gitlab.com/denis-trofimov" target="_blank" rel="noopener">
+              <i class="fab fa-gitlab"></i>
+            </a>
+          </li>
+        
+          
+          
+          
+            
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a href="https://telegram.me/@DenisTrofimovDev" target="_blank" rel="noopener">
+              <i class="fab fa-telegram"></i>
+            </a>
+          </li>
+        
+          
+          
+          
+            
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a href="https://www.linkedin.com/in/denis-trofimov-iris/" target="_blank" rel="noopener">
+              <i class="fab fa-linkedin"></i>
+            </a>
+          </li>
+        
+          
+          
+          
+            
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a href="https://twitter.com/denisteamlead" target="_blank" rel="noopener">
+              <i class="fab fa-twitter"></i>
+            </a>
+          </li>
+        
+          
+          
+          
+            
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a href="https://facebook.com/denis.trofimov" target="_blank" rel="noopener">
+              <i class="fab fa-facebook"></i>
+            </a>
+          </li>
+        
+          
+          
+          
+            
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a href="http://vk.com/denis.trofimov" target="_blank" rel="noopener">
+              <i class="fab fa-vk"></i>
+            </a>
+          </li>
+        
+          
+          
+          
+            
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a href="https://instagram.com/denis.trofim0v/" target="_blank" rel="noopener">
+              <i class="fab fa-instagram"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+
+      
+      
+      <div class="article-widget">
+        <div class="hr-light"></div>
+        <h3>Related</h3>
+        <ul>
+          
+          <li><a href="/what-easy-questions-on-javascript-i-can-ask/">What easy questions on Javascript I can ask?</a></li>
+          
+          <li><a href="/foreword-from-author/">A foreword from the author.</a></li>
+          
+        </ul>
+      </div>
+      
+    
+
+    
+
+    
+<section id="comments">
+  
+    
+<div id="disqus_thread"></div>
+<script>
+  let disqus_config = function () {
+    
+    
+    
+  };
+  (function() {
+    if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+      document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+      return;
+    }
+    var d = document, s = d.createElement('script'); s.async = true;
+    s.src = 'https://' + "disqus_FhF4qMhbhd" + '.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+  
+</section>
+
+
+
+  </div>
+</article>
+
+      
+
+    
+    
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" integrity="sha256-X5PoE3KU5l+JcX+w09p/wHl9AzK333C4hJ2I9S5mD4M=" crossorigin="anonymous"></script>
+
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js" integrity="sha256-aYTdUrn6Ow1DDgh5JTc3aDGnnju48y/1c8s1dgkYPQ8=" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/go.min.js"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/python.min.js"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/cpp.min.js"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/javascript.min.js"></script>
+        
+      
+
+      
+      
+    
+
+    
+    
+
+    
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+    <script>
+      const search_index_filename = "/index.json";
+      const i18n = {
+        'placeholder': "Search...",
+        'results': "results found",
+        'no_results': "No results found"
+      };
+      const content_type = {
+        'post': "Posts",
+        'project': "Projects",
+        'publication' : "Publications",
+        'talk' : "Talks"
+        };
+    </script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+    <script id="dsq-count-scr" src="https://disqus_FhF4qMhbhd.disqus.com/count.js" async></script>
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/academic.min.130521ecfc6f534c52c158217bbff718.js"></script>
+
+    
+
+
+
+
+
+
+  
+  <div class="container">
+    <footer class="site-footer">
+  
+  <p class="powered-by">
+    
+    
+      
+      <a href="/terms/">Terms and Conditions</a>
+        
+  </p>
+  
+
+  <p class="powered-by">
+    &copy; All rights reserved - 2019 &middot; 
+
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+    <span class="float-right" aria-hidden="true">
+      <a href="#" id="back_to_top">
+        <span class="button_icon">
+          <i class="fas fa-chevron-up fa-2x"></i>
+        </span>
+      </a>
+    </span>
+    
+  </p>
+</footer>
+
+  </div>
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

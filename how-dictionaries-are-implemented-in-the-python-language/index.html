@@ -1,0 +1,1421 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.5.0">
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Denis Trofimov">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="
+  
+    This post describes how dictionaries are implemented in the Python language.
+  
+  
+  
+    This article is actually a repost of originally posted at Laurent Luce&#8217;s Blog August 29, 2011 by Laurent Luce. I mentor several students of russian Learn Python courses. They have questions about structures in Python and how to use them. I found this post a good help to me and possibly to my students.
+  
+">
+
+  
+  <link rel="alternate" hreflang="en-us" href="https://denis-trofimov.github.io/how-dictionaries-are-implemented-in-the-python-language/">
+
+  
+
+
+  
+  
+  
+  <meta name="theme-color" content="#2962ff">
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.0/css/all.css" integrity="sha384-aOkxzJ5uQz7WBObEZcHvV5JvRW3TUc2rNPA7pe3AwnsUohiw1Vj2Rgx2KSOkF5+h" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" integrity="sha256-ygkqlh3CYSUri3LhQxzdcm0n1EQvH2Y+U5S2idbLtxs=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/github.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+      
+    
+
+    
+
+    
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CRoboto:400,400italic,700%7CRoboto+Mono&display=swap">
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.min.5ac49d52d669340d29cb50b00bb7867f.css">
+
+  
+
+  
+  
+  
+
+  
+
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icon-32.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+
+  <link rel="canonical" href="https://denis-trofimov.github.io/how-dictionaries-are-implemented-in-the-python-language/">
+
+  
+  
+  
+  
+    
+  
+  
+  <meta property="twitter:card" content="summary_large_image">
+  
+  <meta property="twitter:site" content="@denisteamlead">
+  <meta property="twitter:creator" content="@denisteamlead">
+  
+  <meta property="og:site_name" content="Python Courses Mentor Blog Relaunch">
+  <meta property="og:url" content="https://denis-trofimov.github.io/how-dictionaries-are-implemented-in-the-python-language/">
+  <meta property="og:title" content="How dictionaries are implemented in the Python language | Python Courses Mentor Blog Relaunch">
+  <meta property="og:description" content="
+  
+    This post describes how dictionaries are implemented in the Python language.
+  
+  
+  
+    This article is actually a repost of originally posted at Laurent Luce&#8217;s Blog August 29, 2011 by Laurent Luce. I mentor several students of russian Learn Python courses. They have questions about structures in Python and how to use them. I found this post a good help to me and possibly to my students.
+  
+"><meta property="og:image" content="https://denis-trofimov.github.io/how-dictionaries-are-implemented-in-the-python-language/featured.png">
+  <meta property="twitter:image" content="https://denis-trofimov.github.io/how-dictionaries-are-implemented-in-the-python-language/featured.png"><meta property="og:locale" content="en-us">
+  
+    
+      <meta property="article:published_time" content="2018-09-28T19:12:58&#43;00:00">
+    
+    <meta property="article:modified_time" content="2018-09-28T19:12:58&#43;00:00">
+  
+
+  
+
+
+    
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://denis-trofimov.github.io/how-dictionaries-are-implemented-in-the-python-language/"
+  },
+  "headline": "How dictionaries are implemented in the Python language",
+  
+  "image": [
+    "https://denis-trofimov.github.io/how-dictionaries-are-implemented-in-the-python-language/featured.png"
+  ],
+  
+  "datePublished": "2018-09-28T19:12:58Z",
+  "dateModified": "2018-09-28T19:12:58Z",
+  
+  "author": {
+    "@type": "Person",
+    "name": "Denis Trofimov"
+  },
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "Python Courses Mentor Blog Relaunch",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://denis-trofimov.github.io/img/icon-512.png"
+    }
+  },
+  "description": "\u003cdiv class=\"story-content\"\u003e\n  \u003cp\u003e\n    This post describes how dictionaries are implemented in the Python language.\n  \u003c/p\u003e\n  \n  \u003cp\u003e\n    This article is actually a repost of originally posted at \u003ca href=\"https://www.laurentluce.com/posts/python-dictionary-implementation/\"\u003eLaurent Luce\u0026#8217;s Blog\u003c/a\u003e August 29, 2011 by Laurent Luce. I mentor several students of russian \u003ca href=\"https://learn.python.ru/\"\u003eLearn Python\u003c/a\u003e courses. They have questions about structures in Python and how to use them. I found this post a good help to me and possibly to my students.\n  \u003c/p\u003e\n\u003c/div\u003e"
+}
+</script>
+
+  
+
+  
+
+
+  
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js"></script>
+<script>
+  window.addEventListener("load", function(){
+    window.cookieconsent.initialise({
+      "palette": {
+        "popup": {
+          "background": "#2962ff",
+          "text": "#fff"
+        },
+        "button": {
+          "background": "#fff",
+          "text": "#2962ff"
+        }
+      },
+      "theme": "classic",
+      "content": {
+        "message": "This website uses cookies to ensure you get the best experience on our website.",
+        "dismiss": "Got it!",
+        "link": "Learn more",
+        "href": "https://cookies.insites.com"
+      }
+    })});
+</script>
+
+
+
+  
+
+
+
+
+
+  <title>How dictionaries are implemented in the Python language | Python Courses Mentor Blog Relaunch</title>
+
+</head>
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" >
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+<nav class="navbar navbar-light fixed-top navbar-expand-lg py-0 compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+
+    
+      <a class="navbar-brand" href="/">Python Courses Mentor Blog Relaunch</a>
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+    
+    <div class="collapse navbar-collapse" id="navbar">
+
+      
+      
+      <ul class="navbar-nav mr-auto">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#posts"><span>Posts</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#tags"><span>Tag Cloud</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#about"><span>Bio</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#contact"><span>Contact</span></a>
+        </li>
+
+        
+        
+
+      
+      </ul>
+      <ul class="navbar-nav ml-auto">
+      
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-dark-toggle" href="#"><i class="fas fa-moon" aria-hidden="true"></i></a>
+        </li>
+        
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+  <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+<div class="article-container pt-3">
+  <h1>How dictionaries are implemented in the Python language</h1>
+
+  
+
+  
+
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Sep 28, 2018
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    10 min read
+  </span>
+  
+
+  
+  
+  
+  <span class="middot-divider"></span>
+  <a href="/how-dictionaries-are-implemented-in-the-python-language/#disqus_thread"></a>
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="/categories/learning/">learning</a></span>
+  
+
+  
+    
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://denis-trofimov.github.io/how-dictionaries-are-implemented-in-the-python-language/&amp;text=How%20dictionaries%20are%20implemented%20in%20the%20Python%20language" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://denis-trofimov.github.io/how-dictionaries-are-implemented-in-the-python-language/&amp;t=How%20dictionaries%20are%20implemented%20in%20the%20Python%20language" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=How%20dictionaries%20are%20implemented%20in%20the%20Python%20language&amp;body=https://denis-trofimov.github.io/how-dictionaries-are-implemented-in-the-python-language/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://denis-trofimov.github.io/how-dictionaries-are-implemented-in-the-python-language/&amp;title=How%20dictionaries%20are%20implemented%20in%20the%20Python%20language" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://web.whatsapp.com/send?text=How%20dictionaries%20are%20implemented%20in%20the%20Python%20language%20https://denis-trofimov.github.io/how-dictionaries-are-implemented-in-the-python-language/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://denis-trofimov.github.io/how-dictionaries-are-implemented-in-the-python-language/&amp;title=How%20dictionaries%20are%20implemented%20in%20the%20Python%20language" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+
+</div>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+<div class="article-header article-container featured-image-wrapper mt-4 mb-4" style="max-width: 375px; max-height: 311px;">
+  <div style="position: relative">
+    <img src="/how-dictionaries-are-implemented-in-the-python-language/featured.png" alt="" class="featured-image">
+    
+  </div>
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      <div class="story-content">
+  <p>
+    This post describes how dictionaries are implemented in the Python language.
+  </p>
+  
+  <p>
+    This article is actually a repost of originally posted at <a href="https://www.laurentluce.com/posts/python-dictionary-implementation/">Laurent Luce&#8217;s Blog</a> August 29, 2011 by Laurent Luce. I mentor several students of russian <a href="https://learn.python.ru/">Learn Python</a> courses. They have questions about structures in Python and how to use them. I found this post a good help to me and possibly to my students.
+  </p>
+</div>
+
+<p>Dictionaries are indexed by keys and they can be seen as associative arrays. Let’s add 3 key/value pairs to a dictionary:</p>
+
+<pre><code class="language-py">&gt;&gt;&gt; d = {'a': 1, 'b': 2}
+&gt;&gt;&gt; d['c'] = 3
+&gt;&gt;&gt; d
+{'a': 1, 'b': 2, 'c': 3}
+</code></pre>
+
+<p>The values can be accessed this way:</p>
+
+<pre><code class="language-py">&gt;&gt;&gt; d['a']
+1
+&gt;&gt;&gt; d['b']
+2
+&gt;&gt;&gt; d['c']
+3
+&gt;&gt;&gt; d['d']
+Traceback (most recent call last):
+  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
+KeyError: 'd'
+</code></pre>
+
+<p>The key ‘d’ does not exist so a KeyError exception is raised.</p>
+
+<h2 id="hash-tables">Hash tables</h2>
+
+<p>Python dictionaries are implemented using hash tables. It is an array whose indexes are obtained using a hash function on the keys. The goal of a hash function is to distribute the keys evenly in the array. A good hash function minimizes the number of collisions e.g. different keys having the same hash. Python does not have this kind of hash function. Its most important hash functions (for strings and ints) are very regular in common cases:</p>
+
+<pre><code class="language-py">&gt;&gt;&gt; map(hash, (0, 1, 2, 3))
+[0, 1, 2, 3]
+&gt;&gt;&gt; map(hash, (&quot;namea&quot;, &quot;nameb&quot;, &quot;namec&quot;, &quot;named&quot;))
+[-1658398457, -1658398460, -1658398459, -1658398462]
+</code></pre>
+
+<p>We are going to assume that we are using strings as keys for the rest of this post. The hash function for strings in Python is defined as:</p>
+
+<pre><code class="language-py">arguments: string object
+returns: hash
+function string_hash:
+    if hash cached:
+        return it
+    set len to string's length
+    initialize var p pointing to 1st char of string object
+    set x to value pointed by p left shifted by 7 bits
+    while len &gt;= 0:
+        set var x to (1000003 * x) xor value pointed by p
+        increment pointer p
+    set x to x xor length of string object
+    cache x as the hash so we don't need to calculate it again
+    return x as the hash
+</code></pre>
+
+<p>If you run hash(‘a’) in Python, it will execute string_hash() and return 12416037344. Here we assume we are using a 64-bit machine.</p>
+
+<p>If an array of size x is used to store the key/value pairs then we use a mask equal to x-1 to calculate the slot index of the pair in the array. This makes the computation of the slot index fast. The probability to find an empty slot is high due to the resizing mechanism described below. This means that having a simple computation makes sense in most of the cases. If the size of the array is 8, the index for ‘a’ will be: hash(‘a’) &amp; 7 = 0. The index for ‘b’ is 3, the index for ‘c’ is 2, the index for ‘z’ is 3 which is the same as ‘b’, here we have a collision.</p>
+
+<p><p>
+    <img class="alignnone" src="https://www.laurentluce.com/images/blog/dict/hash.png" alt="The hash function for strings in Python for a table size of 8" width="375" height="311" />
+  </p></p>
+
+<p><p>
+    We can see that the Python hash function does a good job when the keys are consecutive which is good because it is quite common to have this type of data to work with. However, once we add the key ‘z’, there is a collision because it is not consecutive enough.
+  </p></p>
+
+<p><p>
+    We could use a linked list to store the pairs having the same hash but it would increase the lookup time e.g. not O(1) average anymore. The next section describes the collision resolution method used in the case of Python dictionaries.
+  </p></p>
+
+<p><h2>
+    Open addressing
+  </h2></p>
+
+<p><p>
+    Open addressing is a method of collision resolution where probing is used. In case of ‘z’, the slot index 3 is already used in the array so we need to probe for a different index to find one which is not already used. Adding a key/value pair will average O(1) and the lookup operation too.
+  </p></p>
+
+<p><p>
+    A quadratic probing sequence is used to find a free slot. The code is the following:
+  </p></p>
+
+<pre><code class="language-c">j = (5*j) + 1 + perturb;
+perturb &gt;&gt;= PERTURB_SHIFT;
+use j % 2**i as the next table index;
+</code></pre>
+
+<p><p>
+    Recurring on 5*j+1 quickly magnifies small differences in the bits that didn’t affect the initial index. The variable “perturb” gets the other bits of the hash code into play.
+  </p></p>
+
+<p><p>
+    Just out of curiosity, let’s look at the probing sequence when the table size is 32 and j = 3.<br /> 3 -&gt; 11 -&gt; 19 -&gt; 29 -&gt; 5 -&gt; 6 -&gt; 16 -&gt; 31 -&gt; 28 -&gt; 13 -&gt; 2…
+  </p></p>
+
+<p><p>
+    You can read more about this probing sequence by looking at the source code of <a href="http://svn.python.org/projects/python/trunk/Objects/dictobject.c">dictobject.c</a>. A detailed explanation of the probing mechanism can be found at the top of the file.
+  </p></p>
+
+<p><p>
+    <img src="https://www.laurentluce.com/images/blog/dict/probing.png" alt="open addressing" />
+  </p></p>
+
+<p><p>
+    Now, let’s look at the Python internal code along with an example.
+  </p></p>
+
+<p><h2>
+    Dictionary C structures
+  </h2></p>
+
+<p><p>
+    The following C structure is used to store a dictionary entry: key/value pair. The hash, key and value are stored. PyObject is the base class of the Python objects.
+  </p></p>
+
+<pre><code class="language-c">typedef struct {
+  Py_ssize_t me_hash;
+  PyObject *me_key;
+  PyObject *me_value;
+} PyDictEntry;
+</code></pre>
+
+<p><p>
+    The following structure represents a dictionary. ma_fill is the number of used slots + dummy slots. A slot is marked dummy when a key pair is removed. ma_used is the number of used slots (active). ma_mask is equal to the array’s size minus 1 and is used to calculate the slot index. ma_table is the array and ma_smalltable is the initial array of size 8.
+  </p></p>
+
+<pre><code class="language-c">typedef struct _dictobject PyDictObject;
+struct _dictobject {
+    PyObject_HEAD
+    Py_ssize_t ma_fill;
+    Py_ssize_t ma_used;
+    Py_ssize_t ma_mask;
+    PyDictEntry *ma_table;
+    PyDictEntry *(*ma_lookup)(PyDictObject *mp, PyObject *key, long hash);
+    PyDictEntry ma_smalltable[PyDict_MINSIZE];
+};
+</code></pre>
+
+<h2 id="dictionary-initialization">Dictionary initialization</h2>
+
+<p><p>
+    When you first create a dictionary, the function PyDict_New() is called. I removed some of the lines and converted the C code to pseudocode to concentrate on the key concepts.
+  </p></p>
+
+<pre><code class="language-c">returns new dictionary object
+function PyDict_New:
+    allocate new dictionary object
+    clear dictionary's table
+    set dictionary's number of used slots + dummy slots (ma_fill) to 0
+    set dictionary's number of active slots (ma_used) to 0
+    set dictionary's mask (ma_value) to dictionary size - 1 = 7
+    set dictionary's lookup function to lookdict_string
+    return allocated dictionary object
+</code></pre>
+
+<p><h2>
+    Adding items
+  </h2></p>
+
+<p><p>
+    When a new key/value pair is added, PyDict_SetItem() is called. This function takes a pointer to the dictionary object and the key/value pair. It checks if the key is a string and calculates the hash or reuses the one cached if it exists. insertdict() is called to add the new key/value pair and the dictionary is resized if the number of used slots + dummy slots is greater than <sup>2</sup>&frasl;<sub>3</sub> of the array’s size.<br /> Why <sup>2</sup>&frasl;<sub>3</sub>? It is to make sure the probing sequence can find a free slot fast enough. We will look at the resizing function later.
+  </p></p>
+
+<pre><code class="language-py">arguments: dictionary, key, value
+returns: 0 if OK or -1
+function PyDict_SetItem:
+    if key's hash cached:
+        use hash
+    else:
+        calculate hash
+    call insertdict with dictionary object, key, hash and value
+    if key/value pair added successfully and capacity over 2/3:
+        call dictresize to resize dictionary's table
+</code></pre>
+
+<p><p>
+    inserdict() uses the lookup function lookdict_string() to find a free slot. This is the same function used to find a key. lookdict_string() calculates the slot index using the hash and the mask values. If it cannot find the key in the slot index = hash &amp; mask, it starts probing using the loop described above, until it finds a free slot. At the first probing try, if the key is null, it returns the dummy slot if found during the first lookup. This gives priority to re-use the previously deleted slots.
+  </p></p>
+
+<p><p>
+    We want to add the following key/value pairs: {‘a’: 1, ‘b’: 2′, ‘z’: 26, ‘y’: 25, ‘c’: 5, ‘x’: 24}. This is what happens:
+  </p></p>
+
+<p><p>
+    A dictionary structure is allocated with internal table size of 8.
+  </p></p>
+
+<ul>
+<li>PyDict_SetItem: key = &#8216;a&#8217;, value = 1</li>
+<ul>
+<li>hash = hash(&#8216;a&#8217;) = 12416037344</li>
+<li>insertdict</li>
+<ul>
+<li>lookdict_string</li>
+<ul>
+<li>slot index = hash &#038; mask = 12416037344 &#038; 7 = 0</li>
+<li>slot 0 is not used so return it</li>
+</ul>
+<li>init entry at index 0 with key, value and hash</li>
+<li>ma_used = 1, ma_fill = 1</li>
+</ul>
+</ul>
+<li>PyDict_SetItem: key = &#8216;b&#8217;, value = 2</li>
+<ul>
+<li>hash = hash(&#8216;b&#8217;) = 12544037731</li>
+<li>insertdict</li>
+<ul>
+<li>lookdict_string</li>
+<ul>
+<li>slot index = hash &#038; mask = 12544037731 &#038; 7 = 3</li>
+<li>slot 3 is not used so return it</li>
+</ul>
+<li>init entry at index 3 with key, value and hash</li>
+<li>ma_used = 2, ma_fill = 2</li>
+</ul>
+</ul>
+<li>PyDict_SetItem: key = &#8216;z&#8217;, value = 26</li>
+<ul>
+<li>hash = hash(&#8216;z&#8217;) = 15616046971</li>
+<li>insertdict</li>
+<ul>
+<li>lookdict_string</li>
+<ul>
+<li>slot index = hash &#038; mask = 15616046971 &#038; 7 = 3</li>
+<li>slot 3 is used so probe for a different slot: 5 is free</li>
+</ul>
+<li>init entry at index 5 with key, value and hash</li>
+<li>ma_used = 3, ma_fill = 3</li>
+</ul>
+</ul>
+<li>PyDict_SetItem: key = &#8216;y&#8217;, value = 25</li>
+<ul>
+<li>hash = hash(&#8216;y&#8217;) = 15488046584</li>
+<li>insertdict</li>
+<ul>
+<li>lookdict_string</li>
+<ul>
+<li>slot index = hash &#038; mask = 15488046584 &#038; 7 = 0</li>
+<li>slot 0 is used so probe for a different slot: 1 is free</li>
+</ul>
+<li>init entry at index 1 with key, value and hash</li>
+<li>ma_used = 4, ma_fill = 4</li>
+</ul>
+</ul>
+<li>PyDict_SetItem: key = &#8216;c&#8217;, value = 3</li>
+<ul>
+<li>hash = hash(&#8216;c&#8217;) = 12672038114</li>
+<li>insertdict</li>
+<ul>
+<li>lookdict_string</li>
+<ul>
+<li>slot index = hash &#038; mask = 12672038114 &#038; 7 = 2</li>
+<li>slot 2 is free so return it</li>
+</ul>
+<li>init entry at index 2 with key, value and hash</li>
+<li>ma_used = 5, ma_fill = 5</li>
+</ul>
+</ul>
+<li>PyDict_SetItem: key = &#8216;x&#8217;, value = 24</li>
+<ul>
+<li>hash = hash(&#8216;x&#8217;) = 15360046201</li>
+<li>insertdict</li>
+<ul>
+<li>lookdict_string</li>
+<ul>
+<li>slot index = hash &#038; mask = 15360046201 &#038; 7 = 1</li>
+<li>slot 1 is used so probe for a different slot: 7 is free</li>
+</ul>
+<li>init entry at index 7 with key, value and hash</li>
+<li>ma_used = 6, ma_fill = 6</li>
+</ul>
+</ul>
+</ul>
+
+<p><p>
+    This is what we have so far:
+  </p></p>
+
+<p><p>
+    <img src="https://www.laurentluce.com/images/blog/dict/insert.png" alt="python dictionary insert" />
+  </p></p>
+
+<p><p>
+    6 slots on 8 are used now so we are over <sup>2</sup>&frasl;<sub>3</sub> of the array’s capacity. dictresize() is called to allocate a larger array. This function also takes care of copying the old table entries to the new table.
+  </p></p>
+
+<p><p>
+    dictresize() is called with minused = 24 in our case which is 4 * ma_used. 2 * ma_used is used when the number of used slots is very large (greater than 50000). Why 4 times the number of used slots? It reduces the number of resize steps and it increases sparseness.
+  </p></p>
+
+<p><p>
+    The new table size needs to be greater than 24 and it is calculated by shifting the current size 1 bit left until it is greater than 24. It ends up being 32 e.g. 8 -&gt; 16 -&gt; 32.
+  </p></p>
+
+<p><p>
+    This is what happens with our table during resizing: a new table of size 32 is allocated. Old table entries are inserted into the new table using the new mask value which is 31. We end up with the following:
+  </p></p>
+
+<p><p>
+    <img src="https://www.laurentluce.com/images/blog/dict/resizing.png" alt="python dictionary table resizing" />
+  </p></p>
+
+<p><h2>
+    Removing items
+  </h2></p>
+
+<p><p>
+    PyDict_DelItem() is called to remove an entry. The hash for this key is calculated and the lookup function is called to return the entry. The slot is now a dummy slot.
+  </p></p>
+
+<p><p>
+    We want to remove the key ‘c’ from our dictionary. We end up with the following array:
+  </p></p>
+
+<p><p>
+    <img src="https://www.laurentluce.com/images/blog/dict/delete.png" alt="Python dictionary delete key" />
+  </p></p>
+
+<p><p>
+    Note that the delete item operation doesn’t trigger an array resize if the number of used slots is much less that the total number of slots. However, when a key/value pair is added, the need for resize is based on the number of used slots + dummy slots so it can shrink the array too.
+  </p></p>
+
+<p><p>
+    That’s it for now. I hope you enjoyed the article. Please write a comment if you have any feedback.
+  </p>
+</div></p>
+
+<!--more-->
+
+<!--more-->
+
+<div class="metawrap">
+  <p>
+    &nbsp;
+  </p>
+  
+  <p>
+    <em>Originally posted at <a href="https://www.laurentluce.com/posts/python-dictionary-implementation/">Laurent Luce&#8217;s Blog</a> August 29, 2011 by Laurent Luce.</em>
+  </p>
+</div>
+    </div>
+
+    
+
+
+    
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tags/algorithms/">algorithms</a>
+  
+  <a class="badge badge-light" href="/tags/code/">code</a>
+  
+  <a class="badge badge-light" href="/tags/data-structures/">data structures</a>
+  
+  <a class="badge badge-light" href="/tags/interview/">interview</a>
+  
+  <a class="badge badge-light" href="/tags/programming/">programming</a>
+  
+  <a class="badge badge-light" href="/tags/python/">python</a>
+  
+</div>
+
+
+
+    
+      
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  
+  
+    
+  
+  
+  <div class="media author-card">
+    
+      <img class="portrait mr-3" src="https://s.gravatar.com/avatar/f3e80633c0b836e4ff5edf663522463a?s=200')" alt="Avatar">
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="https://denis-trofimov.github.io/">Denis Trofimov</a></h5>
+      <h6 class="card-subtitle">Senior Software Developer</h6>
+      <p class="card-text">Software Developer with passion to Python, Golang, C++. Python newbie mentor.</p>
+      <ul class="network-icon" aria-hidden="true">
+        
+          
+          
+          
+            
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a href="https://github.com/denis-trofimov" target="_blank" rel="noopener">
+              <i class="fab fa-github"></i>
+            </a>
+          </li>
+        
+          
+          
+          
+            
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a href="https://gitlab.com/denis-trofimov" target="_blank" rel="noopener">
+              <i class="fab fa-gitlab"></i>
+            </a>
+          </li>
+        
+          
+          
+          
+            
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a href="https://telegram.me/@DenisTrofimovDev" target="_blank" rel="noopener">
+              <i class="fab fa-telegram"></i>
+            </a>
+          </li>
+        
+          
+          
+          
+            
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a href="https://www.linkedin.com/in/denis-trofimov-iris/" target="_blank" rel="noopener">
+              <i class="fab fa-linkedin"></i>
+            </a>
+          </li>
+        
+          
+          
+          
+            
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a href="https://twitter.com/denisteamlead" target="_blank" rel="noopener">
+              <i class="fab fa-twitter"></i>
+            </a>
+          </li>
+        
+          
+          
+          
+            
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a href="https://facebook.com/denis.trofimov" target="_blank" rel="noopener">
+              <i class="fab fa-facebook"></i>
+            </a>
+          </li>
+        
+          
+          
+          
+            
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a href="http://vk.com/denis.trofimov" target="_blank" rel="noopener">
+              <i class="fab fa-vk"></i>
+            </a>
+          </li>
+        
+          
+          
+          
+            
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a href="https://instagram.com/denis.trofim0v/" target="_blank" rel="noopener">
+              <i class="fab fa-instagram"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+
+      
+      
+      <div class="article-widget">
+        <div class="hr-light"></div>
+        <h3>Related</h3>
+        <ul>
+          
+          <li><a href="/10-known-open-source-projects-in-iris-recognition-2018/">10 Known Open Source Projects in Iris Recognition 2018</a></li>
+          
+          <li><a href="/getting-mob-programming-buy-in-at-your-organization/">Getting Mob Programming Buy-In at Your Organization</a></li>
+          
+          <li><a href="/review-of-kevlin-henneys-talk-seven-ineffective-coding-habits-of-many-programmers/">Review of Kevlin Henney`s talk Seven Ineffective Coding Habits of Many Programmers</a></li>
+          
+          <li><a href="/lessons-learned-by-mentoring-programmers-repost/">Lessons Learned by Mentoring Programmers repost.</a></li>
+          
+          <li><a href="/what-easy-questions-on-javascript-i-can-ask/">What easy questions on Javascript I can ask?</a></li>
+          
+        </ul>
+      </div>
+      
+    
+
+    
+
+    
+<section id="comments">
+  
+    
+<div id="disqus_thread"></div>
+<script>
+  let disqus_config = function () {
+    
+    
+    
+  };
+  (function() {
+    if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+      document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+      return;
+    }
+    var d = document, s = d.createElement('script'); s.async = true;
+    s.src = 'https://' + "disqus_FhF4qMhbhd" + '.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+  
+</section>
+
+
+
+  </div>
+</article>
+
+      
+
+    
+    
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" integrity="sha256-X5PoE3KU5l+JcX+w09p/wHl9AzK333C4hJ2I9S5mD4M=" crossorigin="anonymous"></script>
+
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js" integrity="sha256-aYTdUrn6Ow1DDgh5JTc3aDGnnju48y/1c8s1dgkYPQ8=" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/go.min.js"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/python.min.js"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/cpp.min.js"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/javascript.min.js"></script>
+        
+      
+
+      
+      
+    
+
+    
+    
+
+    
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+    <script>
+      const search_index_filename = "/index.json";
+      const i18n = {
+        'placeholder': "Search...",
+        'results': "results found",
+        'no_results': "No results found"
+      };
+      const content_type = {
+        'post': "Posts",
+        'project': "Projects",
+        'publication' : "Publications",
+        'talk' : "Talks"
+        };
+    </script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+    <script id="dsq-count-scr" src="https://disqus_FhF4qMhbhd.disqus.com/count.js" async></script>
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/academic.min.130521ecfc6f534c52c158217bbff718.js"></script>
+
+    
+
+
+
+
+
+
+  
+  <div class="container">
+    <footer class="site-footer">
+  
+  <p class="powered-by">
+    
+    
+      
+      <a href="/terms/">Terms and Conditions</a>
+        
+  </p>
+  
+
+  <p class="powered-by">
+    &copy; All rights reserved - 2019 &middot; 
+
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+    <span class="float-right" aria-hidden="true">
+      <a href="#" id="back_to_top">
+        <span class="button_icon">
+          <i class="fas fa-chevron-up fa-2x"></i>
+        </span>
+      </a>
+    </span>
+    
+  </p>
+</footer>
+
+  </div>
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

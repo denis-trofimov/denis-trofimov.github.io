@@ -1,0 +1,1119 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.5.0">
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Denis Trofimov">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="Repost of https://simpleprogrammer.com/mob-programming/.
+
+
+
+Mob programming is the best approach for many development applications. Mob projects result in a more finished project at release, with fewer bugs. By focusing on one project at a time, teams can complete projects more efficiently, and those projects are higher quality, requiring fewer revisions.">
+
+  
+  <link rel="alternate" hreflang="en-us" href="https://denis-trofimov.github.io/getting-mob-programming-buy-in-at-your-organization/">
+
+  
+
+
+  
+  
+  
+  <meta name="theme-color" content="#2962ff">
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.0/css/all.css" integrity="sha384-aOkxzJ5uQz7WBObEZcHvV5JvRW3TUc2rNPA7pe3AwnsUohiw1Vj2Rgx2KSOkF5+h" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" integrity="sha256-ygkqlh3CYSUri3LhQxzdcm0n1EQvH2Y+U5S2idbLtxs=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/github.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+      
+    
+
+    
+
+    
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CRoboto:400,400italic,700%7CRoboto+Mono&display=swap">
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.min.5ac49d52d669340d29cb50b00bb7867f.css">
+
+  
+
+  
+  
+  
+
+  
+
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icon-32.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+
+  <link rel="canonical" href="https://denis-trofimov.github.io/getting-mob-programming-buy-in-at-your-organization/">
+
+  
+  
+  
+  
+    
+  
+  
+  <meta property="twitter:card" content="summary_large_image">
+  
+  <meta property="twitter:site" content="@denisteamlead">
+  <meta property="twitter:creator" content="@denisteamlead">
+  
+  <meta property="og:site_name" content="Python Courses Mentor Blog Relaunch">
+  <meta property="og:url" content="https://denis-trofimov.github.io/getting-mob-programming-buy-in-at-your-organization/">
+  <meta property="og:title" content="Getting Mob Programming Buy-In at Your Organization | Python Courses Mentor Blog Relaunch">
+  <meta property="og:description" content="Repost of https://simpleprogrammer.com/mob-programming/.
+
+
+
+Mob programming is the best approach for many development applications. Mob projects result in a more finished project at release, with fewer bugs. By focusing on one project at a time, teams can complete projects more efficiently, and those projects are higher quality, requiring fewer revisions."><meta property="og:image" content="https://denis-trofimov.github.io/getting-mob-programming-buy-in-at-your-organization/featured.jpg">
+  <meta property="twitter:image" content="https://denis-trofimov.github.io/getting-mob-programming-buy-in-at-your-organization/featured.jpg"><meta property="og:locale" content="en-us">
+  
+    
+      <meta property="article:published_time" content="2018-09-14T22:17:50&#43;00:00">
+    
+    <meta property="article:modified_time" content="2018-09-14T22:17:50&#43;00:00">
+  
+
+  
+
+
+    
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://denis-trofimov.github.io/getting-mob-programming-buy-in-at-your-organization/"
+  },
+  "headline": "Getting Mob Programming Buy-In at Your Organization",
+  
+  "image": [
+    "https://denis-trofimov.github.io/getting-mob-programming-buy-in-at-your-organization/featured.jpg"
+  ],
+  
+  "datePublished": "2018-09-14T22:17:50Z",
+  "dateModified": "2018-09-14T22:17:50Z",
+  
+  "author": {
+    "@type": "Person",
+    "name": "Denis Trofimov"
+  },
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "Python Courses Mentor Blog Relaunch",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://denis-trofimov.github.io/img/icon-512.png"
+    }
+  },
+  "description": "\u003cp\u003eRepost of \u003ca href=\"https://simpleprogrammer.com/mob-programming/\"\u003ehttps://simpleprogrammer.com/mob-programming/.\u003c/a\u003e\u003c/p\u003e\n\n\u003cp\u003e\u003cimg src=\"https://spzone-simpleprogrammer.netdna-ssl.com/wp-content/uploads/2018/09/mod-square.png\" alt=\"This piece was a collaboration written by Nate Wixom and Torrey Powell.\" title=\"This piece was a collaboration written by Nate Wixom and Torrey Powell.\" /\u003e\u003c/p\u003e\n\n\u003cp\u003eMob programming is the best approach for many development applications. Mob projects result in a more finished project at release, with fewer bugs. By focusing on one project at a time, teams can complete projects more efficiently, and those projects are higher quality, requiring fewer revisions.\u003c/p\u003e"
+}
+</script>
+
+  
+
+  
+
+
+  
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js"></script>
+<script>
+  window.addEventListener("load", function(){
+    window.cookieconsent.initialise({
+      "palette": {
+        "popup": {
+          "background": "#2962ff",
+          "text": "#fff"
+        },
+        "button": {
+          "background": "#fff",
+          "text": "#2962ff"
+        }
+      },
+      "theme": "classic",
+      "content": {
+        "message": "This website uses cookies to ensure you get the best experience on our website.",
+        "dismiss": "Got it!",
+        "link": "Learn more",
+        "href": "https://cookies.insites.com"
+      }
+    })});
+</script>
+
+
+
+  
+
+
+
+
+
+  <title>Getting Mob Programming Buy-In at Your Organization | Python Courses Mentor Blog Relaunch</title>
+
+</head>
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" >
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+<nav class="navbar navbar-light fixed-top navbar-expand-lg py-0 compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+
+    
+      <a class="navbar-brand" href="/">Python Courses Mentor Blog Relaunch</a>
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+    
+    <div class="collapse navbar-collapse" id="navbar">
+
+      
+      
+      <ul class="navbar-nav mr-auto">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#posts"><span>Posts</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#tags"><span>Tag Cloud</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#about"><span>Bio</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#contact"><span>Contact</span></a>
+        </li>
+
+        
+        
+
+      
+      </ul>
+      <ul class="navbar-nav ml-auto">
+      
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-dark-toggle" href="#"><i class="fas fa-moon" aria-hidden="true"></i></a>
+        </li>
+        
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+  <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+<div class="article-container pt-3">
+  <h1>Getting Mob Programming Buy-In at Your Organization</h1>
+
+  
+
+  
+
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Sep 14, 2018
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    5 min read
+  </span>
+  
+
+  
+  
+  
+  <span class="middot-divider"></span>
+  <a href="/getting-mob-programming-buy-in-at-your-organization/#disqus_thread"></a>
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="/categories/team-lead/">team lead</a></span>
+  
+
+  
+    
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://denis-trofimov.github.io/getting-mob-programming-buy-in-at-your-organization/&amp;text=Getting%20Mob%20Programming%20Buy-In%20at%20Your%20Organization" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://denis-trofimov.github.io/getting-mob-programming-buy-in-at-your-organization/&amp;t=Getting%20Mob%20Programming%20Buy-In%20at%20Your%20Organization" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=Getting%20Mob%20Programming%20Buy-In%20at%20Your%20Organization&amp;body=https://denis-trofimov.github.io/getting-mob-programming-buy-in-at-your-organization/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://denis-trofimov.github.io/getting-mob-programming-buy-in-at-your-organization/&amp;title=Getting%20Mob%20Programming%20Buy-In%20at%20Your%20Organization" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://web.whatsapp.com/send?text=Getting%20Mob%20Programming%20Buy-In%20at%20Your%20Organization%20https://denis-trofimov.github.io/getting-mob-programming-buy-in-at-your-organization/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://denis-trofimov.github.io/getting-mob-programming-buy-in-at-your-organization/&amp;title=Getting%20Mob%20Programming%20Buy-In%20at%20Your%20Organization" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+
+</div>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+<div class="article-header article-container featured-image-wrapper mt-4 mb-4" style="max-width: 640px; max-height: 421px;">
+  <div style="position: relative">
+    <img src="/getting-mob-programming-buy-in-at-your-organization/featured.jpg" alt="" class="featured-image">
+    
+  </div>
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      <p>Repost of <a href="https://simpleprogrammer.com/mob-programming/">https://simpleprogrammer.com/mob-programming/.</a></p>
+
+<p><img src="https://spzone-simpleprogrammer.netdna-ssl.com/wp-content/uploads/2018/09/mod-square.png" alt="This piece was a collaboration written by Nate Wixom and Torrey Powell." title="This piece was a collaboration written by Nate Wixom and Torrey Powell." /></p>
+
+<p>Mob programming is the best approach for many development applications. Mob projects result in a more finished project at release, with fewer bugs. By focusing on one project at a time, teams can complete projects more efficiently, and those projects are higher quality, requiring fewer revisions.</p>
+
+<p>The Project Management Institute’s <a href="https://www.pmi.org/-/media/pmi/documents/public/pdf/learning/thought-leadership/pulse/pulse-of-the-profession-2017.pdf" target="_blank" rel="noopener">2017 Pulse of the Profession</a> survey reports that 71 percent of organizations now use <a href="https://www.cio.com/article/3156998/agile-development/agile-project-management-a-beginners-guide.html" target="_blank" rel="noopener">agile methods</a> to complete projects. Included among agile approaches is mob programming, <a href="https://www.agilealliance.org/glossary/mob-programming/" target="_blank" rel="noopener">defined by the Agile Alliance</a> as “a software development approach where the whole team works on the same thing, at the same time, in the same space, and at the same computer.” Picture multiple engineers at one station working collaboratively on one project.</p>
+
+<p>While many organizations have adopted mob programming as a core part of their development skill set, not all development organizations have bought in.</p>
+
+<p>Still, to implement mob programming successfully, you need buy-in from two important groups at your organization—the executive team and the programmers themselves.</p>
+
+<p>By following the strategies below, you can get organization buy-in for mob programming from top to bottom and start using this agile development methodology to provide superior finished products for clients both inside and outside your organization.</p>
+
+<h2 id="getting-buy-in-from-leadership">Getting Buy-in From Leadership</h2>
+
+<p>As far back as 2000, the benefits of developers teaming up on projects to solve problems have been evaluated against the performance of individuals. An oft-cited <a href="http://sunnyday.mit.edu/16.355/williams.pdf" target="_blank" rel="noopener">joint study</a> between the University of North Carolina and the University of Utah showed that paired programmers were 15 percent more successful in solving problems and that their solutions did so with fewer lines of code.</p>
+
+<p>That may not be an impressive enough statistic for senior leadership, however. Shouldn’t it be at least 100 percent more efficient in order to be cost-effective?</p>
+
+<p>The truth of the matter is that such small efficiency gains in the short run may not be convincing. It’s a long game, and you’ll need to open leadership’s eyes to the possibilities of multiple projects spanning months, even years.</p>
+
+<p>If you can get leadership to agree to a six- to 12-month trial for mob programming, here are some of the benefits your organization will see:</p>
+
+<ul>
+<li><strong>Fully inventoried projects:</strong> With groups working more thoroughly and quickly on fewer projects, projects are less likely to be abandoned or forgotten, and more projects are fully completed. More eyes on every project means projects are more complete when they are released to the world.</li>
+<li><strong>Shorter turnaround on projects:</strong> Projects are completed quicker than when worked on by individual developers. With more eyes on each project, roadblocks are more easily overcome, and solutions to problems can quickly be brainstormed.</li>
+<li><strong>Fewer issues in live projects:</strong> As the projects are fully inventoried with more people reviewing every line of code, fewer bugs make it to the production environment. With individual developers working on projects, it’s often understood that there will be bugs that need to be fixed while a platform is live. You can eliminate a lot of this necessary rework through mob programming.</li>
+<li><strong>Quicker onboarding for programmers:</strong> Onboarding into a mob programming environment is more efficient, as you can drop new developers right into a mob that’s already at work on a project and get them contributing immediately rather than having to divert resources for training and management of new programmers’ early projects with your organization.</li>
+</ul>
+
+<p>Over time, mob programming improves efficiency not only in the completion of successful projects but also in the integration of <a href="https://simpleprogrammer.com/working-on-a-team/" target="_blank" rel="noopener">new team members</a>. You may not see the return on investment right away, but over time, it will be evident.</p>
+
+<p>Better results, faster, with fewer abandoned projects—that’s something any senior leader can get behind.</p>
+
+<h2 id="getting-buy-in-from-programmers-developers-and-engineers">Getting Buy-in From Programmers, Developers, and Engineers</h2>
+
+<p><img src="https://spzone-simpleprogrammer.netdna-ssl.com/wp-content/uploads/2018/09/team-work.png" alt="Getting buy-in from senior leadership is one thing. Getting buy-in from the people who will actually be doing the mob programming is something else entirely." title="Getting buy-in from senior leadership is one thing. Getting buy-in from the people who will actually be doing the mob programming is something else entirely." /></p>
+
+<p>Many engineers, developers, and programmers are used to <a href="https://simpleprogrammer.com/importance-community-cant-alone/" target="_blank" rel="noopener">working alone</a>—putting on the headphones and sitting down to crank out code, cut off from the outside world, for hours at a time. How do you get people who are used to working alone to be active participants in a group environment where the major reason for increased success is teamwork?</p>
+
+<p>In our experience, having gone through many iterations of mob programming while integrating it into the organization at Clearlink, not everyone is a good fit for mob programming—but many more than you would expect actually are, once they are involved.</p>
+
+<p>Why is that? Believe it or not, engineers like socializing with their colleagues, they just haven’t always had the chance to do so. Once they realize the level of engagement and the quality of code that is created while working collaboratively, job satisfaction increases, learning increases, and enhanced team bonding occurs. Mob programming is also a meritocracy where the best idea wins, and everyone in the mob has an equal voice—from the most senior developer on the team down to the newest arrival.</p>
+
+<p>Each mob contains two roles: _the driver_ and <em>the navigator(s)</em>. The driver sits at the computer, inputting the code, while the navigators tell the driver what to type. These roles switch in the mob at regular eight to 15-minute intervals, giving everyone an equal chance to drive and to navigate.</p>
+
+<p>Everyone remains actively involved in the process, with ideas being shared and implemented quickly. Since everyone gets a chance to navigate, junior programmers gain confidence by asserting their ideas.</p>
+
+<p>We recommend, either at the completion of a project or at the end of each workweek, recognizing mob team members for their contributions to the project(s) they have worked on. Also, allow programmers to share what they learned and what they had trouble with. After a few projects and a few of these recognition and retrospective meetings, your team members will be comfortable working together and fully integrated into the mob programming mindset.</p>
+
+<h2 id="making-the-jump">Making the Jump</h2>
+
+<p>Changing development work from an individual to a mob programming style can be a big leap—one that can result in a few stumbles along the way. But once you get buy-in from leadership for a trial and can get some programmers on board, you’ll see <a href="http://agileuprising.libsyn.com/mob-programming-lessons-learned-at-clearlinkcom" target="_blank" rel="noopener">how it can benefit your organization</a>.</p>
+
+<p>We’ve given you some navigation—so get ready to drive.</p>
+
+<ul>
+<li><a href="https://flic.kr/p/nYis2p" target="_blank">Photo</a> by <a class="owner-name truncate" title="Go to Georgia National Guard's photostream" href="https://www.flickr.com/photos/ganatlguard/" data-track="attributionNameClick" data-rapid_p="86">Georgia National Guard</a> CC 2.0</li>
+</ul>
+    </div>
+
+    
+
+
+    
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tags/agile/">agile</a>
+  
+  <a class="badge badge-light" href="/tags/effectiveness/">effectiveness</a>
+  
+  <a class="badge badge-light" href="/tags/leadership/">leadership</a>
+  
+  <a class="badge badge-light" href="/tags/programming/">programming</a>
+  
+  <a class="badge badge-light" href="/tags/soft-skills/">soft skills</a>
+  
+  <a class="badge badge-light" href="/tags/team-work/">team work</a>
+  
+</div>
+
+
+
+    
+      
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  
+  
+    
+  
+  
+  <div class="media author-card">
+    
+      <img class="portrait mr-3" src="https://s.gravatar.com/avatar/f3e80633c0b836e4ff5edf663522463a?s=200')" alt="Avatar">
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="https://denis-trofimov.github.io/">Denis Trofimov</a></h5>
+      <h6 class="card-subtitle">Senior Software Developer</h6>
+      <p class="card-text">Software Developer with passion to Python, Golang, C++. Python newbie mentor.</p>
+      <ul class="network-icon" aria-hidden="true">
+        
+          
+          
+          
+            
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a href="https://github.com/denis-trofimov" target="_blank" rel="noopener">
+              <i class="fab fa-github"></i>
+            </a>
+          </li>
+        
+          
+          
+          
+            
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a href="https://gitlab.com/denis-trofimov" target="_blank" rel="noopener">
+              <i class="fab fa-gitlab"></i>
+            </a>
+          </li>
+        
+          
+          
+          
+            
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a href="https://telegram.me/@DenisTrofimovDev" target="_blank" rel="noopener">
+              <i class="fab fa-telegram"></i>
+            </a>
+          </li>
+        
+          
+          
+          
+            
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a href="https://www.linkedin.com/in/denis-trofimov-iris/" target="_blank" rel="noopener">
+              <i class="fab fa-linkedin"></i>
+            </a>
+          </li>
+        
+          
+          
+          
+            
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a href="https://twitter.com/denisteamlead" target="_blank" rel="noopener">
+              <i class="fab fa-twitter"></i>
+            </a>
+          </li>
+        
+          
+          
+          
+            
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a href="https://facebook.com/denis.trofimov" target="_blank" rel="noopener">
+              <i class="fab fa-facebook"></i>
+            </a>
+          </li>
+        
+          
+          
+          
+            
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a href="http://vk.com/denis.trofimov" target="_blank" rel="noopener">
+              <i class="fab fa-vk"></i>
+            </a>
+          </li>
+        
+          
+          
+          
+            
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a href="https://instagram.com/denis.trofim0v/" target="_blank" rel="noopener">
+              <i class="fab fa-instagram"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+
+      
+      
+      <div class="article-widget">
+        <div class="hr-light"></div>
+        <h3>Related</h3>
+        <ul>
+          
+          <li><a href="/review-of-kevlin-henneys-talk-seven-ineffective-coding-habits-of-many-programmers/">Review of Kevlin Henney`s talk Seven Ineffective Coding Habits of Many Programmers</a></li>
+          
+          <li><a href="/lessons-learned-by-mentoring-programmers-repost/">Lessons Learned by Mentoring Programmers repost.</a></li>
+          
+        </ul>
+      </div>
+      
+    
+
+    
+
+    
+<section id="comments">
+  
+    
+<div id="disqus_thread"></div>
+<script>
+  let disqus_config = function () {
+    
+    
+    
+  };
+  (function() {
+    if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+      document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+      return;
+    }
+    var d = document, s = d.createElement('script'); s.async = true;
+    s.src = 'https://' + "disqus_FhF4qMhbhd" + '.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+  
+</section>
+
+
+
+  </div>
+</article>
+
+      
+
+    
+    
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" integrity="sha256-X5PoE3KU5l+JcX+w09p/wHl9AzK333C4hJ2I9S5mD4M=" crossorigin="anonymous"></script>
+
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js" integrity="sha256-aYTdUrn6Ow1DDgh5JTc3aDGnnju48y/1c8s1dgkYPQ8=" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/go.min.js"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/python.min.js"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/cpp.min.js"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/javascript.min.js"></script>
+        
+      
+
+      
+      
+    
+
+    
+    
+
+    
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+    <script>
+      const search_index_filename = "/index.json";
+      const i18n = {
+        'placeholder': "Search...",
+        'results': "results found",
+        'no_results': "No results found"
+      };
+      const content_type = {
+        'post': "Posts",
+        'project': "Projects",
+        'publication' : "Publications",
+        'talk' : "Talks"
+        };
+    </script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+    <script id="dsq-count-scr" src="https://disqus_FhF4qMhbhd.disqus.com/count.js" async></script>
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/academic.min.130521ecfc6f534c52c158217bbff718.js"></script>
+
+    
+
+
+
+
+
+
+  
+  <div class="container">
+    <footer class="site-footer">
+  
+  <p class="powered-by">
+    
+    
+      
+      <a href="/terms/">Terms and Conditions</a>
+        
+  </p>
+  
+
+  <p class="powered-by">
+    &copy; All rights reserved - 2019 &middot; 
+
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+    <span class="float-right" aria-hidden="true">
+      <a href="#" id="back_to_top">
+        <span class="button_icon">
+          <i class="fas fa-chevron-up fa-2x"></i>
+        </span>
+      </a>
+    </span>
+    
+  </p>
+</footer>
+
+  </div>
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

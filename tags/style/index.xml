@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>style | Python Courses Mentor Blog Relaunch</title>
+    <link>https://denis-trofimov.github.io/tags/style/</link>
+      <atom:link href="https://denis-trofimov.github.io/tags/style/index.xml" rel="self" type="application/rss+xml" />
+    <description>style</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© All rights reserved - 2019</copyright><lastBuildDate>Sun, 09 Sep 2018 20:03:20 +0000</lastBuildDate>
+    <image>
+      <url>https://denis-trofimov.github.io/img/icon-192.png</url>
+      <title>style</title>
+      <link>https://denis-trofimov.github.io/tags/style/</link>
+    </image>
+    
+    <item>
+      <title>Review of Kevlin Henney`s talk Seven Ineffective Coding Habits of Many Programmers</title>
+      <link>https://denis-trofimov.github.io/review-of-kevlin-henneys-talk-seven-ineffective-coding-habits-of-many-programmers/</link>
+      <pubDate>Sun, 09 Sep 2018 20:03:20 +0000</pubDate>
+      <guid>https://denis-trofimov.github.io/review-of-kevlin-henneys-talk-seven-ineffective-coding-habits-of-many-programmers/</guid>
+      <description>&lt;h1 id=&#34;review-of-kevlin-henney-s-talk-seven-ineffective-coding-habits-of-many-programmers&#34;&gt;Review of Kevlin Henney`s talk Seven Ineffective Coding Habits of Many Programmers&lt;/h1&gt;
+
+&lt;p&gt;&lt;em&gt;I watched this video from the start till the end.&lt;/em&gt;
+&lt;em&gt;I see this coding habits very often.&lt;/em&gt;
+&lt;em&gt;I fought unsustainable spacing the wrong way in the past.&lt;/em&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;kevlin-henney-s-talk-video-description&#34;&gt;Kevlin Henney`s talk video description&lt;/h1&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Habits help you manage the code complexity. You apply existing skill and knowledge automatically to the detail while focusing on the bigger picture.&lt;/p&gt;
+
+&lt;p&gt;But because you acquire habits largely by imitation, and rarely question them, how do you know your habits are effective? Many of the habits that programmers have for naming, formatting, commenting and unit testing do not stand up as rational and practical on closer inspection. &lt;a href=&#34;https://en.wikipedia.org/wiki/Kevlin_Henney&#34; target=&#34;_blank&#34;&gt;Kevlin Henney&lt;/a&gt; &lt;a href=&#34;https://twitter.com/kevlinhenney&#34; target=&#34;_blank&#34;&gt;@kevlinhenney&lt;/a&gt; examines seven coding habits that are not as effective as programmers believe, and to suggest alternatives.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+&lt;div class=&#34;gallery&#34;&gt;
+
+  
+  
+  
+  
+    
+    
+    
+    
+    
+  &lt;a data-fancybox=&#34;gallery-habits&#34; href=&#34;https://denis-trofimov.github.io/review-of-kevlin-henneys-talk-seven-ineffective-coding-habits-of-many-programmers/habits/ITT%202016%20-%20Kevlin%20Henney%20-%20Seven%20Ineffective%20Coding%20Habits%20of%20Many%20Programmers%20Code%20alignment%202.png&#34; &gt;
+  &lt;img src=&#34;https://denis-trofimov.github.io/review-of-kevlin-henneys-talk-seven-ineffective-coding-habits-of-many-programmers/habits/_hu280ada8882d6e991cdf6d87ef052cb54_121303_b7c62e70fe43b016e397c56cd735820d.png&#34; alt=&#34;&#34;&gt;
+  &lt;/a&gt;
+  
+    
+    
+    
+    
+    
+  &lt;a data-fancybox=&#34;gallery-habits&#34; href=&#34;https://denis-trofimov.github.io/review-of-kevlin-henneys-talk-seven-ineffective-coding-habits-of-many-programmers/habits/ITT%202016%20-%20Kevlin%20Henney%20-%20Seven%20Ineffective%20Coding%20Habits%20of%20Many%20Programmers%20Code%20alignment%203.png&#34; &gt;
+  &lt;img src=&#34;https://denis-trofimov.github.io/review-of-kevlin-henneys-talk-seven-ineffective-coding-habits-of-many-programmers/habits/_hue80eae6fb2724bcd2df107f3cf38bcb7_145315_7fbdc9a24fe4114b8a104dab4b0105cf.png&#34; alt=&#34;&#34;&gt;
+  &lt;/a&gt;
+  
+
+  
+&lt;/div&gt;
+
+&lt;h1 id=&#34;seven-ineffective-coding-habits-of-many-programmers&#34;&gt;Seven Ineffective Coding Habits of Many Programmers&lt;/h1&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;blockquote&gt;
+&lt;p&gt;noise code&lt;/p&gt;
+&lt;/blockquote&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;blockquote&gt;
+&lt;p&gt;unsustainable spacing&lt;/p&gt;
+&lt;/blockquote&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;blockquote&gt;
+&lt;p&gt;lego naming&lt;/p&gt;
+&lt;/blockquote&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;blockquote&gt;
+&lt;p&gt;underabstraction&lt;/p&gt;
+&lt;/blockquote&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;blockquote&gt;
+&lt;p&gt;unencapsulated state&lt;/p&gt;
+&lt;/blockquote&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;blockquote&gt;
+&lt;p&gt;getters and setters&lt;/p&gt;
+&lt;/blockquote&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;blockquote&gt;
+&lt;p&gt;uncohesive tests&lt;/p&gt;
+&lt;/blockquote&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+
+&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+  &lt;iframe src=&#34;https://www.youtube.com/embed/ZsHMHukIlJY&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; allowfullscreen title=&#34;YouTube Video&#34;&gt;&lt;/iframe&gt;
+&lt;/div&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
