@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>machine learning | Python Courses Mentor Blog Relaunch</title>
+    <title>machine learning | Python Courses Mentor Blog</title>
     <link>https://denis-trofimov.github.io/categories/machine-learning/</link>
       <atom:link href="https://denis-trofimov.github.io/categories/machine-learning/index.xml" rel="self" type="application/rss+xml" />
     <description>machine learning</description>
@@ -29,7 +29,7 @@
 &lt;h2 id=&#34;you-will-learn-how-to&#34;&gt;YOU WILL LEARN HOW TO:&lt;/h2&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;a class=&#34;ab-item&#34; href=&#34;http://3.120.115.232/wp-admin/post-new.php&#34; aria-haspopup=&#34;true&#34;&gt;&lt;span class=&#34;ab-label&#34;&gt;New&lt;/span&gt;&lt;/a&gt;&lt;span style=&#34;color: #444444;&#34;&gt;&lt;span style=&#34;font-family: Raleway, Helvetica Neue, Helvetica, Roboto, Arial, sans-serif;&#34;&gt;&lt;span style=&#34;font-size: small;&#34;&gt; Set up your own GPU server in the cloud&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;ab-item&#34; href=&#34;https://denis-trofimov.github.io/wp-admin/post-new.php&#34; aria-haspopup=&#34;true&#34;&gt;&lt;span class=&#34;ab-label&#34;&gt;New&lt;/span&gt;&lt;/a&gt;&lt;span style=&#34;color: #444444;&#34;&gt;&lt;span style=&#34;font-family: Raleway, Helvetica Neue, Helvetica, Roboto, Arial, sans-serif;&#34;&gt;&lt;span style=&#34;font-size: small;&#34;&gt; Set up your own GPU server in the cloud&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/li&gt;
 &lt;li&gt;&lt;span style=&#34;color: #444444;&#34;&gt;&lt;span style=&#34;font-family: Raleway, Helvetica Neue, Helvetica, Roboto, Arial, sans-serif;&#34;&gt;&lt;span style=&#34;font-size: small;&#34;&gt;Use the fastai and Pytorch libraries in &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;a href=&#34;https://www.python.org/&#34; target=&#34;_blank&#34;&gt;&lt;span style=&#34;color: #dba901;&#34;&gt;&lt;span style=&#34;font-family: Raleway, Helvetica Neue, Helvetica, Roboto, Arial, sans-serif;&#34;&gt;&lt;span style=&#34;font-size: small;&#34;&gt;python&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/a&gt;&lt;span style=&#34;color: #444444;&#34;&gt;&lt;span style=&#34;font-family: Raleway, Helvetica Neue, Helvetica, Roboto, Arial, sans-serif;&#34;&gt;&lt;span style=&#34;font-size: small;&#34;&gt; to train and run deep learning models&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/li&gt;
 &lt;li&gt;&lt;span style=&#34;color: #444444;&#34;&gt;&lt;span style=&#34;font-family: Raleway, Helvetica Neue, Helvetica, Roboto, Arial, sans-serif;&#34;&gt;&lt;span style=&#34;font-size: small;&#34;&gt;Build, debug, and visualize a state of the art convolutional neural network (CNN) for recognizing images&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/li&gt;
 &lt;li&gt;&lt;span style=&#34;color: #444444;&#34;&gt;&lt;span style=&#34;font-family: Raleway, Helvetica Neue, Helvetica, Roboto, Arial, sans-serif;&#34;&gt;&lt;span style=&#34;font-size: small;&#34;&gt;Build state of the art recommendation systems using neural-network based collaborative filtering&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/li&gt;

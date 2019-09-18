@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Python Courses Mentor Blog Relaunch</title>
+    <title>Python Courses Mentor Blog</title>
     <link>https://denis-trofimov.github.io/authors/admin/</link>
       <atom:link href="https://denis-trofimov.github.io/authors/admin/index.xml" rel="self" type="application/rss+xml" />
-    <description>Python Courses Mentor Blog Relaunch</description>
+    <description>Python Courses Mentor Blog</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© All rights reserved - 2019</copyright>
     <image>
       <url>https://denis-trofimov.github.io/img/icon-192.png</url>
-      <title>Python Courses Mentor Blog Relaunch</title>
+      <title>Python Courses Mentor Blog</title>
       <link>https://denis-trofimov.github.io/authors/admin/</link>
     </image>
     

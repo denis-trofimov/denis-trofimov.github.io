@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>celery | Python Courses Mentor Blog</title>
+    <link>https://denis-trofimov.github.io/tags/celery/</link>
+      <atom:link href="https://denis-trofimov.github.io/tags/celery/index.xml" rel="self" type="application/rss+xml" />
+    <description>celery</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© All rights reserved - 2019</copyright><lastBuildDate>Tue, 01 Jan 2019 22:04:25 +0300</lastBuildDate>
+    <image>
+      <url>https://denis-trofimov.github.io/img/icon-192.png</url>
+      <title>celery</title>
+      <link>https://denis-trofimov.github.io/tags/celery/</link>
+    </image>
+    
+    <item>
+      <title>Django powered site to collect call orders for New Year&#39;s Miracle</title>
+      <link>https://denis-trofimov.github.io/project/django-personalized-happy-new-year-greetings-call-order/</link>
+      <pubDate>Tue, 01 Jan 2019 22:04:25 +0300</pubDate>
+      <guid>https://denis-trofimov.github.io/project/django-personalized-happy-new-year-greetings-call-order/</guid>
+      <description>&lt;p&gt;I developed the site of “New Year&amp;rsquo;s Miracle” project. It was a Django powered site (built from scratch) to collect orders for personalized Happy New Year greetings.&lt;/p&gt;
+
+&lt;p&gt;I used Jinja 2 templates to put Django install front-end assets given as HTML, CSS, JavaScript bundle.&lt;/p&gt;
+
+&lt;p&gt;For storage on site I used PostreSQL DB 10. Delayed jobs as email sending, calling was done using Celery queue and Redis Storage.&lt;/p&gt;
+
+&lt;p&gt;I created a Docker container with UWSGI + Django for deployment on Nginx web server, and tested this container works on 38 core bare metal configuration.&lt;/p&gt;
+
+
+
+
+
+
+
+&lt;figure&gt;
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;featured.png&#34; &gt;
+
+&lt;img src=&#34;featured.png&#34; alt=&#34;&#34; &gt;
+&lt;/a&gt;
+
+
+&lt;figcaption data-pre=&#34;Figure &#34; data-post=&#34;:&#34; &gt;
+  &lt;h4&gt;Screenshot of call order received&lt;/h4&gt;
+  
+&lt;/figcaption&gt;
+
+&lt;/figure&gt;
+
+
+
+
+
+
+
+
+&lt;figure&gt;
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;Django%20Personalized%20Happy%20New%20Year%20Greetings%20Call%20Order%20CMS%20Admin.png&#34; &gt;
+
+&lt;img src=&#34;Django%20Personalized%20Happy%20New%20Year%20Greetings%20Call%20Order%20CMS%20Admin.png&#34; alt=&#34;&#34; &gt;
+&lt;/a&gt;
+
+
+&lt;figcaption data-pre=&#34;Figure &#34; data-post=&#34;:&#34; &gt;
+  &lt;h4&gt;Screenshot of Django admin view&lt;/h4&gt;
+  
+&lt;/figcaption&gt;
+
+&lt;/figure&gt;
+
+
+&lt;p&gt;Service description below I took from Russian resource for parents &lt;a href=&#34;https://www.ya-roditel.ru/national-campaign/news/v-etom-godu-6637/&#34; target=&#34;_blank&#34;&gt;www.ya-roditel.ru direct link&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;It is Google translated to English.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;As part of the “New Year&amp;rsquo;s Miracle” project, a unique service of free personalized phone call from Santa Claus began its work. Previously, parents can choose not only a name, but also an individual instruction to the child from Santa Claus.&lt;/p&gt;
+
+&lt;p&gt;“Hot lines” of Santa Claus have been working for more than a year, but, as a rule, they mean receiving incoming calls and playing out non-personalized greetings. For the first time in history, the new service will allow you to receive a personalized call from the main New Year wizard. Having picked up the phone, the child will hear his name 5 times, and if at the same time he needs to be more attentive to his studies or not to refuse vegetables at dinner, Grandfather will definitely say so in his congratulation. Parents choose a convenient date and time for the call on their own - the coveted call can be heard at least five minutes after the application has been left.&lt;/p&gt;
+
+&lt;p&gt;In addition, if the child has a brother or sister, congratulations will be addressed to both of them. A one-time congratulation is also provided for three children.&lt;/p&gt;
+
+&lt;p&gt;The project manager Maxim Shuvaev noted that over the last 7 days of December it is planned to make up to a million calls, but so far only in Russia. In the future, it is planned to connect to the shares of other CIS countries.&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
