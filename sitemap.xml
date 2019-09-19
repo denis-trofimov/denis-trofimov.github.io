@@ -13,17 +13,17 @@
   </url>
   
   <url>
-    <loc>https://denis-trofimov.github.io/project/django-personalized-happy-new-year-greetings-call-order/</loc>
-    <lastmod>2019-01-01T22:04:25+03:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://denis-trofimov.github.io/tags/docker/</loc>
     <lastmod>2019-01-01T22:04:25+03:00</lastmod>
   </url>
   
   <url>
     <loc>https://denis-trofimov.github.io/tags/jinja2/</loc>
+    <lastmod>2019-01-01T22:04:25+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://denis-trofimov.github.io/project/django-personalized-happy-new-year-greetings-call-order/</loc>
     <lastmod>2019-01-01T22:04:25+03:00</lastmod>
   </url>
   
