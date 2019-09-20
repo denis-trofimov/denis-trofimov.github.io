@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Debian | Python Courses Mentor Blog</title>
+    <title>debian | Python Courses Mentor Blog</title>
     <link>https://denis-trofimov.github.io/tags/debian/</link>
       <atom:link href="https://denis-trofimov.github.io/tags/debian/index.xml" rel="self" type="application/rss+xml" />
-    <description>Debian</description>
+    <description>debian</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© All rights reserved - 2019</copyright><lastBuildDate>Mon, 01 May 2017 16:54:03 +0300</lastBuildDate>
     <image>
       <url>https://denis-trofimov.github.io/img/icon-192.png</url>
-      <title>Debian</title>
+      <title>debian</title>
       <link>https://denis-trofimov.github.io/tags/debian/</link>
     </image>
     

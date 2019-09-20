@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>PostgreSQL | Python Courses Mentor Blog</title>
+    <title>postgresql | Python Courses Mentor Blog</title>
     <link>https://denis-trofimov.github.io/tags/postgresql/</link>
       <atom:link href="https://denis-trofimov.github.io/tags/postgresql/index.xml" rel="self" type="application/rss+xml" />
-    <description>PostgreSQL</description>
+    <description>postgresql</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© All rights reserved - 2019</copyright><lastBuildDate>Mon, 01 May 2017 16:54:03 +0300</lastBuildDate>
     <image>
       <url>https://denis-trofimov.github.io/img/icon-192.png</url>
-      <title>PostgreSQL</title>
+      <title>postgresql</title>
       <link>https://denis-trofimov.github.io/tags/postgresql/</link>
     </image>
     

@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Jupyter notebook | Python Courses Mentor Blog</title>
+    <title>jupyter notebook | Python Courses Mentor Blog</title>
     <link>https://denis-trofimov.github.io/tags/jupyter-notebook/</link>
       <atom:link href="https://denis-trofimov.github.io/tags/jupyter-notebook/index.xml" rel="self" type="application/rss+xml" />
-    <description>Jupyter notebook</description>
+    <description>jupyter notebook</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© All rights reserved - 2019</copyright><lastBuildDate>Sat, 01 Sep 2018 19:49:22 +0000</lastBuildDate>
     <image>
       <url>https://denis-trofimov.github.io/img/icon-192.png</url>
-      <title>Jupyter notebook</title>
+      <title>jupyter notebook</title>
       <link>https://denis-trofimov.github.io/tags/jupyter-notebook/</link>
     </image>
     

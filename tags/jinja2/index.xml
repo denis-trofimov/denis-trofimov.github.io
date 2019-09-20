@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Jinja2 | Python Courses Mentor Blog</title>
+    <title>jinja2 | Python Courses Mentor Blog</title>
     <link>https://denis-trofimov.github.io/tags/jinja2/</link>
       <atom:link href="https://denis-trofimov.github.io/tags/jinja2/index.xml" rel="self" type="application/rss+xml" />
-    <description>Jinja2</description>
+    <description>jinja2</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© All rights reserved - 2019</copyright><lastBuildDate>Tue, 01 Jan 2019 22:04:25 +0300</lastBuildDate>
     <image>
       <url>https://denis-trofimov.github.io/img/icon-192.png</url>
-      <title>Jinja2</title>
+      <title>jinja2</title>
       <link>https://denis-trofimov.github.io/tags/jinja2/</link>
     </image>
     

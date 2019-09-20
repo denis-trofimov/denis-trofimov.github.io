@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Linux | Python Courses Mentor Blog</title>
+    <title>linux | Python Courses Mentor Blog</title>
     <link>https://denis-trofimov.github.io/tags/linux/</link>
       <atom:link href="https://denis-trofimov.github.io/tags/linux/index.xml" rel="self" type="application/rss+xml" />
-    <description>Linux</description>
+    <description>linux</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© All rights reserved - 2019</copyright><lastBuildDate>Mon, 01 May 2017 16:54:03 +0300</lastBuildDate>
     <image>
       <url>https://denis-trofimov.github.io/img/icon-192.png</url>
-      <title>Linux</title>
+      <title>linux</title>
       <link>https://denis-trofimov.github.io/tags/linux/</link>
     </image>
     

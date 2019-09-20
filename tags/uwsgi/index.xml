@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>UWSGI | Python Courses Mentor Blog</title>
+    <title>uwsgi | Python Courses Mentor Blog</title>
     <link>https://denis-trofimov.github.io/tags/uwsgi/</link>
       <atom:link href="https://denis-trofimov.github.io/tags/uwsgi/index.xml" rel="self" type="application/rss+xml" />
-    <description>UWSGI</description>
+    <description>uwsgi</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© All rights reserved - 2019</copyright><lastBuildDate>Tue, 01 Jan 2019 22:04:25 +0300</lastBuildDate>
     <image>
       <url>https://denis-trofimov.github.io/img/icon-192.png</url>
-      <title>UWSGI</title>
+      <title>uwsgi</title>
       <link>https://denis-trofimov.github.io/tags/uwsgi/</link>
     </image>
     
