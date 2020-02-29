@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>agile | Python Courses Mentor Blog</title>
+    <title>agile | Denis Trofimov&#39;s Blog</title>
     <link>https://denis-trofimov.github.io/tags/agile/</link>
       <atom:link href="https://denis-trofimov.github.io/tags/agile/index.xml" rel="self" type="application/rss+xml" />
     <description>agile</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© All rights reserved - 2019</copyright><lastBuildDate>Fri, 14 Sep 2018 22:17:50 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© All rights reserved - 2020</copyright><lastBuildDate>Fri, 14 Sep 2018 22:17:50 +0000</lastBuildDate>
     <image>
-      <url>https://denis-trofimov.github.io/img/icon-192.png</url>
+      <url>https://denis-trofimov.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
       <title>agile</title>
       <link>https://denis-trofimov.github.io/tags/agile/</link>
     </image>
@@ -17,65 +17,40 @@
       <link>https://denis-trofimov.github.io/getting-mob-programming-buy-in-at-your-organization/</link>
       <pubDate>Fri, 14 Sep 2018 22:17:50 +0000</pubDate>
       <guid>https://denis-trofimov.github.io/getting-mob-programming-buy-in-at-your-organization/</guid>
-      <description>&lt;p&gt;Repost of &lt;a href=&#34;https://simpleprogrammer.com/mob-programming/&#34;&gt;https://simpleprogrammer.com/mob-programming/.&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://spzone-simpleprogrammer.netdna-ssl.com/wp-content/uploads/2018/09/mod-square.png&#34; alt=&#34;This piece was a collaboration written by Nate Wixom and Torrey Powell.&#34; title=&#34;This piece was a collaboration written by Nate Wixom and Torrey Powell.&#34; /&gt;&lt;/p&gt;
-
+      <description>&lt;p&gt;Repost of &lt;!-- raw HTML omitted --&gt;&lt;a href=&#34;https://simpleprogrammer.com/mob-programming/&#34;&gt;https://simpleprogrammer.com/mob-programming/&lt;/a&gt;.&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://spzone-simpleprogrammer.netdna-ssl.com/wp-content/uploads/2018/09/mod-square.png&#34; alt=&#34;This piece was a collaboration written by Nate Wixom and Torrey Powell.&#34; title=&#34;This piece was a collaboration written by Nate Wixom and Torrey Powell.&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Mob programming is the best approach for many development applications. Mob projects result in a more finished project at release, with fewer bugs. By focusing on one project at a time, teams can complete projects more efficiently, and those projects are higher quality, requiring fewer revisions.&lt;/p&gt;
-
-&lt;p&gt;The Project Management Institute’s &lt;a href=&#34;https://www.pmi.org/-/media/pmi/documents/public/pdf/learning/thought-leadership/pulse/pulse-of-the-profession-2017.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;2017 Pulse of the Profession&lt;/a&gt; survey reports that 71 percent of organizations now use &lt;a href=&#34;https://www.cio.com/article/3156998/agile-development/agile-project-management-a-beginners-guide.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;agile methods&lt;/a&gt; to complete projects. Included among agile approaches is mob programming, &lt;a href=&#34;https://www.agilealliance.org/glossary/mob-programming/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;defined by the Agile Alliance&lt;/a&gt; as “a software development approach where the whole team works on the same thing, at the same time, in the same space, and at the same computer.” Picture multiple engineers at one station working collaboratively on one project.&lt;/p&gt;
-
+&lt;p&gt;The Project Management Institute’s &lt;!-- raw HTML omitted --&gt;2017 Pulse of the Profession&lt;!-- raw HTML omitted --&gt; survey reports that 71 percent of organizations now use &lt;!-- raw HTML omitted --&gt;agile methods&lt;!-- raw HTML omitted --&gt; to complete projects. Included among agile approaches is mob programming, &lt;!-- raw HTML omitted --&gt;defined by the Agile Alliance&lt;!-- raw HTML omitted --&gt; as “a software development approach where the whole team works on the same thing, at the same time, in the same space, and at the same computer.” Picture multiple engineers at one station working collaboratively on one project.&lt;/p&gt;
 &lt;p&gt;While many organizations have adopted mob programming as a core part of their development skill set, not all development organizations have bought in.&lt;/p&gt;
-
 &lt;p&gt;Still, to implement mob programming successfully, you need buy-in from two important groups at your organization—the executive team and the programmers themselves.&lt;/p&gt;
-
 &lt;p&gt;By following the strategies below, you can get organization buy-in for mob programming from top to bottom and start using this agile development methodology to provide superior finished products for clients both inside and outside your organization.&lt;/p&gt;
-
 &lt;h2 id=&#34;getting-buy-in-from-leadership&#34;&gt;Getting Buy-in From Leadership&lt;/h2&gt;
-
-&lt;p&gt;As far back as 2000, the benefits of developers teaming up on projects to solve problems have been evaluated against the performance of individuals. An oft-cited &lt;a href=&#34;http://sunnyday.mit.edu/16.355/williams.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;joint study&lt;/a&gt; between the University of North Carolina and the University of Utah showed that paired programmers were 15 percent more successful in solving problems and that their solutions did so with fewer lines of code.&lt;/p&gt;
-
+&lt;p&gt;As far back as 2000, the benefits of developers teaming up on projects to solve problems have been evaluated against the performance of individuals. An oft-cited &lt;!-- raw HTML omitted --&gt;joint study&lt;!-- raw HTML omitted --&gt; between the University of North Carolina and the University of Utah showed that paired programmers were 15 percent more successful in solving problems and that their solutions did so with fewer lines of code.&lt;/p&gt;
 &lt;p&gt;That may not be an impressive enough statistic for senior leadership, however. Shouldn’t it be at least 100 percent more efficient in order to be cost-effective?&lt;/p&gt;
-
 &lt;p&gt;The truth of the matter is that such small efficiency gains in the short run may not be convincing. It’s a long game, and you’ll need to open leadership’s eyes to the possibilities of multiple projects spanning months, even years.&lt;/p&gt;
-
 &lt;p&gt;If you can get leadership to agree to a six- to 12-month trial for mob programming, here are some of the benefits your organization will see:&lt;/p&gt;
-
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Fully inventoried projects:&lt;/strong&gt; With groups working more thoroughly and quickly on fewer projects, projects are less likely to be abandoned or forgotten, and more projects are fully completed. More eyes on every project means projects are more complete when they are released to the world.&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Shorter turnaround on projects:&lt;/strong&gt; Projects are completed quicker than when worked on by individual developers. With more eyes on each project, roadblocks are more easily overcome, and solutions to problems can quickly be brainstormed.&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Fewer issues in live projects:&lt;/strong&gt; As the projects are fully inventoried with more people reviewing every line of code, fewer bugs make it to the production environment. With individual developers working on projects, it’s often understood that there will be bugs that need to be fixed while a platform is live. You can eliminate a lot of this necessary rework through mob programming.&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Quicker onboarding for programmers:&lt;/strong&gt; Onboarding into a mob programming environment is more efficient, as you can drop new developers right into a mob that’s already at work on a project and get them contributing immediately rather than having to divert resources for training and management of new programmers’ early projects with your organization.&lt;/li&gt;
 &lt;/ul&gt;
-
-&lt;p&gt;Over time, mob programming improves efficiency not only in the completion of successful projects but also in the integration of &lt;a href=&#34;https://simpleprogrammer.com/working-on-a-team/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;new team members&lt;/a&gt;. You may not see the return on investment right away, but over time, it will be evident.&lt;/p&gt;
-
+&lt;p&gt;Over time, mob programming improves efficiency not only in the completion of successful projects but also in the integration of &lt;!-- raw HTML omitted --&gt;new team members&lt;!-- raw HTML omitted --&gt;. You may not see the return on investment right away, but over time, it will be evident.&lt;/p&gt;
 &lt;p&gt;Better results, faster, with fewer abandoned projects—that’s something any senior leader can get behind.&lt;/p&gt;
-
 &lt;h2 id=&#34;getting-buy-in-from-programmers-developers-and-engineers&#34;&gt;Getting Buy-in From Programmers, Developers, and Engineers&lt;/h2&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://spzone-simpleprogrammer.netdna-ssl.com/wp-content/uploads/2018/09/team-work.png&#34; alt=&#34;Getting buy-in from senior leadership is one thing. Getting buy-in from the people who will actually be doing the mob programming is something else entirely.&#34; title=&#34;Getting buy-in from senior leadership is one thing. Getting buy-in from the people who will actually be doing the mob programming is something else entirely.&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Many engineers, developers, and programmers are used to &lt;a href=&#34;https://simpleprogrammer.com/importance-community-cant-alone/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;working alone&lt;/a&gt;—putting on the headphones and sitting down to crank out code, cut off from the outside world, for hours at a time. How do you get people who are used to working alone to be active participants in a group environment where the major reason for increased success is teamwork?&lt;/p&gt;
-
+&lt;p&gt;&lt;img src=&#34;https://spzone-simpleprogrammer.netdna-ssl.com/wp-content/uploads/2018/09/team-work.png&#34; alt=&#34;Getting buy-in from senior leadership is one thing. Getting buy-in from the people who will actually be doing the mob programming is something else entirely.&#34; title=&#34;Getting buy-in from senior leadership is one thing. Getting buy-in from the people who will actually be doing the mob programming is something else entirely.&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Many engineers, developers, and programmers are used to &lt;!-- raw HTML omitted --&gt;working alone&lt;!-- raw HTML omitted --&gt;—putting on the headphones and sitting down to crank out code, cut off from the outside world, for hours at a time. How do you get people who are used to working alone to be active participants in a group environment where the major reason for increased success is teamwork?&lt;/p&gt;
 &lt;p&gt;In our experience, having gone through many iterations of mob programming while integrating it into the organization at Clearlink, not everyone is a good fit for mob programming—but many more than you would expect actually are, once they are involved.&lt;/p&gt;
-
 &lt;p&gt;Why is that? Believe it or not, engineers like socializing with their colleagues, they just haven’t always had the chance to do so. Once they realize the level of engagement and the quality of code that is created while working collaboratively, job satisfaction increases, learning increases, and enhanced team bonding occurs. Mob programming is also a meritocracy where the best idea wins, and everyone in the mob has an equal voice—from the most senior developer on the team down to the newest arrival.&lt;/p&gt;
-
-&lt;p&gt;Each mob contains two roles: _the driver_ and &lt;em&gt;the navigator(s)&lt;/em&gt;. The driver sits at the computer, inputting the code, while the navigators tell the driver what to type. These roles switch in the mob at regular eight to 15-minute intervals, giving everyone an equal chance to drive and to navigate.&lt;/p&gt;
-
+&lt;p&gt;Each mob contains two roles: &lt;em&gt;the driver&lt;/em&gt; and &lt;em&gt;the navigator(s)&lt;/em&gt;. The driver sits at the computer, inputting the code, while the navigators tell the driver what to type. These roles switch in the mob at regular eight to 15-minute intervals, giving everyone an equal chance to drive and to navigate.&lt;/p&gt;
 &lt;p&gt;Everyone remains actively involved in the process, with ideas being shared and implemented quickly. Since everyone gets a chance to navigate, junior programmers gain confidence by asserting their ideas.&lt;/p&gt;
-
 &lt;p&gt;We recommend, either at the completion of a project or at the end of each workweek, recognizing mob team members for their contributions to the project(s) they have worked on. Also, allow programmers to share what they learned and what they had trouble with. After a few projects and a few of these recognition and retrospective meetings, your team members will be comfortable working together and fully integrated into the mob programming mindset.&lt;/p&gt;
-
 &lt;h2 id=&#34;making-the-jump&#34;&gt;Making the Jump&lt;/h2&gt;
-
-&lt;p&gt;Changing development work from an individual to a mob programming style can be a big leap—one that can result in a few stumbles along the way. But once you get buy-in from leadership for a trial and can get some programmers on board, you’ll see &lt;a href=&#34;http://agileuprising.libsyn.com/mob-programming-lessons-learned-at-clearlinkcom&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;how it can benefit your organization&lt;/a&gt;.&lt;/p&gt;
-
+&lt;p&gt;Changing development work from an individual to a mob programming style can be a big leap—one that can result in a few stumbles along the way. But once you get buy-in from leadership for a trial and can get some programmers on board, you’ll see &lt;!-- raw HTML omitted --&gt;how it can benefit your organization&lt;!-- raw HTML omitted --&gt;.&lt;/p&gt;
 &lt;p&gt;We’ve given you some navigation—so get ready to drive.&lt;/p&gt;
-
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://flic.kr/p/nYis2p&#34; target=&#34;_blank&#34;&gt;Photo&lt;/a&gt; by &lt;a class=&#34;owner-name truncate&#34; title=&#34;Go to Georgia National Guard&#39;s photostream&#34; href=&#34;https://www.flickr.com/photos/ganatlguard/&#34; data-track=&#34;attributionNameClick&#34; data-rapid_p=&#34;86&#34;&gt;Georgia National Guard&lt;/a&gt; CC 2.0&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;https://flic.kr/p/nYis2p&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Photo&lt;/a&gt; by &lt;!-- raw HTML omitted --&gt;Georgia National Guard&lt;!-- raw HTML omitted --&gt; CC 2.0&lt;/li&gt;
 &lt;/ul&gt;</description>
     </item>
     

@@ -1,29 +1,16 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Authors | Python Courses Mentor Blog</title>
+    <title>Authors | Denis Trofimov&#39;s Blog</title>
     <link>https://denis-trofimov.github.io/authors/</link>
       <atom:link href="https://denis-trofimov.github.io/authors/index.xml" rel="self" type="application/rss+xml" />
     <description>Authors</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© All rights reserved - 2019</copyright>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© All rights reserved - 2020</copyright>
     <image>
-      <url>https://denis-trofimov.github.io/img/icon-192.png</url>
+      <url>https://denis-trofimov.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
       <title>Authors</title>
       <link>https://denis-trofimov.github.io/authors/</link>
     </image>
-    
-    <item>
-      <title></title>
-      <link>https://denis-trofimov.github.io/authors/admin/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://denis-trofimov.github.io/authors/admin/</guid>
-      <description>&lt;ul&gt;
-&lt;li&gt;I am C++/C/Python developer with the employment history of 9 years in a software development.&lt;/li&gt;
-&lt;li&gt;I designed and developed standalone and client-server applications  C++/Python, with databases like Oracle DB, PosgreSQL, MySQL.&lt;/li&gt;
-&lt;li&gt;Created applications serving CRM, web automated order processing, simulation of technological operation of railroad rolling stock.&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-    </item>
     
   </channel>
 </rss>

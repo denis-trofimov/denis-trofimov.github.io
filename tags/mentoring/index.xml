@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>mentoring | Python Courses Mentor Blog</title>
+    <title>mentoring | Denis Trofimov&#39;s Blog</title>
     <link>https://denis-trofimov.github.io/tags/mentoring/</link>
       <atom:link href="https://denis-trofimov.github.io/tags/mentoring/index.xml" rel="self" type="application/rss+xml" />
     <description>mentoring</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© All rights reserved - 2019</copyright><lastBuildDate>Wed, 05 Sep 2018 17:28:46 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© All rights reserved - 2020</copyright><lastBuildDate>Wed, 05 Sep 2018 17:28:46 +0000</lastBuildDate>
     <image>
-      <url>https://denis-trofimov.github.io/img/icon-192.png</url>
+      <url>https://denis-trofimov.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
       <title>mentoring</title>
       <link>https://denis-trofimov.github.io/tags/mentoring/</link>
     </image>
@@ -18,45 +18,48 @@
       <pubDate>Wed, 05 Sep 2018 17:28:46 +0000</pubDate>
       <guid>https://denis-trofimov.github.io/lessons-learned-by-mentoring-programmers-repost/</guid>
       <description>&lt;p&gt;Hello!&lt;/p&gt;
-
-&lt;p&gt;I got fresh new article from The Simple Programmer blog, &lt;a href=&#34;https://simpleprogrammer.com/lessons-learned-mentoring-programmers/&#34; target=&#34;_blank&#34;&gt;Lessons Learned by Mentoring Programmers&lt;/a&gt; .&lt;/p&gt;
-
+&lt;p&gt;I got fresh new article from The Simple Programmer blog, 
+&lt;a href=&#34;https://simpleprogrammer.com/lessons-learned-mentoring-programmers/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Lessons Learned by Mentoring Programmers&lt;/a&gt; .&lt;/p&gt;
 &lt;p&gt;It is a good coincidence, for me it is the right time to get to know about mentoring.&lt;/p&gt;
-
-&lt;p&gt;I will take part the &lt;a href=&#34;https://learn.python.ru/&#34; target=&#34;_blank&#34;&gt;learn.python.ru&lt;/a&gt; course in Moscow as a new curator for a group of 5-6 students. I am totally new to all this field, teaching programming. I am to help students to get well with Python language, answer questions, check they homework, help to plan they project. That course will be 10 weeks long.&lt;/p&gt;
-
+&lt;p&gt;I will take part the 
+&lt;a href=&#34;https://learn.python.ru/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;learn.python.ru&lt;/a&gt; course in Moscow as a new curator for a group of 5-6 students. I am totally new to all this field, teaching programming. I am to help students to get well with Python language, answer questions, check they homework, help to plan they project. That course will be 10 weeks long.&lt;/p&gt;
 &lt;p&gt;I urge you to read Ryan`s post. It covers the topics:&lt;/p&gt;
-
 &lt;ol&gt;
-&lt;li&gt;&lt;blockquote&gt;
+&lt;li&gt;
+&lt;blockquote&gt;
 &lt;p&gt;Get well with mentor imposter syndrome.&lt;/p&gt;
-&lt;/blockquote&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;blockquote&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;blockquote&gt;
 &lt;p&gt;Encourage your mentee work because they need it.&lt;/p&gt;
-&lt;/blockquote&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;blockquote&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;blockquote&gt;
 &lt;p&gt;If the concept is good not nitpick the form.&lt;/p&gt;
-&lt;/blockquote&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;blockquote&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;blockquote&gt;
 &lt;p&gt;Your Way Isn’t Always the Only Way.&lt;/p&gt;
-&lt;/blockquote&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;blockquote&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;blockquote&gt;
 &lt;p&gt;You Are Not Wasting Their Time.&lt;/p&gt;
-&lt;/blockquote&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;blockquote&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;blockquote&gt;
 &lt;p&gt;Use Questions to Collaborate&lt;/p&gt;
-&lt;/blockquote&gt;&lt;/li&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
 &lt;/ol&gt;
-
-&lt;p&gt;Thanks to author &lt;a href=&#34;https://simpleprogrammer.com/author/ryanpalo/&#34; target=&#34;_blank&#34;&gt;Ryan Palo&lt;/a&gt;! Please keep on writing and sharing!&lt;/p&gt;
-
+&lt;p&gt;Thanks to author 
+&lt;a href=&#34;https://simpleprogrammer.com/author/ryanpalo/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Ryan Palo&lt;/a&gt;! Please keep on writing and sharing!&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;Pair programming photo CC 2.0 Kang-min Liu &lt;a href=&#34;https://www.flickr.com/photos/gugod/&#34; target=&#34;_blank&#34;&gt;https://www.flickr.com/photos/gugod/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Pair programming photo CC 2.0 Kang-min Liu &lt;a href=&#34;https://www.flickr.com/photos/gugod/&#34;&gt;https://www.flickr.com/photos/gugod/&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>

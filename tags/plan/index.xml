@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>plan | Python Courses Mentor Blog</title>
+    <title>plan | Denis Trofimov&#39;s Blog</title>
     <link>https://denis-trofimov.github.io/tags/plan/</link>
       <atom:link href="https://denis-trofimov.github.io/tags/plan/index.xml" rel="self" type="application/rss+xml" />
     <description>plan</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© All rights reserved - 2019</copyright><lastBuildDate>Sun, 06 May 2018 21:49:06 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© All rights reserved - 2020</copyright><lastBuildDate>Sun, 06 May 2018 21:49:06 +0000</lastBuildDate>
     <image>
-      <url>https://denis-trofimov.github.io/img/icon-192.png</url>
+      <url>https://denis-trofimov.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
       <title>plan</title>
       <link>https://denis-trofimov.github.io/tags/plan/</link>
     </image>
@@ -17,11 +17,11 @@
       <link>https://denis-trofimov.github.io/foreword-from-author/</link>
       <pubDate>Sun, 06 May 2018 21:49:06 +0000</pubDate>
       <guid>https://denis-trofimov.github.io/foreword-from-author/</guid>
-      <description>&lt;p&gt;First of all I would like to thank one person for reasoning me to start a developer blog. This person is John Sonmez, the author of the email course on creating a blog that boosts your career &lt;a href=&#34;https://simpleprogrammer.com/store/products/how-to-create-a-blog/&#34; target=&#34;_blank&#34;&gt;&amp;#8220;How to Create a Blog That BOOSTS Your Career&amp;#8221;&lt;/a&gt; and the founder of the &lt;a href=&#34;https://simpleprogrammer.com&#34; target=&#34;_blank&#34;&gt;Simple Programmer.&lt;/a&gt;&lt;/p&gt;
-
+      <description>&lt;p&gt;First of all I would like to thank one person for reasoning me to start a developer blog. This person is John Sonmez, the author of the email course on creating a blog that boosts your career 
+&lt;a href=&#34;https://simpleprogrammer.com/store/products/how-to-create-a-blog/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;“How to Create a Blog That BOOSTS Your Career”&lt;/a&gt; and the founder of the 
+&lt;a href=&#34;https://simpleprogrammer.com&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Simple Programmer.&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;In this blog I plan to teach my reader step by step how to tackle tasks of the machine learnig in the computer vision using Python tools. I would like to show how a reader can start using former buzzwords like machine learnig, neural networks, computer vision, as a corresponding tools, Caffe package, TensorFlow, OpenCV. I know it is challeging to describe a complex notions ia a simple words, but I will try my best.&lt;/p&gt;
-
-&lt;p&gt;Q:  Why do I belive that my expertise can be valuable?&lt;br /&gt;
+&lt;p&gt;Q:  Why do I belive that my expertise can be valuable?&lt;br&gt;
 A:  In the company I am working since 2017 our team is solving problems like a face image segmentation, an eye image segmentation, an eye iris feature detection and encoding.&lt;/p&gt;
 </description>
     </item>

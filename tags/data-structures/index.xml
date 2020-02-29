@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>data structures | Python Courses Mentor Blog</title>
+    <title>data structures | Denis Trofimov&#39;s Blog</title>
     <link>https://denis-trofimov.github.io/tags/data-structures/</link>
       <atom:link href="https://denis-trofimov.github.io/tags/data-structures/index.xml" rel="self" type="application/rss+xml" />
     <description>data structures</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© All rights reserved - 2019</copyright><lastBuildDate>Fri, 28 Sep 2018 19:12:58 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© All rights reserved - 2020</copyright><lastBuildDate>Fri, 28 Sep 2018 19:12:58 +0000</lastBuildDate>
     <image>
-      <url>https://denis-trofimov.github.io/img/icon-192.png</url>
+      <url>https://denis-trofimov.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
       <title>data structures</title>
       <link>https://denis-trofimov.github.io/tags/data-structures/</link>
     </image>
@@ -17,354 +17,124 @@
       <link>https://denis-trofimov.github.io/how-dictionaries-are-implemented-in-the-python-language/</link>
       <pubDate>Fri, 28 Sep 2018 19:12:58 +0000</pubDate>
       <guid>https://denis-trofimov.github.io/how-dictionaries-are-implemented-in-the-python-language/</guid>
-      <description>&lt;div class=&#34;story-content&#34;&gt;
-  &lt;p&gt;
-    This post describes how dictionaries are implemented in the Python language.
-  &lt;/p&gt;
-  
-  &lt;p&gt;
-    This article is actually a repost of originally posted at &lt;a href=&#34;https://www.laurentluce.com/posts/python-dictionary-implementation/&#34;&gt;Laurent Luce&amp;#8217;s Blog&lt;/a&gt; August 29, 2011 by Laurent Luce. I mentor several students of russian &lt;a href=&#34;https://learn.python.ru/&#34;&gt;Learn Python&lt;/a&gt; courses. They have questions about structures in Python and how to use them. I found this post a good help to me and possibly to my students.
-  &lt;/p&gt;
-&lt;/div&gt;
-
+      <description>&lt;!-- raw HTML omitted --&gt;
+&lt;!-- raw HTML omitted --&gt;
 &lt;p&gt;Dictionaries are indexed by keys and they can be seen as associative arrays. Let’s add 3 key/value pairs to a dictionary:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-py&#34;&gt;&amp;gt;&amp;gt;&amp;gt; d = {&#39;a&#39;: 1, &#39;b&#39;: 2}
-&amp;gt;&amp;gt;&amp;gt; d[&#39;c&#39;] = 3
-&amp;gt;&amp;gt;&amp;gt; d
-{&#39;a&#39;: 1, &#39;b&#39;: 2, &#39;c&#39;: 3}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;The values can be accessed this way:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-py&#34;&gt;&amp;gt;&amp;gt;&amp;gt; d[&#39;a&#39;]
-1
-&amp;gt;&amp;gt;&amp;gt; d[&#39;b&#39;]
-2
-&amp;gt;&amp;gt;&amp;gt; d[&#39;c&#39;]
-3
-&amp;gt;&amp;gt;&amp;gt; d[&#39;d&#39;]
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-py&#34; data-lang=&#34;py&#34;&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; d &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; {&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;a&amp;#39;&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;b&amp;#39;&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;}
+&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; d[&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;c&amp;#39;&lt;/span&gt;] &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; d
+{&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;a&amp;#39;&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;b&amp;#39;&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;c&amp;#39;&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The values can be accessed this way:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-py&#34; data-lang=&#34;py&#34;&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; d[&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;a&amp;#39;&lt;/span&gt;]
+&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; d[&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;b&amp;#39;&lt;/span&gt;]
+&lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; d[&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;c&amp;#39;&lt;/span&gt;]
+&lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; d[&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;d&amp;#39;&lt;/span&gt;]
 Traceback (most recent call last):
-  File &amp;quot;&amp;lt;stdin&amp;gt;&amp;quot;, line 1, in &amp;lt;module&amp;gt;
-KeyError: &#39;d&#39;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;The key ‘d’ does not exist so a KeyError exception is raised.&lt;/p&gt;
-
+  File &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&amp;lt;stdin&amp;gt;&amp;#34;&lt;/span&gt;, line &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;, &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;module&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color:#a6e22e&#34;&gt;KeyError&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;d&amp;#39;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The key ‘d’ does not exist so a KeyError exception is raised.&lt;/p&gt;
 &lt;h2 id=&#34;hash-tables&#34;&gt;Hash tables&lt;/h2&gt;
-
 &lt;p&gt;Python dictionaries are implemented using hash tables. It is an array whose indexes are obtained using a hash function on the keys. The goal of a hash function is to distribute the keys evenly in the array. A good hash function minimizes the number of collisions e.g. different keys having the same hash. Python does not have this kind of hash function. Its most important hash functions (for strings and ints) are very regular in common cases:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-py&#34;&gt;&amp;gt;&amp;gt;&amp;gt; map(hash, (0, 1, 2, 3))
-[0, 1, 2, 3]
-&amp;gt;&amp;gt;&amp;gt; map(hash, (&amp;quot;namea&amp;quot;, &amp;quot;nameb&amp;quot;, &amp;quot;namec&amp;quot;, &amp;quot;named&amp;quot;))
-[-1658398457, -1658398460, -1658398459, -1658398462]
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;We are going to assume that we are using strings as keys for the rest of this post. The hash function for strings in Python is defined as:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-py&#34;&gt;arguments: string object
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-py&#34; data-lang=&#34;py&#34;&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; map(hash, (&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;))
+[&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;]
+&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; map(hash, (&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;namea&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;nameb&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;namec&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;named&amp;#34;&lt;/span&gt;))
+[&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1658398457&lt;/span&gt;, &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1658398460&lt;/span&gt;, &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1658398459&lt;/span&gt;, &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1658398462&lt;/span&gt;]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;We are going to assume that we are using strings as keys for the rest of this post. The hash function for strings in Python is defined as:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-py&#34; data-lang=&#34;py&#34;&gt;arguments: string object
 returns: hash
 function string_hash:
-    if hash cached:
-        return it
-    set len to string&#39;s length
-    initialize var p pointing to 1st char of string object
-    set x to value pointed by p left shifted by 7 bits
-    while len &amp;gt;= 0:
-        set var x to (1000003 * x) xor value pointed by p
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; hash cached:
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; it
+    set len to string&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;s length&lt;/span&gt;
+    initialize var p pointing to &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;st char of string object
+    set x to value pointed by p left shifted by &lt;span style=&#34;color:#ae81ff&#34;&gt;7&lt;/span&gt; bits
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;while&lt;/span&gt; len &lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;:
+        set var x to (&lt;span style=&#34;color:#ae81ff&#34;&gt;1000003&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; x) xor value pointed by p
         increment pointer p
     set x to x xor length of string object
-    cache x as the hash so we don&#39;t need to calculate it again
-    return x as the hash
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;If you run hash(‘a’) in Python, it will execute string_hash() and return 12416037344. Here we assume we are using a 64-bit machine.&lt;/p&gt;
-
+    cache x &lt;span style=&#34;color:#66d9ef&#34;&gt;as&lt;/span&gt; the hash so we don&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;t need to calculate it again&lt;/span&gt;
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; x &lt;span style=&#34;color:#66d9ef&#34;&gt;as&lt;/span&gt; the hash
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;If you run hash(‘a’) in Python, it will execute string_hash() and return 12416037344. Here we assume we are using a 64-bit machine.&lt;/p&gt;
 &lt;p&gt;If an array of size x is used to store the key/value pairs then we use a mask equal to x-1 to calculate the slot index of the pair in the array. This makes the computation of the slot index fast. The probability to find an empty slot is high due to the resizing mechanism described below. This means that having a simple computation makes sense in most of the cases. If the size of the array is 8, the index for ‘a’ will be: hash(‘a’) &amp;amp; 7 = 0. The index for ‘b’ is 3, the index for ‘c’ is 2, the index for ‘z’ is 3 which is the same as ‘b’, here we have a collision.&lt;/p&gt;
-
-&lt;p&gt;&lt;p&gt;
-    &lt;img class=&#34;alignnone&#34; src=&#34;https://www.laurentluce.com/images/blog/dict/hash.png&#34; alt=&#34;The hash function for strings in Python for a table size of 8&#34; width=&#34;375&#34; height=&#34;311&#34; /&gt;
-  &lt;/p&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;p&gt;
-    We can see that the Python hash function does a good job when the keys are consecutive which is good because it is quite common to have this type of data to work with. However, once we add the key ‘z’, there is a collision because it is not consecutive enough.
-  &lt;/p&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;p&gt;
-    We could use a linked list to store the pairs having the same hash but it would increase the lookup time e.g. not O(1) average anymore. The next section describes the collision resolution method used in the case of Python dictionaries.
-  &lt;/p&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;h2&gt;
-    Open addressing
-  &lt;/h2&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;p&gt;
-    Open addressing is a method of collision resolution where probing is used. In case of ‘z’, the slot index 3 is already used in the array so we need to probe for a different index to find one which is not already used. Adding a key/value pair will average O(1) and the lookup operation too.
-  &lt;/p&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;p&gt;
-    A quadratic probing sequence is used to find a free slot. The code is the following:
-  &lt;/p&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;j = (5*j) + 1 + perturb;
-perturb &amp;gt;&amp;gt;= PERTURB_SHIFT;
-use j % 2**i as the next table index;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;p&gt;
-    Recurring on 5*j+1 quickly magnifies small differences in the bits that didn’t affect the initial index. The variable “perturb” gets the other bits of the hash code into play.
-  &lt;/p&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;p&gt;
-    Just out of curiosity, let’s look at the probing sequence when the table size is 32 and j = 3.&lt;br /&gt; 3 -&amp;gt; 11 -&amp;gt; 19 -&amp;gt; 29 -&amp;gt; 5 -&amp;gt; 6 -&amp;gt; 16 -&amp;gt; 31 -&amp;gt; 28 -&amp;gt; 13 -&amp;gt; 2…
-  &lt;/p&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;p&gt;
-    You can read more about this probing sequence by looking at the source code of &lt;a href=&#34;http://svn.python.org/projects/python/trunk/Objects/dictobject.c&#34;&gt;dictobject.c&lt;/a&gt;. A detailed explanation of the probing mechanism can be found at the top of the file.
-  &lt;/p&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;p&gt;
-    &lt;img src=&#34;https://www.laurentluce.com/images/blog/dict/probing.png&#34; alt=&#34;open addressing&#34; /&gt;
-  &lt;/p&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;p&gt;
-    Now, let’s look at the Python internal code along with an example.
-  &lt;/p&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;h2&gt;
-    Dictionary C structures
-  &lt;/h2&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;p&gt;
-    The following C structure is used to store a dictionary entry: key/value pair. The hash, key and value are stored. PyObject is the base class of the Python objects.
-  &lt;/p&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;typedef struct {
+&lt;!-- raw HTML omitted --&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;j &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; (&lt;span style=&#34;color:#ae81ff&#34;&gt;5&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;j) &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; perturb;
+perturb &lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&amp;gt;=&lt;/span&gt; PERTURB_SHIFT;
+use j &lt;span style=&#34;color:#f92672&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;**&lt;/span&gt;i as the next table index;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;!-- raw HTML omitted --&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;typedef&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;struct&lt;/span&gt; {
   Py_ssize_t me_hash;
-  PyObject *me_key;
-  PyObject *me_value;
+  PyObject &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;me_key;
+  PyObject &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;me_value;
 } PyDictEntry;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;p&gt;
-    The following structure represents a dictionary. ma_fill is the number of used slots + dummy slots. A slot is marked dummy when a key pair is removed. ma_used is the number of used slots (active). ma_mask is equal to the array’s size minus 1 and is used to calculate the slot index. ma_table is the array and ma_smalltable is the initial array of size 8.
-  &lt;/p&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;typedef struct _dictobject PyDictObject;
-struct _dictobject {
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;!-- raw HTML omitted --&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;typedef&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;struct&lt;/span&gt; _dictobject PyDictObject;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;struct&lt;/span&gt; _dictobject {
     PyObject_HEAD
     Py_ssize_t ma_fill;
     Py_ssize_t ma_used;
     Py_ssize_t ma_mask;
-    PyDictEntry *ma_table;
-    PyDictEntry *(*ma_lookup)(PyDictObject *mp, PyObject *key, long hash);
+    PyDictEntry &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;ma_table;
+    PyDictEntry &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;(&lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;ma_lookup)(PyDictObject &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;mp, PyObject &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;key, &lt;span style=&#34;color:#66d9ef&#34;&gt;long&lt;/span&gt; hash);
     PyDictEntry ma_smalltable[PyDict_MINSIZE];
 };
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;dictionary-initialization&#34;&gt;Dictionary initialization&lt;/h2&gt;
-
-&lt;p&gt;&lt;p&gt;
-    When you first create a dictionary, the function PyDict_New() is called. I removed some of the lines and converted the C code to pseudocode to concentrate on the key concepts.
-  &lt;/p&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;returns new dictionary object
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;dictionary-initialization&#34;&gt;Dictionary initialization&lt;/h2&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;returns new dictionary object
 function PyDict_New:
     allocate new dictionary object
-    clear dictionary&#39;s table
-    set dictionary&#39;s number of used slots + dummy slots (ma_fill) to 0
-    set dictionary&#39;s number of active slots (ma_used) to 0
-    set dictionary&#39;s mask (ma_value) to dictionary size - 1 = 7
-    set dictionary&#39;s lookup function to lookdict_string
-    return allocated dictionary object
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;h2&gt;
-    Adding items
-  &lt;/h2&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;p&gt;
-    When a new key/value pair is added, PyDict_SetItem() is called. This function takes a pointer to the dictionary object and the key/value pair. It checks if the key is a string and calculates the hash or reuses the one cached if it exists. insertdict() is called to add the new key/value pair and the dictionary is resized if the number of used slots + dummy slots is greater than &lt;sup&gt;2&lt;/sup&gt;&amp;frasl;&lt;sub&gt;3&lt;/sub&gt; of the array’s size.&lt;br /&gt; Why &lt;sup&gt;2&lt;/sup&gt;&amp;frasl;&lt;sub&gt;3&lt;/sub&gt;? It is to make sure the probing sequence can find a free slot fast enough. We will look at the resizing function later.
-  &lt;/p&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-py&#34;&gt;arguments: dictionary, key, value
-returns: 0 if OK or -1
+    clear dictionary&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&amp;#39;&lt;/span&gt;s table
+    set dictionary&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&amp;#39;&lt;/span&gt;s number of used slots &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; dummy slots (ma_fill) to &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;
+    set dictionary&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&amp;#39;&lt;/span&gt;s number of active slots (ma_used) to &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;
+    set dictionary&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&amp;#39;&lt;/span&gt;s mask (ma_value) to dictionary size &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;7&lt;/span&gt;
+    set dictionary&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&amp;#39;&lt;/span&gt;s lookup function to lookdict_string
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; allocated dictionary object
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;!-- raw HTML omitted --&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-py&#34; data-lang=&#34;py&#34;&gt;arguments: dictionary, key, value
+returns: &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; OK &lt;span style=&#34;color:#f92672&#34;&gt;or&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;
 function PyDict_SetItem:
-    if key&#39;s hash cached:
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; key&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;s hash cached:&lt;/span&gt;
         use hash
-    else:
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;else&lt;/span&gt;:
         calculate hash
-    call insertdict with dictionary object, key, hash and value
-    if key/value pair added successfully and capacity over 2/3:
-        call dictresize to resize dictionary&#39;s table
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;p&gt;
-    inserdict() uses the lookup function lookdict_string() to find a free slot. This is the same function used to find a key. lookdict_string() calculates the slot index using the hash and the mask values. If it cannot find the key in the slot index = hash &amp;amp; mask, it starts probing using the loop described above, until it finds a free slot. At the first probing try, if the key is null, it returns the dummy slot if found during the first lookup. This gives priority to re-use the previously deleted slots.
-  &lt;/p&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;p&gt;
-    We want to add the following key/value pairs: {‘a’: 1, ‘b’: 2′, ‘z’: 26, ‘y’: 25, ‘c’: 5, ‘x’: 24}. This is what happens:
-  &lt;/p&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;p&gt;
-    A dictionary structure is allocated with internal table size of 8.
-  &lt;/p&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;PyDict_SetItem: key = &amp;#8216;a&amp;#8217;, value = 1&lt;/li&gt;
-&lt;ul&gt;
-&lt;li&gt;hash = hash(&amp;#8216;a&amp;#8217;) = 12416037344&lt;/li&gt;
-&lt;li&gt;insertdict&lt;/li&gt;
-&lt;ul&gt;
-&lt;li&gt;lookdict_string&lt;/li&gt;
-&lt;ul&gt;
-&lt;li&gt;slot index = hash &amp;#038; mask = 12416037344 &amp;#038; 7 = 0&lt;/li&gt;
-&lt;li&gt;slot 0 is not used so return it&lt;/li&gt;
-&lt;/ul&gt;
-&lt;li&gt;init entry at index 0 with key, value and hash&lt;/li&gt;
-&lt;li&gt;ma_used = 1, ma_fill = 1&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/ul&gt;
-&lt;li&gt;PyDict_SetItem: key = &amp;#8216;b&amp;#8217;, value = 2&lt;/li&gt;
-&lt;ul&gt;
-&lt;li&gt;hash = hash(&amp;#8216;b&amp;#8217;) = 12544037731&lt;/li&gt;
-&lt;li&gt;insertdict&lt;/li&gt;
-&lt;ul&gt;
-&lt;li&gt;lookdict_string&lt;/li&gt;
-&lt;ul&gt;
-&lt;li&gt;slot index = hash &amp;#038; mask = 12544037731 &amp;#038; 7 = 3&lt;/li&gt;
-&lt;li&gt;slot 3 is not used so return it&lt;/li&gt;
-&lt;/ul&gt;
-&lt;li&gt;init entry at index 3 with key, value and hash&lt;/li&gt;
-&lt;li&gt;ma_used = 2, ma_fill = 2&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/ul&gt;
-&lt;li&gt;PyDict_SetItem: key = &amp;#8216;z&amp;#8217;, value = 26&lt;/li&gt;
-&lt;ul&gt;
-&lt;li&gt;hash = hash(&amp;#8216;z&amp;#8217;) = 15616046971&lt;/li&gt;
-&lt;li&gt;insertdict&lt;/li&gt;
-&lt;ul&gt;
-&lt;li&gt;lookdict_string&lt;/li&gt;
-&lt;ul&gt;
-&lt;li&gt;slot index = hash &amp;#038; mask = 15616046971 &amp;#038; 7 = 3&lt;/li&gt;
-&lt;li&gt;slot 3 is used so probe for a different slot: 5 is free&lt;/li&gt;
-&lt;/ul&gt;
-&lt;li&gt;init entry at index 5 with key, value and hash&lt;/li&gt;
-&lt;li&gt;ma_used = 3, ma_fill = 3&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/ul&gt;
-&lt;li&gt;PyDict_SetItem: key = &amp;#8216;y&amp;#8217;, value = 25&lt;/li&gt;
-&lt;ul&gt;
-&lt;li&gt;hash = hash(&amp;#8216;y&amp;#8217;) = 15488046584&lt;/li&gt;
-&lt;li&gt;insertdict&lt;/li&gt;
-&lt;ul&gt;
-&lt;li&gt;lookdict_string&lt;/li&gt;
-&lt;ul&gt;
-&lt;li&gt;slot index = hash &amp;#038; mask = 15488046584 &amp;#038; 7 = 0&lt;/li&gt;
-&lt;li&gt;slot 0 is used so probe for a different slot: 1 is free&lt;/li&gt;
-&lt;/ul&gt;
-&lt;li&gt;init entry at index 1 with key, value and hash&lt;/li&gt;
-&lt;li&gt;ma_used = 4, ma_fill = 4&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/ul&gt;
-&lt;li&gt;PyDict_SetItem: key = &amp;#8216;c&amp;#8217;, value = 3&lt;/li&gt;
-&lt;ul&gt;
-&lt;li&gt;hash = hash(&amp;#8216;c&amp;#8217;) = 12672038114&lt;/li&gt;
-&lt;li&gt;insertdict&lt;/li&gt;
-&lt;ul&gt;
-&lt;li&gt;lookdict_string&lt;/li&gt;
-&lt;ul&gt;
-&lt;li&gt;slot index = hash &amp;#038; mask = 12672038114 &amp;#038; 7 = 2&lt;/li&gt;
-&lt;li&gt;slot 2 is free so return it&lt;/li&gt;
-&lt;/ul&gt;
-&lt;li&gt;init entry at index 2 with key, value and hash&lt;/li&gt;
-&lt;li&gt;ma_used = 5, ma_fill = 5&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/ul&gt;
-&lt;li&gt;PyDict_SetItem: key = &amp;#8216;x&amp;#8217;, value = 24&lt;/li&gt;
-&lt;ul&gt;
-&lt;li&gt;hash = hash(&amp;#8216;x&amp;#8217;) = 15360046201&lt;/li&gt;
-&lt;li&gt;insertdict&lt;/li&gt;
-&lt;ul&gt;
-&lt;li&gt;lookdict_string&lt;/li&gt;
-&lt;ul&gt;
-&lt;li&gt;slot index = hash &amp;#038; mask = 15360046201 &amp;#038; 7 = 1&lt;/li&gt;
-&lt;li&gt;slot 1 is used so probe for a different slot: 7 is free&lt;/li&gt;
-&lt;/ul&gt;
-&lt;li&gt;init entry at index 7 with key, value and hash&lt;/li&gt;
-&lt;li&gt;ma_used = 6, ma_fill = 6&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/ul&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;p&gt;
-    This is what we have so far:
-  &lt;/p&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;p&gt;
-    &lt;img src=&#34;https://www.laurentluce.com/images/blog/dict/insert.png&#34; alt=&#34;python dictionary insert&#34; /&gt;
-  &lt;/p&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;p&gt;
-    6 slots on 8 are used now so we are over &lt;sup&gt;2&lt;/sup&gt;&amp;frasl;&lt;sub&gt;3&lt;/sub&gt; of the array’s capacity. dictresize() is called to allocate a larger array. This function also takes care of copying the old table entries to the new table.
-  &lt;/p&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;p&gt;
-    dictresize() is called with minused = 24 in our case which is 4 * ma_used. 2 * ma_used is used when the number of used slots is very large (greater than 50000). Why 4 times the number of used slots? It reduces the number of resize steps and it increases sparseness.
-  &lt;/p&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;p&gt;
-    The new table size needs to be greater than 24 and it is calculated by shifting the current size 1 bit left until it is greater than 24. It ends up being 32 e.g. 8 -&amp;gt; 16 -&amp;gt; 32.
-  &lt;/p&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;p&gt;
-    This is what happens with our table during resizing: a new table of size 32 is allocated. Old table entries are inserted into the new table using the new mask value which is 31. We end up with the following:
-  &lt;/p&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;p&gt;
-    &lt;img src=&#34;https://www.laurentluce.com/images/blog/dict/resizing.png&#34; alt=&#34;python dictionary table resizing&#34; /&gt;
-  &lt;/p&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;h2&gt;
-    Removing items
-  &lt;/h2&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;p&gt;
-    PyDict_DelItem() is called to remove an entry. The hash for this key is calculated and the lookup function is called to return the entry. The slot is now a dummy slot.
-  &lt;/p&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;p&gt;
-    We want to remove the key ‘c’ from our dictionary. We end up with the following array:
-  &lt;/p&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;p&gt;
-    &lt;img src=&#34;https://www.laurentluce.com/images/blog/dict/delete.png&#34; alt=&#34;Python dictionary delete key&#34; /&gt;
-  &lt;/p&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;p&gt;
-    Note that the delete item operation doesn’t trigger an array resize if the number of used slots is much less that the total number of slots. However, when a key/value pair is added, the need for resize is based on the number of used slots + dummy slots so it can shrink the array too.
-  &lt;/p&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;p&gt;
-    That’s it for now. I hope you enjoyed the article. Please write a comment if you have any feedback.
-  &lt;/p&gt;
-&lt;/div&gt;&lt;/p&gt;
-
-&lt;!--more--&gt;
-
-&lt;!--more--&gt;
-
-&lt;div class=&#34;metawrap&#34;&gt;
-  &lt;p&gt;
-    &amp;nbsp;
-  &lt;/p&gt;
-  
-  &lt;p&gt;
-    &lt;em&gt;Originally posted at &lt;a href=&#34;https://www.laurentluce.com/posts/python-dictionary-implementation/&#34;&gt;Laurent Luce&amp;#8217;s Blog&lt;/a&gt; August 29, 2011 by Laurent Luce.&lt;/em&gt;
-  &lt;/p&gt;
-&lt;/div&gt;</description>
+    call insertdict &lt;span style=&#34;color:#66d9ef&#34;&gt;with&lt;/span&gt; dictionary object, key, hash &lt;span style=&#34;color:#f92672&#34;&gt;and&lt;/span&gt; value
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; key&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;value pair added successfully &lt;span style=&#34;color:#f92672&#34;&gt;and&lt;/span&gt; capacity over &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;:
+        call dictresize to resize dictionary&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;s table&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;!-- raw HTML omitted --&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;!-- raw HTML omitted --&gt;</description>
     </item>
     
   </channel>
