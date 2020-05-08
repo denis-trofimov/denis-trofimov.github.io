@@ -41,7 +41,7 @@
 
 
 
-&lt;figure&gt;
+&lt;figure id=&#34;figure-screenshot-of-call-order-received&#34;&gt;
 
 
   &lt;a data-fancybox=&#34;&#34; href=&#34;https://denis-trofimov.github.io/project/django-personalized-happy-new-year-greetings-call-order/featured_hu48bb85a4bc53a02b9b4d638b7cdf34b6_637086_2000x2000_fit_lanczos_2.png&#34; data-caption=&#34;Screenshot of call order received&#34;&gt;
@@ -78,7 +78,7 @@
 
 
 
-&lt;figure&gt;
+&lt;figure id=&#34;figure-screenshot-of-django-admin-view&#34;&gt;
 
 
   &lt;a data-fancybox=&#34;&#34; href=&#34;https://denis-trofimov.github.io/project/django-personalized-happy-new-year-greetings-call-order/_hu88a7cbe722c308d9cc8c6d0e5675d975_51398_1bab74af1670df0dfc028f287522c244.png&#34; data-caption=&#34;Screenshot of Django admin view&#34;&gt;
