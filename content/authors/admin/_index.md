@@ -74,6 +74,7 @@ email: 'silaradost@yandex.ru'
 highlight_name: true
 ---
 
-* I am C++/C/Python developer with the employment history of 9 years in a software development.
-* I designed and developed standalone and client-server applications  C++/Python, with databases like Oracle DB, PosgreSQL, MySQL.
-* Created applications serving CRM, web automated order processing, simulation of technological operation of railroad rolling stock.
+* I am a Go/Python/C++/C software engineer and working in software development since 2010.
+* For the last 3 years I did Platform Engineering, the development of the Internal Developer Portal (IDP), and making organizations shift left on the DevOps paradigm.
+* In the past I've designed and developed standalone and client-server applications, with databases like Oracle DB, PostgreSQL, and MySQL.
+* Created applications serving CRM, web automated order processing, and simulation of the technological operation of railroad rolling stock.
