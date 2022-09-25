@@ -1,0 +1,799 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>code | Denis Trofimov Blog</title><link>https://denis-trofimov.github.io/tag/code/</link><atom:link href="https://denis-trofimov.github.io/tag/code/index.xml" rel="self" type="application/rss+xml"/><description>code</description><generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Fri, 28 Sep 2018 19:12:58 +0000</lastBuildDate><image><url>https://denis-trofimov.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png</url><title>code</title><link>https://denis-trofimov.github.io/tag/code/</link></image><item><title>How dictionaries are implemented in the Python language</title><link>https://denis-trofimov.github.io/how-dictionaries-are-implemented-in-the-python-language/</link><pubDate>Fri, 28 Sep 2018 19:12:58 +0000</pubDate><guid>https://denis-trofimov.github.io/how-dictionaries-are-implemented-in-the-python-language/</guid><description>&lt;div class="story-content">
+&lt;p>
+This post describes how dictionaries are implemented in the Python language.
+&lt;/p>
+&lt;p>
+This article is actually a repost of originally posted at &lt;a href="https://www.laurentluce.com/posts/python-dictionary-implementation/">Laurent Luce&amp;#8217;s Blog&lt;/a> August 29, 2011 by Laurent Luce. I mentor several students of russian &lt;a href="https://learn.python.ru/">Learn Python&lt;/a> courses. They have questions about structures in Python and how to use them. I found this post a good help to me and possibly to my students.
+&lt;/p>
+&lt;/div>
+&lt;p>Dictionaries are indexed by keys and they can be seen as associative arrays. Let’s add 3 key/value pairs to a dictionary:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-py" data-lang="py">&lt;span class="line">&lt;span class="cl">&lt;span class="o">&amp;gt;&amp;gt;&amp;gt;&lt;/span> &lt;span class="n">d&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">{&lt;/span>&lt;span class="s1">&amp;#39;a&amp;#39;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="mi">1&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s1">&amp;#39;b&amp;#39;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="mi">2&lt;/span>&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">&amp;gt;&amp;gt;&amp;gt;&lt;/span> &lt;span class="n">d&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="s1">&amp;#39;c&amp;#39;&lt;/span>&lt;span class="p">]&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mi">3&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">&amp;gt;&amp;gt;&amp;gt;&lt;/span> &lt;span class="n">d&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">{&lt;/span>&lt;span class="s1">&amp;#39;a&amp;#39;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="mi">1&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s1">&amp;#39;b&amp;#39;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="mi">2&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s1">&amp;#39;c&amp;#39;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="mi">3&lt;/span>&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>The values can be accessed this way:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-py" data-lang="py">&lt;span class="line">&lt;span class="cl">&lt;span class="o">&amp;gt;&amp;gt;&amp;gt;&lt;/span> &lt;span class="n">d&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="s1">&amp;#39;a&amp;#39;&lt;/span>&lt;span class="p">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="mi">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">&amp;gt;&amp;gt;&amp;gt;&lt;/span> &lt;span class="n">d&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="s1">&amp;#39;b&amp;#39;&lt;/span>&lt;span class="p">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="mi">2&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">&amp;gt;&amp;gt;&amp;gt;&lt;/span> &lt;span class="n">d&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="s1">&amp;#39;c&amp;#39;&lt;/span>&lt;span class="p">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="mi">3&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">&amp;gt;&amp;gt;&amp;gt;&lt;/span> &lt;span class="n">d&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="s1">&amp;#39;d&amp;#39;&lt;/span>&lt;span class="p">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">Traceback&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">most&lt;/span> &lt;span class="n">recent&lt;/span> &lt;span class="n">call&lt;/span> &lt;span class="n">last&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">File&lt;/span> &lt;span class="s2">&amp;#34;&amp;lt;stdin&amp;gt;&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">line&lt;/span> &lt;span class="mi">1&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="ow">in&lt;/span> &lt;span class="o">&amp;lt;&lt;/span>&lt;span class="n">module&lt;/span>&lt;span class="o">&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="ne">KeyError&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s1">&amp;#39;d&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>The key ‘d’ does not exist so a KeyError exception is raised.&lt;/p>
+&lt;h2 id="hash-tables">Hash tables&lt;/h2>
+&lt;p>Python dictionaries are implemented using hash tables. It is an array whose indexes are obtained using a hash function on the keys. The goal of a hash function is to distribute the keys evenly in the array. A good hash function minimizes the number of collisions e.g. different keys having the same hash. Python does not have this kind of hash function. Its most important hash functions (for strings and ints) are very regular in common cases:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-py" data-lang="py">&lt;span class="line">&lt;span class="cl">&lt;span class="o">&amp;gt;&amp;gt;&amp;gt;&lt;/span> &lt;span class="nb">map&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nb">hash&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="mi">0&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">1&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">2&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">3&lt;/span>&lt;span class="p">))&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">[&lt;/span>&lt;span class="mi">0&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">1&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">2&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">3&lt;/span>&lt;span class="p">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">&amp;gt;&amp;gt;&amp;gt;&lt;/span> &lt;span class="nb">map&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nb">hash&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;namea&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s2">&amp;#34;nameb&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s2">&amp;#34;namec&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s2">&amp;#34;named&amp;#34;&lt;/span>&lt;span class="p">))&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">[&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="mi">1658398457&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="o">-&lt;/span>&lt;span class="mi">1658398460&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="o">-&lt;/span>&lt;span class="mi">1658398459&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="o">-&lt;/span>&lt;span class="mi">1658398462&lt;/span>&lt;span class="p">]&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>We are going to assume that we are using strings as keys for the rest of this post. The hash function for strings in Python is defined as:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-py" data-lang="py">&lt;span class="line">&lt;span class="cl">&lt;span class="n">arguments&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">string&lt;/span> &lt;span class="nb">object&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">returns&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="nb">hash&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">function&lt;/span> &lt;span class="n">string_hash&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="nb">hash&lt;/span> &lt;span class="n">cached&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="n">it&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">set&lt;/span> &lt;span class="nb">len&lt;/span> &lt;span class="n">to&lt;/span> &lt;span class="n">string&lt;/span>&lt;span class="s1">&amp;#39;s length&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">initialize&lt;/span> &lt;span class="n">var&lt;/span> &lt;span class="n">p&lt;/span> &lt;span class="n">pointing&lt;/span> &lt;span class="n">to&lt;/span> &lt;span class="mi">1&lt;/span>&lt;span class="n">st&lt;/span> &lt;span class="n">char&lt;/span> &lt;span class="n">of&lt;/span> &lt;span class="n">string&lt;/span> &lt;span class="nb">object&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">set&lt;/span> &lt;span class="n">x&lt;/span> &lt;span class="n">to&lt;/span> &lt;span class="n">value&lt;/span> &lt;span class="n">pointed&lt;/span> &lt;span class="n">by&lt;/span> &lt;span class="n">p&lt;/span> &lt;span class="n">left&lt;/span> &lt;span class="n">shifted&lt;/span> &lt;span class="n">by&lt;/span> &lt;span class="mi">7&lt;/span> &lt;span class="n">bits&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">while&lt;/span> &lt;span class="nb">len&lt;/span> &lt;span class="o">&amp;gt;=&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">set&lt;/span> &lt;span class="n">var&lt;/span> &lt;span class="n">x&lt;/span> &lt;span class="n">to&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="mi">1000003&lt;/span> &lt;span class="o">*&lt;/span> &lt;span class="n">x&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="n">xor&lt;/span> &lt;span class="n">value&lt;/span> &lt;span class="n">pointed&lt;/span> &lt;span class="n">by&lt;/span> &lt;span class="n">p&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">increment&lt;/span> &lt;span class="n">pointer&lt;/span> &lt;span class="n">p&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">set&lt;/span> &lt;span class="n">x&lt;/span> &lt;span class="n">to&lt;/span> &lt;span class="n">x&lt;/span> &lt;span class="n">xor&lt;/span> &lt;span class="n">length&lt;/span> &lt;span class="n">of&lt;/span> &lt;span class="n">string&lt;/span> &lt;span class="nb">object&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">cache&lt;/span> &lt;span class="n">x&lt;/span> &lt;span class="k">as&lt;/span> &lt;span class="n">the&lt;/span> &lt;span class="nb">hash&lt;/span> &lt;span class="n">so&lt;/span> &lt;span class="n">we&lt;/span> &lt;span class="n">don&lt;/span>&lt;span class="s1">&amp;#39;t need to calculate it again&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="n">x&lt;/span> &lt;span class="k">as&lt;/span> &lt;span class="n">the&lt;/span> &lt;span class="nb">hash&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>If you run hash(‘a’) in Python, it will execute string_hash() and return 12416037344. Here we assume we are using a 64-bit machine.&lt;/p>
+&lt;p>If an array of size x is used to store the key/value pairs then we use a mask equal to x-1 to calculate the slot index of the pair in the array. This makes the computation of the slot index fast. The probability to find an empty slot is high due to the resizing mechanism described below. This means that having a simple computation makes sense in most of the cases. If the size of the array is 8, the index for ‘a’ will be: hash(‘a’) &amp;amp; 7 = 0. The index for ‘b’ is 3, the index for ‘c’ is 2, the index for ‘z’ is 3 which is the same as ‘b’, here we have a collision.&lt;/p>
+&lt;p>
+&lt;img class="alignnone" src="https://www.laurentluce.com/images/blog/dict/hash.png" alt="The hash function for strings in Python for a table size of 8" width="375" height="311" />
+&lt;/p>
+&lt;p>
+We can see that the Python hash function does a good job when the keys are consecutive which is good because it is quite common to have this type of data to work with. However, once we add the key ‘z’, there is a collision because it is not consecutive enough.
+&lt;/p>
+&lt;p>
+We could use a linked list to store the pairs having the same hash but it would increase the lookup time e.g. not O(1) average anymore. The next section describes the collision resolution method used in the case of Python dictionaries.
+&lt;/p>
+&lt;h2>
+Open addressing
+&lt;/h2>
+&lt;p>
+Open addressing is a method of collision resolution where probing is used. In case of ‘z’, the slot index 3 is already used in the array so we need to probe for a different index to find one which is not already used. Adding a key/value pair will average O(1) and the lookup operation too.
+&lt;/p>
+&lt;p>
+A quadratic probing sequence is used to find a free slot. The code is the following:
+&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-c" data-lang="c">&lt;span class="line">&lt;span class="cl">&lt;span class="n">j&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="mi">5&lt;/span>&lt;span class="o">*&lt;/span>&lt;span class="n">j&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="o">+&lt;/span> &lt;span class="mi">1&lt;/span> &lt;span class="o">+&lt;/span> &lt;span class="n">perturb&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">perturb&lt;/span> &lt;span class="o">&amp;gt;&amp;gt;=&lt;/span> &lt;span class="n">PERTURB_SHIFT&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">use&lt;/span> &lt;span class="n">j&lt;/span> &lt;span class="o">%&lt;/span> &lt;span class="mi">2&lt;/span>&lt;span class="o">**&lt;/span>&lt;span class="n">i&lt;/span> &lt;span class="n">as&lt;/span> &lt;span class="n">the&lt;/span> &lt;span class="n">next&lt;/span> &lt;span class="n">table&lt;/span> &lt;span class="n">index&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div> &lt;p>
+Recurring on 5*j+1 quickly magnifies small differences in the bits that didn’t affect the initial index. The variable “perturb” gets the other bits of the hash code into play.
+&lt;/p>
+&lt;p>
+Just out of curiosity, let’s look at the probing sequence when the table size is 32 and j = 3.&lt;br /> 3 -> 11 -> 19 -> 29 -> 5 -> 6 -> 16 -> 31 -> 28 -> 13 -> 2…
+&lt;/p>
+&lt;p>
+You can read more about this probing sequence by looking at the source code of &lt;a href="http://svn.python.org/projects/python/trunk/Objects/dictobject.c">dictobject.c&lt;/a>. A detailed explanation of the probing mechanism can be found at the top of the file.
+&lt;/p>
+&lt;p>
+&lt;img src="https://www.laurentluce.com/images/blog/dict/probing.png" alt="open addressing" />
+&lt;/p>
+&lt;p>
+Now, let’s look at the Python internal code along with an example.
+&lt;/p>
+&lt;h2>
+Dictionary C structures
+&lt;/h2>
+&lt;p>
+The following C structure is used to store a dictionary entry: key/value pair. The hash, key and value are stored. PyObject is the base class of the Python objects.
+&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-c" data-lang="c">&lt;span class="line">&lt;span class="cl">&lt;span class="k">typedef&lt;/span> &lt;span class="k">struct&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">Py_ssize_t&lt;/span> &lt;span class="n">me_hash&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">PyObject&lt;/span> &lt;span class="o">*&lt;/span>&lt;span class="n">me_key&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">PyObject&lt;/span> &lt;span class="o">*&lt;/span>&lt;span class="n">me_value&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span> &lt;span class="n">PyDictEntry&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div> &lt;p>
+The following structure represents a dictionary. ma_fill is the number of used slots + dummy slots. A slot is marked dummy when a key pair is removed. ma_used is the number of used slots (active). ma_mask is equal to the array’s size minus 1 and is used to calculate the slot index. ma_table is the array and ma_smalltable is the initial array of size 8.
+&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-c" data-lang="c">&lt;span class="line">&lt;span class="cl">&lt;span class="k">typedef&lt;/span> &lt;span class="k">struct&lt;/span> &lt;span class="n">_dictobject&lt;/span> &lt;span class="n">PyDictObject&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">struct&lt;/span> &lt;span class="n">_dictobject&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">PyObject_HEAD&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">Py_ssize_t&lt;/span> &lt;span class="n">ma_fill&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">Py_ssize_t&lt;/span> &lt;span class="n">ma_used&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">Py_ssize_t&lt;/span> &lt;span class="n">ma_mask&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">PyDictEntry&lt;/span> &lt;span class="o">*&lt;/span>&lt;span class="n">ma_table&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">PyDictEntry&lt;/span> &lt;span class="o">*&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="o">*&lt;/span>&lt;span class="n">ma_lookup&lt;/span>&lt;span class="p">)(&lt;/span>&lt;span class="n">PyDictObject&lt;/span> &lt;span class="o">*&lt;/span>&lt;span class="n">mp&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">PyObject&lt;/span> &lt;span class="o">*&lt;/span>&lt;span class="n">key&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="kt">long&lt;/span> &lt;span class="n">hash&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">PyDictEntry&lt;/span> &lt;span class="n">ma_smalltable&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">PyDict_MINSIZE&lt;/span>&lt;span class="p">];&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">};&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="dictionary-initialization">Dictionary initialization&lt;/h2>
+&lt;p>
+When you first create a dictionary, the function PyDict_New() is called. I removed some of the lines and converted the C code to pseudocode to concentrate on the key concepts.
+&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-c" data-lang="c">&lt;span class="line">&lt;span class="cl">&lt;span class="n">returns&lt;/span> &lt;span class="n">new&lt;/span> &lt;span class="n">dictionary&lt;/span> &lt;span class="n">object&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">function&lt;/span> &lt;span class="nl">PyDict_New&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">allocate&lt;/span> &lt;span class="n">new&lt;/span> &lt;span class="n">dictionary&lt;/span> &lt;span class="n">object&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">clear&lt;/span> &lt;span class="n">dictionary&lt;/span>&lt;span class="err">&amp;#39;&lt;/span>&lt;span class="n">s&lt;/span> &lt;span class="n">table&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">set&lt;/span> &lt;span class="n">dictionary&lt;/span>&lt;span class="err">&amp;#39;&lt;/span>&lt;span class="n">s&lt;/span> &lt;span class="n">number&lt;/span> &lt;span class="n">of&lt;/span> &lt;span class="n">used&lt;/span> &lt;span class="n">slots&lt;/span> &lt;span class="o">+&lt;/span> &lt;span class="n">dummy&lt;/span> &lt;span class="n">slots&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">ma_fill&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="n">to&lt;/span> &lt;span class="mi">0&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">set&lt;/span> &lt;span class="n">dictionary&lt;/span>&lt;span class="err">&amp;#39;&lt;/span>&lt;span class="n">s&lt;/span> &lt;span class="n">number&lt;/span> &lt;span class="n">of&lt;/span> &lt;span class="n">active&lt;/span> &lt;span class="n">slots&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">ma_used&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="n">to&lt;/span> &lt;span class="mi">0&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">set&lt;/span> &lt;span class="n">dictionary&lt;/span>&lt;span class="err">&amp;#39;&lt;/span>&lt;span class="n">s&lt;/span> &lt;span class="n">mask&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">ma_value&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="n">to&lt;/span> &lt;span class="n">dictionary&lt;/span> &lt;span class="n">size&lt;/span> &lt;span class="o">-&lt;/span> &lt;span class="mi">1&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mi">7&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">set&lt;/span> &lt;span class="n">dictionary&lt;/span>&lt;span class="err">&amp;#39;&lt;/span>&lt;span class="n">s&lt;/span> &lt;span class="n">lookup&lt;/span> &lt;span class="n">function&lt;/span> &lt;span class="n">to&lt;/span> &lt;span class="n">lookdict_string&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="n">allocated&lt;/span> &lt;span class="n">dictionary&lt;/span> &lt;span class="n">object&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div> &lt;h2>
+Adding items
+&lt;/h2>
+&lt;p>
+When a new key/value pair is added, PyDict_SetItem() is called. This function takes a pointer to the dictionary object and the key/value pair. It checks if the key is a string and calculates the hash or reuses the one cached if it exists. insertdict() is called to add the new key/value pair and the dictionary is resized if the number of used slots + dummy slots is greater than 2/3 of the array’s size.&lt;br /> Why 2/3? It is to make sure the probing sequence can find a free slot fast enough. We will look at the resizing function later.
+&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-py" data-lang="py">&lt;span class="line">&lt;span class="cl">&lt;span class="n">arguments&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">dictionary&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">key&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">value&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">returns&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="mi">0&lt;/span> &lt;span class="k">if&lt;/span> &lt;span class="n">OK&lt;/span> &lt;span class="ow">or&lt;/span> &lt;span class="o">-&lt;/span>&lt;span class="mi">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">function&lt;/span> &lt;span class="n">PyDict_SetItem&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="n">key&lt;/span>&lt;span class="s1">&amp;#39;s hash cached:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">use&lt;/span> &lt;span class="nb">hash&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">else&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">calculate&lt;/span> &lt;span class="nb">hash&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">call&lt;/span> &lt;span class="n">insertdict&lt;/span> &lt;span class="k">with&lt;/span> &lt;span class="n">dictionary&lt;/span> &lt;span class="nb">object&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">key&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="nb">hash&lt;/span> &lt;span class="ow">and&lt;/span> &lt;span class="n">value&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="n">key&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">value&lt;/span> &lt;span class="n">pair&lt;/span> &lt;span class="n">added&lt;/span> &lt;span class="n">successfully&lt;/span> &lt;span class="ow">and&lt;/span> &lt;span class="n">capacity&lt;/span> &lt;span class="n">over&lt;/span> &lt;span class="mi">2&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="mi">3&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">call&lt;/span> &lt;span class="n">dictresize&lt;/span> &lt;span class="n">to&lt;/span> &lt;span class="n">resize&lt;/span> &lt;span class="n">dictionary&lt;/span>&lt;span class="s1">&amp;#39;s table&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div> &lt;p>
+inserdict() uses the lookup function lookdict_string() to find a free slot. This is the same function used to find a key. lookdict_string() calculates the slot index using the hash and the mask values. If it cannot find the key in the slot index = hash &amp; mask, it starts probing using the loop described above, until it finds a free slot. At the first probing try, if the key is null, it returns the dummy slot if found during the first lookup. This gives priority to re-use the previously deleted slots.
+&lt;/p>
+&lt;p>
+We want to add the following key/value pairs: {‘a’: 1, ‘b’: 2′, ‘z’: 26, ‘y’: 25, ‘c’: 5, ‘x’: 24}. This is what happens:
+&lt;/p>
+&lt;p>
+A dictionary structure is allocated with internal table size of 8.
+&lt;/p>
+&lt;ul>
+&lt;li>PyDict_SetItem: key = &amp;#8216;a&amp;#8217;, value = 1&lt;/li>
+&lt;ul>
+&lt;li>hash = hash(&amp;#8216;a&amp;#8217;) = 12416037344&lt;/li>
+&lt;li>insertdict&lt;/li>
+&lt;ul>
+&lt;li>lookdict_string&lt;/li>
+&lt;ul>
+&lt;li>slot index = hash &amp;#038; mask = 12416037344 &amp;#038; 7 = 0&lt;/li>
+&lt;li>slot 0 is not used so return it&lt;/li>
+&lt;/ul>
+&lt;li>init entry at index 0 with key, value and hash&lt;/li>
+&lt;li>ma_used = 1, ma_fill = 1&lt;/li>
+&lt;/ul>
+&lt;/ul>
+&lt;li>PyDict_SetItem: key = &amp;#8216;b&amp;#8217;, value = 2&lt;/li>
+&lt;ul>
+&lt;li>hash = hash(&amp;#8216;b&amp;#8217;) = 12544037731&lt;/li>
+&lt;li>insertdict&lt;/li>
+&lt;ul>
+&lt;li>lookdict_string&lt;/li>
+&lt;ul>
+&lt;li>slot index = hash &amp;#038; mask = 12544037731 &amp;#038; 7 = 3&lt;/li>
+&lt;li>slot 3 is not used so return it&lt;/li>
+&lt;/ul>
+&lt;li>init entry at index 3 with key, value and hash&lt;/li>
+&lt;li>ma_used = 2, ma_fill = 2&lt;/li>
+&lt;/ul>
+&lt;/ul>
+&lt;li>PyDict_SetItem: key = &amp;#8216;z&amp;#8217;, value = 26&lt;/li>
+&lt;ul>
+&lt;li>hash = hash(&amp;#8216;z&amp;#8217;) = 15616046971&lt;/li>
+&lt;li>insertdict&lt;/li>
+&lt;ul>
+&lt;li>lookdict_string&lt;/li>
+&lt;ul>
+&lt;li>slot index = hash &amp;#038; mask = 15616046971 &amp;#038; 7 = 3&lt;/li>
+&lt;li>slot 3 is used so probe for a different slot: 5 is free&lt;/li>
+&lt;/ul>
+&lt;li>init entry at index 5 with key, value and hash&lt;/li>
+&lt;li>ma_used = 3, ma_fill = 3&lt;/li>
+&lt;/ul>
+&lt;/ul>
+&lt;li>PyDict_SetItem: key = &amp;#8216;y&amp;#8217;, value = 25&lt;/li>
+&lt;ul>
+&lt;li>hash = hash(&amp;#8216;y&amp;#8217;) = 15488046584&lt;/li>
+&lt;li>insertdict&lt;/li>
+&lt;ul>
+&lt;li>lookdict_string&lt;/li>
+&lt;ul>
+&lt;li>slot index = hash &amp;#038; mask = 15488046584 &amp;#038; 7 = 0&lt;/li>
+&lt;li>slot 0 is used so probe for a different slot: 1 is free&lt;/li>
+&lt;/ul>
+&lt;li>init entry at index 1 with key, value and hash&lt;/li>
+&lt;li>ma_used = 4, ma_fill = 4&lt;/li>
+&lt;/ul>
+&lt;/ul>
+&lt;li>PyDict_SetItem: key = &amp;#8216;c&amp;#8217;, value = 3&lt;/li>
+&lt;ul>
+&lt;li>hash = hash(&amp;#8216;c&amp;#8217;) = 12672038114&lt;/li>
+&lt;li>insertdict&lt;/li>
+&lt;ul>
+&lt;li>lookdict_string&lt;/li>
+&lt;ul>
+&lt;li>slot index = hash &amp;#038; mask = 12672038114 &amp;#038; 7 = 2&lt;/li>
+&lt;li>slot 2 is free so return it&lt;/li>
+&lt;/ul>
+&lt;li>init entry at index 2 with key, value and hash&lt;/li>
+&lt;li>ma_used = 5, ma_fill = 5&lt;/li>
+&lt;/ul>
+&lt;/ul>
+&lt;li>PyDict_SetItem: key = &amp;#8216;x&amp;#8217;, value = 24&lt;/li>
+&lt;ul>
+&lt;li>hash = hash(&amp;#8216;x&amp;#8217;) = 15360046201&lt;/li>
+&lt;li>insertdict&lt;/li>
+&lt;ul>
+&lt;li>lookdict_string&lt;/li>
+&lt;ul>
+&lt;li>slot index = hash &amp;#038; mask = 15360046201 &amp;#038; 7 = 1&lt;/li>
+&lt;li>slot 1 is used so probe for a different slot: 7 is free&lt;/li>
+&lt;/ul>
+&lt;li>init entry at index 7 with key, value and hash&lt;/li>
+&lt;li>ma_used = 6, ma_fill = 6&lt;/li>
+&lt;/ul>
+&lt;/ul>
+&lt;/ul>
+&lt;p>
+This is what we have so far:
+&lt;/p>
+&lt;p>
+&lt;img src="https://www.laurentluce.com/images/blog/dict/insert.png" alt="python dictionary insert" />
+&lt;/p>
+&lt;p>
+6 slots on 8 are used now so we are over 2/3 of the array’s capacity. dictresize() is called to allocate a larger array. This function also takes care of copying the old table entries to the new table.
+&lt;/p>
+&lt;p>
+dictresize() is called with minused = 24 in our case which is 4 * ma_used. 2 * ma_used is used when the number of used slots is very large (greater than 50000). Why 4 times the number of used slots? It reduces the number of resize steps and it increases sparseness.
+&lt;/p>
+&lt;p>
+The new table size needs to be greater than 24 and it is calculated by shifting the current size 1 bit left until it is greater than 24. It ends up being 32 e.g. 8 -> 16 -> 32.
+&lt;/p>
+&lt;p>
+This is what happens with our table during resizing: a new table of size 32 is allocated. Old table entries are inserted into the new table using the new mask value which is 31. We end up with the following:
+&lt;/p>
+&lt;p>
+&lt;img src="https://www.laurentluce.com/images/blog/dict/resizing.png" alt="python dictionary table resizing" />
+&lt;/p>
+&lt;h2>
+Removing items
+&lt;/h2>
+&lt;p>
+PyDict_DelItem() is called to remove an entry. The hash for this key is calculated and the lookup function is called to return the entry. The slot is now a dummy slot.
+&lt;/p>
+&lt;p>
+We want to remove the key ‘c’ from our dictionary. We end up with the following array:
+&lt;/p>
+&lt;p>
+&lt;img src="https://www.laurentluce.com/images/blog/dict/delete.png" alt="Python dictionary delete key" />
+&lt;/p>
+&lt;p>
+Note that the delete item operation doesn’t trigger an array resize if the number of used slots is much less that the total number of slots. However, when a key/value pair is added, the need for resize is based on the number of used slots + dummy slots so it can shrink the array too.
+&lt;/p>
+&lt;p>
+That’s it for now. I hope you enjoyed the article. Please write a comment if you have any feedback.
+&lt;/p>
+&lt;/div>
+&lt;!--more-->
+&lt;!--more-->
+&lt;div class="metawrap">
+&lt;p>
+&amp;nbsp;
+&lt;/p>
+&lt;p>
+&lt;em>Originally posted at &lt;a href="https://www.laurentluce.com/posts/python-dictionary-implementation/">Laurent Luce&amp;#8217;s Blog&lt;/a> August 29, 2011 by Laurent Luce.&lt;/em>
+&lt;/p>
+&lt;/div></description></item><item><title>10 Known Open Source Projects in Iris Recognition 2018</title><link>https://denis-trofimov.github.io/10-known-open-source-projects-in-iris-recognition-2018/</link><pubDate>Wed, 06 Jun 2018 20:33:50 +0000</pubDate><guid>https://denis-trofimov.github.io/10-known-open-source-projects-in-iris-recognition-2018/</guid><description>&lt;p>&lt;span style="font-weight: 400;">I found this pretty good list of &lt;/span>&lt;a href="https://kiennguyenstuff.wordpress.com/2016/07/14/iris-recognition-open-source-codes/" target="_blank" rel="noopener">&lt;span style="font-weight: 400;">Iris Recognition open-source codes&lt;/span>&lt;/a>&lt;span style="font-weight: 400;">. I am really appreciate work of the first author, &lt;/span>&lt;a href="https://kiennguyenstuff.wordpress.com/author/thanhkien84/" target="_blank" rel="noopener">&lt;span style="font-weight: 400;">thanhkien84&lt;/span>&lt;/a>&lt;span style="font-weight: 400;">. I asked myself, how to improve it? I have decided to add my value.&lt;/span>&lt;/p>
+&lt;p>&lt;span style="font-weight: 400;">I have checked all links and found replacements for stale links to projects &lt;/span>&lt;span style="font-weight: 400;">OSIRIS, UND.&lt;/span>&lt;/p>
+&lt;p>&lt;span style="font-weight: 400;">In the year 2003 there was only one iris recognition open source code from Libor Masek. His source code, written in Matlab, has been the baseline for generations of iris recognition coders. Recently there are a number of new open source codes come up. They are more mature and meet state-of-the-art accuracy. I summarise them in a list here for your reference.&lt;/span>&lt;/p>
+&lt;table>
+&lt;tr>
+&lt;td rowspan="2">
+&lt;h2>
+&lt;b>I&lt;/b>&lt;span style="font-weight: 400;">ris recognition projects&lt;/span>
+&lt;/h2>
+&lt;/td>
+&lt;pre>&lt;code>&amp;lt;td rowspan=&amp;quot;2&amp;quot;&amp;gt;
+&amp;lt;b&amp;gt;Year/ Language&amp;lt;/b&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;td rowspan=&amp;quot;2&amp;quot;&amp;gt;
+&amp;lt;b&amp;gt;Approach&amp;lt;/b&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;td colspan=&amp;quot;3&amp;quot;&amp;gt;
+&amp;lt;b&amp;gt;Performance (EER)&amp;lt;/b&amp;gt;
+&amp;lt;/td&amp;gt;
+&lt;/code>&lt;/pre>
+&lt;/tr>
+&lt;tr>
+&lt;td>
+&lt;b>ICE 2005&lt;/b>
+&lt;/td>
+&lt;pre>&lt;code>&amp;lt;td&amp;gt;
+&amp;lt;b&amp;gt;MBGC portal&amp;lt;/b&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;b&amp;gt;CASIA&amp;lt;/b&amp;gt;
+&amp;lt;/td&amp;gt;
+&lt;/code>&lt;/pre>
+&lt;/tr>
+&lt;tr>
+&lt;td>
+&lt;span style="font-weight: 400;">Libor Masek [&lt;/span>&lt;a href="http://www.peterkovesi.com/studentprojects/libor/">&lt;span style="font-weight: 400;">project&lt;/span>&lt;/a>&lt;span style="font-weight: 400;">]&lt;/span>
+&lt;/td>
+&lt;pre>&lt;code>&amp;lt;td&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;2003,&amp;lt;/span&amp;gt;&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;Matlab&amp;lt;/span&amp;gt;&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;Hough Circle + 1D Log-Gabor&amp;lt;/span&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;
+&amp;lt;tr&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;OSIRIS 4.1 [&amp;lt;/span&amp;gt;&amp;lt;a href=&amp;quot;http://svnext.it-sudparis.eu/svnview2-eph/ref_syst/Iris_Osiris_v4.1/&amp;quot;&amp;gt;&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;project dead link&amp;lt;/span&amp;gt;&amp;lt;/a&amp;gt;&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;]&amp;lt;/span&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;2013,&amp;lt;/span&amp;gt;&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;C++&amp;lt;/span&amp;gt;&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;Least square, Circle + 2D Gabor&amp;lt;/span&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;1.09%&amp;lt;/span&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;
+&amp;lt;tr&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;5455945&amp;lt;/span&amp;gt;&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;/&amp;lt;/span&amp;gt;&amp;lt;a href=&amp;quot;https://github.com/5455945/Iris_Osiris&amp;quot;&amp;gt;&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;Iris_Osiris&amp;lt;/span&amp;gt;&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;(OSIRIS 4.1 fork) &amp;lt;/span&amp;gt;&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;Support OpenCV3.0+,OpenCV2.4.13&amp;lt;/span&amp;gt;&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;2017, C++&amp;lt;/span&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;Same as OSIRIS 4.1&amp;lt;/span&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;
+&amp;lt;tr&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;a href=&amp;quot;https://github.com/vonclites/syris&amp;quot;&amp;gt;&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;Python interface to OSIRIS Iris Segmentation and Recognition software &amp;lt;/span&amp;gt;&amp;lt;/a&amp;gt;&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;(OSIRIS 4.1 fork)&amp;lt;/span&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;2017, Python&amp;lt;/span&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;Same as OSIRIS 4.1&amp;lt;/span&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;/tr&amp;gt;
+&amp;lt;tr&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;VASIR 2.2 [&amp;lt;/span&amp;gt;&amp;lt;a href=&amp;quot;http://www.nist.gov/itl/iad/ig/vasir.cfm&amp;quot;&amp;gt;&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;project&amp;lt;/span&amp;gt;&amp;lt;/a&amp;gt;&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;]&amp;lt;/span&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;2013,&amp;lt;/span&amp;gt;&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;C++&amp;lt;/span&amp;gt;&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;Circle + 2D Gabor&amp;lt;/span&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;3.5%&amp;lt;/span&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;13.9% best quality frame&amp;lt;/span&amp;gt;&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;30.6% all frames&amp;lt;/span&amp;gt;&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;
+&amp;lt;tr&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;NonidealIRIS [project]&amp;lt;/span&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;2006,&amp;lt;/span&amp;gt;&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;Matlab&amp;lt;/span&amp;gt;&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;Ellipse +  2D, Gabor&amp;lt;/span&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;
+&amp;lt;tr&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;USIT&amp;lt;/span&amp;gt;&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;[&amp;lt;/span&amp;gt;&amp;lt;a href=&amp;quot;http://www.wavelab.at/sources/USIT/&amp;quot;&amp;gt;&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;project&amp;lt;/span&amp;gt;&amp;lt;/a&amp;gt;&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;]&amp;lt;/span&amp;gt;&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;2016,&amp;lt;/span&amp;gt;&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;C++&amp;lt;/span&amp;gt;&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;Circle/Ellipse+&amp;lt;/span&amp;gt;&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;1D Log Gabor/&amp;lt;/span&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;2D Gabor/&amp;lt;/span&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;DCT/ SIFT/&amp;lt;/span&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;SURF/LBP&amp;lt;/span&amp;gt;&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;0.82%&amp;lt;/span&amp;gt;
+&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;
+&amp;lt;tr&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;UND&amp;lt;/span&amp;gt;&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;[&amp;lt;/span&amp;gt;&amp;lt;a href=&amp;quot;https://ideacenter.nd.edu/commercialization-engine/for-industry/available-technologies/software-available-for-license/iris-recognition-based-on-human-intrepretable-features/&amp;quot;&amp;gt;&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;project&amp;lt;/span&amp;gt;&amp;lt;/a&amp;gt;&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;]&amp;lt;/span&amp;gt;&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;2016,&amp;lt;/span&amp;gt;&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;Matlab&amp;lt;/span&amp;gt;&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;Circle,&amp;lt;/span&amp;gt;&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;Crypts features&amp;lt;/span&amp;gt;&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;3.58%&amp;lt;/span&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;1.39%&amp;lt;/span&amp;gt;
+&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;
+&amp;lt;tr&amp;gt;
+&amp;lt;td colspan=&amp;quot;6&amp;quot;&amp;gt;
+&amp;lt;h2&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;Iris segmentation only&amp;lt;/span&amp;gt;
+&amp;lt;/h2&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;/tr&amp;gt;
+&amp;lt;tr&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;IrisSeg [&amp;lt;/span&amp;gt;&amp;lt;a href=&amp;quot;https://github.com/cdac-cvml/IrisSeg&amp;quot;&amp;gt;&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;project&amp;lt;/span&amp;gt;&amp;lt;/a&amp;gt;&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;]&amp;lt;/span&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;2017,&amp;lt;/span&amp;gt;&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;Matlab&amp;lt;/span&amp;gt;&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;ICB 2016&amp;lt;/span&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;td colspan=&amp;quot;2&amp;quot;&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;IrisSeg: A Fast and Robust Iris Segmentation Framework for Non-Ideal Iris Images&amp;lt;/span&amp;gt;
+&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;
+&amp;lt;tr&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;IAADseg&amp;lt;/span&amp;gt;&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;[&amp;lt;/span&amp;gt;&amp;lt;a href=&amp;quot;http://www4.comp.polyu.edu.hk/~csajaykr/tvmiris.htm&amp;quot;&amp;gt;&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;project&amp;lt;/span&amp;gt;&amp;lt;/a&amp;gt;&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;]&amp;lt;/span&amp;gt;&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;2015,&amp;lt;/span&amp;gt;&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;Matlab&amp;lt;/span&amp;gt;&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;Total-variation&amp;lt;/span&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;ICCV 2015&amp;lt;/span&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;td colspan=&amp;quot;2&amp;quot;&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;An Accurate Iris Segmentation Framework under Relaxed Imaging Constraints using Total Variation Model&amp;lt;/span&amp;gt;
+&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;
+&amp;lt;tr&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;IrisSeg&amp;lt;/span&amp;gt;&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;[&amp;lt;/span&amp;gt;&amp;lt;a href=&amp;quot;https://github.com/sbanerj1/IrisSeg&amp;quot;&amp;gt;&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;project&amp;lt;/span&amp;gt;&amp;lt;/a&amp;gt;&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;]&amp;lt;/span&amp;gt;&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;2015,&amp;lt;/span&amp;gt;&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;Python&amp;lt;/span&amp;gt;&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;Geodesic Active Contours and GrabCut&amp;lt;/span&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;PSIVT 2015&amp;lt;/span&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;td colspan=&amp;quot;2&amp;quot;&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;Iris Segmentation using Geodesic Active Contours and GrabCut&amp;lt;/span&amp;gt;
+&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt; &amp;lt;/tbody&amp;gt; &amp;lt;/table&amp;gt;
+&amp;lt;p&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;Iris datasets to consider:&amp;lt;/span&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;table&amp;gt;
+&amp;lt;tr&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;b&amp;gt;Dataset&amp;lt;/b&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;b&amp;gt; Subset&amp;lt;/b&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;b&amp;gt;Number of&amp;lt;/b&amp;gt;&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+&amp;lt;b&amp;gt;subjects&amp;lt;/b&amp;gt;&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;b&amp;gt;Number of&amp;lt;/b&amp;gt;&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+&amp;lt;b&amp;gt;images&amp;lt;/b&amp;gt;&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;b&amp;gt;Spectrum&amp;lt;/b&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;b&amp;gt;Note&amp;lt;/b&amp;gt;
+&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;
+&amp;lt;tr&amp;gt;
+&amp;lt;td rowspan=&amp;quot;6&amp;quot;&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;CASIA&amp;lt;/span&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;CASIA-Iris-Thousand&amp;lt;/span&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;10,000&amp;lt;/span&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;20,000&amp;lt;/span&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;NIR&amp;lt;/span&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;/tr&amp;gt;
+&amp;lt;tr&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;CASIA-Iris-Interval&amp;lt;/span&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;Time lapse&amp;lt;/span&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;/tr&amp;gt;
+&amp;lt;tr&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;CASIA-Iris-Lamp&amp;lt;/span&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;/tr&amp;gt;
+&amp;lt;tr&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;CASIA-Iris-Twins&amp;lt;/span&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;100&amp;lt;/span&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;Twin&amp;lt;/span&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;/tr&amp;gt;
+&amp;lt;tr&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;CASIA-Iris-Distance&amp;lt;/span&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;At a distance&amp;lt;/span&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;/tr&amp;gt;
+&amp;lt;tr&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;CASIA-Iris-Syn&amp;lt;/span&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;1000&amp;lt;/span&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;10,000&amp;lt;/span&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;Synthesis&amp;lt;/span&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;/tr&amp;gt;
+&amp;lt;tr&amp;gt;
+&amp;lt;td rowspan=&amp;quot;6&amp;quot;&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;ND&amp;lt;/span&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;ND-IRIS-0405&amp;lt;/span&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;356&amp;lt;/span&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;64,980&amp;lt;/span&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;NIR&amp;lt;/span&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;/tr&amp;gt;
+&amp;lt;tr&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;ND-GFI&amp;lt;/span&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;Gender&amp;lt;/span&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;/tr&amp;gt;
+&amp;lt;tr&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;NDCLD15&amp;lt;/span&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;750 males&amp;lt;/span&amp;gt;&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;750 females&amp;lt;/span&amp;gt;&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;3000&amp;lt;/span&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;NIR&amp;lt;/span&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;Contact Lens&amp;lt;/span&amp;gt;
+&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;
+&amp;lt;tr&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;ND-CrossSensor-Iris-2013&amp;lt;/span&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;676&amp;lt;/span&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;29,986 from LG4000 and 116,564 from LG2200&amp;lt;/span&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;NIR&amp;lt;/span&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;Cross Sensor&amp;lt;/span&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;/tr&amp;gt;
+&amp;lt;tr&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;ND-TimeLapseIris-2012&amp;lt;/span&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;23&amp;lt;/span&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;6797&amp;lt;/span&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;Time lapse 2004 to 2008&amp;lt;/span&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;/tr&amp;gt;
+&amp;lt;tr&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;ND-Iris-Template-Aging-2008-2010&amp;lt;/span&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;11,776&amp;lt;/span&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;Time lapse 2008 to 2010&amp;lt;/span&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;/tr&amp;gt;
+&amp;lt;tr&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;MBGC&amp;lt;/span&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;NIR &amp;amp; NIR videos&amp;lt;/span&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;One the move&amp;lt;/span&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;/tr&amp;gt;
+&amp;lt;tr&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;UBIRIS&amp;lt;/span&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;261&amp;lt;/span&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;11,102&amp;lt;/span&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;Visible&amp;lt;/span&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;On the move&amp;lt;/span&amp;gt;&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;At a distance&amp;lt;/span&amp;gt;&amp;lt;/td&amp;gt; &amp;lt;/tr&amp;gt; &amp;lt;/tbody&amp;gt; &amp;lt;/table&amp;gt;
+&amp;lt;p&amp;gt;
+&amp;amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;My sources:&amp;lt;/span&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;ol&amp;gt;
+&amp;lt;li style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;
+&amp;lt;a href=&amp;quot;https://kiennguyenstuff.wordpress.com/2016/07/14/iris-recognition-open-source-codes/&amp;quot;&amp;gt;&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;Iris Recognition open-source codes&amp;lt;/span&amp;gt;&amp;lt;/a&amp;gt;
+&amp;lt;/li&amp;gt;
+&amp;lt;li style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;
+&amp;lt;a href=&amp;quot;https://www.quora.com/What-are-some-of-the-best-open-source-iris-recognition-libraries-available&amp;quot;&amp;gt;&amp;lt;span style=&amp;quot;font-weight: 400;&amp;quot;&amp;gt;What are some of the best open source iris recognition libraries available?&amp;lt;/span&amp;gt;&amp;lt;/a&amp;gt;
+&amp;lt;/li&amp;gt;
+&amp;lt;/ol&amp;gt;
+&amp;lt;ul&amp;gt;
+&amp;lt;li&amp;gt;
+&amp;lt;em&amp;gt;Eye Photo by Tom Tolkien &amp;lt;a href=&amp;quot;http://thomastolkien.wordpress.com/&amp;quot;&amp;gt;http://thomastolkien.wordpress.com/&amp;lt;/a&amp;gt;&amp;lt;/em&amp;gt;
+&amp;lt;/li&amp;gt;
+&amp;lt;/ul&amp;gt;
+&lt;/code>&lt;/pre></description></item></channel></rss>

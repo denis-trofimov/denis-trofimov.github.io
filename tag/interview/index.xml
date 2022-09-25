@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>interview | Denis Trofimov Blog</title><link>https://denis-trofimov.github.io/tag/interview/</link><atom:link href="https://denis-trofimov.github.io/tag/interview/index.xml" rel="self" type="application/rss+xml"/><description>interview</description><generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Fri, 28 Sep 2018 19:12:58 +0000</lastBuildDate><image><url>https://denis-trofimov.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png</url><title>interview</title><link>https://denis-trofimov.github.io/tag/interview/</link></image><item><title>How dictionaries are implemented in the Python language</title><link>https://denis-trofimov.github.io/how-dictionaries-are-implemented-in-the-python-language/</link><pubDate>Fri, 28 Sep 2018 19:12:58 +0000</pubDate><guid>https://denis-trofimov.github.io/how-dictionaries-are-implemented-in-the-python-language/</guid><description>&lt;div class="story-content">
+&lt;p>
+This post describes how dictionaries are implemented in the Python language.
+&lt;/p>
+&lt;p>
+This article is actually a repost of originally posted at &lt;a href="https://www.laurentluce.com/posts/python-dictionary-implementation/">Laurent Luce&amp;#8217;s Blog&lt;/a> August 29, 2011 by Laurent Luce. I mentor several students of russian &lt;a href="https://learn.python.ru/">Learn Python&lt;/a> courses. They have questions about structures in Python and how to use them. I found this post a good help to me and possibly to my students.
+&lt;/p>
+&lt;/div>
+&lt;p>Dictionaries are indexed by keys and they can be seen as associative arrays. Let’s add 3 key/value pairs to a dictionary:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-py" data-lang="py">&lt;span class="line">&lt;span class="cl">&lt;span class="o">&amp;gt;&amp;gt;&amp;gt;&lt;/span> &lt;span class="n">d&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">{&lt;/span>&lt;span class="s1">&amp;#39;a&amp;#39;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="mi">1&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s1">&amp;#39;b&amp;#39;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="mi">2&lt;/span>&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">&amp;gt;&amp;gt;&amp;gt;&lt;/span> &lt;span class="n">d&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="s1">&amp;#39;c&amp;#39;&lt;/span>&lt;span class="p">]&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mi">3&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">&amp;gt;&amp;gt;&amp;gt;&lt;/span> &lt;span class="n">d&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">{&lt;/span>&lt;span class="s1">&amp;#39;a&amp;#39;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="mi">1&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s1">&amp;#39;b&amp;#39;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="mi">2&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s1">&amp;#39;c&amp;#39;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="mi">3&lt;/span>&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>The values can be accessed this way:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-py" data-lang="py">&lt;span class="line">&lt;span class="cl">&lt;span class="o">&amp;gt;&amp;gt;&amp;gt;&lt;/span> &lt;span class="n">d&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="s1">&amp;#39;a&amp;#39;&lt;/span>&lt;span class="p">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="mi">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">&amp;gt;&amp;gt;&amp;gt;&lt;/span> &lt;span class="n">d&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="s1">&amp;#39;b&amp;#39;&lt;/span>&lt;span class="p">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="mi">2&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">&amp;gt;&amp;gt;&amp;gt;&lt;/span> &lt;span class="n">d&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="s1">&amp;#39;c&amp;#39;&lt;/span>&lt;span class="p">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="mi">3&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">&amp;gt;&amp;gt;&amp;gt;&lt;/span> &lt;span class="n">d&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="s1">&amp;#39;d&amp;#39;&lt;/span>&lt;span class="p">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">Traceback&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">most&lt;/span> &lt;span class="n">recent&lt;/span> &lt;span class="n">call&lt;/span> &lt;span class="n">last&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">File&lt;/span> &lt;span class="s2">&amp;#34;&amp;lt;stdin&amp;gt;&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">line&lt;/span> &lt;span class="mi">1&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="ow">in&lt;/span> &lt;span class="o">&amp;lt;&lt;/span>&lt;span class="n">module&lt;/span>&lt;span class="o">&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="ne">KeyError&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s1">&amp;#39;d&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>The key ‘d’ does not exist so a KeyError exception is raised.&lt;/p>
+&lt;h2 id="hash-tables">Hash tables&lt;/h2>
+&lt;p>Python dictionaries are implemented using hash tables. It is an array whose indexes are obtained using a hash function on the keys. The goal of a hash function is to distribute the keys evenly in the array. A good hash function minimizes the number of collisions e.g. different keys having the same hash. Python does not have this kind of hash function. Its most important hash functions (for strings and ints) are very regular in common cases:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-py" data-lang="py">&lt;span class="line">&lt;span class="cl">&lt;span class="o">&amp;gt;&amp;gt;&amp;gt;&lt;/span> &lt;span class="nb">map&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nb">hash&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="mi">0&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">1&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">2&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">3&lt;/span>&lt;span class="p">))&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">[&lt;/span>&lt;span class="mi">0&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">1&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">2&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">3&lt;/span>&lt;span class="p">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">&amp;gt;&amp;gt;&amp;gt;&lt;/span> &lt;span class="nb">map&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nb">hash&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;namea&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s2">&amp;#34;nameb&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s2">&amp;#34;namec&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s2">&amp;#34;named&amp;#34;&lt;/span>&lt;span class="p">))&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">[&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="mi">1658398457&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="o">-&lt;/span>&lt;span class="mi">1658398460&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="o">-&lt;/span>&lt;span class="mi">1658398459&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="o">-&lt;/span>&lt;span class="mi">1658398462&lt;/span>&lt;span class="p">]&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>We are going to assume that we are using strings as keys for the rest of this post. The hash function for strings in Python is defined as:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-py" data-lang="py">&lt;span class="line">&lt;span class="cl">&lt;span class="n">arguments&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">string&lt;/span> &lt;span class="nb">object&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">returns&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="nb">hash&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">function&lt;/span> &lt;span class="n">string_hash&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="nb">hash&lt;/span> &lt;span class="n">cached&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="n">it&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">set&lt;/span> &lt;span class="nb">len&lt;/span> &lt;span class="n">to&lt;/span> &lt;span class="n">string&lt;/span>&lt;span class="s1">&amp;#39;s length&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">initialize&lt;/span> &lt;span class="n">var&lt;/span> &lt;span class="n">p&lt;/span> &lt;span class="n">pointing&lt;/span> &lt;span class="n">to&lt;/span> &lt;span class="mi">1&lt;/span>&lt;span class="n">st&lt;/span> &lt;span class="n">char&lt;/span> &lt;span class="n">of&lt;/span> &lt;span class="n">string&lt;/span> &lt;span class="nb">object&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">set&lt;/span> &lt;span class="n">x&lt;/span> &lt;span class="n">to&lt;/span> &lt;span class="n">value&lt;/span> &lt;span class="n">pointed&lt;/span> &lt;span class="n">by&lt;/span> &lt;span class="n">p&lt;/span> &lt;span class="n">left&lt;/span> &lt;span class="n">shifted&lt;/span> &lt;span class="n">by&lt;/span> &lt;span class="mi">7&lt;/span> &lt;span class="n">bits&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">while&lt;/span> &lt;span class="nb">len&lt;/span> &lt;span class="o">&amp;gt;=&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">set&lt;/span> &lt;span class="n">var&lt;/span> &lt;span class="n">x&lt;/span> &lt;span class="n">to&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="mi">1000003&lt;/span> &lt;span class="o">*&lt;/span> &lt;span class="n">x&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="n">xor&lt;/span> &lt;span class="n">value&lt;/span> &lt;span class="n">pointed&lt;/span> &lt;span class="n">by&lt;/span> &lt;span class="n">p&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">increment&lt;/span> &lt;span class="n">pointer&lt;/span> &lt;span class="n">p&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">set&lt;/span> &lt;span class="n">x&lt;/span> &lt;span class="n">to&lt;/span> &lt;span class="n">x&lt;/span> &lt;span class="n">xor&lt;/span> &lt;span class="n">length&lt;/span> &lt;span class="n">of&lt;/span> &lt;span class="n">string&lt;/span> &lt;span class="nb">object&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">cache&lt;/span> &lt;span class="n">x&lt;/span> &lt;span class="k">as&lt;/span> &lt;span class="n">the&lt;/span> &lt;span class="nb">hash&lt;/span> &lt;span class="n">so&lt;/span> &lt;span class="n">we&lt;/span> &lt;span class="n">don&lt;/span>&lt;span class="s1">&amp;#39;t need to calculate it again&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="n">x&lt;/span> &lt;span class="k">as&lt;/span> &lt;span class="n">the&lt;/span> &lt;span class="nb">hash&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>If you run hash(‘a’) in Python, it will execute string_hash() and return 12416037344. Here we assume we are using a 64-bit machine.&lt;/p>
+&lt;p>If an array of size x is used to store the key/value pairs then we use a mask equal to x-1 to calculate the slot index of the pair in the array. This makes the computation of the slot index fast. The probability to find an empty slot is high due to the resizing mechanism described below. This means that having a simple computation makes sense in most of the cases. If the size of the array is 8, the index for ‘a’ will be: hash(‘a’) &amp;amp; 7 = 0. The index for ‘b’ is 3, the index for ‘c’ is 2, the index for ‘z’ is 3 which is the same as ‘b’, here we have a collision.&lt;/p>
+&lt;p>
+&lt;img class="alignnone" src="https://www.laurentluce.com/images/blog/dict/hash.png" alt="The hash function for strings in Python for a table size of 8" width="375" height="311" />
+&lt;/p>
+&lt;p>
+We can see that the Python hash function does a good job when the keys are consecutive which is good because it is quite common to have this type of data to work with. However, once we add the key ‘z’, there is a collision because it is not consecutive enough.
+&lt;/p>
+&lt;p>
+We could use a linked list to store the pairs having the same hash but it would increase the lookup time e.g. not O(1) average anymore. The next section describes the collision resolution method used in the case of Python dictionaries.
+&lt;/p>
+&lt;h2>
+Open addressing
+&lt;/h2>
+&lt;p>
+Open addressing is a method of collision resolution where probing is used. In case of ‘z’, the slot index 3 is already used in the array so we need to probe for a different index to find one which is not already used. Adding a key/value pair will average O(1) and the lookup operation too.
+&lt;/p>
+&lt;p>
+A quadratic probing sequence is used to find a free slot. The code is the following:
+&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-c" data-lang="c">&lt;span class="line">&lt;span class="cl">&lt;span class="n">j&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="mi">5&lt;/span>&lt;span class="o">*&lt;/span>&lt;span class="n">j&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="o">+&lt;/span> &lt;span class="mi">1&lt;/span> &lt;span class="o">+&lt;/span> &lt;span class="n">perturb&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">perturb&lt;/span> &lt;span class="o">&amp;gt;&amp;gt;=&lt;/span> &lt;span class="n">PERTURB_SHIFT&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">use&lt;/span> &lt;span class="n">j&lt;/span> &lt;span class="o">%&lt;/span> &lt;span class="mi">2&lt;/span>&lt;span class="o">**&lt;/span>&lt;span class="n">i&lt;/span> &lt;span class="n">as&lt;/span> &lt;span class="n">the&lt;/span> &lt;span class="n">next&lt;/span> &lt;span class="n">table&lt;/span> &lt;span class="n">index&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div> &lt;p>
+Recurring on 5*j+1 quickly magnifies small differences in the bits that didn’t affect the initial index. The variable “perturb” gets the other bits of the hash code into play.
+&lt;/p>
+&lt;p>
+Just out of curiosity, let’s look at the probing sequence when the table size is 32 and j = 3.&lt;br /> 3 -> 11 -> 19 -> 29 -> 5 -> 6 -> 16 -> 31 -> 28 -> 13 -> 2…
+&lt;/p>
+&lt;p>
+You can read more about this probing sequence by looking at the source code of &lt;a href="http://svn.python.org/projects/python/trunk/Objects/dictobject.c">dictobject.c&lt;/a>. A detailed explanation of the probing mechanism can be found at the top of the file.
+&lt;/p>
+&lt;p>
+&lt;img src="https://www.laurentluce.com/images/blog/dict/probing.png" alt="open addressing" />
+&lt;/p>
+&lt;p>
+Now, let’s look at the Python internal code along with an example.
+&lt;/p>
+&lt;h2>
+Dictionary C structures
+&lt;/h2>
+&lt;p>
+The following C structure is used to store a dictionary entry: key/value pair. The hash, key and value are stored. PyObject is the base class of the Python objects.
+&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-c" data-lang="c">&lt;span class="line">&lt;span class="cl">&lt;span class="k">typedef&lt;/span> &lt;span class="k">struct&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">Py_ssize_t&lt;/span> &lt;span class="n">me_hash&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">PyObject&lt;/span> &lt;span class="o">*&lt;/span>&lt;span class="n">me_key&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">PyObject&lt;/span> &lt;span class="o">*&lt;/span>&lt;span class="n">me_value&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span> &lt;span class="n">PyDictEntry&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div> &lt;p>
+The following structure represents a dictionary. ma_fill is the number of used slots + dummy slots. A slot is marked dummy when a key pair is removed. ma_used is the number of used slots (active). ma_mask is equal to the array’s size minus 1 and is used to calculate the slot index. ma_table is the array and ma_smalltable is the initial array of size 8.
+&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-c" data-lang="c">&lt;span class="line">&lt;span class="cl">&lt;span class="k">typedef&lt;/span> &lt;span class="k">struct&lt;/span> &lt;span class="n">_dictobject&lt;/span> &lt;span class="n">PyDictObject&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">struct&lt;/span> &lt;span class="n">_dictobject&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">PyObject_HEAD&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">Py_ssize_t&lt;/span> &lt;span class="n">ma_fill&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">Py_ssize_t&lt;/span> &lt;span class="n">ma_used&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">Py_ssize_t&lt;/span> &lt;span class="n">ma_mask&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">PyDictEntry&lt;/span> &lt;span class="o">*&lt;/span>&lt;span class="n">ma_table&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">PyDictEntry&lt;/span> &lt;span class="o">*&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="o">*&lt;/span>&lt;span class="n">ma_lookup&lt;/span>&lt;span class="p">)(&lt;/span>&lt;span class="n">PyDictObject&lt;/span> &lt;span class="o">*&lt;/span>&lt;span class="n">mp&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">PyObject&lt;/span> &lt;span class="o">*&lt;/span>&lt;span class="n">key&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="kt">long&lt;/span> &lt;span class="n">hash&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">PyDictEntry&lt;/span> &lt;span class="n">ma_smalltable&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">PyDict_MINSIZE&lt;/span>&lt;span class="p">];&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">};&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="dictionary-initialization">Dictionary initialization&lt;/h2>
+&lt;p>
+When you first create a dictionary, the function PyDict_New() is called. I removed some of the lines and converted the C code to pseudocode to concentrate on the key concepts.
+&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-c" data-lang="c">&lt;span class="line">&lt;span class="cl">&lt;span class="n">returns&lt;/span> &lt;span class="n">new&lt;/span> &lt;span class="n">dictionary&lt;/span> &lt;span class="n">object&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">function&lt;/span> &lt;span class="nl">PyDict_New&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">allocate&lt;/span> &lt;span class="n">new&lt;/span> &lt;span class="n">dictionary&lt;/span> &lt;span class="n">object&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">clear&lt;/span> &lt;span class="n">dictionary&lt;/span>&lt;span class="err">&amp;#39;&lt;/span>&lt;span class="n">s&lt;/span> &lt;span class="n">table&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">set&lt;/span> &lt;span class="n">dictionary&lt;/span>&lt;span class="err">&amp;#39;&lt;/span>&lt;span class="n">s&lt;/span> &lt;span class="n">number&lt;/span> &lt;span class="n">of&lt;/span> &lt;span class="n">used&lt;/span> &lt;span class="n">slots&lt;/span> &lt;span class="o">+&lt;/span> &lt;span class="n">dummy&lt;/span> &lt;span class="n">slots&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">ma_fill&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="n">to&lt;/span> &lt;span class="mi">0&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">set&lt;/span> &lt;span class="n">dictionary&lt;/span>&lt;span class="err">&amp;#39;&lt;/span>&lt;span class="n">s&lt;/span> &lt;span class="n">number&lt;/span> &lt;span class="n">of&lt;/span> &lt;span class="n">active&lt;/span> &lt;span class="n">slots&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">ma_used&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="n">to&lt;/span> &lt;span class="mi">0&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">set&lt;/span> &lt;span class="n">dictionary&lt;/span>&lt;span class="err">&amp;#39;&lt;/span>&lt;span class="n">s&lt;/span> &lt;span class="n">mask&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">ma_value&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="n">to&lt;/span> &lt;span class="n">dictionary&lt;/span> &lt;span class="n">size&lt;/span> &lt;span class="o">-&lt;/span> &lt;span class="mi">1&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mi">7&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">set&lt;/span> &lt;span class="n">dictionary&lt;/span>&lt;span class="err">&amp;#39;&lt;/span>&lt;span class="n">s&lt;/span> &lt;span class="n">lookup&lt;/span> &lt;span class="n">function&lt;/span> &lt;span class="n">to&lt;/span> &lt;span class="n">lookdict_string&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="n">allocated&lt;/span> &lt;span class="n">dictionary&lt;/span> &lt;span class="n">object&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div> &lt;h2>
+Adding items
+&lt;/h2>
+&lt;p>
+When a new key/value pair is added, PyDict_SetItem() is called. This function takes a pointer to the dictionary object and the key/value pair. It checks if the key is a string and calculates the hash or reuses the one cached if it exists. insertdict() is called to add the new key/value pair and the dictionary is resized if the number of used slots + dummy slots is greater than 2/3 of the array’s size.&lt;br /> Why 2/3? It is to make sure the probing sequence can find a free slot fast enough. We will look at the resizing function later.
+&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-py" data-lang="py">&lt;span class="line">&lt;span class="cl">&lt;span class="n">arguments&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">dictionary&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">key&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">value&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">returns&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="mi">0&lt;/span> &lt;span class="k">if&lt;/span> &lt;span class="n">OK&lt;/span> &lt;span class="ow">or&lt;/span> &lt;span class="o">-&lt;/span>&lt;span class="mi">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">function&lt;/span> &lt;span class="n">PyDict_SetItem&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="n">key&lt;/span>&lt;span class="s1">&amp;#39;s hash cached:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">use&lt;/span> &lt;span class="nb">hash&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">else&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">calculate&lt;/span> &lt;span class="nb">hash&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">call&lt;/span> &lt;span class="n">insertdict&lt;/span> &lt;span class="k">with&lt;/span> &lt;span class="n">dictionary&lt;/span> &lt;span class="nb">object&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">key&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="nb">hash&lt;/span> &lt;span class="ow">and&lt;/span> &lt;span class="n">value&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="n">key&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">value&lt;/span> &lt;span class="n">pair&lt;/span> &lt;span class="n">added&lt;/span> &lt;span class="n">successfully&lt;/span> &lt;span class="ow">and&lt;/span> &lt;span class="n">capacity&lt;/span> &lt;span class="n">over&lt;/span> &lt;span class="mi">2&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="mi">3&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">call&lt;/span> &lt;span class="n">dictresize&lt;/span> &lt;span class="n">to&lt;/span> &lt;span class="n">resize&lt;/span> &lt;span class="n">dictionary&lt;/span>&lt;span class="s1">&amp;#39;s table&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div> &lt;p>
+inserdict() uses the lookup function lookdict_string() to find a free slot. This is the same function used to find a key. lookdict_string() calculates the slot index using the hash and the mask values. If it cannot find the key in the slot index = hash &amp; mask, it starts probing using the loop described above, until it finds a free slot. At the first probing try, if the key is null, it returns the dummy slot if found during the first lookup. This gives priority to re-use the previously deleted slots.
+&lt;/p>
+&lt;p>
+We want to add the following key/value pairs: {‘a’: 1, ‘b’: 2′, ‘z’: 26, ‘y’: 25, ‘c’: 5, ‘x’: 24}. This is what happens:
+&lt;/p>
+&lt;p>
+A dictionary structure is allocated with internal table size of 8.
+&lt;/p>
+&lt;ul>
+&lt;li>PyDict_SetItem: key = &amp;#8216;a&amp;#8217;, value = 1&lt;/li>
+&lt;ul>
+&lt;li>hash = hash(&amp;#8216;a&amp;#8217;) = 12416037344&lt;/li>
+&lt;li>insertdict&lt;/li>
+&lt;ul>
+&lt;li>lookdict_string&lt;/li>
+&lt;ul>
+&lt;li>slot index = hash &amp;#038; mask = 12416037344 &amp;#038; 7 = 0&lt;/li>
+&lt;li>slot 0 is not used so return it&lt;/li>
+&lt;/ul>
+&lt;li>init entry at index 0 with key, value and hash&lt;/li>
+&lt;li>ma_used = 1, ma_fill = 1&lt;/li>
+&lt;/ul>
+&lt;/ul>
+&lt;li>PyDict_SetItem: key = &amp;#8216;b&amp;#8217;, value = 2&lt;/li>
+&lt;ul>
+&lt;li>hash = hash(&amp;#8216;b&amp;#8217;) = 12544037731&lt;/li>
+&lt;li>insertdict&lt;/li>
+&lt;ul>
+&lt;li>lookdict_string&lt;/li>
+&lt;ul>
+&lt;li>slot index = hash &amp;#038; mask = 12544037731 &amp;#038; 7 = 3&lt;/li>
+&lt;li>slot 3 is not used so return it&lt;/li>
+&lt;/ul>
+&lt;li>init entry at index 3 with key, value and hash&lt;/li>
+&lt;li>ma_used = 2, ma_fill = 2&lt;/li>
+&lt;/ul>
+&lt;/ul>
+&lt;li>PyDict_SetItem: key = &amp;#8216;z&amp;#8217;, value = 26&lt;/li>
+&lt;ul>
+&lt;li>hash = hash(&amp;#8216;z&amp;#8217;) = 15616046971&lt;/li>
+&lt;li>insertdict&lt;/li>
+&lt;ul>
+&lt;li>lookdict_string&lt;/li>
+&lt;ul>
+&lt;li>slot index = hash &amp;#038; mask = 15616046971 &amp;#038; 7 = 3&lt;/li>
+&lt;li>slot 3 is used so probe for a different slot: 5 is free&lt;/li>
+&lt;/ul>
+&lt;li>init entry at index 5 with key, value and hash&lt;/li>
+&lt;li>ma_used = 3, ma_fill = 3&lt;/li>
+&lt;/ul>
+&lt;/ul>
+&lt;li>PyDict_SetItem: key = &amp;#8216;y&amp;#8217;, value = 25&lt;/li>
+&lt;ul>
+&lt;li>hash = hash(&amp;#8216;y&amp;#8217;) = 15488046584&lt;/li>
+&lt;li>insertdict&lt;/li>
+&lt;ul>
+&lt;li>lookdict_string&lt;/li>
+&lt;ul>
+&lt;li>slot index = hash &amp;#038; mask = 15488046584 &amp;#038; 7 = 0&lt;/li>
+&lt;li>slot 0 is used so probe for a different slot: 1 is free&lt;/li>
+&lt;/ul>
+&lt;li>init entry at index 1 with key, value and hash&lt;/li>
+&lt;li>ma_used = 4, ma_fill = 4&lt;/li>
+&lt;/ul>
+&lt;/ul>
+&lt;li>PyDict_SetItem: key = &amp;#8216;c&amp;#8217;, value = 3&lt;/li>
+&lt;ul>
+&lt;li>hash = hash(&amp;#8216;c&amp;#8217;) = 12672038114&lt;/li>
+&lt;li>insertdict&lt;/li>
+&lt;ul>
+&lt;li>lookdict_string&lt;/li>
+&lt;ul>
+&lt;li>slot index = hash &amp;#038; mask = 12672038114 &amp;#038; 7 = 2&lt;/li>
+&lt;li>slot 2 is free so return it&lt;/li>
+&lt;/ul>
+&lt;li>init entry at index 2 with key, value and hash&lt;/li>
+&lt;li>ma_used = 5, ma_fill = 5&lt;/li>
+&lt;/ul>
+&lt;/ul>
+&lt;li>PyDict_SetItem: key = &amp;#8216;x&amp;#8217;, value = 24&lt;/li>
+&lt;ul>
+&lt;li>hash = hash(&amp;#8216;x&amp;#8217;) = 15360046201&lt;/li>
+&lt;li>insertdict&lt;/li>
+&lt;ul>
+&lt;li>lookdict_string&lt;/li>
+&lt;ul>
+&lt;li>slot index = hash &amp;#038; mask = 15360046201 &amp;#038; 7 = 1&lt;/li>
+&lt;li>slot 1 is used so probe for a different slot: 7 is free&lt;/li>
+&lt;/ul>
+&lt;li>init entry at index 7 with key, value and hash&lt;/li>
+&lt;li>ma_used = 6, ma_fill = 6&lt;/li>
+&lt;/ul>
+&lt;/ul>
+&lt;/ul>
+&lt;p>
+This is what we have so far:
+&lt;/p>
+&lt;p>
+&lt;img src="https://www.laurentluce.com/images/blog/dict/insert.png" alt="python dictionary insert" />
+&lt;/p>
+&lt;p>
+6 slots on 8 are used now so we are over 2/3 of the array’s capacity. dictresize() is called to allocate a larger array. This function also takes care of copying the old table entries to the new table.
+&lt;/p>
+&lt;p>
+dictresize() is called with minused = 24 in our case which is 4 * ma_used. 2 * ma_used is used when the number of used slots is very large (greater than 50000). Why 4 times the number of used slots? It reduces the number of resize steps and it increases sparseness.
+&lt;/p>
+&lt;p>
+The new table size needs to be greater than 24 and it is calculated by shifting the current size 1 bit left until it is greater than 24. It ends up being 32 e.g. 8 -> 16 -> 32.
+&lt;/p>
+&lt;p>
+This is what happens with our table during resizing: a new table of size 32 is allocated. Old table entries are inserted into the new table using the new mask value which is 31. We end up with the following:
+&lt;/p>
+&lt;p>
+&lt;img src="https://www.laurentluce.com/images/blog/dict/resizing.png" alt="python dictionary table resizing" />
+&lt;/p>
+&lt;h2>
+Removing items
+&lt;/h2>
+&lt;p>
+PyDict_DelItem() is called to remove an entry. The hash for this key is calculated and the lookup function is called to return the entry. The slot is now a dummy slot.
+&lt;/p>
+&lt;p>
+We want to remove the key ‘c’ from our dictionary. We end up with the following array:
+&lt;/p>
+&lt;p>
+&lt;img src="https://www.laurentluce.com/images/blog/dict/delete.png" alt="Python dictionary delete key" />
+&lt;/p>
+&lt;p>
+Note that the delete item operation doesn’t trigger an array resize if the number of used slots is much less that the total number of slots. However, when a key/value pair is added, the need for resize is based on the number of used slots + dummy slots so it can shrink the array too.
+&lt;/p>
+&lt;p>
+That’s it for now. I hope you enjoyed the article. Please write a comment if you have any feedback.
+&lt;/p>
+&lt;/div>
+&lt;!--more-->
+&lt;!--more-->
+&lt;div class="metawrap">
+&lt;p>
+&amp;nbsp;
+&lt;/p>
+&lt;p>
+&lt;em>Originally posted at &lt;a href="https://www.laurentluce.com/posts/python-dictionary-implementation/">Laurent Luce&amp;#8217;s Blog&lt;/a> August 29, 2011 by Laurent Luce.&lt;/em>
+&lt;/p>
+&lt;/div></description></item><item><title>What easy questions on Javascript I can ask?</title><link>https://denis-trofimov.github.io/what-easy-questions-on-javascript-i-can-ask/</link><pubDate>Mon, 25 Jun 2018 23:29:33 +0000</pubDate><guid>https://denis-trofimov.github.io/what-easy-questions-on-javascript-i-can-ask/</guid><description>&lt;p>In this post I speak about some basic Javascript quesions and answers, which I have made passing throught course &lt;a href="https://simpleprogrammer.com/store/products/javascript-launchpad/?c=jslp70&amp;amp;utm_source=drip&amp;amp;utm_medium=email&amp;amp;utm_campaign=js-launchpad-sale&amp;amp;utm_content=js-launchpad-sale-email-2&amp;amp;__s=25hdpkywdqsodfst7mgj&amp;amp;utm_source=drip&amp;amp;utm_medium=email&amp;amp;utm_campaign=JavaScript&amp;#43;LaunchPad&amp;#43;Introduction&amp;amp;utm_content=Q%26A&amp;#43;about&amp;#43;JavaScript&amp;#43;LaunchPad" target="_blank" rel="noopener">&lt;strong>JavaScript LaunchPad&lt;/strong>&lt;/a> &lt;strong>by&lt;/strong> &lt;strong>&lt;a href="https://simpleprogrammer.com/" target="_blank" rel="noopener">Simple Programmer.com.&lt;/a>&lt;/strong>&lt;/p>
+&lt;p>I have interviewed 3 persons in the year 2017 for developer position to the company I work for, Vzor Systems LLC.&lt;/p>
+&lt;p>It turned out that to prepare for interview from the interviewer side one should do some effort. If the company is not a big but a small startup, it is my job as interviewer to think of questions and written tests to check a candidate`s skills and knowledge. One time I was looking for typical questions on interview for C++ developer position.&lt;/p>
+&lt;p>Having an interviewer field of view in mind, I created this questions list when I have finished first **&lt;a href="https://simpleprogrammer.com/store/products/javascript-launchpad/?c=jslp70&amp;amp;utm_source=drip&amp;amp;utm_medium=email&amp;amp;utm_campaign=js-launchpad-sale&amp;amp;utm_content=js-launchpad-sale-email-2&amp;amp;__s=25hdpkywdqsodfst7mgj&amp;amp;utm_source=drip&amp;amp;utm_medium=email&amp;amp;utm_campaign=JavaScript&amp;#43;LaunchPad&amp;#43;Introduction&amp;amp;utm_content=Q%26A&amp;#43;about&amp;#43;JavaScript&amp;#43;LaunchPad" target="_blank" rel="noopener">JavaScript LaunchPad&lt;/a> **chapter “&lt;strong>Execution Contexts and Lexical Environments”.&lt;/strong>&lt;/p>
+&lt;h2 id="span-stylefont-weight-400the-execution-context-8211-creation--hoistingspan">&lt;span style="font-weight: 400;">The Execution Context – Creation &amp;amp; Hoisting&lt;/span>&lt;/h2>
+&lt;h3 id="question-what-this-code-give-to-the-console">Question: What this code give to the console?&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-javascript" data-lang="javascript">&lt;span class="line">&lt;span class="cl">&lt;span class="nx">b&lt;/span>&lt;span class="p">();&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">console&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">log&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nx">a&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kd">var&lt;/span> &lt;span class="nx">a&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s1">&amp;#39;Hello World!&amp;#39;&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kd">function&lt;/span> &lt;span class="nx">b&lt;/span>&lt;span class="p">()&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">console&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">log&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;Called b!&amp;#39;&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="answer">Answer:&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-javascript" data-lang="javascript">&lt;span class="line">&lt;span class="cl">&lt;span class="nx">Called&lt;/span> &lt;span class="nx">b&lt;/span>&lt;span class="o">!&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">Hello&lt;/span> &lt;span class="nx">World&lt;/span>&lt;span class="o">!&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="heading">&lt;/h2>
+&lt;h2 id="span-stylefont-weight-400functions-context-and-variable-environmentsspan">&lt;span style="font-weight: 400;">Functions, Context, and Variable Environments&lt;/span>&lt;/h2>
+&lt;h3 id="question-what-this-code-give-to-the-console-1">Question: What this code give to the console?&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-javascript" data-lang="javascript">&lt;span class="line">&lt;span class="cl">&lt;span class="kd">function&lt;/span> &lt;span class="nx">b&lt;/span>&lt;span class="p">()&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">var&lt;/span> &lt;span class="nx">myVar&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">console&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">log&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nx">myVar&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kd">function&lt;/span> &lt;span class="nx">a&lt;/span>&lt;span class="p">()&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">var&lt;/span> &lt;span class="nx">myVar&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mi">2&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">console&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">log&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nx">myVar&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">b&lt;/span>&lt;span class="p">();&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kd">var&lt;/span> &lt;span class="nx">myVar&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mi">1&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">console&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">log&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nx">myVar&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">a&lt;/span>&lt;span class="p">();&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">console&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">log&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nx">myVar&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="answer-1">Answer:&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-javascript" data-lang="javascript">&lt;span class="line">&lt;span class="cl">&lt;span class="mi">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="mi">2&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="mi">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="mi">1&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="heading-1">&lt;/h2>
+&lt;h2 id="span-stylefont-weight-400the-scope-chainspan">&lt;span style="font-weight: 400;">The Scope Chain&lt;/span>&lt;/h2>
+&lt;h3 id="question-what-this-code-give-to-the-console-2">Question: What this code give to the console?&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-javascript" data-lang="javascript">&lt;span class="line">&lt;span class="cl">&lt;span class="kd">function&lt;/span> &lt;span class="nx">a&lt;/span>&lt;span class="p">()&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">function&lt;/span> &lt;span class="nx">b&lt;/span>&lt;span class="p">()&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">console&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">log&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nx">myVar&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">b&lt;/span>&lt;span class="p">();&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kd">var&lt;/span> &lt;span class="nx">myVar&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mi">1&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">a&lt;/span>&lt;span class="p">();&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">b&lt;/span>&lt;span class="p">();&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="answer-2">Answer:&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-javascript" data-lang="javascript">&lt;span class="line">&lt;span class="cl">&lt;span class="mi">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">Uncaught&lt;/span> &lt;span class="nx">ReferenceError&lt;/span>&lt;span class="o">:&lt;/span> &lt;span class="nx">b&lt;/span> &lt;span class="nx">is&lt;/span> &lt;span class="nx">not&lt;/span> &lt;span class="nx">defined&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="span-stylefont-weight-400what-about-asynchronous-callbacksspan">&lt;span style="font-weight: 400;">What About Asynchronous Callbacks&lt;/span>&lt;/h2>
+&lt;h3 id="question-what-this-code-give-to-the-console-3">Question: What this code give to the console?&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-javascript" data-lang="javascript">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// long running function
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="kd">function&lt;/span> &lt;span class="nx">waitThreeSeconds&lt;/span>&lt;span class="p">()&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">var&lt;/span> &lt;span class="nx">ms&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mi">3000&lt;/span> &lt;span class="o">+&lt;/span> &lt;span class="k">new&lt;/span> &lt;span class="nb">Date&lt;/span>&lt;span class="p">().&lt;/span>&lt;span class="nx">getTime&lt;/span>&lt;span class="p">();&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">while&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="k">new&lt;/span> &lt;span class="nb">Date&lt;/span>&lt;span class="p">()&lt;/span> &lt;span class="o">&amp;lt;&lt;/span> &lt;span class="nx">ms&lt;/span>&lt;span class="p">){}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">console&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">log&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;finished function&amp;#39;&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kd">function&lt;/span> &lt;span class="nx">clickHandler&lt;/span>&lt;span class="p">()&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">console&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">log&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;click event!&amp;#39;&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// listen for the click event
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="nb">document&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">addEventListener&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;click&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="nx">clickHandler&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">waitThreeSeconds&lt;/span>&lt;span class="p">();&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">console&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">log&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;finished execution&amp;#39;&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="answer-3">Answer:&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-javascript" data-lang="javascript">&lt;span class="line">&lt;span class="cl">&lt;span class="nx">finished&lt;/span> &lt;span class="kd">function&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">finished&lt;/span> &lt;span class="nx">execution&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">click&lt;/span> &lt;span class="nx">event&lt;/span>&lt;span class="o">!&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item></channel></rss>
