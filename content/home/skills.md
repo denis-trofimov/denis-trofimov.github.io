@@ -16,7 +16,7 @@ subtitle:
 # - Add/remove as many `feature` blocks below as you like.
 # - For available icons, see: https://wowchemy.com/docs/page-builder/#icons
 feature:
-  - description: since 2019
+  - description: since 2018
     icon: golang
     icon_pack: fab
     name: Golang
@@ -48,15 +48,15 @@ feature:
     icon: mongodb_original_wordmark_logo_icon_146425
     icon_pack: custom
     name: Atlas MongoDB
-  - description:
+  - description: since 2017
     icon: google_cloud_logo_icon_159333
     icon_pack: custom
     name: Google Cloud
-  - description:
+  - description: since 2020
     icon: amazon_aws_logo_icon_145507
     icon_pack: custom
     name: Amazon AWS
-  - description:
+  - description: since 2020
     icon: microsoft_azure_logo_icon_170956
     icon_pack: custom
     name: Microsoft Azure            
