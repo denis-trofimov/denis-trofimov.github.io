@@ -5,7 +5,7 @@ title: "New Year's Miracle"
 summary: "A Django site built from scratch"
 authors: []
 tags: ['python', 'django', 'postresql', 'celery', 'redis', 'uwsgi', 'docker', 'nginx', 'jinja2', 'web']
-categories: []
+categories: ['full stack', 'python', 'project']
 date: 2019-01-01T22:04:25+03:00
 
 # Optional external URL for project (replaces project detail page).
@@ -15,7 +15,7 @@ external_link: ""
 # To use, add an image named `featured.jpg/png` to your page's folder.
 # Focal points: Smart, Center, TopLeft, Top, TopRight, Left, Right, BottomLeft, Bottom, BottomRight.
 image:
-  caption: "Django Personalized Happy New Year Greetings Call Order Received"
+  caption: "Personalized Holiday Greetings Call Service"
   focal_point: ""
   preview_only: true
 
