@@ -1,4 +1,18 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>jinja2 | Denis Trofimov Blog</title><link>https://denis-trofimov.github.io/tag/jinja2/</link><atom:link href="https://denis-trofimov.github.io/tag/jinja2/index.xml" rel="self" type="application/rss+xml"/><description>jinja2</description><generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Tue, 01 Jan 2019 22:04:25 +0300</lastBuildDate><image><url>https://denis-trofimov.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png</url><title>jinja2</title><link>https://denis-trofimov.github.io/tag/jinja2/</link></image><item><title>New Year's Miracle</title><link>https://denis-trofimov.github.io/project/django-personalized-happy-new-year-greetings-call-order/</link><pubDate>Tue, 01 Jan 2019 22:04:25 +0300</pubDate><guid>https://denis-trofimov.github.io/project/django-personalized-happy-new-year-greetings-call-order/</guid><description>&lt;ul>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>jinja2 | Denis Trofimov Blog</title><link>https://denis-trofimov.github.io/tag/jinja2/</link><atom:link href="https://denis-trofimov.github.io/tag/jinja2/index.xml" rel="self" type="application/rss+xml"/><description>jinja2</description><generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Fri, 20 Dec 2019 00:00:00 +0000</lastBuildDate><image><url>https://denis-trofimov.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png</url><title>jinja2</title><link>https://denis-trofimov.github.io/tag/jinja2/</link></image><item><title>Python Backend Tutor for Practicum Yandex</title><link>https://denis-trofimov.github.io/project/python-backend-tutor-practicum-yandex/</link><pubDate>Fri, 20 Dec 2019 00:00:00 +0000</pubDate><guid>https://denis-trofimov.github.io/project/python-backend-tutor-practicum-yandex/</guid><description>&lt;p>&lt;a href="https://practicum.yandex.com/" target="_blank" rel="noopener">Yandex Practicum educational platform&lt;/a>&lt;/p>
+&lt;blockquote>
+&lt;p>Our courses are created using knowledge that you won&amp;rsquo;t find in any textbook. With our intensive 6 to 9-month IT career advancement programs, Practicum by Yandex bridges the gap between short-term online courses and full-time internships.&lt;/p>
+&lt;/blockquote>
+&lt;ul>
+&lt;li>Reviewed homework coding practice tasks.&lt;/li>
+&lt;/ul></description></item><item><title>Python Big Data Tutor for HackerU</title><link>https://denis-trofimov.github.io/project/python-big-data-tutor-hackeru/</link><pubDate>Tue, 17 Dec 2019 00:00:00 +0000</pubDate><guid>https://denis-trofimov.github.io/project/python-big-data-tutor-hackeru/</guid><description>&lt;ul>
+&lt;li>Tutored a course on Python for Big Data Analysis&lt;/li>
+&lt;li>Created a 20 weeks course program and held class room studies&lt;/li>
+&lt;li>Assigned and checked a homework exercises&lt;/li>
+&lt;/ul>
+&lt;blockquote>
+&lt;p>HackerU educational programs are designed for an audience of different levels of training: from beginner specialists to top management. Actual curricula, international level teachers and practice in the learning process are the best investments in education.&lt;/p>
+&lt;/blockquote>
+&lt;p>&lt;a href="https://hackeru.pro" target="_blank" rel="noopener">HackerU - Israeli Higher School of Information Technology and Security&lt;/a>&lt;/p></description></item><item><title>New Year's Miracle</title><link>https://denis-trofimov.github.io/project/django-personalized-happy-new-year-greetings-call-order/</link><pubDate>Tue, 01 Jan 2019 22:04:25 +0300</pubDate><guid>https://denis-trofimov.github.io/project/django-personalized-happy-new-year-greetings-call-order/</guid><description>&lt;ul>
 &lt;li>I had developed the Django powered SPA site for “New Year&amp;rsquo;s Miracle”.&lt;/li>
 &lt;li>Team consisted of owner, sysadmin, DBA, designer, me, my mentee junior Python developer.&lt;/li>
 &lt;li>I used Jinja 2 templates to install front-end, for storage on site I used PostreSQL DB 10, for delayed tasks as email and SMS sending &amp;ndash; Celery queue and Redis.&lt;/li>
@@ -43,4 +57,13 @@ Screenshot of Django admin view
 &lt;/blockquote>
 &lt;blockquote>
 &lt;p>The project manager Maxim Shuvaev noted that over the last 7 days of December it is planned to make up to a million calls, but so far only in Russia. In the future, it is planned to connect to the shares of other CIS countries.&lt;/p>
-&lt;/blockquote></description></item></channel></rss>
+&lt;/blockquote></description></item><item><title>Python Tutor for Learn Python</title><link>https://denis-trofimov.github.io/project/python-tutor-learn-python/</link><pubDate>Sat, 08 Sep 2018 00:00:00 +0000</pubDate><guid>https://denis-trofimov.github.io/project/python-tutor-learn-python/</guid><description>&lt;p>&lt;a href="https://learn.python.ru" target="_blank" rel="noopener">Learn Python programming course&lt;/a>&lt;/p>
+&lt;blockquote>
+&lt;p>PYTHON PROGRAMMING COURSE FOR ANY LEVEL WITH ACCESS TO PRACTICE&lt;/p>
+&lt;/blockquote>
+&lt;h2 id="achivements">Achivements:&lt;/h2>
+&lt;ul>
+&lt;li>Tutored into Python course for 10 weeks, 40 hours total, participated in 4 waves total.&lt;/li>
+&lt;li>Supervised 21 students working on their diploma projects.&lt;/li>
+&lt;li>Assigned and checked a homework exercises.&lt;/li>
+&lt;/ul></description></item></channel></rss>

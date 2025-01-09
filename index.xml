@@ -9,7 +9,21 @@ Click on the &lt;strong>Slides&lt;/strong> button above to view the built-in sli
 &lt;li>&lt;strong>Upload&lt;/strong> an existing slide deck to &lt;code>static/&lt;/code> and link using &lt;code>url_slides&lt;/code> parameter in the front matter of the talk file&lt;/li>
 &lt;li>&lt;strong>Embed&lt;/strong> your slides (e.g. Google Slides) or presentation video on this page using &lt;a href="https://wowchemy.com/docs/writing-markdown-latex/" target="_blank" rel="noopener">shortcodes&lt;/a>.&lt;/li>
 &lt;/ul>
-&lt;p>Further event details, including &lt;a href="https://wowchemy.com/docs/writing-markdown-latex/" target="_blank" rel="noopener">page elements&lt;/a> such as image galleries, can be added to the body of this page.&lt;/p></description></item><item><title>Slides</title><link>https://denis-trofimov.github.io/slides/example/</link><pubDate>Tue, 05 Feb 2019 00:00:00 +0000</pubDate><guid>https://denis-trofimov.github.io/slides/example/</guid><description>&lt;h1 id="create-slides-in-markdown-with-wowchemy">Create slides in Markdown with Wowchemy&lt;/h1>
+&lt;p>Further event details, including &lt;a href="https://wowchemy.com/docs/writing-markdown-latex/" target="_blank" rel="noopener">page elements&lt;/a> such as image galleries, can be added to the body of this page.&lt;/p></description></item><item><title>Python Backend Tutor for Practicum Yandex</title><link>https://denis-trofimov.github.io/project/python-backend-tutor-practicum-yandex/</link><pubDate>Fri, 20 Dec 2019 00:00:00 +0000</pubDate><guid>https://denis-trofimov.github.io/project/python-backend-tutor-practicum-yandex/</guid><description>&lt;p>&lt;a href="https://practicum.yandex.com/" target="_blank" rel="noopener">Yandex Practicum educational platform&lt;/a>&lt;/p>
+&lt;blockquote>
+&lt;p>Our courses are created using knowledge that you won&amp;rsquo;t find in any textbook. With our intensive 6 to 9-month IT career advancement programs, Practicum by Yandex bridges the gap between short-term online courses and full-time internships.&lt;/p>
+&lt;/blockquote>
+&lt;ul>
+&lt;li>Reviewed homework coding practice tasks.&lt;/li>
+&lt;/ul></description></item><item><title>Python Big Data Tutor for HackerU</title><link>https://denis-trofimov.github.io/project/python-big-data-tutor-hackeru/</link><pubDate>Tue, 17 Dec 2019 00:00:00 +0000</pubDate><guid>https://denis-trofimov.github.io/project/python-big-data-tutor-hackeru/</guid><description>&lt;ul>
+&lt;li>Tutored a course on Python for Big Data Analysis&lt;/li>
+&lt;li>Created a 20 weeks course program and held class room studies&lt;/li>
+&lt;li>Assigned and checked a homework exercises&lt;/li>
+&lt;/ul>
+&lt;blockquote>
+&lt;p>HackerU educational programs are designed for an audience of different levels of training: from beginner specialists to top management. Actual curricula, international level teachers and practice in the learning process are the best investments in education.&lt;/p>
+&lt;/blockquote>
+&lt;p>&lt;a href="https://hackeru.pro" target="_blank" rel="noopener">HackerU - Israeli Higher School of Information Technology and Security&lt;/a>&lt;/p></description></item><item><title>Slides</title><link>https://denis-trofimov.github.io/slides/example/</link><pubDate>Tue, 05 Feb 2019 00:00:00 +0000</pubDate><guid>https://denis-trofimov.github.io/slides/example/</guid><description>&lt;h1 id="create-slides-in-markdown-with-wowchemy">Create slides in Markdown with Wowchemy&lt;/h1>
 &lt;p>&lt;a href="https://wowchemy.com/" target="_blank" rel="noopener">Wowchemy&lt;/a> | &lt;a href="https://wowchemy.com/docs/content/slides/" target="_blank" rel="noopener">Documentation&lt;/a>&lt;/p>
 &lt;hr>
 &lt;h2 id="features">Features&lt;/h2>
@@ -562,7 +576,16 @@ Getting buy-in from senior leadership is one thing. Getting buy-in from the peop
 &lt;h2 id="source">Source&lt;/h2>
 &lt;div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
 &lt;iframe src="https://www.youtube.com/embed/ZsHMHukIlJY" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video">&lt;/iframe>
-&lt;/div></description></item><item><title>Lessons Learned by Mentoring Programmers repost.</title><link>https://denis-trofimov.github.io/lessons-learned-by-mentoring-programmers-repost/</link><pubDate>Wed, 05 Sep 2018 17:28:46 +0000</pubDate><guid>https://denis-trofimov.github.io/lessons-learned-by-mentoring-programmers-repost/</guid><description>&lt;p>Hello!&lt;/p>
+&lt;/div></description></item><item><title>Python Tutor for Learn Python</title><link>https://denis-trofimov.github.io/project/python-tutor-learn-python/</link><pubDate>Sat, 08 Sep 2018 00:00:00 +0000</pubDate><guid>https://denis-trofimov.github.io/project/python-tutor-learn-python/</guid><description>&lt;p>&lt;a href="https://learn.python.ru" target="_blank" rel="noopener">Learn Python programming course&lt;/a>&lt;/p>
+&lt;blockquote>
+&lt;p>PYTHON PROGRAMMING COURSE FOR ANY LEVEL WITH ACCESS TO PRACTICE&lt;/p>
+&lt;/blockquote>
+&lt;h2 id="achivements">Achivements:&lt;/h2>
+&lt;ul>
+&lt;li>Tutored into Python course for 10 weeks, 40 hours total, participated in 4 waves total.&lt;/li>
+&lt;li>Supervised 21 students working on their diploma projects.&lt;/li>
+&lt;li>Assigned and checked a homework exercises.&lt;/li>
+&lt;/ul></description></item><item><title>Lessons Learned by Mentoring Programmers repost.</title><link>https://denis-trofimov.github.io/lessons-learned-by-mentoring-programmers-repost/</link><pubDate>Wed, 05 Sep 2018 17:28:46 +0000</pubDate><guid>https://denis-trofimov.github.io/lessons-learned-by-mentoring-programmers-repost/</guid><description>&lt;p>Hello!&lt;/p>
 &lt;p>I got fresh new article from The Simple Programmer blog, &lt;a href="https://simpleprogrammer.com/lessons-learned-mentoring-programmers/" target="_blank" rel="noopener">Lessons Learned by Mentoring Programmers&lt;/a> .&lt;/p>
 &lt;p>It is a good coincidence, for me it is the right time to get to know about mentoring.&lt;/p>
 &lt;p>I will take part the &lt;a href="https://learn.python.ru/" target="_blank" rel="noopener">learn.python.ru&lt;/a> course in Moscow as a new curator for a group of 5-6 students. I am totally new to all this field, teaching programming. I am to help students to get well with Python language, answer questions, check they homework, help to plan they project. That course will be 10 weeks long.&lt;/p>
