@@ -22,41 +22,45 @@ date_format: Jan 2006
 #   Leave `date_end` empty if it's your current employer.
 #   Begin multi-line descriptions with YAML's `|2-` multi-line prefix.
 experience:
-  - title: Lead Platform Engineer
+  - title: Lead Software Developer (Platform Team Lead SWE)
     company: Huma Therapeutics Ltd.
     company_url: https://huma.com/
     location: London, UK
-    date_start: "2021-01-11"
-    date_end: 
+    date_start: 2021-01-11
+    date_end: 2024-06-17
     description: |-
-      * Automated Pull Request Operation for Huma API backend team, making it possible to preview backend API in temporary cloud environments.
-      * Created Kubernetes operators to reconcile application and application compositions, inspired by docker-compose, to abstract away Kubernetes API complexity for developers.
-      * Created Kubernetes operators to reconcile cloud resources such as AWS S3 and GCS storages, Atlas and KubeDB provided MongoDBs, Redis cache, to enable managing these resources from controlling Kubernetes cluster.
-      * Led internal platform team of 3 senior engineers
-      * Automated CI/CD process, allowing the team to develop and test faster
+      **Achievements**
 
-      Technology
+      * I designed and developed a custom IDP solution for the company, which includes all Huma products such as patient monitoring, pre-trained AI models, and any docker container applications. This IDP allows for 0-day operations as well as some day-2 operations, such as data backup and restore.
+      * Automated pull request feature for the back-end development team, allowing them to preview back-end APIs in temporary cloud environments. This effectively reduces the time it takes to deploy from eight hours to fifteen minutes!
+      * To automate DevOps tasks related to managing cloud resources, I have created Kubernetes operators that provide instant access to AWS S3, Google Cloud Storage, and Atlas MongoDB PostgreSQL and Redis cache.
+      * Furthermore, I automated the CI/CD (Continuous Integration and Continuous Deployment) process using Argo CD and Grafana Cloud, among other tools. This increases both speed and reliability.
+      * For two years, I led an internal platform team consisting of two senior engineers.
 
-      * Golang, Kubernetes, Operator SDK Go, MongoDB, Docker, GitHub CI
-      * Jira, Confluence, GitHub, VSCode
-      * GCP GKE, AWS EKS, Azure AKS, Terraform, Helm, ArgoCD, Helmfile
+      **Technology**
 
-  - title: "CTO"
-    company: "Sittme. A revolutionary application that helps parents and nannies find each other"
-    company_url: "https://sitt.me"
+      * Golang, Kubernetes API, Typiscript, Vue.js, Operator SDK Go, MongoDB, Docker, GitHub CI, PostgreSQL, Redis
+      * Jira, Confluence, GitHub, VSCode, Hugo
+      * GCP GKE, AWS EKS, Azure AKS, Terraform, Helm, ArgoCD, Helmfile, Grafana Cloud, Atlas Cloud, KubeDB
+
+  - title: Chief Technical Officer
+    company: Sittme
+    company_url: https://sitt.me
     location: Moscow, Russia
     date_start: "2019-11-20"
     date_end: "2020-06-30"
     description: |-
-      Sitt.me – a babysitting crowd-sourced platform. My team consisted of PM, designer, QA, and developers: back-end, front-end, and mobile devs.
+      Sitt.me is a community-based babysitting service that has a mobile platform. We had a team of professionals, including a project manager, a designer, a quality assurance expert, and developers: backend, frontend, and mobile.
 
-      * Designed and implemented features like in-app notifications, video calls, etc.
-      * Handled deployment of 24 services to a private Kubernetes cluster production, staging environments
-      * Automated CI/CD process, allowing the team to test and deploy faster
-      * Detected and solved issues in our services
-      * Mentored back-end, and front-end devs
+      **Achievements**
 
-      Technology
+      * I've designed and implemented some cool features like in-app notifications and video calls.
+      * I helped deploy 24 services in a private Kubernetes cluster for production and staging environments.
+      * I've automated the CI/CD process to allow the team to test and deploy faster.
+      * During my time here, I detected and solved some issues with our services.
+      * Additionally, I mentored both back-end and front-end developers.
+
+      **Technology**
       
       * Golang, Bash, Ruby, ReactJS, SQL; PostgreSQL DB, Redis, Maria, RabbitMQ, Firebase; Jira, Confluence, GitLab
       * Engineering: Kubernetes, Docker, GitLab CI, ELK, Helm 
@@ -68,19 +72,20 @@ experience:
     date_start: "2018-11-19"
     date_end: "2019-05-31"
     description: |-
-      * Refactored Text-To-Speech API service, using in-house Python async gRPC server library
-      * Designed and implemented CMS of a voice assistant using Flask, PostgreSQL
-      * Redesigned and implemented low-latency Text-To-Speech API service on Golang, Redis, PostgreSQL
-      * Deployed and tested services to a private Kubernetes cluster, automated CI/CD process using TeamCity 
-      * Responsibilities included: code review, interviews, and mentoring developers from my team
-      * The team consisted of a technical lead, PM, 2 backend developers, 4 AI data scientists, and a mathematical linguist
+      **Achievements**
 
-      Technology:
+      * I built and implemented a voice assistant CMS with Flask and PostgreSQL.
+      * Redesigned the low-latency API with Golang, Redis, PostgreSQL.
+      * I've refactored the text-to-speech API service using async gRPC Python library.
+      * Deployed services to Kubernetes cluster, automated CI/CD with TeamCity. 
+      * Responsibilities include code reviews, interviewing, mentoring.
+
+      **Technology**
 
       * Languages: Python, Golang, C++, SQL, bash
       * Packages: gRPC, TensorFlow Serving, Flask, Gunicorn, NumPy, SQLAlchemy.
       * DB: PostgreSQL DB, Redis, MongoDB
-      * tools: Docker, Kubernetes, Helm, Jira, Confluence, Bitbucket, TeamCity, PyCharm, Goland
+      * Tools: Docker, Kubernetes, Helm, Jira, Confluence, Bitbucket, TeamCity, PyCharm, Goland
 
   - title: "Lead Software Developer"
     company: "Vzor Systems, LLC"
@@ -89,17 +94,18 @@ experience:
     date_start: "2017-05-03"
     date_end: "2018-09-10"
     description: |-
-      Achivements:
+      **Achievements**
 
-      * Designed architecture and developed a bio-metric identification software (GUI client, server, and embedded).
-      * Hired and spearheaded two software developers on this project.
-      * Optimized identity recognition using classic image processing algorithms and CNN
-      * Conducted a technological proof test and prepared a NIST compliant report.
+      * I have designed the architecture and developed a biometric identification software solution, including a GUI client, server and embedded components.
+      * I have led a team of two software developers in this project, hiring them and guiding them through the process.
+      * To optimize identity recognition, I have used classic image processing algorithms and CNN.
+      * I performed a technological proof test and prepared a report that complied with the NIST standards.
+      * At three Russian conferences, "All-over-IP," "SKUD," and "TB Security Technology," I presented prototypes of the bio-metric identification solutions.
 
-      Technology:
-
-      * Python, C++, C, SQL; Git (GitLab); Eclipse IDE, Qt Creator
-      * OpenCV, Caffe, SciPy; SQLAlchemy; gRPC, MQTT; PostgreSQL; Ubuntu, MS Windows
+      **Technology**
+      
+      * Python, C++, Qt, C, SQL; Git (GitLab); Eclipse IDE, Qt Creator
+      * OpenCV, Caffe, SciPy; SQLAlchemy; gRPC, MQTT; PostgreSQL; Ubuntu, MS Windows Server
 
   - title: "Backend Software Developer"
     company: "Bigur-consulting, LLC"
@@ -120,16 +126,20 @@ experience:
     company: "Asoft, LLC"
     company_url: "http://www.asoft.ru"
     location: Moscow, Russia
-    date_start: "2012-01-15"
-    date_end: "2016-11-27"
+    date_start: "2011-03-15"
+    date_end: "2016-05-27"
     description: |-
-      Achivements:
-      
-      * Developed and deployed a railroad technological process modeling client-server application.
+      **Achievements**
 
-      Technology:
+      * I developed a client-server app that simulated the tech operation of train stations and handed it over to the client. Thanks to the solutions I implemented, the client successfully fulfilled the contract for upgrading the tracks at Syzran station 1.
+      * I designed and delivered a custom client-server system to the client, which helped them predict energy usage in a train section, among other things.
+      * During my time here, I gained experience on ongoing projects and picked up two projects that the lead programmer had left behind.
+      * I successfully delivered software and managed MySQL and Oracle databases.
+      * As part of a team, including a project manager, and 2 interns, we worked together to complete project goals.
+        
+      **Technology**
 
-      * С++, SQL, HTML, XML, JavaScript; VSC CVS; Eclipse IDE, KDEvelop, emacs
+      * С++, SQL, HTML, XML, JavaScript; VSC CVS; Eclipse IDE, KDevelop, emacs
       * Oracle DB, MySQL, in-house RDBMS + Web Server; bash, Fedora Linux
 
   - title: "Engineer"
@@ -139,7 +149,8 @@ experience:
     date_start: "2010-11-01"
     date_end: "2012-01-10"
     description: |-
-      * Developed Borland C++ Builder applications for satellite trajectory computations
+      * Developed 2 Windows desktop applications for satellite trajectory computations.
+      * С++, Borland C++ Builder
 
   # - title: CEO
   #   company: GenCoin
