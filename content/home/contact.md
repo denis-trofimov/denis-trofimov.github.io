@@ -25,7 +25,7 @@ content:
       captcha: false
 
   # Contact details (edit or remove options as required)
-  email: denistechlead@yandex.ru
+  email: silaradost@yandex.ru
   # phone: 888 888 88 88
   # address:
   #   street: 450 Serra Mall
@@ -46,15 +46,15 @@ content:
     - icon: telegram
       icon_pack: fab
       link: https://t.me/DenisTrofimovDev
-      name: DM Me      
+      name: Telegram is my favorite      
     - icon: linkedin
       icon_pack: fab
       link: https://www.linkedin.com/in/denis-trofimov-dev/
-      name: Job related
+      name: Linkedin
     - icon: twitter
       icon_pack: fab
       link: https://twitter.com/deniscloudgeek
-      name: Tweet Me
+      name: X (Twitter)
 
 design:
   columns: '2'

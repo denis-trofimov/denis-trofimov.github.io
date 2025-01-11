@@ -6,21 +6,21 @@ title: Denis Trofimov
 superuser: true
 
 # Role/position/tagline
-role: Lead Platform Engineer
+role: Senior Software Developer, Team Lead
 
 # Organizations/Affiliations to show in About widget
 organizations:
-  - name: Huma Therapeutics Ltd.
-    url: https://www.huma.com/
+  - name: Looking for job opportunities
+    url:
 
 # Short bio (displayed in user profile at end of posts)
-bio: Lead Cloud Platform Developer. I enjoy creating Kubernetes Operators and such :)
+bio: Seasoned software developer, worked for start-ups, bank, industries like space and railroads
 
 # Interests to show in About widget
 interests:
+  - Software Development
   - Platform Engineering
   - Cloud Computing
-  - Software Development
 
 # Education to show in About widget
 education:
@@ -40,6 +40,9 @@ social:
   - icon: github
     icon_pack: fab
     link: https://github.com/denist-huma
+  - icon: github
+    icon_pack: fab
+    link: https://github.com/denis-trofimov
   - icon: telegram
     icon_pack: fab
     link: https://t.me/DenisTrofimovDev

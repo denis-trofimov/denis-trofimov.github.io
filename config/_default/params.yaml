@@ -18,7 +18,7 @@ marketing:
     site_type: Person
     local_business_type: ''
     org_name: ''
-    description: 'A highly-customizable Hugo academic resume theme powered by Wowchemy website builder.'
+    description: "Denis Trofimov's personal site"
     twitter: 'deniscloudgeek'
   analytics:
     google_analytics: ''
