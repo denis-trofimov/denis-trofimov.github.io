@@ -30,6 +30,7 @@ highlights:
   - "PWA with offline support"
   - "5000+ monthly active users"
   - "Lighthouse score: 100"
+draft: true
 ---
 
 A fast, beautiful weather application that provides real-time weather data, forecasts, and interactive maps. Built as a Progressive Web App with offline support.

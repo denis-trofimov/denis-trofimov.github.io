@@ -1,57 +1,50 @@
 ---
-# Documentation: https://sourcethemes.com/academic/docs/managing-content/
 
 title: "New Year's Miracle"
 summary: "A Django site built from scratch"
 authors:
   - me
-tags: ['python', 'django', 'postresql', 'celery', 'redis', 'uwsgi', 'docker', 'nginx', 'jinja2', 'web']
-categories: ['full stack', 'python', 'project']
+tags: 
+  - Full-Stack
+  - Backend
+  - Frontend
+  - Python
+  - Django
+  - PostgreSQL
+  - Redis
+  - Celery
+  - Docker
+  - Nginx
+tech_stack:
+  - Python
+  - Django
+  - PostgreSQL
+  - Redis
+  - Celery
+  - Docker
+  - Nginx
+  - Jinja
 date: 2019-01-01T22:04:25+03:00
-
-# Optional external URL for project (replaces project detail page).
-external_link: ""
 
 # Featured image
 # To use, add an image named `featured.jpg/png` to your page's folder.
 # Focal points: Smart, Center, TopLeft, Top, TopRight, Left, Right, BottomLeft, Bottom, BottomRight.
 image:
   caption: "Personalized Holiday Greetings Call Service"
-  focal_point: ""
-  preview_only: true
+  focal_point: Smart
 
 # Custom links (optional).
 #   Uncomment and edit lines below to show custom links.
 links:
-- name: New Year's Miracle personalized Happy New Year greetings service
-  url: https://zvonok.novogodnee-chudo.ru/
-  icon_pack: fas
-  icon: external-link-alt
-
-- name: A WayBack Archive copy of New Year's Miracle site
-  url: https://web.archive.org/web/20190918211522/https://zvonok.novogodnee-chudo.ru/
-  icon_pack: fas
-  icon: history
-
-url_code: ""
-url_pdf: ""
-url_slides: ""
-url_video: ""
-
-# Slides (optional).
-#   Associate this project with Markdown slides.
-#   Simply enter your slide deck's filename without extension.
-#   E.g. `slides = "example-slides"` references `content/slides/example-slides.md`.
-#   Otherwise, set `slides = ""`.
-slides: ""
+  - name: A WayBack Archive copy of New Year's Miracle site
+    url: https://web.archive.org/web/20190918211522/https://zvonok.novogodnee-chudo.ru/
+    label: Web Archive
 ---
 
 * I had developed the Django powered SPA site for “New Year's Miracle”.
 * Team consisted of owner, sysadmin, DBA, designer, me, my mentee junior Python developer.
 * I used Jinja 2 templates to install front-end, for storage on site I used PostreSQL DB 10, for delayed tasks as email and SMS sending -- Celery queue and Redis.
-* I created a Docker container with UWSGI and Django for deployment on Nginx web server, and tested this container works on 38 core bare metal configuration.
-
-{{< figure src="featured.png" title="Screenshot of call order received" lightbox="true" >}}
+* I created a Docker container with UWSGI and Django for deployment on Nginx web server, and tested this container works on a company server.
 
 {{< figure src="Django Personalized Happy New Year Greetings Call Order CMS Admin.png" title="Screenshot of Django admin view" lightbox="true" >}}
 

@@ -1,52 +1,101 @@
 ---
-# Documentation: https://wowchemy.com/docs/managing-content/
 
 title: "Python Tutor for Learn Python"
 summary: "Tutored an intro course on Python for web developers"
 authors:
   - me
-tags: ['python', 'django', 'postresql', 'celery', 'redis', 'jinja2', 'web', 'telegram', 'API', 'flask', 'sqlalchemy', 'scraping', 'development', 'pandas', 'data analysis']
-categories: ['python', 'tutor', 'education', 'project']
+tags: 
+  - Teaching
+  - Web development
+  - Data Analysis
+  - Chat bot
+  - Backend
+  - Python
+  - Pandas
+  - MongoDB
+  - Flask
+  - SqlAlchemy
+  - Telegram API
+  - Redis
+  - Celery
+  - Jinja
+  - Docker
+  - Nginx
+tech_stack:
+  - Python
+  - Pandas
+  - MongoDB
+  - Flask
+  - SqlAlchemy
+  - Telegram API
+  - Redis
+  - Celery
+  - Jinja
+  - Docker
+  - Nginx
+
 date: "2018-09-08"
 
-# Optional external URL for project (replaces project detail page).
-external_link: ""
-
-# Featured image
-# To use, add an image named `featured.jpg/png` to your page's folder.
-# Focal points: Smart, Center, TopLeft, Top, TopRight, Left, Right, BottomLeft, Bottom, BottomRight.
-image:
-  caption: ""
-  focal_point: ""
-  preview_only: false
-
-# Custom links (optional).
-#   Uncomment and edit lines below to show custom links.
-# links:
-# - name: Follow
-#   url: https://twitter.com
-#   icon_pack: fab
-#   icon: twitter
-
-url_code: ""
-url_pdf: ""
-url_slides: ""
-url_video: ""
-
-# Slides (optional).
-#   Associate this project with Markdown slides.
-#   Simply enter your slide deck's filename without extension.
-#   E.g. `slides = "example-slides"` references `content/slides/example-slides.md`.
-#   Otherwise, set `slides = ""`.
-slides: ""
+links:
+  - name: Learn Python Course landing page
+    url: https://learn.python.ru
 ---
 
-[Learn Python programming course](https://learn.python.ru)
-
-> PYTHON PROGRAMMING COURSE FOR ANY LEVEL WITH ACCESS TO PRACTICE
-
-## Achivements:
+## Achivements
   
 * Tutored into Python course for 10 weeks, 40 hours total, participated in 4 waves total.
 * Supervised 21 students working on their diploma projects.
 * Assigned and checked a homework exercises.
+
+## Learn Python Course programm
+
+The course consists of two parts: a core course and a specialization course.
+
+After completing the core course and learning the basics of Python programming, you'll move on to the specialization course: web development.
+
+In addition to the Web Development track, we also offer other tracks—you can take additional training in them after completing the web development course. Or you can initially choose these as a specialization course:
+
+* Web Development
+* Data Analysis
+* Chatbots
+
+### Main Track
+
+* Introduction to Python
+* Flow Management
+* Files, Dates, and Virtual Environments
+* Fundamentals of Teamwork
+* Code Quality
+* Introduction to Testing
+* Hosting your Project
+
+### Web Development Track
+
+* Simple Web Server and Using External APIs
+* HTML Basics and Website Parsing
+* Database Basics
+* Web Forms and User Registration
+* Dividing the Project into Modules
+* Database Migrations
+* Automatically Running Tasks with Celery
+* Adding Comments to the Website
+
+### Data Analysis Track
+
+* Introduction to Jupyter
+* Introducing Pandas
+* Loading Data into a Dataframe from External Sources
+* Data Visualization
+* Creating Predictions
+
+### Chatbots Track
+
+* Basic Telegram Bot
+* Expanding the bot's capabilities
+* Custom keyboards
+* Integrating the bot with external services
+* Dialog bots
+* Getting to Know MongoDB
+* Automated Tasks
+* Using Inline Keyboards
+* Testing Chatbots

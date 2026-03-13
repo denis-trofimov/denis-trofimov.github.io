@@ -1,48 +1,52 @@
 ---
-# Documentation: https://wowchemy.com/docs/managing-content/
 
 title: "Python Backend Tutor for Practicum Yandex"
 summary: "Tutored Python course for web backend developers"
 authors:
   - me
-tags: ['python', 'django', 'postresql', 'celery', 'redis', 'uwsgi', 'docker', 'nginx', 'jinja2', 'web']
-categories: ['python', 'tutor', 'education', 'project']
+tags: 
+  - Teaching
+  - Backend
+  - Frontend
+  - Python
+  - Django
+  - PostgreSQL
+  - Redis
+  - Celery
+  - Docker
+  - Nginx
+  - Jinja
+  - Bash
+  - Git
+tech_stack:
+  - Python
+  - Django
+  - PostgreSQL
+  - Redis
+  - Celery
+  - Docker
+  - Nginx
+  - Jinja
+  - Bash
+  - Git
 date: "2019-12-20"
 
-# Optional external URL for project (replaces project detail page).
-external_link: ""
-
-# Featured image
-# To use, add an image named `featured.jpg/png` to your page's folder.
-# Focal points: Smart, Center, TopLeft, Top, TopRight, Left, Right, BottomLeft, Bottom, BottomRight.
-image:
-  caption: ""
-  focal_point: ""
-  preview_only: false
-
-# Custom links (optional).
-#   Uncomment and edit lines below to show custom links.
-# links:
-# - name: Follow
-#   url: https://twitter.com
-#   icon_pack: fab
-#   icon: twitter
-
-url_code: ""
-url_pdf: ""
-url_slides: ""
-url_video: ""
-
-# Slides (optional).
-#   Associate this project with Markdown slides.
-#   Simply enter your slide deck's filename without extension.
-#   E.g. `slides = "example-slides"` references `content/slides/example-slides.md`.
-#   Otherwise, set `slides = ""`.
-slides: ""
+links:
+  - name: Python Developer Course on Yandex Practicum educational platform
+    url: https://practicum.yandex.com/backend-developer/?from=catalog
 ---
 
-[Yandex Practicum educational platform](https://practicum.yandex.com/)
+## Duties
 
-> Our courses are created using knowledge that you won't find in any textbook. With our intensive 6 to 9-month IT career advancement programs, Practicum by Yandex bridges the gap between short-term online courses and full-time internships.
+- Did code review for the students homeworks.
 
-* Reviewed homework coding practice tasks.
+## Python Developer Course
+
+Learn backend development from scratch in 10 months. You'll get extensive practice, gain in-demand skills, and gain real-world experience.
+
+- A relevant program and the skills employers seek
+- Lots of practice, live coding, hackathons, and soft skill development
+- 13 projects: websites, apps, a bot, and an API—some of which will be included in your portfolio
+- Mentors: developers from Yandex and other large companies
+- Job search assistance for up to 7 months after completing the course
+- Certificate of completion

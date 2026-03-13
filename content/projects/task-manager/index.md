@@ -30,6 +30,7 @@ highlights:
   - "Real-time collaboration with WebSockets"
   - "2000+ active users"
   - "Featured on Product Hunt"
+draft: true
 ---
 
 A modern, intuitive task management tool built for remote teams. Features real-time collaboration, customizable workflows, and beautiful UI.

@@ -33,6 +33,7 @@ highlights:
   - "99.9% uptime SLA"
   - "Processing $50k+ monthly transactions"
   - "60% faster page load vs competitors"
+draft: true
 ---
 
 A modern, scalable e-commerce platform built from scratch with performance and user experience as top priorities.
