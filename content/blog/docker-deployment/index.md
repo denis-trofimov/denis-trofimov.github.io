@@ -9,7 +9,7 @@ tags:
   - Tutorial
 authors:
   - me
-featured: false
+draft: true
 ---
 
 Docker simplifies deployment by packaging your application with all dependencies. This guide covers containerizing apps, optimizing images, and production deployment.

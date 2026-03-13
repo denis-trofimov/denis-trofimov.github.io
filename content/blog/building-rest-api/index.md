@@ -10,7 +10,7 @@ tags:
   - Tutorial
 authors:
   - me
-featured: true
+draft: true
 ---
 
 Building a REST API seems straightforward until you need to handle authentication, validation, error handling, and documentation. This guide covers best practices for production-ready APIs.
