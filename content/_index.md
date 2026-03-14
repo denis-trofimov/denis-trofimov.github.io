@@ -20,12 +20,11 @@ sections:
       show_scroll_indicator: true
       typewriter:
         enable: true
-        prefix: "I build"
+        prefix: "I design and build"
         strings:
-          - "full-stack web apps"
+          - data warehouses
           - "scalable APIs"
-          - "beautiful UIs"
-          - "open source tools"
+          - "full-stack web apps"
         type_speed: 70
         delete_speed: 40
         pause_time: 2500
