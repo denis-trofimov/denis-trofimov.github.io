@@ -24,7 +24,7 @@ tags:
   </p>
   
   <p>
-    This article is actually a repost of originally posted at <a href="https://www.laurentluce.com/posts/python-dictionary-implementation/">Laurent Luce&#8217;s Blog</a> August 29, 2011 by Laurent Luce. I mentor several students of russian <a href="https://learn.python.ru/">Learn Python</a> courses. They have questions about structures in Python and how to use them. I found this post a good help to me and possibly to my students.
+    This article is actually a repost of what was originally posted at <a href="https://www.laurentluce.com/posts/python-dictionary-implementation/">Laurent Luce&#8217;s Blog</a> August 29, 2011 by Laurent Luce. I mentor several students of Russian <a href="https://learn.python.ru/">Learn Python</a> courses. They have questions about structures in Python and how to use them. I found this post a good help to me and possibly to my students.
   </p>
 </div>
 

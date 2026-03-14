@@ -22,6 +22,6 @@ I got into picture at the stand of Moscow.Python on 1:50.
 
 I will come to the next one too!
 
-Mixed russian and english content, you are welcome to watch!
+Mixed Russian and english content, you are welcome to watch!
 
 {{<youtube ap0dsL_JeLE>}}

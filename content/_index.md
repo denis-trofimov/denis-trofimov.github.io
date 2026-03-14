@@ -88,7 +88,7 @@ sections:
       title: "Tech Stack"
       subtitle: "Technologies I use to build things"
       categories:
-        - name: Data Enginering and Analisys
+        - name: Data Engineering and Analisys
           items:
             - name: Apache Airflow
               icon: devicon/apacheairflow
