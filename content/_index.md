@@ -89,46 +89,173 @@ sections:
       title: "Tech Stack"
       subtitle: "Technologies I use to build things"
       categories:
-        - name: Languages
+        - name: Data Enginering and Analisys
           items:
-            - name: TypeScript
-              icon: devicon/typescript
-            - name: JavaScript
-              icon: devicon/javascript
-            - name: Python
-              icon: devicon/python
-            - name: Go
-              icon: devicon/go
-        - name: Frontend
-          items:
-            - name: React
-              icon: devicon/react
-            - name: Next.js
-              icon: devicon/nextjs
-            - name: Tailwind CSS
-              icon: devicon/tailwindcss
-            - name: Alpine.js
-              icon: devicon/alpinejs
+            - name: Apache Airflow
+              icon: devicon/apacheairflow
+            - name: Metabase
+              icon: custom/Metabase--Streamline-Svg-Logos
+            - name: Apache Superset
+              icon: custom/Apache-Superset-Icon--Streamline-Svg-Logos
+            - name: Power BI
+              icon: custom/icons8-power-bi
+            - name: DBT
+              icon: custom/Dbt--Streamline-Svg-Logos
+            - name: DBeaver
+              icon: devicon/dbeaver
+            - name: SQL
+              icon: devicon/azuresqldatabase
+            - name: Jupyter Notebook
+              icon: devicon/jupyter
+            - name: NumPy
+              icon: devicon/numpy
+            - name: OpenCV
+              icon: devicon/opencv
+            - name: PyTorch
+              icon: devicon/pytorch
+            - name: TensorFlow
+              icon: devicon/tensorflow
+
         - name: Backend
           items:
-            - name: Node.js
-              icon: devicon/nodejs
-            - name: Express
-              icon: devicon/express
+            - name: Go
+              icon: devicon/go
+            - name: Python
+              icon: devicon/python
+            - name: PHP
+              icon: devicon/php
+            - name: C++/C
+              icon: devicon/cplusplus
+            - name: OpenAPI
+              icon: devicon/openapi
+            - name: gRPC
+              icon: devicon/grpc
+            - name: REST API
+              icon: devicon/djangorest
+
+            - name: RabbitMQ
+              icon: devicon/rabbitmq
             - name: PostgreSQL
               icon: devicon/postgresql
             - name: Redis
               icon: devicon/redis
+            - name: MariaDB/MySQL
+              icon: devicon/mariadb
+            - name: MongoDB
+              icon: devicon/mongodb
+            - name: OracleDB
+              icon: devicon/oracle
+            - name: Flask
+              icon: devicon/flask
+            - name: Laravel
+              icon: devicon/laravel
+            - name: Kubernetes API
+              icon: devicon/kubernetes
+            - name: Kubernetes Operator SDK (Go)
+              icon: devicon/kubernetes
+            - name: Node.js
+              icon: devicon/nodejs
+
+            - name: Qt
+              icon: devicon/qt
+
+            - name: Swagger
+              icon: devicon/swagger
+            - name: SQLAlchemy
+              icon: devicon/sqlalchemy
+            - name: uWSGI
+              icon: devicon/uwsgi
         - name: DevOps
           items:
-            - name: Docker
+            - name: Bash
+              icon: devicon/bash
+            - name: Docker/Docker Compose/Stack
               icon: devicon/docker
+            - name: Nginx
+              icon: devicon/nginx
+            - name: Kubernetes
+              icon: devicon/kubernetes
+            - name: Helm
+              icon: devicon/helm
+            - name: Terraform
+              icon: devicon/terraform
+            - name: Argo CD
+              icon: devicon/argocd
+            - name: Grafana
+              icon: devicon/grafana
+            - name: Prometheus
+              icon: devicon/prometheus
+            - name: ElasticSearch
+              icon: devicon/elasticsearch
+            - name: Kibana
+              icon: devicon/kibana
+            - name: logstash
+              icon: devicon/logstash
+            - name: Firebase
+              icon: devicon/firebase
+            - name: GitHub Actions
+              icon: devicon/githubactions
+            - name: GitLab
+              icon: devicon/gitlab
+            - name: Jenkins
+              icon: devicon/jenkins
+            - name: TeamCity
+              icon: custom/teamcity_logo_icon_249439
+            - name: GCS
+              icon: devicon/googlecloud
             - name: AWS
               icon: devicon/amazonwebservices-wordmark
-            - name: GitHub Actions
-              icon: brands/github
-            - name: Vercel
-              icon: devicon/vercel
+            - name: Azure
+              icon: devicon/azure
+            - name: Ubuntu
+              icon: devicon/ubuntu
+            - name: Fedora
+              icon: devicon/fedora
+            - name: CentOS
+              icon: devicon/centos
+            - name: Windows Server
+              icon: devicon/windows11
+            - name: Apache HTTP Server
+              icon: devicon/apache
+
+        - name: Frontend
+          items:
+            - name: JavaScript
+              icon: devicon/javascript
+            - name: TypeScript
+              icon: devicon/typescript
+            - name: HTML5
+              icon: devicon/html5
+            - name: XML
+              icon: devicon/xml
+            - name: Vue.js
+              icon: devicon/vuejs
+            - name: Next.js
+              icon: devicon/nextjs
+            - name: Ruby On Rails
+              icon: devicon/ruby
+            - name: Hugo
+              icon: devicon/hugo
+            - name: Wordpress
+              icon: devicon/wordpress
+            - name: Figma
+              icon: devicon/figma
+
+        - name: Other Products & Tools 
+          items:
+            - name: Bitrix24
+              icon: custom/bitrix24-svgrepo-com
+            - name: Jira
+              icon: devicon/jira
+            - name: Confluence
+              icon: devicon/confluence
+            - name: VSCode IDE
+              icon: devicon/vscode
+            - name: Cursor IDE
+              icon: custom/cursor-ai-code-icon
+            - name: UML
+              icon: devicon/unifiedmodelinglanguage
+
     design:
       style: grid
       show_levels: false
