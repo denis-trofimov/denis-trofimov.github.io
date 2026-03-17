@@ -131,7 +131,6 @@ sections:
               icon: devicon/grpc
             - name: REST API
               icon: devicon/djangorest
-
             - name: RabbitMQ
               icon: devicon/rabbitmq
             - name: PostgreSQL
@@ -146,6 +145,8 @@ sections:
               icon: devicon/oracle
             - name: Flask
               icon: devicon/flask
+            - name: Django
+              icon: devicon/djangorest
             - name: Laravel
               icon: devicon/laravel
             - name: Kubernetes API
@@ -154,10 +155,8 @@ sections:
               icon: devicon/kubernetes
             - name: Node.js
               icon: devicon/nodejs
-
             - name: Qt
               icon: devicon/qt
-
             - name: Swagger
               icon: devicon/swagger
             - name: SQLAlchemy
@@ -172,6 +171,8 @@ sections:
               icon: devicon/docker
             - name: Nginx
               icon: devicon/nginx
+            - name: Traefik
+              icon: devicon/traefikproxy
             - name: Kubernetes
               icon: devicon/kubernetes
             - name: Helm
@@ -244,6 +245,8 @@ sections:
           items:
             - name: Bitrix24
               icon: custom/bitrix24-svgrepo-com
+            - name: 1С:Бухгалтерия
+              icon: custom/Product-1c
             - name: Jira
               icon: devicon/jira
             - name: Confluence
@@ -252,6 +255,10 @@ sections:
               icon: devicon/vscode
             - name: Cursor IDE
               icon: custom/cursor-ai-code-icon
+            - name: LM Studio
+              icon: custom/lmstudio
+            - name: Perplexity AI
+              icon: custom/perplexity-color
             - name: UML
               icon: devicon/unifiedmodelinglanguage
 
