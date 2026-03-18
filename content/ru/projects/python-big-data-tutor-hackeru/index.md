@@ -4,7 +4,7 @@
 title: "Преподаватель Python для Big Data в HackerU"
 summary: "Преподавал курс по Python для анализа больших данных"
 authors:
-  - me
+  - denis
 tags:
   - Преподавание
   - Анализ данных
