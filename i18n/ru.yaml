@@ -1,0 +1,611 @@
+# Navigation
+
+- id: toggle_navigation
+  translation: Переключить навигацию
+
+- id: table_of_contents
+  translation: Содержание
+
+- id: on_this_page
+  translation: На этой странице
+
+- id: back_to_top
+  translation: Наверх
+
+- id: home
+  translation: Главная
+
+- id: close
+  translation: Закрыть
+
+- id: languages
+  translation: Языки
+
+# General
+
+- id: related
+  translation: Похожее
+
+# Callouts - All Obsidian-compatible types
+- id: callout_note
+  translation: Заметка
+
+- id: callout_abstract
+  translation: Аннотация
+
+- id: callout_summary
+  translation: Резюме
+
+- id: callout_info
+  translation: Инфо
+
+- id: callout_todo
+  translation: Сделать
+
+- id: callout_tip
+  translation: Совет
+
+- id: callout_success
+  translation: Успех
+
+- id: callout_question
+  translation: Вопрос
+
+- id: callout_warning
+  translation: Предупреждение
+
+- id: callout_failure
+  translation: Неудача
+
+- id: callout_danger
+  translation: Опасно
+
+- id: callout_bug
+  translation: Ошибка
+
+- id: callout_example
+  translation: Пример
+
+- id: callout_quote
+  translation: Цитата
+
+- id: callout_important
+  translation: Важное
+
+- id: callout_caution
+  translation: Осторожно
+
+- id: backlinks
+  translation: Обратные ссылки
+
+- id: minute_read
+  translation: мин чтения
+
+- id: previous
+  translation: Назад
+
+- id: next
+  translation: Далее
+
+- id: figure
+  translation: 'Рис. %d:'
+
+- id: edit_page
+  translation: Редактировать страницу
+
+# Themes
+
+- id: theme_selector
+  translation: Настройки оформления
+
+- id: theme_light
+  translation: Светлая
+
+- id: theme_dark
+  translation: Темная
+
+- id: theme_auto
+  translation: Автоматическая
+
+# Buttons
+
+- id: btn_preprint
+  translation: Препринт
+
+- id: btn_pdf
+  translation: PDF
+
+- id: btn_cite
+  translation: Цитировать
+
+- id: btn_slides
+  translation: Слайды
+
+- id: btn_video
+  translation: Видео
+
+- id: btn_code
+  translation: Код
+
+- id: btn_dataset
+  translation: Данные
+
+- id: btn_project
+  translation: Проект
+
+- id: btn_poster
+  translation: Постер
+
+- id: btn_source
+  translation: Исходный документ
+
+# New link types
+- id: btn_doi
+  translation: DOI
+- id: btn_site
+  translation: Сайт
+- id: btn_canonical
+  translation: Каноническая ссылка
+- id: btn_crosspost
+  translation: Кросспост
+- id: btn_discussion
+  translation: Обсуждение
+- id: btn_event
+  translation: Событие
+- id: btn_calendar
+  translation: Календарь
+- id: btn_registration
+  translation: Регистрация
+- id: btn_demo
+  translation: Демо
+- id: btn_model
+  translation: Модель
+- id: btn_hal
+  translation: HAL
+- id: btn_dblp
+  translation: DBLP
+- id: btn_isbn
+  translation: ISBN
+- id: btn_osf
+  translation: OSF
+- id: btn_zenodo
+  translation: Zenodo
+- id: btn_kaggle
+  translation: Kaggle
+- id: btn_openalex
+  translation: OpenAlex
+- id: btn_semanticscholar
+  translation: Semantic Scholar
+- id: btn_pwc
+  translation: Papers With Code
+
+- id: btn_copy
+  translation: Копировать
+
+- id: btn_copied
+  translation: Скопировано
+
+- id: btn_download
+  translation: Скачать
+
+# About widget
+
+- id: interests
+  translation: Интересы
+
+- id: education
+  translation: Образование
+
+- id: about_me
+  translation: Краткая биография
+
+- id: user_profile_latest
+  translation: Последнее
+
+# Countdown widget
+
+- id: days
+  translation: Дней
+- id: hours
+  translation: Часов
+- id: minutes
+  translation: Минут
+- id: seconds
+  translation: Секунд
+
+# Accomplishments widget
+
+- id: see_certificate
+  translation: Посмотреть сертификат
+
+# Experience widget
+
+- id: experience
+  translation: Опыт работы
+
+- id: present
+  translation: По настоящее время
+
+# Pages widget
+
+- id: read_more
+  translation: Читать далее
+
+- id: more_pages
+  translation: Показать все
+
+- id: more_posts
+  translation: Все записи
+
+- id: more_talks
+  translation: Все события
+
+- id: more_publications
+  translation: Все публикации
+
+# Contact widget
+
+- id: contact_name
+  translation: Имя
+
+- id: contact_email
+  translation: Email
+
+- id: contact_message
+  translation: Сообщение
+
+- id: contact_attachment
+  translation: Прикрепить файл
+
+- id: contact_send
+  translation: Отправить
+
+- id: book_appointment
+  translation: Записаться на встречу
+
+# Contact info block
+
+- id: block_contact_title
+  translation: Контакты
+
+- id: block_contact_visit_title
+  translation: Адрес
+
+- id: block_contact_office_hours
+  translation: Часы работы
+
+- id: block_contact_view_on_map
+  translation: Показать на карте
+
+- id: block_contact_connect_title
+  translation: Связаться
+
+- id: block_contact_follow_us
+  translation: Подписывайтесь на нас
+
+- id: block_contact_follow_me
+  translation: Найти меня в
+
+- id: block_contact_prospective_title
+  translation: Будущим участникам
+
+- id: block_contact_form_title
+  translation: Напишите нам
+
+- id: block_contact_form_name
+  translation: Имя
+
+- id: block_contact_form_email
+  translation: Email
+
+- id: block_contact_form_subject
+  translation: Тема
+
+- id: block_contact_form_message
+  translation: Сообщение
+
+- id: block_contact_form_submit
+  translation: Отправить сообщение
+
+# Publication/Event details
+
+- id: abstract
+  translation: Аннотация
+
+- id: publication
+  translation: Публикация
+
+- id: publication_type
+  translation: Тип
+
+- id: date
+  translation: Дата
+
+- id: last_updated
+  translation: Последнее обновление
+
+- id: event
+  translation: Событие
+
+- id: location
+  translation: Место
+
+- id: pub_paper_conference
+  translation: Материалы конференции
+
+- id: pub_article_journal
+  translation: Статья в журнале
+
+- id: pub_article
+  translation: Препринт
+
+- id: pub_report
+  translation: Отчет
+
+- id: pub_book
+  translation: Книга
+
+- id: pub_chapter
+  translation: Глава книги
+
+- id: pub_thesis
+  translation: Диссертация
+
+- id: pub_patent
+  translation: Патент
+
+# Project details
+
+- id: open_project_site
+  translation: Перейти на сайт проекта
+
+# Content types for default archive page titles and search results
+
+- id: blog
+  translation: Блог
+
+- id: publications
+  translation: Публикации
+
+- id: events
+  translation: События
+
+- id: projects
+  translation: Проекты
+
+- id: slides
+  translation: Слайды
+
+- id: authors
+  translation: Авторы
+
+- id: qa
+  translation: Вопросы и ответы
+
+- id: questions
+  translation: Вопросы
+
+- id: faq
+  translation: FAQ
+
+- id: faqs
+  translation: FAQ
+
+- id: docs
+  translation: Документация
+
+- id: question
+  translation: Вопрос
+
+- id: answer
+  translation: Ответ
+
+- id: accepted_answer
+  translation: Принятый ответ
+
+- id: other_answers
+  translation: Другие ответы
+
+- id: related_questions
+  translation: Похожие вопросы
+
+- id: browse_by_category
+  translation: Обзор по категориям
+
+- id: search_questions
+  translation: Поиск вопросов...
+
+- id: no_questions_yet
+  translation: Вопросов пока нет. Загляните позже!
+
+- id: questions_count
+  translation: вопросов
+
+# Slides
+
+- id: back_to_slides
+  translation: Назад к слайдам
+
+- id: featured
+  translation: Избранное
+
+- id: details
+  translation: Подробности
+
+- id: present_slides
+  translation: Начать показ
+
+- id: present_fullscreen
+  translation: На весь экран
+
+- id: export_pdf_print
+  translation: Экспорт в PDF
+
+- id: slides_print_hint
+  translation: Откроется в режиме печати — используйте Печать > Сохранить как PDF
+
+- id: slides_search_placeholder
+  translation: Поиск презентаций по названию...
+
+- id: slides_no_decks
+  translation: Презентации не найдены
+
+- id: slides_no_matches
+  translation: Нет презентаций, соответствующих фильтрам
+
+- id: clear_filters
+  translation: Сбросить фильтры
+
+- id: topics
+  translation: Темы
+
+- id: related_resources
+  translation: Похожие ресурсы
+
+- id: copy_link
+  translation: Копировать ссылку
+
+- id: copy_citation
+  translation: Копировать цитату
+
+- id: how_to_cite
+  translation: Как цитировать
+
+- id: citation
+  translation: Цитата
+
+- id: bibtex
+  translation: BibTeX
+
+- id: download_cite_bib
+  translation: Скачать cite.bib
+
+- id: lecture
+  translation: Лекция
+
+- id: enter_fullscreen
+  translation: Полноэкранный режим
+
+- id: exit_fullscreen
+  translation: Выйти из полноэкранного режима
+
+- id: speaker_notes_hint
+  translation: для заметок докладчика
+
+- id: slides_not_found
+  translation: Слайды не найдены
+
+# Search
+
+- id: search
+  translation: Поиск
+
+- id: search_placeholder
+  translation: Найти...
+
+- id: search_results
+  translation: результатов найдено
+
+- id: search_no_results
+  translation: Ничего не найдено
+
+- id: search_common_queries
+  translation: Популярные запросы
+
+# Error 404
+
+- id: page_not_found
+  translation: Страница не найдена
+
+- id: 404_recommendations
+  translation: Возможно, вы искали одну из этих страниц?
+
+# Cookie consent
+
+- id: cookie_message
+  translation: Этот сайт использует файлы cookie, чтобы обеспечить вам наилучший пользовательский опыт.
+
+- id: cookie_dismiss
+  translation: Понятно!
+
+- id: cookie_learn
+  translation: Узнать больше
+
+# Published with
+
+- id: published_with
+  translation: Создано с помощью {hugoblox}.
+
+- id: poweredby_button
+  translation: 'Создать свой →'
+
+# Dev Hero block
+
+- id: scroll_to_content
+  translation: Прокрутить к содержимому
+
+- id: developer
+  translation: Разработчик
+
+# Portfolio block
+
+- id: portfolio_link_code
+  translation: Код
+
+- id: portfolio_link_live
+  translation: Сайт
+
+- id: portfolio_link_demo
+  translation: Демо
+
+- id: portfolio_link_default
+  translation: Ссылка
+
+- id: portfolio_view_all
+  translation: Все проекты
+
+# Feedback widget
+
+- id: feedback_widget_title
+  translation: Отзыв
+
+- id: feedback_widget_question
+  translation: Была ли эта страница полезна?
+
+- id: feedback_widget_answer_positive
+  translation: 😍 Да
+
+- id: feedback_widget_answer_negative
+  translation: 😡 Нет
+
+# AI Features
+
+- id: ai_insight
+  translation: Аналитика ИИ
+
+# Content Metadata
+- id: content_type
+  translation: Тип контента
+- id: difficulty
+  translation: Сложность
+- id: prerequisites
+  translation: Предварительные требования
+
+# Card metadata
+- id: trending
+  translation: В тренде
+
+- id: article
+  translation: статья
+
+- id: articles
+  translation: статьи
+
+- id: browse
+  translation: Обзор
+
+- id: all
+  translation: Все
+
+- id: helpful
+  translation: полезно

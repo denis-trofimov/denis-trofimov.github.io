@@ -1,6 +1,7 @@
 schema: "hugoblox/author/v1"
 slug: "me"
 is_owner: true
+title: "Denis Trofimov"
 name:
   display: "Denis Trofimov"
   given: "Denis"
@@ -12,17 +13,18 @@ postnominals: []
 status:
   icon: "👨‍💻"
 role: "Software Architect, Data Architect"
-bio: |
-  Software Architect | Data Architect
+bio: |-
+  **Software Architect, Data Architect**
 
-  Seasoned software developer with experience at startups, banks, and industries like space and railroads.
+  ---
+
+  *Seasoned software developer with experience at startups, banks, and industries like space and railroads.*
+
+  ---
 
   * Go, Python, C++, C engineer since 2006.
-
   * Last 3 years: Platform Engineering, building Internal Developer Portals (IDPs), and shifting organizations left in DevOps.
-
   * Designed and built standalone and client-server apps with Oracle DB, PostgreSQL, and MySQL.
-
   * Delivered CRM systems, web-based automated order processing, and simulations for railroad rolling stock operations.
 affiliations:
   - name: "Looking for job opportunities"
