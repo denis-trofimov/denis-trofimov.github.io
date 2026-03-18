@@ -59,8 +59,8 @@ sections:
           tag: "*"
         - name: Backend
           tag: Backend
-        - name: Обучение
-          tag: Teaching
+        - name: Преподавание
+          tag: Преподавание
         - name: Full-Stack
           tag: Full-Stack
       default_button_index: 0
