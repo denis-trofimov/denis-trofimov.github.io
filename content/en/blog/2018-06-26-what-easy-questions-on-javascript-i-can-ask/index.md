@@ -4,7 +4,6 @@ authors:
   - me
 type: blog
 date: 2018-06-25T23:29:33+00:00
-url: /what-easy-questions-on-javascript-i-can-ask/
 featured_image: WhatAboutAsynchronousCallbacks.png
 
 categories:

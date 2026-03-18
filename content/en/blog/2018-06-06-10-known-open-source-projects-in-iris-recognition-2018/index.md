@@ -4,7 +4,6 @@ authors:
   - me
 type: blog
 date: 2018-06-06T20:33:50+00:00
-url: /10-known-open-source-projects-in-iris-recognition-2018/
 featured_image: Eye-Photo-by-Tom-Tolkien.jpg
 
 categories:

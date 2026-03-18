@@ -4,7 +4,6 @@ authors:
   - me
 type: blog
 date: 2018-09-01T19:49:22+00:00
-url: /joining-phenomenal-machine-learning-course-fast-ai-using-free-google-colaboratory-setup/
 featured_image: Most-correct-dogs-detected-by-CNN-trained-in-fast.ai-course-lesson-1-from-dogscats-dataset.png
 
 categories:

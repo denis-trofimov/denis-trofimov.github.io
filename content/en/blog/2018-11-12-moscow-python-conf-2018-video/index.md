@@ -4,7 +4,6 @@ authors:
   - me
 type: blog
 date: 2018-11-12T19:31:30+00:00
-url: /moscow-python-conf-2018-video/
 
 categories:
   - networking

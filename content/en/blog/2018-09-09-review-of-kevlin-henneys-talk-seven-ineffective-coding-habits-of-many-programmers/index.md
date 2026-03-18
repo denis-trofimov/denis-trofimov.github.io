@@ -4,7 +4,6 @@ authors:
   - me
 type: blog
 date: 2018-09-09T20:03:20+00:00
-url: /review-of-kevlin-henneys-talk-seven-ineffective-coding-habits-of-many-programmers/
 featured_image: ITT-2016-Kevlin-Henney-Seven-Ineffective-Coding-Habits-of-Many-Programmers-Code-alignment-1.png
 
 categories:

@@ -4,7 +4,6 @@ authors:
   - me
 type: blog
 date: 2018-09-05T17:28:46+00:00
-url: /lessons-learned-by-mentoring-programmers-repost/
 featured_image: Pair-programming-Kang-min-Liu.jpg
 
 categories:
