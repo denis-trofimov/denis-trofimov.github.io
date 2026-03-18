@@ -10,6 +10,7 @@ en:
 ru:
   languageCode: ru-ru
   contentDir: content/ru
+  weight: 2
 # Uncomment the lines below to configure your website in a second language.
 #zh:
 #  languageCode: zh-Hans
