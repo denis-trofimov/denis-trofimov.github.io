@@ -1,5 +1,5 @@
 ---
-title: How dictionaries are implemented in the Python language
+title: About Python dictionary implementation
 authors:
   - me
 type: blog
@@ -258,7 +258,5 @@ We want to remove the key 'c' from our dictionary. We end up with the following 
 Note that the delete item operation doesn't trigger an array resize if the number of used slots is much less that the total number of slots. However, when a key/value pair is added, the need for resize is based on the number of used slots + dummy slots so it can shrink the array too.
 
 That's it for now. I hope you enjoyed the article. Please write a comment if you have any feedback.
-
-<!--more-->
 
 Originally posted at [Laurent Luce's Blog](https://www.laurentluce.com/posts/python-dictionary-implementation/) August 29, 2011 by Laurent Luce.
