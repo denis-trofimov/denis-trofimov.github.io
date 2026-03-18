@@ -4,13 +4,19 @@
 
 # Default language
 en:
-  languageCode: en-us
+  languageCode: en-US
+  locale: en-US
   # Uncomment for multi-lingual sites, and move English content into `en` sub-folder.
   contentDir: content/en
+  weight: 1
+  timeZone: America/New_York
 ru:
-  languageCode: ru-ru
+  languageCode: ru-RU
+  locale: ru-RU
   contentDir: content/ru
   weight: 2
+  title: Денис Трофимов
+  timeZone: Europe/Moscow
 # Uncomment the lines below to configure your website in a second language.
 #zh:
 #  languageCode: zh-Hans
