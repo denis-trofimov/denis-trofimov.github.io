@@ -17,12 +17,11 @@
   <a href="https://docs.hugoblox.com/guides/studio/">HugoBlox Studio (Visual Editor)</a>
 </p>
 
-
 <p align="center">
   <b>▶︎ Watch 12s Preview</b>
 </p>
 
-https://github.com/user-attachments/assets/a6b676c0-1c10-4734-a55f-68c6f72d1612
+<https://github.com/user-attachments/assets/a6b676c0-1c10-4734-a55f-68c6f72d1612>
 
 <p align="center">
   <a href="https://discord.gg/z8wNYzb"><img src="https://img.shields.io/discord/722225264733716590?label=Join%20Discord&style=social" alt="Discord"></a>
@@ -93,6 +92,21 @@ hugoblox create site --template dev-portfolio
 [CLI docs →](https://docs.hugoblox.com/start/cli/?utm_source=github&utm_medium=readme)
 
 ---
+
+## Troubleshooting
+
+### Site audit
+
+Run [this audit](https://gohugo.io/troubleshooting/audit/) before deploying your production site.
+There are several conditions that can produce errors in your published site which are not detected during the build. Run this audit before your final build.
+
+    HUGO_MINIFY_TDEWOLFF_HTML_KEEPCOMMENTS=true HUGO_ENABLEMISSINGTRANSLATIONPLACEHOLDERS=true hugo && grep -inorE "<\!-- raw HTML omitted -->|ZgotmplZ|\[i18n\]|\(<nil>\)|(&lt;nil&gt;)|hahahugo" public/
+
+### Debug
+
+Display debug, information, warning, and error messages.
+
+    hugo build --logLevel debug
 
 ## Customize in 10 minutes
 
