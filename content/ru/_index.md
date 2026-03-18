@@ -12,7 +12,7 @@ sections:
   - block: dev-hero
     id: hero
     content:
-      username: me
+      username: denis
       greeting: "Привет, я"
       show_status: true
       show_scroll_indicator: true
@@ -270,6 +270,7 @@ sections:
     content:
       title: Опыт работы
       date_format: Янв 2006
+      username: denis
     design:
       columns: '1'
       background:

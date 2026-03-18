@@ -2,7 +2,7 @@
 title: "Новогоднее чудо"
 summary: "Сайт на Django, созданный с нуля"
 authors:
-  - me
+  - denis
 tags: 
   - Full-Stack
   - Backend

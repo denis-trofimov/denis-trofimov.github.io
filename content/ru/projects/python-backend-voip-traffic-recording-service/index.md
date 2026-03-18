@@ -2,7 +2,7 @@
 title: "Сервис записи трафика VoIP на Python"
 summary: "Фриланс-заказ для De Novo Lab"
 authors:
-  - me
+  - denis
 tags:
   - Python
   - Backend

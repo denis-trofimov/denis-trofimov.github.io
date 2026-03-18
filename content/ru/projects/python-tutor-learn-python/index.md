@@ -4,7 +4,7 @@
 title: "Тьютор по Python для курсов Learn Python"
 summary: "Преподавал вводный курс по Python"
 authors:
-  - me
+  - denis
 tags: 
   - Преподавание
   - Веб-разработка

@@ -4,7 +4,7 @@
 title: "Тьютор по Python для бэкенда в Практикуме Яндекса"
 summary: "Вёл курс по Python для веб-разработчиков бэкенда"
 authors:
-  - me
+  - denis
 tags: 
   - Преподавание
   - Backend
