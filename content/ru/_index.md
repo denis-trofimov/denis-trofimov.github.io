@@ -311,7 +311,7 @@ sections:
       text: |-
         Я всегда заинтересован в обсуждении новых проектов и возможностей.
         Вы ищете нанять, сотрудничать или просто сказать привет, не стесняйтесь обращаться!
-      email: alex@example.com
+      email: silaradost@yandex.ru
       autolink: true
     design:
       columns: '1'
