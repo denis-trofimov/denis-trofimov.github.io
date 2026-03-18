@@ -1,5 +1,5 @@
 ---
-title: 10 Known Open Source Projects in Iris Recognition 2018
+title: 10 известных проектов с открытым исходным кодом в Iris Recognition 2018
 authors:
   - denis
 type: blog
