@@ -196,7 +196,7 @@ sections:
             - name: GCS
               icon: devicon/googlecloud
             - name: AWS
-              icon: devicon/amazonwebservices-wordmark
+              icon: custom/amazonwebservices
             - name: Azure
               icon: devicon/azure
             - name: Ubuntu
