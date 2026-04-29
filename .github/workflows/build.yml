@@ -61,12 +61,15 @@ jobs:
         sudo mv /tmp/yq /usr/local/bin/yq
         sudo chmod +x /usr/local/bin/yq
         
-        # Read hugo_version from hugoblox.yaml
-        VERSION=$(yq '.hugo_version // ""' hugoblox.yaml 2>/dev/null | grep -v '^null$' || true)
+        # Read hugo_version from hugoblox.yaml (new path first, then legacy)
+        VERSION=$(yq '.build.hugo_version // .hugo_version // ""' hugoblox.yaml 2>/dev/null | grep -v '^null$' || true)
         
-        # Fallback to a known stable version if not specified
-        DEFAULT_VERSION="0.154.5"
-        VERSION=${VERSION:-$DEFAULT_VERSION}
+        # Fallback to a compatible version if not specified
+        DEFAULT_VERSION="0.158.0"
+        if [ -z "$VERSION" ]; then
+          echo "::warning::No hugo_version found in hugoblox.yaml (.build.hugo_version or .hugo_version), using default $DEFAULT_VERSION"
+          VERSION="$DEFAULT_VERSION"
+        fi
         
         # Validate version format (basic check)
         if [[ ! "$VERSION" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
